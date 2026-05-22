@@ -87,8 +87,8 @@ export default function IndemnizacionARTPage() {
 
               <h1
                 id="calc-art-heading"
-                className="font-serif font-semibold text-[var(--color-bg)] leading-tight"
-                style={{ fontSize: "clamp(1.75rem, 1.25rem + 2.5vw, 2.75rem)" }}
+                className="font-serif font-semibold leading-tight"
+                style={{ color: "#F5F2EE", fontSize: "clamp(1.75rem, 1.25rem + 2.5vw, 2.75rem)" }}
               >
                 Calculadora de Indemnización ART
               </h1>
@@ -115,7 +115,7 @@ export default function IndemnizacionARTPage() {
         >
           <Container size="narrow">
             <div
-              className="bg-[var(--color-bg)] rounded-[10px] shadow-[var(--shadow-lg)] overflow-hidden"
+              className="bg-bg rounded-[10px] shadow-[var(--shadow-lg)] overflow-hidden"
               style={{ border: "1px solid var(--color-border-default)" }}
             >
               <div className="px-6 py-6 sm:px-8 sm:py-8">

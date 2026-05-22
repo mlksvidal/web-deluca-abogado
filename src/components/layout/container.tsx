@@ -3,10 +3,9 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Container — contenedor máximo con padding responsive.
+ * Container — contenedor máximo centrado con padding responsive.
  *
- * Usa `max()` para centrado perfecto sin media queries:
- *   padding: max(24px, calc((100vw - 1200px) / 2))
+ * Usa max-width + mx-auto para centrar, y padding clamp para márgenes laterales.
  *
  * Variantes de ancho máximo:
  *   default  → 1200px (editorial principal)
@@ -28,10 +27,11 @@ function Container({ as: Tag = "div", size = "default", className, ...props }: C
   return (
     <Tag
       data-slot="container"
-      className={cn("w-full mx-auto", className)}
+      className={cn("w-full", className)}
       style={{
         maxWidth,
-        paddingInline: `max(24px, calc((100vw - ${maxWidth}) / 2))`,
+        marginInline: "auto",
+        paddingInline: "clamp(20px, 4vw, 40px)",
       }}
       {...props}
     />

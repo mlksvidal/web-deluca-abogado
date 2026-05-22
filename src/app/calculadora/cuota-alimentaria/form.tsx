@@ -47,37 +47,37 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoCuotaAlimentaria })
       )}
     >
       {/* Header */}
-      <div className="bg-[var(--color-marino)] px-6 py-5">
+      <div className="bg-marino px-6 py-5">
         <p className="font-ui text-xs font-medium tracking-[0.1em] uppercase text-[rgba(250,247,242,0.60)] mb-1">
           Cuota mensual estimada
         </p>
         <p
-          className="font-serif leading-none text-[var(--color-bg)]"
+          className="font-serif leading-none text-bg"
           style={{ fontSize: "clamp(2rem,3vw+1rem,3rem)" }}
         >
           {formatARS(resultado.montoMensual)}
         </p>
-        <p className="mt-1.5 font-ui text-sm text-[var(--color-dorado)]">
+        <p className="mt-1.5 font-ui text-sm text-dorado">
           {formatPct(resultado.porcentajeEstimado)} del sueldo bruto
         </p>
       </div>
 
       {/* Rango */}
-      <div className="bg-[var(--color-bg)] px-6 py-4 border-b border-[var(--color-border-default)]">
+      <div className="bg-bg px-6 py-4 border-b border-[var(--color-border-default)]">
         <p className="font-ui text-xs font-semibold uppercase tracking-wider text-[var(--color-text-tertiary)] mb-3">
           Rango jurisprudencial
         </p>
         <div className="flex items-center gap-3">
-          <div className="flex-1 text-center p-3 rounded-[6px] bg-[var(--color-bg-warm)] border border-[var(--color-border-default)]">
+          <div className="flex-1 text-center p-3 rounded-[6px] bg-bg-warm border border-[var(--color-border-default)]">
             <p className="font-ui text-xs text-[var(--color-text-tertiary)] mb-0.5">Mínimo</p>
-            <p className="font-serif text-lg font-semibold text-[var(--color-marino)]">
+            <p className="font-serif text-lg font-semibold text-marino">
               {formatARS(resultado.rangoMin)}
             </p>
           </div>
           <div className="text-[var(--color-border-strong)] font-ui text-sm">—</div>
-          <div className="flex-1 text-center p-3 rounded-[6px] bg-[var(--color-bg-warm)] border border-[var(--color-border-default)]">
+          <div className="flex-1 text-center p-3 rounded-[6px] bg-bg-warm border border-[var(--color-border-default)]">
             <p className="font-ui text-xs text-[var(--color-text-tertiary)] mb-0.5">Máximo</p>
-            <p className="font-serif text-lg font-semibold text-[var(--color-marino)]">
+            <p className="font-serif text-lg font-semibold text-marino">
               {formatARS(resultado.rangoMax)}
             </p>
           </div>
@@ -86,7 +86,7 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoCuotaAlimentaria })
 
       {/* Notas */}
       {resultado.notas.length > 0 && (
-        <div className="bg-[var(--color-bg-warm)] px-6 py-4 border-b border-[var(--color-border-default)]">
+        <div className="bg-bg-warm px-6 py-4 border-b border-[var(--color-border-default)]">
           <p className="font-ui text-xs font-semibold uppercase tracking-wider text-[var(--color-text-tertiary)] mb-2">
             Criterio aplicado
           </p>
@@ -94,7 +94,7 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoCuotaAlimentaria })
             {resultado.notas.map((nota, i) => (
               <li
                 key={i}
-                className="font-body text-xs text-[var(--color-carbon-soft)] leading-relaxed pl-2 border-l-2 border-[var(--color-dorado-muted)]"
+                className="font-body text-xs text-carbon-soft leading-relaxed pl-2 border-l-2 border-[var(--color-dorado-muted)]"
               >
                 {nota}
               </li>
@@ -104,7 +104,7 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoCuotaAlimentaria })
       )}
 
       {/* Disclaimer + CTA */}
-      <div className="px-6 py-5 space-y-4 bg-[var(--color-bg)]">
+      <div className="px-6 py-5 space-y-4 bg-bg">
         <Disclaimer variant="warning" title="Estimación orientativa">
           {resultado.disclaimer}
         </Disclaimer>
@@ -297,7 +297,7 @@ export function FormCuotaAlimentaria() {
 
         {/* Edades de cada hijo */}
         <fieldset className="space-y-3">
-          <legend className="font-ui text-sm font-medium text-[var(--color-carbon-soft)]">
+          <legend className="font-ui text-sm font-medium text-carbon-soft">
             Edades de los hijos{" "}
             <span className="text-[var(--color-error)]" aria-hidden="true">
               *
@@ -361,7 +361,7 @@ export function FormCuotaAlimentaria() {
               type="button"
               onClick={addHijo}
               className={cn(
-                "flex items-center gap-1.5 font-ui text-sm text-[var(--color-marino)]",
+                "flex items-center gap-1.5 font-ui text-sm text-marino",
                 "hover:text-[var(--color-marino-hover)] transition-colors duration-150",
                 "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
               )}
@@ -388,7 +388,7 @@ export function FormCuotaAlimentaria() {
                 "transition-colors duration-150",
                 "border-[var(--color-border-strong)]",
                 "group-hover:border-[var(--color-marino)]",
-                "peer-checked:bg-[var(--color-marino)] peer-checked:border-[var(--color-marino)]",
+                "peer-checked:bg-marino peer-checked:border-[var(--color-marino)]",
                 "peer-focus-visible:outline-2 peer-focus-visible:outline-[var(--color-dorado)] peer-focus-visible:outline-offset-2"
               )}
               aria-hidden="true"
@@ -408,7 +408,7 @@ export function FormCuotaAlimentaria() {
           </div>
           <label
             htmlFor="alim-otras"
-            className="font-ui text-sm text-[var(--color-carbon-soft)] leading-snug cursor-pointer"
+            className="font-ui text-sm text-carbon-soft leading-snug cursor-pointer"
           >
             El obligado tiene otras obligaciones alimentarias activas
             <span className="block font-body text-xs text-[var(--color-text-tertiary)] mt-0.5">

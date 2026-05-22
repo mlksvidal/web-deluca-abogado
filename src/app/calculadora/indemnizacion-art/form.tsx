@@ -37,7 +37,7 @@ function IncapacidadSlider({ value, onChange }: { value: number; onChange: (v: n
           </span>
         </Label>
         <span
-          className="font-ui text-lg font-semibold text-[var(--color-marino)] tabular-nums"
+          className="font-ui text-lg font-semibold text-marino tabular-nums"
           aria-live="polite"
           aria-atomic="true"
         >
@@ -64,13 +64,13 @@ function IncapacidadSlider({ value, onChange }: { value: number; onChange: (v: n
             "[&::-webkit-slider-thumb]:appearance-none",
             "[&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5",
             "[&::-webkit-slider-thumb]:rounded-full",
-            "[&::-webkit-slider-thumb]:bg-[var(--color-marino)]",
+            "[&::-webkit-slider-thumb]:bg-marino",
             "[&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-[var(--color-dorado)]",
             "[&::-webkit-slider-thumb]:shadow-[var(--shadow-sm)]",
             "[&::-webkit-slider-thumb]:cursor-grab",
             "[&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5",
             "[&::-moz-range-thumb]:rounded-full",
-            "[&::-moz-range-thumb]:bg-[var(--color-marino)]",
+            "[&::-moz-range-thumb]:bg-marino",
             "[&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-[var(--color-dorado)]",
             "[&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:shadow-[var(--shadow-sm)]",
             "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
@@ -109,12 +109,7 @@ function DesglosRow({
       )}
     >
       <div>
-        <span
-          className={cn(
-            "font-ui text-sm",
-            highlighted ? "text-[var(--color-marino)]" : "text-[var(--color-carbon-soft)]"
-          )}
-        >
+        <span className={cn("font-ui text-sm", highlighted ? "text-marino" : "text-carbon-soft")}>
           {label}
         </span>
         {sub && (
@@ -126,7 +121,7 @@ function DesglosRow({
       <span
         className={cn(
           "font-ui text-sm tabular-nums ml-4 shrink-0",
-          highlighted ? "text-[var(--color-marino)]" : "text-[var(--color-carbon-soft)]"
+          highlighted ? "text-marino" : "text-carbon-soft"
         )}
       >
         {formatARS(value)}
@@ -151,23 +146,21 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoART }) {
       )}
     >
       {/* Header */}
-      <div className="bg-[var(--color-marino)] px-6 py-5">
+      <div className="bg-marino px-6 py-5">
         <p className="font-ui text-xs font-medium tracking-[0.1em] uppercase text-[rgba(250,247,242,0.60)] mb-1">
           Indemnización estimada
         </p>
         <p
-          className="font-serif leading-none text-[var(--color-bg)]"
+          className="font-serif leading-none text-bg"
           style={{ fontSize: "clamp(2rem,3vw+1rem,3rem)" }}
         >
           {formatARS(desglose.total)}
         </p>
-        <p className="mt-1.5 font-ui text-xs text-[var(--color-dorado)] opacity-90">
-          {desglose.baseLegal}
-        </p>
+        <p className="mt-1.5 font-ui text-xs text-dorado opacity-90">{desglose.baseLegal}</p>
       </div>
 
       {/* Desglose */}
-      <div className="bg-[var(--color-bg)] px-6 py-2">
+      <div className="bg-bg px-6 py-2">
         <DesglosRow
           label="VIB — Valor Indemnizatorio Base"
           value={desglose.vib}
@@ -185,9 +178,7 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoART }) {
 
       {/* RIPTE notice */}
       <div className="px-6 py-3 bg-[var(--color-marino-subtle)] border-t border-[var(--color-border-default)]">
-        <p className="font-ui text-xs text-[var(--color-marino)] font-medium">
-          Sujeto al piso RIPTE vigente
-        </p>
+        <p className="font-ui text-xs text-marino font-medium">Sujeto al piso RIPTE vigente</p>
         <p className="font-body text-xs text-[var(--color-text-secondary)] mt-0.5">
           La Ley 26.773 establece actualización trimestral por RIPTE (Remuneración Imponible
           Promedio de los Trabajadores Estables). El valor real puede ser mayor.
@@ -196,7 +187,7 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoART }) {
 
       {/* Notas técnicas */}
       {desglose.notas.length > 0 && (
-        <div className="bg-[var(--color-bg-warm)] px-6 py-4 border-t border-[var(--color-border-default)]">
+        <div className="bg-bg-warm px-6 py-4 border-t border-[var(--color-border-default)]">
           <p className="font-ui text-xs font-semibold uppercase tracking-wider text-[var(--color-text-tertiary)] mb-2">
             Detalle del cálculo
           </p>
@@ -204,7 +195,7 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoART }) {
             {desglose.notas.map((nota, i) => (
               <li
                 key={i}
-                className="font-body text-xs text-[var(--color-carbon-soft)] leading-relaxed pl-2 border-l-2 border-[var(--color-dorado-muted)]"
+                className="font-body text-xs text-carbon-soft leading-relaxed pl-2 border-l-2 border-[var(--color-dorado-muted)]"
               >
                 {nota}
               </li>
@@ -214,7 +205,7 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoART }) {
       )}
 
       {/* Disclaimer + CTA */}
-      <div className="px-6 py-5 space-y-4 border-t border-[var(--color-border-default)] bg-[var(--color-bg)]">
+      <div className="px-6 py-5 space-y-4 border-t border-[var(--color-border-default)] bg-bg">
         <Disclaimer variant="warning" title="Estimación orientativa">
           {resultado.disclaimer}
         </Disclaimer>

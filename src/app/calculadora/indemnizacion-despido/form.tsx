@@ -60,18 +60,13 @@ function DesglosRow({
         highlighted && "font-semibold"
       )}
     >
-      <span
-        className={cn(
-          "font-ui text-sm",
-          highlighted ? "text-[var(--color-marino)]" : "text-[var(--color-carbon-soft)]"
-        )}
-      >
+      <span className={cn("font-ui text-sm", highlighted ? "text-marino" : "text-carbon-soft")}>
         {label}
       </span>
       <span
         className={cn(
           "font-ui text-sm tabular-nums",
-          highlighted ? "text-[var(--color-marino)]" : "text-[var(--color-carbon-soft)]"
+          highlighted ? "text-marino" : "text-carbon-soft"
         )}
       >
         {formatARS(value)}
@@ -147,18 +142,18 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoDespido }) {
       )}
     >
       {/* Header del resultado */}
-      <div className="bg-[var(--color-marino)] px-6 py-5">
+      <div className="bg-marino px-6 py-5">
         <p className="font-ui text-xs font-medium tracking-[0.1em] uppercase text-[rgba(250,247,242,0.60)] mb-1">
           Estimación total
         </p>
         <p
-          className="font-serif leading-none text-[var(--color-bg)]"
+          className="font-serif leading-none text-bg"
           style={{ fontSize: "clamp(2rem,3vw+1rem,3rem)" }}
         >
           {formatARS(desglose.total)}
         </p>
         {desglose.topeAplicado && (
-          <p className="mt-2 font-ui text-xs text-[var(--color-dorado)] flex items-center gap-1.5">
+          <p className="mt-2 font-ui text-xs text-dorado flex items-center gap-1.5">
             <AlertTriangle size={12} aria-hidden="true" />
             Se aplicó tope art. 245
           </p>
@@ -166,11 +161,9 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoDespido }) {
       </div>
 
       {/* Desglose */}
-      <div className="bg-[var(--color-bg)] px-6 py-2">
+      <div className="bg-bg px-6 py-2">
         {esVacio ? (
-          <p className="py-4 font-body text-sm text-[var(--color-carbon-soft)] text-center">
-            {desglose.notas[0]}
-          </p>
+          <p className="py-4 font-body text-sm text-carbon-soft text-center">{desglose.notas[0]}</p>
         ) : (
           <>
             <DesglosRow label="Indemnización art. 245 LCT" value={desglose.art245} />
@@ -184,7 +177,7 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoDespido }) {
 
       {/* Notas técnicas */}
       {desglose.notas.length > 0 && !esVacio && (
-        <div className="bg-[var(--color-bg-warm)] px-6 py-4 border-t border-[var(--color-border-default)]">
+        <div className="bg-bg-warm px-6 py-4 border-t border-[var(--color-border-default)]">
           <p className="font-ui text-xs font-semibold uppercase tracking-wider text-[var(--color-text-tertiary)] mb-2">
             Detalle del cálculo
           </p>
@@ -192,7 +185,7 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoDespido }) {
             {desglose.notas.map((nota, i) => (
               <li
                 key={i}
-                className="font-body text-xs text-[var(--color-carbon-soft)] leading-relaxed pl-2 border-l-2 border-[var(--color-dorado-muted)]"
+                className="font-body text-xs text-carbon-soft leading-relaxed pl-2 border-l-2 border-[var(--color-dorado-muted)]"
               >
                 {nota}
               </li>
@@ -202,7 +195,7 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoDespido }) {
       )}
 
       {/* Disclaimer + CTA */}
-      <div className="px-6 py-5 space-y-4 border-t border-[var(--color-border-default)] bg-[var(--color-bg)]">
+      <div className="px-6 py-5 space-y-4 border-t border-[var(--color-border-default)] bg-bg">
         <Disclaimer variant="warning" title="Estimación orientativa">
           {resultado.disclaimer}
         </Disclaimer>
@@ -215,7 +208,7 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoDespido }) {
           </Link>
 
           <div className="border border-[var(--color-border-default)] rounded-[6px] p-4">
-            <p className="font-ui text-sm font-medium text-[var(--color-carbon-soft)] mb-0.5">
+            <p className="font-ui text-sm font-medium text-carbon-soft mb-0.5">
               Recibí el cálculo detallado en PDF
             </p>
             <p className="font-body text-xs text-[var(--color-text-tertiary)] mb-2">
@@ -456,7 +449,7 @@ export function FormIndemnizacionDespido() {
 
         {/* Checkboxes */}
         <fieldset className="space-y-3">
-          <legend className="font-ui text-sm font-medium text-[var(--color-carbon-soft)]">
+          <legend className="font-ui text-sm font-medium text-carbon-soft">
             Conceptos adicionales
           </legend>
 
@@ -475,7 +468,7 @@ export function FormIndemnizacionDespido() {
                   "transition-colors duration-150",
                   "border-[var(--color-border-strong)]",
                   "group-hover:border-[var(--color-marino)]",
-                  "peer-checked:bg-[var(--color-marino)] peer-checked:border-[var(--color-marino)]",
+                  "peer-checked:bg-marino peer-checked:border-[var(--color-marino)]",
                   "peer-focus-visible:outline-2 peer-focus-visible:outline-[var(--color-dorado)] peer-focus-visible:outline-offset-2"
                 )}
                 aria-hidden="true"
@@ -495,7 +488,7 @@ export function FormIndemnizacionDespido() {
             </div>
             <label
               htmlFor="check-preaviso"
-              className="font-ui text-sm text-[var(--color-carbon-soft)] leading-snug cursor-pointer"
+              className="font-ui text-sm text-carbon-soft leading-snug cursor-pointer"
             >
               Preaviso omitido
               <span className="block font-body text-xs text-[var(--color-text-tertiary)] mt-0.5">
@@ -519,7 +512,7 @@ export function FormIndemnizacionDespido() {
                   "transition-colors duration-150",
                   "border-[var(--color-border-strong)]",
                   "group-hover:border-[var(--color-marino)]",
-                  "peer-checked:bg-[var(--color-marino)] peer-checked:border-[var(--color-marino)]",
+                  "peer-checked:bg-marino peer-checked:border-[var(--color-marino)]",
                   "peer-focus-visible:outline-2 peer-focus-visible:outline-[var(--color-dorado)] peer-focus-visible:outline-offset-2"
                 )}
                 aria-hidden="true"
@@ -539,7 +532,7 @@ export function FormIndemnizacionDespido() {
             </div>
             <label
               htmlFor="check-art80"
-              className="font-ui text-sm text-[var(--color-carbon-soft)] leading-snug cursor-pointer"
+              className="font-ui text-sm text-carbon-soft leading-snug cursor-pointer"
             >
               Certificados art. 80 no entregados
               <span className="block font-body text-xs text-[var(--color-text-tertiary)] mt-0.5">

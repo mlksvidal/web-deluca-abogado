@@ -76,7 +76,7 @@ function CalculadoraCard({
       }}
     >
       <article
-        className="flex flex-col h-full bg-[var(--color-bg)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[var(--shadow-lg)] group-hover:border-[var(--color-dorado)]"
+        className="flex flex-col h-full bg-bg transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[var(--shadow-lg)] group-hover:border-[var(--color-dorado)]"
         style={{
           borderRadius: "inherit",
         }}
@@ -95,7 +95,7 @@ function CalculadoraCard({
               border: "1px solid rgba(201,169,97,0.30)",
             }}
           >
-            <Icon size={24} className="text-[var(--color-dorado)]" aria-hidden="true" />
+            <Icon size={24} className="text-dorado" aria-hidden="true" />
           </div>
 
           <div className="flex items-center gap-2">
@@ -115,16 +115,16 @@ function CalculadoraCard({
 
         {/* Content */}
         <div className="flex flex-col flex-1 px-6 py-5">
-          <h2 className="font-serif text-xl font-semibold text-[var(--color-marino)] leading-snug mb-3">
+          <h2 className="font-serif text-xl font-semibold text-marino leading-snug mb-3">
             {titulo}
           </h2>
 
-          <p className="font-body text-sm text-[var(--color-carbon-soft)] leading-relaxed flex-1 mb-5">
+          <p className="font-body text-sm text-carbon-soft leading-relaxed flex-1 mb-5">
             {descripcion}
           </p>
 
           <div
-            className="flex items-center gap-1.5 font-ui text-sm font-medium text-[var(--color-dorado-deep)] transition-gap duration-250"
+            className="flex items-center gap-1.5 font-ui text-sm font-medium text-dorado-deep transition-gap duration-250"
             aria-hidden="true"
           >
             Usar calculadora
@@ -190,8 +190,8 @@ export default function CalculadorasIndexPage() {
 
               <h1
                 id="calc-index-heading"
-                className="font-serif font-semibold text-[var(--color-bg)] leading-tight"
-                style={{ fontSize: "clamp(1.75rem, 1rem + 3vw, 3rem)" }}
+                className="font-serif font-semibold leading-tight"
+                style={{ color: "#F5F2EE", fontSize: "clamp(1.75rem, 1rem + 3vw, 3rem)" }}
               >
                 Calculadoras Legales
               </h1>
@@ -228,7 +228,7 @@ export default function CalculadorasIndexPage() {
               Los resultados son estimaciones orientativas. Para un análisis preciso de tu caso,{" "}
               <Link
                 href="/reservar"
-                className="text-[var(--color-marino)] underline underline-offset-2 decoration-[var(--color-dorado)] hover:decoration-2 transition-all duration-150"
+                className="text-marino underline underline-offset-2 decoration-[var(--color-dorado)] hover:decoration-2 transition-all duration-150"
               >
                 reservá una consulta
               </Link>
