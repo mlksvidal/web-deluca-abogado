@@ -3,7 +3,6 @@ import { siteConfig } from "@/lib/site-config";
 import { Hero } from "@/components/sections/hero";
 import { TriajeWizard } from "@/components/triage/triage-wizard";
 import { Areas } from "@/components/sections/areas";
-import { Honorarios } from "@/components/sections/honorarios";
 import { Casos } from "@/components/sections/casos";
 import { CtaBand } from "@/components/sections/cta-band";
 import { About } from "@/components/sections/about";
@@ -46,7 +45,7 @@ export const metadata: Metadata = {
  *   1. Hero (#inicio)
  *   2. TriajeWizard (#consulta) — alta conversión inmediata
  *   3. Áreas (#areas)
- *   4. Honorarios (#honorarios) — tarifas orientativas
+ *   4. Casos resueltos (#casos) — historias narrativas
  *   5. Casos (#casos)
  *   6. CtaBand — primera consulta sin cargo
  *   7. About (#trayectoria)
@@ -128,10 +127,7 @@ export default function HomePage() {
         {/* 3. Áreas de práctica — section#areas (id puesto en el componente) */}
         <Areas />
 
-        {/* 4. Honorarios orientativos — section#honorarios */}
-        <Honorarios />
-
-        {/* 5. Casos resueltos — section#casos */}
+        {/* 4. Casos resueltos — section#casos */}
         <Casos />
 
         {/* 6. CTA band — primera consulta sin cargo */}

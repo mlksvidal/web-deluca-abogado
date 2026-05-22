@@ -94,7 +94,7 @@ function RadioCard({ id, name, checked, onChange, label, desc }: RadioCardProps)
       <span className="triaje-card-check" aria-hidden="true">
         {checked ? (
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <circle cx="8" cy="8" r="7.5" fill="var(--color-azul-electrico, #2952FF)" />
+            <circle cx="8" cy="8" r="7.5" fill="var(--color-marino, #0F1E3D)" />
             <path
               d="M4.5 8l2.5 2.5L11 5.5"
               stroke="#fff"
@@ -435,7 +435,7 @@ export function TriajeWizard() {
         .triaje-progress-pct {
           font-family: var(--font-ui, Inter, system-ui, sans-serif);
           font-size: .72rem;
-          color: var(--color-azul-electrico, #2952FF);
+          color: var(--color-marino, #0F1E3D);
           font-weight: 600;
           letter-spacing: .04em;
         }
@@ -448,7 +448,7 @@ export function TriajeWizard() {
         }
         .triaje-progress-bar {
           height: 100%;
-          background: var(--color-azul-electrico, #2952FF);
+          background: var(--color-marino, #0F1E3D);
           border-radius: 2px;
           transition: width 400ms cubic-bezier(.22,1,.36,1);
         }
@@ -506,14 +506,14 @@ export function TriajeWizard() {
           position: relative;
         }
         .triaje-card:hover {
-          border-color: var(--color-azul-electrico, #2952FF);
-          background: var(--color-azul-electrico-soft, rgba(41,82,255,.08));
-          box-shadow: 0 4px 16px -4px var(--color-azul-electrico-shadow, rgba(41,82,255,.18));
+          border-color: var(--color-marino, #0F1E3D);
+          background: rgba(15,30,61,.06);
+          box-shadow: 0 4px 16px -4px rgba(15,30,61,.18);
         }
         .triaje-card--selected {
-          border-color: var(--color-azul-electrico, #2952FF);
-          background: var(--color-azul-electrico, #2952FF);
-          box-shadow: 0 6px 20px -6px var(--color-azul-electrico-shadow, rgba(41,82,255,.35));
+          border-color: var(--color-marino, #0F1E3D);
+          background: var(--color-marino, #0F1E3D);
+          box-shadow: 0 6px 20px -6px rgba(15,30,61,.28);
           transform: scale(1.02);
         }
 
@@ -587,14 +587,14 @@ export function TriajeWizard() {
         }
         /* Botón Continuar — azul eléctrico */
         .triaje-btn--next {
-          background: var(--color-azul-electrico, #2952FF);
+          background: var(--color-marino, #0F1E3D);
           color: #fff;
-          box-shadow: 0 4px 14px -4px var(--color-azul-electrico-shadow, rgba(41,82,255,.3));
+          box-shadow: 0 4px 14px -4px rgba(15,30,61,.22);
         }
         .triaje-btn--next:hover:not(.triaje-btn--disabled) {
-          background: var(--color-azul-electrico-hover, #4366FF);
+          background: var(--color-marino-hover, #1E3A6E);
           transform: translateY(-1px);
-          box-shadow: 0 8px 20px -6px var(--color-azul-electrico-shadow, rgba(41,82,255,.45));
+          box-shadow: 0 8px 20px -6px rgba(15,30,61,.35);
         }
         .triaje-btn--disabled {
           opacity: .35;

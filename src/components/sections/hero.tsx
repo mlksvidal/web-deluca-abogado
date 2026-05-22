@@ -47,7 +47,7 @@ const PASOS = [
 export function Hero() {
   return (
     <section
-      className="hero-section relative overflow-hidden pt-[140px] pb-[80px] md:pt-[160px] md:pb-[100px]"
+      className="hero-section relative overflow-hidden pt-[160px] pb-[120px] md:pt-[200px] md:pb-[160px]"
       aria-labelledby="hero-heading"
     >
       {/* Atmospheric background radials */}
@@ -77,10 +77,10 @@ export function Hero() {
           <div className="hero-text">
             {/* Kicker */}
             <span
-              className="hero-kicker inline-flex items-center gap-3 mb-8"
+              className="hero-kicker inline-flex items-center gap-3 mb-10"
               style={{
                 fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
-                fontSize: "13px",
+                fontSize: "12px",
                 fontWeight: 500,
                 letterSpacing: ".18em",
                 textTransform: "uppercase",
@@ -103,15 +103,16 @@ export function Hero() {
             {/* H1 — word-by-word reveal vía CSS animation */}
             <h1
               id="hero-heading"
-              className="mb-8"
+              className="mb-10"
               style={{
                 fontFamily: "var(--font-playfair, 'Playfair Display', Georgia, serif)",
-                fontSize: "clamp(2.8rem, 2rem + 4vw, 5rem)",
+                fontSize: "clamp(2.25rem, 1.6rem + 2.6vw, 3.75rem)",
                 fontWeight: 500,
-                lineHeight: 1.08,
+                lineHeight: 1.12,
                 letterSpacing: "-0.02em",
                 color: "var(--color-marino, #0F1E3D)",
                 overflow: "hidden",
+                maxWidth: "16ch",
               }}
             >
               {H1_WORDS.map((word, i) => (
@@ -147,7 +148,7 @@ export function Hero() {
             </h1>
 
             {/* CTAs */}
-            <div className="hero-ctas flex flex-wrap gap-4 mb-5 mt-10">
+            <div className="hero-ctas flex flex-wrap gap-4 mb-6 mt-2">
               <Link
                 href="/reservar"
                 className="btn-primary-hero inline-flex items-center gap-2.5"
@@ -220,7 +221,7 @@ export function Hero() {
 
             {/* Micro-meta disponibilidad */}
             <div
-              className="cta-meta hero-cta-meta inline-flex items-center gap-2.5 mb-12"
+              className="cta-meta hero-cta-meta inline-flex items-center gap-2.5 mb-16"
               style={{
                 fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
                 fontSize: ".82rem",
