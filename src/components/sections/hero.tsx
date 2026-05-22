@@ -29,8 +29,8 @@ export function Hero() {
       aria-labelledby="hero-heading"
       style={{
         minHeight: "100svh",
-        paddingTop: "120px",
-        paddingBottom: "80px",
+        paddingTop: "160px",
+        paddingBottom: "100px",
       }}
     >
       {/* Background atmospheric: gradiente sutil + ornamentos */}

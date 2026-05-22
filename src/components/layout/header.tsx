@@ -30,7 +30,7 @@ type NavItem = {
 
 const NAV_ITEMS: NavItem[] = [
   { label: "Áreas", href: "/#areas" },
-  { label: "Casos", href: "/casos" },
+  { label: "Casos", href: "/#casos" },
   {
     label: "Calculadoras",
     href: "/calculadora",
@@ -43,8 +43,8 @@ const NAV_ITEMS: NavItem[] = [
   },
   { label: "Recursos", href: "/recursos" },
   { label: "Blog", href: "/blog" },
-  { label: "Estudio", href: "/#trayectoria" },
-  { label: "Contacto", href: "/#contacto" },
+  { label: "Sobre el Dr.", href: "/#trayectoria" },
+  { label: "Estudio", href: "/#estudio" },
 ];
 
 /** Monograma PDL con hover de rotación */
@@ -94,9 +94,7 @@ function NavLink({
         "relative py-1 px-0.5",
         "font-ui text-sm font-medium tracking-[0.03em] uppercase",
         "transition-colors duration-normal",
-        scrolled
-          ? "text-[var(--color-carbon-soft)] hover:text-[var(--color-marino)]"
-          : "text-[rgba(250,247,242,0.80)] hover:text-[var(--color-bg)]"
+        "text-[var(--color-carbon-soft)] hover:text-[var(--color-marino)]"
       )}
     >
       {children}
@@ -134,9 +132,7 @@ function NavDropdown({ item, scrolled }: { item: NavItem; scrolled: boolean }) {
           "transition-colors duration-normal",
           "outline-none",
           "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3",
-          scrolled
-            ? "text-[var(--color-carbon-soft)] hover:text-[var(--color-marino)]"
-            : "text-[rgba(250,247,242,0.80)] hover:text-[var(--color-bg)]"
+          "text-[var(--color-carbon-soft)] hover:text-[var(--color-marino)]"
         )}
       >
         {item.label}
@@ -350,8 +346,9 @@ function Header() {
         className={cn(
           "fixed top-0 left-0 right-0 z-[var(--z-sticky)]",
           "transition-all duration-400 ease-in-out",
-          // Estado 0: transparente sobre hero
-          !scrolled && "bg-transparent h-20",
+          // Estado 0: opaco sutil con blur al inicio (sobre fondo claro del hero)
+          !scrolled &&
+            "bg-[rgba(250,247,242,0.85)] backdrop-blur-md border-b border-[rgba(15,30,61,0.04)] h-20",
           // Estado 1: sólido con sombra al hacer scroll
           scrolled &&
             "bg-[rgba(250,247,242,0.97)] border-b border-[var(--color-border-default)] shadow-[var(--shadow-sm)] h-16"
@@ -369,14 +366,12 @@ function Header() {
             aria-label={`${siteConfig.studioName} — Inicio`}
             className="group/logo flex items-center gap-3 flex-shrink-0"
           >
-            <LogoMonogram variant={scrolled ? "dark" : "light"} />
+            <LogoMonogram variant="dark" />
             <div className="flex flex-col">
               <span
                 className={cn(
                   "font-serif font-semibold leading-tight tracking-[-0.01em]",
-                  "text-[22px]",
-                  "transition-colors duration-400",
-                  scrolled ? "text-[var(--color-marino)]" : "text-[var(--color-bg)]"
+                  "text-[22px] text-[var(--color-marino)]"
                 )}
               >
                 Pablo De Luca
@@ -384,8 +379,7 @@ function Header() {
               <span
                 className={cn(
                   "font-ui text-xs font-medium tracking-[0.1em] uppercase",
-                  "transition-colors duration-400",
-                  scrolled ? "text-[var(--color-text-tertiary)]" : "text-[rgba(250,247,242,0.60)]"
+                  "text-[var(--color-text-tertiary)]"
                 )}
               >
                 Abogado
@@ -410,7 +404,7 @@ function Header() {
           <div className="flex items-center gap-3">
             {/* CTA — solo desktop */}
             <Link href="/reservar" className="hidden lg:block">
-              <Button variant={scrolled ? "primary" : "ghost-inverse"} size="sm">
+              <Button variant="primary" size="sm">
                 Reservar consulta
               </Button>
             </Link>
