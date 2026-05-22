@@ -42,14 +42,13 @@ export const metadata: Metadata = {
  * Landing page — composición de secciones.
  *
  * Orden:
- *   1. Hero (#inicio)
- *   2. TriajeWizard (#consulta) — alta conversión inmediata
- *   3. Áreas (#areas)
- *   4. Casos resueltos (#casos) — historias narrativas
- *   5. Casos (#casos)
+ *   1. Hero (#inicio) — qué hace el Dr.
+ *   2. Áreas (#areas) — especialidades
+ *   3. Casos (#casos) — historias narrativas
+ *   4. About (#trayectoria) — quién es el Dr.
+ *   5. TriajeWizard (#consulta) — ya conoce, ahora consultá rápido
  *   6. CtaBand — primera consulta sin cargo
- *   7. About (#trayectoria)
- *   8. Contacto (#estudio)
+ *   7. Contacto (#estudio) — datos físicos
  */
 export default function HomePage() {
   // Schema.org — LocalBusiness + ItemList de áreas
@@ -119,24 +118,24 @@ export default function HomePage() {
         {/* 1. Hero — section#inicio */}
         <Hero />
 
-        {/* 2. Triaje WhatsApp — sección de alta conversión inmediata */}
+        {/* 2. Áreas de práctica — section#areas */}
+        <Areas />
+
+        {/* 3. Casos resueltos — section#casos */}
+        <Casos />
+
+        {/* 4. About / Trayectoria — section#trayectoria */}
+        <About />
+
+        {/* 5. Triaje WhatsApp — el usuario ya conoce al Dr., ahora consulta rápido */}
         <div id="consulta">
           <TriajeWizard />
         </div>
 
-        {/* 3. Áreas de práctica — section#areas (id puesto en el componente) */}
-        <Areas />
-
-        {/* 4. Casos resueltos — section#casos */}
-        <Casos />
-
         {/* 6. CTA band — primera consulta sin cargo */}
         <CtaBand />
 
-        {/* 7. About / Trayectoria — section#trayectoria */}
-        <About />
-
-        {/* 6. Contacto + Mapa — section#estudio */}
+        {/* 7. Contacto + Mapa — section#estudio */}
         <Contacto />
       </main>
     </>
