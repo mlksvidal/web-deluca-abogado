@@ -357,7 +357,7 @@ function Header() {
         <div
           className="h-full flex items-center justify-between"
           style={{
-            paddingInline: "max(24px, calc((100vw - 1200px) / 2))",
+            paddingInline: "clamp(20px, 4vw, 40px)",
           }}
         >
           {/* Logo */}

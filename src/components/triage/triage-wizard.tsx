@@ -408,8 +408,8 @@ export function TriajeWizard() {
 
         .triaje-container {
           max-width: 860px;
-          margin: 0 auto;
-          padding: 0 max(24px, calc((100vw - 860px) / 2));
+          margin-inline: auto;
+          padding-inline: clamp(20px, 4vw, 40px);
         }
 
         /* ── Header ── */

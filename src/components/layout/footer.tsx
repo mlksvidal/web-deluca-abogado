@@ -74,7 +74,7 @@ function Footer() {
       <div
         className="py-16"
         style={{
-          paddingInline: "max(24px, calc((100vw - 1200px) / 2))",
+          paddingInline: "clamp(20px, 4vw, 40px)",
         }}
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
@@ -251,7 +251,7 @@ function Footer() {
       {/* Divisor dorado ornamental */}
       <div
         style={{
-          paddingInline: "max(24px, calc((100vw - 1200px) / 2))",
+          paddingInline: "clamp(20px, 4vw, 40px)",
         }}
       >
         <hr className="divider-gold" />
@@ -261,7 +261,7 @@ function Footer() {
       <div
         className="py-6"
         style={{
-          paddingInline: "max(24px, calc((100vw - 1200px) / 2))",
+          paddingInline: "clamp(20px, 4vw, 40px)",
         }}
       >
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

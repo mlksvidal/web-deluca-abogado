@@ -22,7 +22,7 @@ export function CtaBand() {
       style={{
         background: "var(--color-marino, #0F1E3D)",
         paddingBlock: "clamp(80px, 8vw, 120px)",
-        paddingInline: "max(24px, calc((100vw - 800px) / 2))",
+        paddingInline: "clamp(20px, 4vw, 40px)",
       }}
     >
       <div className="cta-band-inner">
