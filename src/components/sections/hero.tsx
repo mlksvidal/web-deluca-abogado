@@ -231,25 +231,6 @@ export function Hero() {
             }}
           />
 
-          {/* Bajada — italic editorial, áreas + ubicación */}
-          <p
-            className="hero-bajada mb-12 md:mb-16 mx-auto"
-            style={{
-              fontFamily: "var(--font-lora, Lora, Georgia, serif)",
-              fontSize: "clamp(.95rem, .85rem + .35vw, 1.15rem)",
-              fontStyle: "italic",
-              lineHeight: 1.6,
-              color: "var(--color-carbon-soft, #3A3A3A)",
-              maxWidth: "640px",
-            }}
-          >
-            Civil &amp; Familia · Laboral · Penal · Comercial
-            <br />
-            <span style={{ fontStyle: "normal", fontSize: ".92em", opacity: 0.75 }}>
-              San Rafael, Mendoza — Consultas presenciales y a distancia para toda la Argentina.
-            </span>
-          </p>
-
           {/* CTA único primario */}
           <div className="hero-cta">
             <Link
@@ -383,11 +364,8 @@ export function Hero() {
         .hero-divider {
           animation: heroDividerGrow 1s cubic-bezier(.22,1,.36,1) 1.5s both;
         }
-        .hero-bajada {
-          animation: heroEntry .9s cubic-bezier(.22,1,.36,1) 1.7s both;
-        }
         .hero-cta {
-          animation: heroEntry .9s cubic-bezier(.22,1,.36,1) 1.95s both;
+          animation: heroEntry .9s cubic-bezier(.22,1,.36,1) 1.7s both;
         }
         .hero-scroll-indicator {
           animation: heroScrollFade 2.4s cubic-bezier(.22,1,.36,1) 2.5s infinite;
@@ -407,7 +385,6 @@ export function Hero() {
           .hero-kicker,
           .hero-word,
           .hero-divider,
-          .hero-bajada,
           .hero-cta,
           .hero-scroll-indicator {
             animation: none !important;
