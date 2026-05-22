@@ -8,8 +8,8 @@ export const siteConfig = {
   drName: "Dr. Pablo De Luca",
   studioName: "Estudio Jurídico Dr. Pablo De Luca",
   studioNameShort: "Estudio De Luca",
-  monogram: "PDL",
-  taglineShort: "Derecho claro. Defensa real.",
+  monogram: "PD",
+  taglineShort: "Asesoría jurídica con criterio, claridad y compromiso.",
   taglineLong:
     "En el Estudio De Luca asesoramos a personas y empresas de San Rafael con criterio jurídico sólido y un lenguaje que se entiende.",
 

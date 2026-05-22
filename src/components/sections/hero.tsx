@@ -109,7 +109,7 @@ export function Hero() {
           />
         </svg>
 
-        {/* Sello decorativo PDL — semi-transparente al fondo */}
+        {/* Sello decorativo PD — semi-transparente al fondo */}
         <svg
           className="absolute"
           style={{

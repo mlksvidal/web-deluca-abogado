@@ -47,28 +47,88 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Estudio", href: "/#estudio" },
 ];
 
-/** Monograma PDL con hover de rotación */
+/** Monograma PD con sparkle — hover de rotación */
 function LogoMonogram({ variant = "light" }: { variant?: "light" | "dark" }) {
+  const isLight = variant === "light";
   return (
     <span
       className={cn(
-        "relative flex-shrink-0",
-        "w-9 h-9",
-        "border transition-all duration-500 ease-primary",
-        "flex items-center justify-center",
-        // Estado base: dorado sobre marino / marino sobre claro
-        variant === "dark"
-          ? "border-[var(--color-dorado)] text-[var(--color-dorado-deep)] bg-transparent"
-          : "border-[var(--color-dorado)] text-[var(--color-dorado-deep)] bg-transparent",
-        // Hover: marino sólido + dorado + rotación vía parent group
-        "group-hover/logo:bg-[var(--color-marino)] group-hover/logo:text-[var(--color-dorado)] group-hover/logo:rotate-[-6deg]",
-        variant === "light" &&
-          "group-hover/logo:bg-[var(--color-bg)] group-hover/logo:border-[var(--color-dorado)]"
+        "relative flex-shrink-0 w-10 h-10",
+        "transition-transform duration-500 ease-primary",
+        "group-hover/logo:rotate-[-6deg]",
+        "flex items-center justify-center"
       )}
       aria-hidden="true"
     >
-      {/* Intentar SVG del logo; fallback al texto monogram */}
-      <span className="font-serif text-sm font-semibold leading-none">{siteConfig.monogram}</span>
+      {/* SVG inline: PD serif + sparkle dorado */}
+      <svg
+        width="40"
+        height="40"
+        viewBox="0 0 40 40"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* P serif */}
+        <text
+          x="4"
+          y="28"
+          fontFamily="'Playfair Display', 'Didot', 'Times New Roman', serif"
+          fontSize="22"
+          fontWeight="500"
+          fill={isLight ? "var(--color-marino)" : "var(--color-dorado)"}
+          letterSpacing="-1"
+        >
+          P
+        </text>
+        {/* D serif — superpuesta */}
+        <text
+          x="17"
+          y="28"
+          fontFamily="'Playfair Display', 'Didot', 'Times New Roman', serif"
+          fontSize="22"
+          fontWeight="500"
+          fill={isLight ? "var(--color-marino)" : "var(--color-dorado)"}
+        >
+          D
+        </text>
+        {/* Sparkle de 4 puntas entre letras, parte superior */}
+        <line
+          x1="19"
+          y1="4"
+          x2="19"
+          y2="12"
+          stroke="#C9A45A"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+        />
+        <line
+          x1="15"
+          y1="8"
+          x2="23"
+          y2="8"
+          stroke="#C9A45A"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+        />
+        <line
+          x1="16.5"
+          y1="5.5"
+          x2="21.5"
+          y2="10.5"
+          stroke="#C9A45A"
+          strokeWidth="0.9"
+          strokeLinecap="round"
+        />
+        <line
+          x1="21.5"
+          y1="5.5"
+          x2="16.5"
+          y2="10.5"
+          stroke="#C9A45A"
+          strokeWidth="0.9"
+          strokeLinecap="round"
+        />
+      </svg>
     </span>
   );
 }
@@ -370,7 +430,7 @@ function Header() {
             <div className="flex flex-col">
               <span
                 className={cn(
-                  "font-serif font-semibold leading-tight tracking-[-0.01em]",
+                  "font-serif font-[500] leading-tight tracking-[-0.01em]",
                   "text-[22px] text-[var(--color-marino)]"
                 )}
               >
@@ -378,11 +438,12 @@ function Header() {
               </span>
               <span
                 className={cn(
-                  "font-ui text-xs font-medium tracking-[0.1em] uppercase",
-                  "text-[var(--color-text-tertiary)]"
+                  "font-ui text-[10px] font-[500] uppercase",
+                  "text-[var(--color-dorado)]"
                 )}
+                style={{ letterSpacing: "0.18em" }}
               >
-                Abogado
+                ABOGADO
               </span>
             </div>
           </Link>

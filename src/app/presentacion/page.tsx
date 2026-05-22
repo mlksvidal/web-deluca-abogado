@@ -937,7 +937,7 @@ export default function Page() {
         {/* ============== NAV TOP ============== */}
         <nav className="top-nav">
           <Link href="/" className="brand">
-            <span className="brand-mark">PDL</span>
+            <span className="brand-mark">PD</span>
             <span>
               Estudio De Luca
               <small>Presentación · v1.0</small>

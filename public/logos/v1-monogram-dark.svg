@@ -1,36 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
-  <title>PD — Dr. Pablo De Luca</title>
-  <desc>Monograma PD con sparkle dorado. Marino oscuro con acento dorado.</desc>
+  <title>PD — Dr. Pablo De Luca (variante oscura)</title>
+  <desc>Monograma PD con sparkle dorado. Fondo marino, letras doradas.</desc>
 
-  <!-- P serif — trazo grueso a la izquierda, bowl a la derecha -->
+  <!-- Fondo marino -->
+  <rect width="64" height="64" fill="#0E1B33" rx="7" ry="7"/>
+
+  <!-- P serif — dorado sobre marino -->
   <text
     x="14"
     y="44"
     font-family="'Playfair Display', 'Didot', 'Book Antiqua', 'Times New Roman', serif"
     font-size="34"
     font-weight="500"
-    fill="#0E1B33"
+    fill="#C9A45A"
     letter-spacing="-2"
   >P</text>
 
-  <!-- D serif — superpuesta / entrelazada ligeramente a la derecha -->
+  <!-- D serif — superpuesta -->
   <text
     x="30"
     y="44"
     font-family="'Playfair Display', 'Didot', 'Book Antiqua', 'Times New Roman', serif"
     font-size="34"
     font-weight="500"
-    fill="#0E1B33"
+    fill="#C9A45A"
     letter-spacing="0"
   >D</text>
 
-  <!-- Sparkle de 4 puntas — entre P y D, en la parte superior -->
+  <!-- Sparkle de 4 puntas — dorado -->
   <g transform="translate(30, 12)">
-    <!-- Eje vertical largo -->
     <line x1="0" y1="-6" x2="0" y2="6" stroke="#C9A45A" stroke-width="1.5" stroke-linecap="round"/>
-    <!-- Eje horizontal corto -->
     <line x1="-3.5" y1="0" x2="3.5" y2="0" stroke="#C9A45A" stroke-width="1.5" stroke-linecap="round"/>
-    <!-- Diagonales aún más cortas -->
     <line x1="-2.5" y1="-2.5" x2="2.5" y2="2.5" stroke="#C9A45A" stroke-width="0.9" stroke-linecap="round"/>
     <line x1="2.5" y1="-2.5" x2="-2.5" y2="2.5" stroke="#C9A45A" stroke-width="0.9" stroke-linecap="round"/>
   </g>

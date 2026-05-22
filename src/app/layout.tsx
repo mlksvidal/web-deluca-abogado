@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Lora, Inter } from "next/font/google";
+import { Playfair_Display, Lora, Montserrat } from "next/font/google";
 import "./globals.css";
 import { LenisProvider } from "@/components/providers/lenis-provider";
 import { siteConfig } from "@/lib/site-config";
@@ -28,12 +28,12 @@ const lora = Lora({
   variable: "--font-lora",
 });
 
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
   adjustFontFallback: true,
-  variable: "--font-inter",
+  variable: "--font-montserrat",
 });
 
 // ─── Metadata global ──────────────────────────────────────────
@@ -175,7 +175,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="es-AR"
       dir="ltr"
-      className={`${playfairDisplay.variable} ${lora.variable} ${inter.variable}`}
+      className={`${playfairDisplay.variable} ${lora.variable} ${montserrat.variable}`}
     >
       <head>
         <SchemaOrg />

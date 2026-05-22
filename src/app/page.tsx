@@ -3,6 +3,7 @@ import { siteConfig } from "@/lib/site-config";
 import { Hero } from "@/components/sections/hero";
 import { TriajeWizard } from "@/components/triage/triage-wizard";
 import { Areas } from "@/components/sections/areas";
+import { Valores } from "@/components/sections/valores";
 import { Casos } from "@/components/sections/casos";
 import { CtaBand } from "@/components/sections/cta-band";
 import { About } from "@/components/sections/about";
@@ -121,13 +122,16 @@ export default function HomePage() {
         {/* 2. Áreas de práctica — section#areas */}
         <Areas />
 
-        {/* 3. Casos resueltos — section#casos */}
+        {/* 3. Valores / Cómo trabajamos — 5 pilares institucionales */}
+        <Valores />
+
+        {/* 4. Casos resueltos — section#casos */}
         <Casos />
 
-        {/* 4. About / Trayectoria — section#trayectoria */}
+        {/* 5. About / Trayectoria — section#trayectoria */}
         <About />
 
-        {/* 5. Triaje WhatsApp — el usuario ya conoce al Dr., ahora consulta rápido */}
+        {/* 6. Triaje WhatsApp — el usuario ya conoce al Dr., ahora consulta rápido */}
         <div id="consulta">
           <TriajeWizard />
         </div>

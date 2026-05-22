@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <title>Justicia</title>
+  <!-- Balanza con dos platos -->
+  <!-- Mástil vertical -->
+  <line x1="12" y1="3" x2="12" y2="21"/>
+  <!-- Barra horizontal -->
+  <line x1="5" y1="7" x2="19" y2="7"/>
+  <!-- Cadena izquierda -->
+  <line x1="7" y1="7" x2="5" y2="13"/>
+  <!-- Plato izquierdo -->
+  <path d="M3 13c0 1.5 1 2.5 4 2.5S11 14.5 11 13"/>
+  <!-- Cadena derecha -->
+  <line x1="17" y1="7" x2="19" y2="13"/>
+  <!-- Plato derecho -->
+  <path d="M13 13c0 1.5 1 2.5 4 2.5S21 14.5 21 13"/>
+  <!-- Base -->
+  <line x1="9" y1="21" x2="15" y2="21"/>
+</svg>
