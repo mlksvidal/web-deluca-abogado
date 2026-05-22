@@ -5,7 +5,6 @@ import { LenisProvider } from "@/components/providers/lenis-provider";
 import { siteConfig } from "@/lib/site-config";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { WhatsAppFab } from "@/components/layout/whatsapp-float";
 import { Toaster } from "@/components/ui/sonner";
 
 // ─── Fonts ────────────────────────────────────────────────────
@@ -185,8 +184,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           <main id="main-content">{children}</main>
           <Footer />
-          {/* FAB flotante — siempre presente en toda la app */}
-          <WhatsAppFab />
           {/* Toast notifications */}
           <Toaster position="top-right" richColors />
         </LenisProvider>

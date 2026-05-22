@@ -173,37 +173,64 @@ export function Valores() {
           </div>
         </Reveal>
 
-        {/* Grid de valores */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-x-8 gap-y-14 lg:gap-x-10">
+        {/* Grid de valores — 5 pilares con cuadrados consistentes */}
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5"
+          style={{ gap: "clamp(32px, 4vw, 56px)" }}
+        >
           {VALORES.map((valor, index) => (
             <Reveal key={valor.titulo} delay={index * 80}>
-              <div className="flex flex-col items-center text-center gap-4 min-w-0 w-full overflow-hidden px-2">
-                {/* Icono frame dorado */}
+              <div
+                className="flex flex-col items-center text-center w-full"
+                style={{ gap: "20px", padding: "0 8px" }}
+              >
+                {/* Icono frame dorado — TODOS exactamente 64x64 con flex-none */}
                 <div
-                  className="w-12 h-12 flex items-center justify-center flex-shrink-0 border border-[var(--color-dorado)] text-[var(--color-dorado)] rounded-sm"
                   aria-hidden="true"
+                  style={{
+                    width: "64px",
+                    height: "64px",
+                    minWidth: "64px",
+                    minHeight: "64px",
+                    flexShrink: 0,
+                    flexGrow: 0,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    border: "1px solid var(--color-dorado)",
+                    borderRadius: "4px",
+                    color: "var(--color-dorado)",
+                  }}
                 >
                   {valor.icon}
                 </div>
 
                 {/* Título */}
                 <h3
-                  className="font-ui font-[600] text-[var(--color-marino)] w-full"
+                  className="font-ui font-[600] w-full"
                   style={{
-                    fontSize: "0.72rem",
-                    letterSpacing: "0.16em",
+                    color: "var(--color-marino)",
+                    fontSize: "0.8rem",
+                    letterSpacing: "0.18em",
                     textTransform: "uppercase",
-                    lineHeight: 1.3,
-                    wordBreak: "break-word",
-                    overflowWrap: "break-word",
-                    hyphens: "auto",
+                    lineHeight: 1.4,
+                    wordBreak: "normal",
+                    overflowWrap: "anywhere",
+                    marginTop: "4px",
                   }}
                 >
                   {valor.titulo}
                 </h3>
 
                 {/* Descripción */}
-                <p className="font-body text-sm text-[var(--color-carbon-soft)] leading-relaxed w-full">
+                <p
+                  className="font-body w-full"
+                  style={{
+                    color: "var(--color-carbon-soft)",
+                    fontSize: "0.92rem",
+                    lineHeight: 1.6,
+                  }}
+                >
                   {valor.descripcion}
                 </p>
               </div>
