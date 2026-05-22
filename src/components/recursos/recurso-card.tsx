@@ -35,8 +35,8 @@ export function RecursoCard({ recurso }: RecursoCardProps) {
       <article
         className={cn(
           "flex flex-col h-full",
-          "bg-[var(--color-bg)]",
-          "border border-[var(--color-border-default)]",
+          "bg-bg",
+          "border border-border-default",
           "rounded-[10px]",
           "shadow-[var(--shadow-sm)]",
           "overflow-hidden",
@@ -59,7 +59,7 @@ export function RecursoCard({ recurso }: RecursoCardProps) {
                 border: "1px solid rgba(201,169,97,0.30)",
               }}
             >
-              <Icon size={22} className="text-[var(--color-dorado)]" aria-hidden="true" />
+              <Icon size={22} className="text-dorado" aria-hidden="true" />
             </div>
 
             <div className="flex flex-wrap gap-1.5">
@@ -94,17 +94,17 @@ export function RecursoCard({ recurso }: RecursoCardProps) {
               {recurso.areaLabel}
             </Badge>
 
-            <h2 className="font-serif text-xl font-semibold text-[var(--color-marino)] leading-snug">
+            <h2 className="font-serif text-xl font-semibold text-marino leading-snug">
               <Link
                 href={`/recursos/${recurso.slug}`}
-                className="hover:text-[var(--color-marino-hover)] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2 focus-visible:rounded-[2px]"
+                className="hover:text-marino-hover transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2 focus-visible:rounded-[2px]"
               >
                 {recurso.titulo}
               </Link>
             </h2>
           </div>
 
-          <p className="font-body text-sm text-[var(--color-carbon-soft)] leading-relaxed flex-1 mb-5">
+          <p className="font-body text-sm text-carbon-soft leading-relaxed flex-1 mb-5">
             {recurso.descripcion}
           </p>
 
@@ -127,12 +127,12 @@ export function RecursoCard({ recurso }: RecursoCardProps) {
                 "flex-1 inline-flex items-center justify-center gap-2",
                 "h-10 px-5 py-2.5",
                 "font-ui text-xs font-medium tracking-wide uppercase",
-                "bg-transparent text-[var(--color-marino)]",
-                "border border-[var(--color-border-strong)]",
+                "bg-transparent text-marino",
+                "border border-border-strong",
                 "rounded-sm",
-                "hover:bg-[var(--color-marino-subtle)]",
+                "hover:bg-marino-subtle",
                 "transition-all duration-250",
-                "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3"
+                "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3"
               )}
             >
               Ver detalle

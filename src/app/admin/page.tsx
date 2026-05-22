@@ -84,7 +84,7 @@ function StatCard({ card }: { card: StatCard }) {
   return (
     <Link
       href={card.href}
-      className="flex flex-col gap-4 p-5 bg-[var(--color-bg)] border border-[var(--color-border-default)] rounded-[10px] hover:border-[var(--color-marino)] hover:shadow-[0_4px_16px_rgba(15,30,61,0.10)] hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3"
+      className="flex flex-col gap-4 p-5 bg-bg border border-border-default rounded-[10px] hover:border-marino hover:shadow-[0_4px_16px_rgba(15,30,61,0.10)] hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3"
       aria-label={`${card.label}: ${card.value}. Ir a ${card.label}`}
     >
       <div className="flex items-start justify-between">
@@ -103,12 +103,8 @@ function StatCard({ card }: { card: StatCard }) {
         >
           {card.value}
         </p>
-        <p className="font-ui text-sm font-semibold text-[var(--color-marino)] mt-0.5">
-          {card.label}
-        </p>
-        <p className="font-body text-xs text-[var(--color-text-secondary)] mt-1">
-          {card.description}
-        </p>
+        <p className="font-ui text-sm font-semibold text-marino mt-0.5">{card.label}</p>
+        <p className="font-body text-xs text-text-secondary mt-1">{card.description}</p>
       </div>
     </Link>
   );
@@ -158,17 +154,17 @@ export default async function AdminPage() {
     <div className="max-w-4xl mx-auto">
       {/* Encabezado */}
       <div className="mb-8">
-        <h1 className="font-serif text-2xl font-semibold text-[var(--color-marino)] mb-1.5">
+        <h1 className="font-serif text-2xl font-semibold text-marino mb-1.5">
           Panel de administración
         </h1>
-        <p className="font-body text-sm text-[var(--color-text-secondary)]">
+        <p className="font-body text-sm text-text-secondary">
           Estudio Jurídico Dr. Pablo De Luca — resumen y acceso rápido.
         </p>
       </div>
 
       {/* Stat cards */}
       <section aria-label="Estadísticas del estudio">
-        <h2 className="font-ui text-xs uppercase tracking-widest text-[var(--color-text-tertiary)] mb-4">
+        <h2 className="font-ui text-xs uppercase tracking-widest text-text-tertiary mb-4">
           Resumen
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
@@ -180,7 +176,7 @@ export default async function AdminPage() {
 
       {/* Accesos rápidos */}
       <section aria-label="Accesos rápidos">
-        <h2 className="font-ui text-xs uppercase tracking-widest text-[var(--color-text-tertiary)] mb-4">
+        <h2 className="font-ui text-xs uppercase tracking-widest text-text-tertiary mb-4">
           Gestión
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -213,7 +209,7 @@ export default async function AdminPage() {
             <Link
               key={href}
               href={href}
-              className="flex items-center gap-4 px-5 py-3.5 bg-[var(--color-bg)] border border-[var(--color-border-default)] rounded-[8px] hover:border-[var(--color-marino)] transition-all duration-150 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3"
+              className="flex items-center gap-4 px-5 py-3.5 bg-bg border border-border-default rounded-[8px] hover:border-marino transition-all duration-150 focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3"
             >
               <div
                 className="shrink-0 w-9 h-9 rounded-[6px] flex items-center justify-center"
@@ -223,10 +219,8 @@ export default async function AdminPage() {
                 <Icon size={16} />
               </div>
               <div>
-                <p className="font-ui text-sm font-semibold text-[var(--color-marino)]">{label}</p>
-                <p className="font-body text-xs text-[var(--color-text-secondary)]">
-                  {description}
-                </p>
+                <p className="font-ui text-sm font-semibold text-marino">{label}</p>
+                <p className="font-body text-xs text-text-secondary">{description}</p>
               </div>
             </Link>
           ))}

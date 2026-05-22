@@ -141,10 +141,7 @@ export default async function RecursoSlugPage({ params }: { params: Promise<{ sl
           <nav aria-label="Navegación de breadcrumb" className="mb-6">
             <ol className="flex items-center gap-1.5 font-ui text-xs text-[rgba(250,247,242,0.55)]">
               <li>
-                <Link
-                  href="/"
-                  className="hover:text-[var(--color-dorado)] transition-colors duration-150"
-                >
+                <Link href="/" className="hover:text-dorado transition-colors duration-150">
                   Inicio
                 </Link>
               </li>
@@ -152,17 +149,14 @@ export default async function RecursoSlugPage({ params }: { params: Promise<{ sl
                 <ChevronRight size={12} />
               </li>
               <li>
-                <Link
-                  href="/recursos"
-                  className="hover:text-[var(--color-dorado)] transition-colors duration-150"
-                >
+                <Link href="/recursos" className="hover:text-dorado transition-colors duration-150">
                   Recursos
                 </Link>
               </li>
               <li aria-hidden="true">
                 <ChevronRight size={12} />
               </li>
-              <li aria-current="page" className="text-[var(--color-dorado)]">
+              <li aria-current="page" className="text-dorado">
                 {recurso.titulo}
               </li>
             </ol>
@@ -196,7 +190,7 @@ export default async function RecursoSlugPage({ params }: { params: Promise<{ sl
             {/* Título */}
             <h1
               id="recurso-heading"
-              className="font-serif font-semibold text-[var(--color-bg)] leading-tight"
+              className="font-serif font-semibold text-bg leading-tight"
               style={{ fontSize: "clamp(1.5rem, 1rem + 2.5vw, 2.5rem)" }}
             >
               {recurso.titulo}
@@ -211,7 +205,7 @@ export default async function RecursoSlugPage({ params }: { params: Promise<{ sl
             </p>
 
             {/* Icon */}
-            <div className="flex items-center gap-2 text-[var(--color-dorado-muted)]">
+            <div className="flex items-center gap-2 text-dorado-muted">
               <Icon size={16} aria-hidden="true" />
               <span className="font-ui text-xs">PDF · {recurso.tamano} · Gratuito</span>
             </div>
@@ -234,13 +228,13 @@ export default async function RecursoSlugPage({ params }: { params: Promise<{ sl
               <div>
                 <Link
                   href="/recursos"
-                  className="inline-flex items-center gap-1.5 font-ui text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-marino)] transition-colors duration-150 mb-6 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2 focus-visible:rounded-[2px]"
+                  className="inline-flex items-center gap-1.5 font-ui text-sm text-text-secondary hover:text-marino transition-colors duration-150 mb-6 focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2 focus-visible:rounded-[2px]"
                 >
                   <ArrowLeft size={15} aria-hidden="true" />
                   Volver a recursos
                 </Link>
 
-                <h2 className="font-serif text-2xl font-semibold text-[var(--color-marino)] mb-4 leading-snug">
+                <h2 className="font-serif text-2xl font-semibold text-marino mb-4 leading-snug">
                   ¿Qué incluye este documento?
                 </h2>
 
@@ -249,10 +243,10 @@ export default async function RecursoSlugPage({ params }: { params: Promise<{ sl
                     <li key={beneficio} className="flex items-start gap-3">
                       <CheckCircle2
                         size={18}
-                        className="shrink-0 mt-0.5 text-[var(--color-success)]"
+                        className="shrink-0 mt-0.5 text-success"
                         aria-hidden="true"
                       />
-                      <span className="font-body text-[var(--color-carbon-soft)] leading-relaxed">
+                      <span className="font-body text-carbon-soft leading-relaxed">
                         {beneficio}
                       </span>
                     </li>
@@ -281,13 +275,11 @@ export default async function RecursoSlugPage({ params }: { params: Promise<{ sl
                     PDL
                   </div>
                   <div>
-                    <p className="font-ui text-sm font-semibold text-[var(--color-marino)]">
-                      {siteConfig.drName}
-                    </p>
-                    <p className="font-ui text-xs text-[var(--color-text-tertiary)] mb-2">
+                    <p className="font-ui text-sm font-semibold text-marino">{siteConfig.drName}</p>
+                    <p className="font-ui text-xs text-text-tertiary mb-2">
                       Abogado · {siteConfig.city}, {siteConfig.province}
                     </p>
-                    <p className="font-body text-sm text-[var(--color-carbon-soft)] leading-relaxed">
+                    <p className="font-body text-sm text-carbon-soft leading-relaxed">
                       Documento preparado por el {siteConfig.drName}, con amplia experiencia en{" "}
                       {recurso.areaLabel.toLowerCase()}.
                     </p>
@@ -296,13 +288,13 @@ export default async function RecursoSlugPage({ params }: { params: Promise<{ sl
               </div>
 
               {/* Aviso legal */}
-              <p className="font-body text-xs text-[var(--color-text-tertiary)] leading-relaxed">
+              <p className="font-body text-xs text-text-tertiary leading-relaxed">
                 <strong className="font-semibold">Aviso legal:</strong> Este documento es
                 orientativo y no reemplaza el asesoramiento jurídico profesional. Para un análisis
                 específico de tu situación,{" "}
                 <Link
                   href="/reservar"
-                  className="text-[var(--color-marino)] underline underline-offset-2 decoration-[var(--color-dorado)] hover:decoration-2 transition-all"
+                  className="text-marino underline underline-offset-2 decoration-dorado hover:decoration-2 transition-all"
                 >
                   reservá una consulta
                 </Link>
@@ -331,23 +323,23 @@ export default async function RecursoSlugPage({ params }: { params: Promise<{ sl
         <Container>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <h2 className="font-serif text-2xl font-semibold text-[var(--color-marino)] mb-1">
+              <h2 className="font-serif text-2xl font-semibold text-marino mb-1">
                 ¿Necesitás otro documento?
               </h2>
-              <p className="font-body text-sm text-[var(--color-text-secondary)]">
+              <p className="font-body text-sm text-text-secondary">
                 Tenemos más recursos jurídicos gratuitos disponibles.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 shrink-0">
               <Link
                 href="/recursos"
-                className="inline-flex items-center justify-center gap-2 h-11 px-7 font-ui text-sm font-medium tracking-wide uppercase rounded-sm bg-transparent text-[var(--color-marino)] border border-[var(--color-marino)] hover:bg-[var(--color-marino)] hover:text-[var(--color-bg)] transition-all duration-250 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3"
+                className="inline-flex items-center justify-center gap-2 h-11 px-7 font-ui text-sm font-medium tracking-wide uppercase rounded-sm bg-transparent text-marino border border-marino hover:bg-marino hover:text-bg transition-all duration-250 focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3"
               >
                 Ver todos los recursos
               </Link>
               <Link
                 href="/reservar"
-                className="inline-flex items-center justify-center gap-2 h-11 px-7 font-ui text-sm font-medium tracking-wide uppercase rounded-sm bg-[var(--color-marino)] text-[var(--color-bg)] hover:bg-[var(--color-marino-hover)] hover:-translate-y-0.5 transition-all duration-250 shadow-[var(--shadow-sm)] focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3"
+                className="inline-flex items-center justify-center gap-2 h-11 px-7 font-ui text-sm font-medium tracking-wide uppercase rounded-sm bg-marino text-bg hover:bg-marino-hover hover:-translate-y-0.5 transition-all duration-250 shadow-[var(--shadow-sm)] focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3"
               >
                 Reservar consulta
               </Link>

@@ -177,14 +177,14 @@ export function BookingForm({
         id="booking-form"
         className={cn(
           "flex flex-col items-center gap-3 rounded-[6px] border border-dashed",
-          "border-[var(--color-border-default)] bg-[var(--color-bg-secondary)]",
+          "border-border-default bg-bg-secondary",
           "px-6 py-10 text-center",
           className
         )}
         role="status"
       >
-        <Clock className="size-8 text-[var(--color-text-tertiary)]" aria-hidden="true" />
-        <p className="font-ui text-sm text-[var(--color-text-secondary)]">
+        <Clock className="size-8 text-text-tertiary" aria-hidden="true" />
+        <p className="font-ui text-sm text-text-secondary">
           Seleccioná un horario en el calendario para completar la reserva.
         </p>
       </div>
@@ -201,26 +201,20 @@ export function BookingForm({
     >
       {/* Slot seleccionado — confirmación visual */}
       <div
-        className={cn(
-          "mb-6 flex items-center gap-3 rounded-[6px]",
-          "bg-[var(--color-marino)] px-4 py-3"
-        )}
+        className={cn("mb-6 flex items-center gap-3 rounded-[6px]", "bg-marino px-4 py-3")}
         role="status"
         aria-live="polite"
       >
-        <CheckCircle2 className="size-5 shrink-0 text-[var(--color-dorado)]" aria-hidden="true" />
+        <CheckCircle2 className="size-5 shrink-0 text-dorado" aria-hidden="true" />
         <div>
-          <p className="font-ui text-xs font-medium uppercase tracking-wide text-[var(--color-dorado)]">
+          <p className="font-ui text-xs font-medium uppercase tracking-wide text-dorado">
             Turno seleccionado
           </p>
-          <p className="font-ui text-sm text-[var(--color-bg)]">{selectedDateLabel}</p>
+          <p className="font-ui text-sm text-bg">{selectedDateLabel}</p>
         </div>
       </div>
 
-      <h2
-        id="booking-form-title"
-        className="mb-6 font-ui text-base font-semibold text-[var(--color-marino)]"
-      >
+      <h2 id="booking-form-title" className="mb-6 font-ui text-base font-semibold text-marino">
         Completá tus datos
       </h2>
 
@@ -248,7 +242,7 @@ export function BookingForm({
         <div className="space-y-1.5">
           <Label htmlFor="nombre">
             Nombre completo
-            <span className="text-[var(--color-error)] ml-0.5" aria-hidden="true">
+            <span className="text-error ml-0.5" aria-hidden="true">
               *
             </span>
           </Label>
@@ -266,7 +260,7 @@ export function BookingForm({
             <p
               id="nombre-error"
               role="alert"
-              className="flex items-center gap-1.5 font-ui text-xs text-[var(--color-error)]"
+              className="flex items-center gap-1.5 font-ui text-xs text-error"
             >
               <AlertCircle className="size-3.5 shrink-0" aria-hidden="true" />
               {errors.nombre.message}
@@ -278,7 +272,7 @@ export function BookingForm({
         <div className="space-y-1.5">
           <Label htmlFor="email">
             Email
-            <span className="text-[var(--color-error)] ml-0.5" aria-hidden="true">
+            <span className="text-error ml-0.5" aria-hidden="true">
               *
             </span>
           </Label>
@@ -296,7 +290,7 @@ export function BookingForm({
             <p
               id="email-error"
               role="alert"
-              className="flex items-center gap-1.5 font-ui text-xs text-[var(--color-error)]"
+              className="flex items-center gap-1.5 font-ui text-xs text-error"
             >
               <AlertCircle className="size-3.5 shrink-0" aria-hidden="true" />
               {errors.email.message}
@@ -308,7 +302,7 @@ export function BookingForm({
         <div className="space-y-1.5">
           <Label htmlFor="telefono">
             Celular
-            <span className="text-[var(--color-error)] ml-0.5" aria-hidden="true">
+            <span className="text-error ml-0.5" aria-hidden="true">
               *
             </span>
           </Label>
@@ -317,12 +311,12 @@ export function BookingForm({
             <div
               className={cn(
                 "flex shrink-0 items-center px-3",
-                "font-ui text-base font-medium text-[var(--color-text-secondary)]",
-                "border border-r-0 border-[var(--color-border-default)]",
-                "bg-[var(--color-bg-secondary)]",
+                "font-ui text-base font-medium text-text-secondary",
+                "border border-r-0 border-border-default",
+                "bg-bg-secondary",
                 "rounded-l-[6px]",
                 "select-none",
-                errors.telefono && "border-[var(--color-error)]"
+                errors.telefono && "border-error"
               )}
               aria-hidden="true"
             >
@@ -344,7 +338,7 @@ export function BookingForm({
             />
           </div>
           {!errors.telefono && (
-            <p id="telefono-hint" className="font-ui text-xs text-[var(--color-text-tertiary)]">
+            <p id="telefono-hint" className="font-ui text-xs text-text-tertiary">
               10 dígitos sin 0 ni 15 (ej: 2604614896)
             </p>
           )}
@@ -352,7 +346,7 @@ export function BookingForm({
             <p
               id="telefono-error"
               role="alert"
-              className="flex items-center gap-1.5 font-ui text-xs text-[var(--color-error)]"
+              className="flex items-center gap-1.5 font-ui text-xs text-error"
             >
               <AlertCircle className="size-3.5 shrink-0" aria-hidden="true" />
               {errors.telefono.message}
@@ -364,7 +358,7 @@ export function BookingForm({
         <div className="space-y-1.5">
           <Label htmlFor="areaLegal">
             Área legal
-            <span className="text-[var(--color-error)] ml-0.5" aria-hidden="true">
+            <span className="text-error ml-0.5" aria-hidden="true">
               *
             </span>
           </Label>
@@ -393,7 +387,7 @@ export function BookingForm({
             <p
               id="areaLegal-error"
               role="alert"
-              className="flex items-center gap-1.5 font-ui text-xs text-[var(--color-error)]"
+              className="flex items-center gap-1.5 font-ui text-xs text-error"
             >
               <AlertCircle className="size-3.5 shrink-0" aria-hidden="true" />
               {errors.areaLegal.message}
@@ -405,7 +399,7 @@ export function BookingForm({
         <div className="space-y-1.5">
           <Label htmlFor="descripcion">
             Descripción breve de tu consulta
-            <span className="text-[var(--color-error)] ml-0.5" aria-hidden="true">
+            <span className="text-error ml-0.5" aria-hidden="true">
               *
             </span>
           </Label>
@@ -424,7 +418,7 @@ export function BookingForm({
             })}
           />
           {!errors.descripcion && (
-            <p id="descripcion-hint" className="font-ui text-xs text-[var(--color-text-tertiary)]">
+            <p id="descripcion-hint" className="font-ui text-xs text-text-tertiary">
               Mínimo 10 caracteres. Máximo 1000.
             </p>
           )}
@@ -432,7 +426,7 @@ export function BookingForm({
             <p
               id="descripcion-error"
               role="alert"
-              className="flex items-center gap-1.5 font-ui text-xs text-[var(--color-error)]"
+              className="flex items-center gap-1.5 font-ui text-xs text-error"
             >
               <AlertCircle className="size-3.5 shrink-0" aria-hidden="true" />
               {errors.descripcion.message}
@@ -454,24 +448,23 @@ export function BookingForm({
               className={cn(
                 "mt-0.5 size-4 shrink-0 cursor-pointer",
                 "rounded-[3px]",
-                "border border-[var(--color-border-strong)]",
-                "accent-[var(--color-marino)]",
-                "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+                "border border-border-strong",
+                "accent-marino",
+                "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
               )}
               {...register("consentimientoLey25326")}
             />
             <label
               htmlFor="consentimientoLey25326"
               id="consentimiento-desc"
-              className="font-ui text-sm leading-relaxed text-[var(--color-text-secondary)] cursor-pointer"
+              className="font-ui text-sm leading-relaxed text-text-secondary cursor-pointer"
             >
               Acepto el tratamiento de mis datos personales conforme a la{" "}
-              <strong className="font-medium text-[var(--color-marino)]">Ley 25.326</strong> de
-              Protección de Datos Personales. Mis datos serán utilizados exclusivamente para
-              coordinar la consulta.{" "}
+              <strong className="font-medium text-marino">Ley 25.326</strong> de Protección de Datos
+              Personales. Mis datos serán utilizados exclusivamente para coordinar la consulta.{" "}
               <a
                 href="/privacidad"
-                className="text-[var(--color-marino)] underline underline-offset-2 decoration-[var(--color-dorado)] hover:decoration-2"
+                className="text-marino underline underline-offset-2 decoration-dorado hover:decoration-2"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -484,7 +477,7 @@ export function BookingForm({
             <p
               id="consentimiento-error"
               role="alert"
-              className="flex items-center gap-1.5 font-ui text-xs text-[var(--color-error)] pl-7"
+              className="flex items-center gap-1.5 font-ui text-xs text-error pl-7"
             >
               <AlertCircle className="size-3.5 shrink-0" aria-hidden="true" />
               {errors.consentimientoLey25326.message}
@@ -514,14 +507,11 @@ export function BookingForm({
             )}
           </Button>
           {!selectedSlotUtc && (
-            <p
-              id="no-slot-warning"
-              className="mt-2 font-ui text-xs text-center text-[var(--color-text-tertiary)]"
-            >
+            <p id="no-slot-warning" className="mt-2 font-ui text-xs text-center text-text-tertiary">
               Seleccioná un horario arriba para habilitar este botón.
             </p>
           )}
-          <p className="mt-3 font-ui text-xs text-center text-[var(--color-text-tertiary)]">
+          <p className="mt-3 font-ui text-xs text-center text-text-tertiary">
             Recibirás un email de confirmación con los detalles del turno.
           </p>
         </div>

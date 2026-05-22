@@ -73,7 +73,7 @@ function MarkdownPreview({ markdown }: { markdown: string }) {
   if (!markdown.trim()) {
     return (
       <div className="flex items-center justify-center h-full text-center py-12">
-        <p className="font-ui text-sm text-[var(--color-text-tertiary)]">
+        <p className="font-ui text-sm text-text-tertiary">
           El preview del contenido aparece aquí mientras escribís.
         </p>
       </div>
@@ -226,7 +226,7 @@ export function BlogPostForm({ post }: BlogPostFormProps) {
           <div className="space-y-1.5">
             <Label htmlFor="bf-title">
               Título{" "}
-              <span className="text-[var(--color-error)]" aria-hidden="true">
+              <span className="text-error" aria-hidden="true">
                 *
               </span>
             </Label>
@@ -239,11 +239,7 @@ export function BlogPostForm({ post }: BlogPostFormProps) {
               {...register("title")}
             />
             {errors.title && (
-              <p
-                id="bf-title-error"
-                role="alert"
-                className="font-ui text-xs text-[var(--color-error)]"
-              >
+              <p id="bf-title-error" role="alert" className="font-ui text-xs text-error">
                 {errors.title.message}
               </p>
             )}
@@ -253,19 +249,17 @@ export function BlogPostForm({ post }: BlogPostFormProps) {
           <div className="space-y-1.5">
             <Label htmlFor="bf-slug">
               Slug URL{" "}
-              <span className="text-[var(--color-error)]" aria-hidden="true">
+              <span className="text-error" aria-hidden="true">
                 *
               </span>
               {!isEdit && (
-                <span className="ml-2 font-ui text-xs text-[var(--color-text-tertiary)] font-normal">
+                <span className="ml-2 font-ui text-xs text-text-tertiary font-normal">
                   (auto-derivado del título)
                 </span>
               )}
             </Label>
             <div className="flex items-center gap-2">
-              <span className="font-ui text-sm text-[var(--color-text-tertiary)] shrink-0">
-                /blog/
-              </span>
+              <span className="font-ui text-sm text-text-tertiary shrink-0">/blog/</span>
               <Input
                 id="bf-slug"
                 type="text"
@@ -276,16 +270,10 @@ export function BlogPostForm({ post }: BlogPostFormProps) {
               />
             </div>
             {slugValue && !errors.slug && (
-              <p className="font-ui text-xs text-[var(--color-text-tertiary)]">
-                URL pública: /blog/{slugValue}
-              </p>
+              <p className="font-ui text-xs text-text-tertiary">URL pública: /blog/{slugValue}</p>
             )}
             {errors.slug && (
-              <p
-                id="bf-slug-error"
-                role="alert"
-                className="font-ui text-xs text-[var(--color-error)]"
-              >
+              <p id="bf-slug-error" role="alert" className="font-ui text-xs text-error">
                 {errors.slug.message}
               </p>
             )}
@@ -295,10 +283,10 @@ export function BlogPostForm({ post }: BlogPostFormProps) {
           <div className="space-y-1.5">
             <Label htmlFor="bf-excerpt">
               Resumen / Excerpt{" "}
-              <span className="text-[var(--color-error)]" aria-hidden="true">
+              <span className="text-error" aria-hidden="true">
                 *
               </span>
-              <span className="ml-2 font-ui text-xs text-[var(--color-text-tertiary)] font-normal">
+              <span className="ml-2 font-ui text-xs text-text-tertiary font-normal">
                 (máx. 500 chars — aparece en listado y SEO)
               </span>
             </Label>
@@ -311,24 +299,20 @@ export function BlogPostForm({ post }: BlogPostFormProps) {
               aria-describedby={errors.excerpt ? "bf-excerpt-error" : undefined}
               className={cn(
                 "block w-full px-3.5 py-2.5",
-                "bg-[var(--color-bg)] text-[var(--color-carbon)]",
-                "font-ui text-base placeholder:text-[var(--color-text-tertiary)]",
-                "border border-[var(--color-border-default)] rounded-[6px]",
+                "bg-bg text-carbon",
+                "font-ui text-base placeholder:text-text-tertiary",
+                "border border-border-default rounded-[6px]",
                 "shadow-[inset_0_1px_3px_rgba(15,30,61,0.08)]",
                 "outline-none resize-y",
-                "hover:border-[var(--color-border-strong)]",
-                "focus:border-2 focus:border-[var(--color-marino)] focus:bg-white focus:shadow-[0_0_0_3px_rgba(15,30,61,0.12)]",
+                "hover:border-border-strong",
+                "focus:border-2 focus:border-marino focus:bg-white focus:shadow-[0_0_0_3px_rgba(15,30,61,0.12)]",
                 "transition-[border-color,box-shadow] duration-150",
-                errors.excerpt && "border-2 border-[var(--color-error)]"
+                errors.excerpt && "border-2 border-error"
               )}
               {...register("excerpt")}
             />
             {errors.excerpt && (
-              <p
-                id="bf-excerpt-error"
-                role="alert"
-                className="font-ui text-xs text-[var(--color-error)]"
-              >
+              <p id="bf-excerpt-error" role="alert" className="font-ui text-xs text-error">
                 {errors.excerpt.message}
               </p>
             )}
@@ -336,10 +320,10 @@ export function BlogPostForm({ post }: BlogPostFormProps) {
 
           {/* Contenido Markdown con tabs Write/Preview */}
           <div className="space-y-0">
-            <div className="flex items-center gap-0 border-b border-[var(--color-border-default)] mb-0">
+            <div className="flex items-center gap-0 border-b border-border-default mb-0">
               <Label className="mr-auto self-center pb-2">
                 Contenido (Markdown){" "}
-                <span className="text-[var(--color-error)]" aria-hidden="true">
+                <span className="text-error" aria-hidden="true">
                   *
                 </span>
               </Label>
@@ -348,10 +332,10 @@ export function BlogPostForm({ post }: BlogPostFormProps) {
                 onClick={() => setActiveTab("write")}
                 className={cn(
                   "px-4 py-2 font-ui text-sm border-b-2 -mb-px transition-colors duration-150",
-                  "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-[-2px]",
+                  "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-[-2px]",
                   activeTab === "write"
-                    ? "border-[var(--color-marino)] text-[var(--color-marino)] font-medium"
-                    : "border-transparent text-[var(--color-text-tertiary)] hover:text-[var(--color-carbon)]"
+                    ? "border-marino text-marino font-medium"
+                    : "border-transparent text-text-tertiary hover:text-carbon"
                 )}
               >
                 Escribir
@@ -361,10 +345,10 @@ export function BlogPostForm({ post }: BlogPostFormProps) {
                 onClick={() => setActiveTab("preview")}
                 className={cn(
                   "px-4 py-2 font-ui text-sm border-b-2 -mb-px transition-colors duration-150",
-                  "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-[-2px]",
+                  "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-[-2px]",
                   activeTab === "preview"
-                    ? "border-[var(--color-marino)] text-[var(--color-marino)] font-medium"
-                    : "border-transparent text-[var(--color-text-tertiary)] hover:text-[var(--color-carbon)]"
+                    ? "border-marino text-marino font-medium"
+                    : "border-transparent text-text-tertiary hover:text-carbon"
                 )}
               >
                 <Eye size={14} className="inline mr-1" aria-hidden="true" />
@@ -373,7 +357,7 @@ export function BlogPostForm({ post }: BlogPostFormProps) {
             </div>
 
             <div
-              className="border border-t-0 border-[var(--color-border-default)] rounded-b-[6px] overflow-hidden"
+              className="border border-t-0 border-border-default rounded-b-[6px] overflow-hidden"
               style={{ minHeight: "480px" }}
             >
               {activeTab === "write" ? (
@@ -384,11 +368,11 @@ export function BlogPostForm({ post }: BlogPostFormProps) {
                   placeholder={`# Título del artículo\n\nEscribí el contenido aquí usando Markdown...\n\n## Sección\n\nPárrafo con **negrita** e *itálica*.\n\n- Item 1\n- Item 2`}
                   className={cn(
                     "block w-full h-full min-h-[480px] px-4 py-4",
-                    "bg-[var(--color-bg)] text-[var(--color-carbon)]",
-                    "font-mono text-sm leading-relaxed placeholder:text-[var(--color-text-tertiary)]",
+                    "bg-bg text-carbon",
+                    "font-mono text-sm leading-relaxed placeholder:text-text-tertiary",
                     "outline-none resize-y",
                     "transition-[border-color] duration-150",
-                    errors.contentMd && "border-l-2 border-l-[var(--color-error)]"
+                    errors.contentMd && "border-l-2 border-l-error"
                   )}
                   style={{ fontFamily: "ui-monospace, monospace" }}
                   {...register("contentMd")}
@@ -400,7 +384,7 @@ export function BlogPostForm({ post }: BlogPostFormProps) {
               )}
             </div>
             {errors.contentMd && (
-              <p role="alert" className="font-ui text-xs text-[var(--color-error)] mt-1">
+              <p role="alert" className="font-ui text-xs text-error mt-1">
                 {errors.contentMd.message}
               </p>
             )}
@@ -443,7 +427,7 @@ export function BlogPostForm({ post }: BlogPostFormProps) {
           <div className="space-y-1.5">
             <Label htmlFor="bf-area">
               Área legal{" "}
-              <span className="text-[var(--color-error)]" aria-hidden="true">
+              <span className="text-error" aria-hidden="true">
                 *
               </span>
             </Label>
@@ -465,7 +449,7 @@ export function BlogPostForm({ post }: BlogPostFormProps) {
               </SelectContent>
             </Select>
             {errors.areaLegal && (
-              <p role="alert" className="font-ui text-xs text-[var(--color-error)]">
+              <p role="alert" className="font-ui text-xs text-error">
                 {errors.areaLegal.message}
               </p>
             )}
@@ -473,11 +457,11 @@ export function BlogPostForm({ post }: BlogPostFormProps) {
 
           {/* SEO */}
           <div
-            className="rounded-[8px] border border-[var(--color-border-default)] overflow-hidden"
+            className="rounded-[8px] border border-border-default overflow-hidden"
             style={{ background: "var(--color-bg-secondary)" }}
           >
-            <div className="px-4 py-3 border-b border-[var(--color-border-default)]">
-              <p className="font-ui text-xs font-semibold text-[var(--color-carbon)] uppercase tracking-wide">
+            <div className="px-4 py-3 border-b border-border-default">
+              <p className="font-ui text-xs font-semibold text-carbon uppercase tracking-wide">
                 SEO / Open Graph
               </p>
             </div>
@@ -485,9 +469,7 @@ export function BlogPostForm({ post }: BlogPostFormProps) {
               <div className="space-y-1.5">
                 <Label htmlFor="bf-seo-title" className="text-xs">
                   SEO Title
-                  <span className="ml-1 text-[var(--color-text-tertiary)] font-normal">
-                    (máx 70)
-                  </span>
+                  <span className="ml-1 text-text-tertiary font-normal">(máx 70)</span>
                 </Label>
                 <Input
                   id="bf-seo-title"
@@ -500,25 +482,21 @@ export function BlogPostForm({ post }: BlogPostFormProps) {
               <div className="space-y-1.5">
                 <Label htmlFor="bf-seo-desc" className="text-xs">
                   SEO Description
-                  <span className="ml-1 text-[var(--color-text-tertiary)] font-normal">
-                    (máx 160)
-                  </span>
+                  <span className="ml-1 text-text-tertiary font-normal">(máx 160)</span>
                 </Label>
                 <textarea
                   id="bf-seo-desc"
                   rows={3}
                   maxLength={170}
                   placeholder="Descripción para buscadores..."
-                  className="block w-full px-3 py-2 bg-[var(--color-bg)] text-[var(--color-carbon)] font-ui text-sm placeholder:text-[var(--color-text-tertiary)] border border-[var(--color-border-default)] rounded-[6px] outline-none resize-none hover:border-[var(--color-border-strong)] focus:border-2 focus:border-[var(--color-marino)] focus:bg-white transition-[border-color] duration-150"
+                  className="block w-full px-3 py-2 bg-bg text-carbon font-ui text-sm placeholder:text-text-tertiary border border-border-default rounded-[6px] outline-none resize-none hover:border-border-strong focus:border-2 focus:border-marino focus:bg-white transition-[border-color] duration-150"
                   {...register("seoDescription")}
                 />
               </div>
               <div className="space-y-1.5">
                 <Label htmlFor="bf-og-image" className="text-xs">
                   OG Image URL
-                  <span className="ml-1 text-[var(--color-text-tertiary)] font-normal">
-                    (placeholder)
-                  </span>
+                  <span className="ml-1 text-text-tertiary font-normal">(placeholder)</span>
                 </Label>
                 <Input
                   id="bf-og-image"
@@ -536,12 +514,8 @@ export function BlogPostForm({ post }: BlogPostFormProps) {
               role="alert"
               className="flex items-start gap-2.5 rounded-[6px] border border-[#FCA5A5] bg-[#FEE2E2] px-4 py-3"
             >
-              <AlertCircle
-                size={15}
-                className="shrink-0 mt-0.5 text-[var(--color-error)]"
-                aria-hidden="true"
-              />
-              <p className="font-ui text-xs text-[var(--color-error)]">{submitError}</p>
+              <AlertCircle size={15} className="shrink-0 mt-0.5 text-error" aria-hidden="true" />
+              <p className="font-ui text-xs text-error">{submitError}</p>
             </div>
           )}
 
@@ -579,7 +553,7 @@ export function BlogPostForm({ post }: BlogPostFormProps) {
                 href={`/blog/${post?.slug}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 h-10 px-5 w-full font-ui text-sm font-medium text-[var(--color-text-secondary)] border border-[var(--color-border-default)] rounded-sm hover:border-[var(--color-marino)] hover:text-[var(--color-marino)] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3"
+                className="flex items-center justify-center gap-2 h-10 px-5 w-full font-ui text-sm font-medium text-text-secondary border border-border-default rounded-sm hover:border-marino hover:text-marino transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3"
               >
                 <Eye size={15} aria-hidden="true" />
                 Ver artículo publicado

@@ -76,9 +76,9 @@ function TerminoCard({ termino }: { termino: GlosarioTerminoRow }) {
     <article
       className={cn(
         "group relative flex flex-col gap-3 p-5",
-        "bg-[var(--color-bg)] border border-[var(--color-border-default)] rounded-[8px]",
+        "bg-bg border border-border-default rounded-[8px]",
         "transition-all duration-250",
-        "hover:border-[var(--color-marino)] hover:shadow-[var(--shadow-md)]",
+        "hover:border-marino hover:shadow-[var(--shadow-md)]",
         "hover:-translate-y-[2px]"
       )}
     >
@@ -92,17 +92,17 @@ function TerminoCard({ termino }: { termino: GlosarioTerminoRow }) {
       </div>
 
       {/* Término */}
-      <h3 className="font-serif text-lg font-500 text-[var(--color-marino)] leading-tight pr-8">
+      <h3 className="font-serif text-lg font-500 text-marino leading-tight pr-8">
         {termino.termino}
       </h3>
 
       {/* Definición corta */}
-      <p className="font-body text-sm text-[var(--color-text-secondary)] leading-relaxed line-clamp-3 flex-1">
+      <p className="font-body text-sm text-text-secondary leading-relaxed line-clamp-3 flex-1">
         {termino.definicionCorta}
       </p>
 
       {/* Footer: badge + link */}
-      <div className="flex items-center justify-between gap-2 mt-auto pt-3 border-t border-[var(--color-border-default)]">
+      <div className="flex items-center justify-between gap-2 mt-auto pt-3 border-t border-border-default">
         <span
           className="inline-flex items-center px-2.5 py-0.5 rounded-full font-ui text-xs font-500"
           style={{
@@ -116,9 +116,9 @@ function TerminoCard({ termino }: { termino: GlosarioTerminoRow }) {
         <Link
           href={`/glosario/${termino.slug}`}
           className={cn(
-            "font-ui text-xs font-500 text-[var(--color-marino)]",
-            "hover:text-[var(--color-dorado-deep)] transition-colors duration-150",
-            "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2 focus-visible:rounded-[4px]",
+            "font-ui text-xs font-500 text-marino",
+            "hover:text-dorado-deep transition-colors duration-150",
+            "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2 focus-visible:rounded-[4px]",
             "flex items-center gap-1 group"
           )}
           aria-label={`Ver definición completa de ${termino.termino}`}
@@ -186,7 +186,7 @@ export function GlosarioClient({ terminos, letrasConTerminos, allLetters }: Glos
       <div className="relative max-w-md mb-8">
         <Search
           size={16}
-          className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--color-text-tertiary)] pointer-events-none"
+          className="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-tertiary pointer-events-none"
           aria-hidden="true"
         />
         <input
@@ -200,11 +200,11 @@ export function GlosarioClient({ terminos, letrasConTerminos, allLetters }: Glos
           placeholder="Buscar término, sinónimo o área…"
           className={cn(
             "w-full pl-9 pr-9 py-2.5 rounded-[6px]",
-            "font-ui text-sm text-[var(--color-carbon)]",
-            "bg-[var(--color-bg)] border border-[var(--color-border-default)]",
-            "placeholder:text-[var(--color-text-tertiary)]",
+            "font-ui text-sm text-carbon",
+            "bg-bg border border-border-default",
+            "placeholder:text-text-tertiary",
             "transition-colors duration-150",
-            "focus:outline-none focus:border-[var(--color-marino)] focus:ring-2 focus:ring-[var(--color-marino)]/10"
+            "focus:outline-none focus:border-marino focus:ring-2 focus:ring-marino/10"
           )}
           aria-label="Buscar en el glosario jurídico"
           autoComplete="off"
@@ -213,7 +213,7 @@ export function GlosarioClient({ terminos, letrasConTerminos, allLetters }: Glos
         {query && (
           <button
             onClick={clearSearch}
-            className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 rounded-sm text-[var(--color-text-tertiary)] hover:text-[var(--color-carbon)] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)]"
+            className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 rounded-sm text-text-tertiary hover:text-carbon transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-dorado"
             aria-label="Limpiar búsqueda"
           >
             <X size={14} />
@@ -223,7 +223,7 @@ export function GlosarioClient({ terminos, letrasConTerminos, allLetters }: Glos
 
       {/* ─── Barra alfabética sticky ──────────────────────────────── */}
       <div
-        className="sticky top-[68px] z-10 -mx-6 px-6 py-3 mb-8 border-b border-[var(--color-border-default)]"
+        className="sticky top-[68px] z-10 -mx-6 px-6 py-3 mb-8 border-b border-border-default"
         style={{ background: "var(--color-bg-secondary)", backdropFilter: "blur(8px)" }}
         aria-label="Filtrar por letra"
         role="navigation"
@@ -241,12 +241,12 @@ export function GlosarioClient({ terminos, letrasConTerminos, allLetters }: Glos
                 aria-label={tieneTerminos ? `Filtrar por ${letra}` : `${letra} — sin términos`}
                 className={cn(
                   "w-7 h-7 rounded-[4px] font-ui text-xs font-600 transition-all duration-150",
-                  "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-1",
+                  "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-1",
                   tieneTerminos
                     ? isActive
-                      ? "bg-[var(--color-marino)] text-[var(--color-dorado)]"
-                      : "bg-[var(--color-bg)] border border-[var(--color-border-default)] text-[var(--color-dorado-deep)] hover:border-[var(--color-marino)] hover:text-[var(--color-marino)]"
-                    : "opacity-30 cursor-not-allowed text-[var(--color-text-tertiary)]"
+                      ? "bg-marino text-dorado"
+                      : "bg-bg border border-border-default text-dorado-deep hover:border-marino hover:text-marino"
+                    : "opacity-30 cursor-not-allowed text-text-tertiary"
                 )}
               >
                 {letra}
@@ -258,10 +258,10 @@ export function GlosarioClient({ terminos, letrasConTerminos, allLetters }: Glos
               onClick={() => setLetraActiva(null)}
               className={cn(
                 "px-2 h-7 rounded-[4px] font-ui text-xs font-500",
-                "bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)]",
-                "border border-[var(--color-border-default)]",
-                "hover:border-[var(--color-carbon)] transition-colors duration-150",
-                "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-1"
+                "bg-bg-tertiary text-text-secondary",
+                "border border-border-default",
+                "hover:border-carbon transition-colors duration-150",
+                "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-1"
               )}
               aria-label="Ver todos los términos"
             >
@@ -273,20 +273,17 @@ export function GlosarioClient({ terminos, letrasConTerminos, allLetters }: Glos
 
       {/* ─── Contador de resultados ───────────────────────────────── */}
       <div className="mb-6" aria-live="polite" aria-atomic="true">
-        <p className="font-ui text-sm text-[var(--color-text-tertiary)]">
+        <p className="font-ui text-sm text-text-tertiary">
           {query || letraActiva ? (
             <>
-              <span className="font-600 text-[var(--color-carbon)]">
-                {terminosFiltrados.length}
-              </span>{" "}
-              resultado{terminosFiltrados.length !== 1 ? "s" : ""}
+              <span className="font-600 text-carbon">{terminosFiltrados.length}</span> resultado
+              {terminosFiltrados.length !== 1 ? "s" : ""}
               {letraActiva && ` para la letra ${letraActiva}`}
               {query && ` para "${query}"`}
             </>
           ) : (
             <>
-              <span className="font-600 text-[var(--color-carbon)]">{terminos.length}</span>{" "}
-              términos jurídicos
+              <span className="font-600 text-carbon">{terminos.length}</span> términos jurídicos
             </>
           )}
         </p>
@@ -301,10 +298,8 @@ export function GlosarioClient({ terminos, letrasConTerminos, allLetters }: Glos
         </div>
       ) : (
         <div className="text-center py-16">
-          <p className="font-serif text-xl text-[var(--color-text-secondary)] mb-2">
-            No encontramos resultados
-          </p>
-          <p className="font-ui text-sm text-[var(--color-text-tertiary)]">
+          <p className="font-serif text-xl text-text-secondary mb-2">No encontramos resultados</p>
+          <p className="font-ui text-sm text-text-tertiary">
             Probá con otro término o revisá la ortografía
           </p>
           <button
@@ -312,7 +307,7 @@ export function GlosarioClient({ terminos, letrasConTerminos, allLetters }: Glos
               setQuery("");
               setLetraActiva(null);
             }}
-            className="mt-4 font-ui text-sm text-[var(--color-marino)] underline underline-offset-2 hover:text-[var(--color-dorado-deep)] transition-colors duration-150"
+            className="mt-4 font-ui text-sm text-marino underline underline-offset-2 hover:text-dorado-deep transition-colors duration-150"
           >
             Ver todos los términos
           </button>

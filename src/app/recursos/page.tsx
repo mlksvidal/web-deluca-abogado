@@ -89,7 +89,7 @@ export default function RecursosPage() {
 
             <h1
               id="recursos-heading"
-              className="font-serif font-semibold text-[var(--color-bg)] leading-tight"
+              className="font-serif font-semibold text-bg leading-tight"
               style={{ fontSize: "clamp(1.75rem, 1rem + 3vw, 3rem)" }}
             >
               Documentos y guías jurídicas gratuitas
@@ -130,13 +130,13 @@ export default function RecursosPage() {
               borderColor: "var(--color-border-default)",
             }}
           >
-            <p className="font-body text-sm text-[var(--color-text-secondary)] text-center leading-relaxed max-w-[600px] mx-auto">
-              <strong className="font-semibold text-[var(--color-carbon)]">Aviso legal:</strong> Los
-              documentos son orientativos y no reemplazan el asesoramiento jurídico profesional.
-              Cada caso tiene sus particularidades.{" "}
+            <p className="font-body text-sm text-text-secondary text-center leading-relaxed max-w-[600px] mx-auto">
+              <strong className="font-semibold text-carbon">Aviso legal:</strong> Los documentos son
+              orientativos y no reemplazan el asesoramiento jurídico profesional. Cada caso tiene
+              sus particularidades.{" "}
               <a
                 href="/reservar"
-                className="text-[var(--color-marino)] underline underline-offset-2 decoration-[var(--color-dorado)] hover:decoration-2 transition-all duration-150"
+                className="text-marino underline underline-offset-2 decoration-dorado hover:decoration-2 transition-all duration-150"
               >
                 Reservá una consulta
               </a>{" "}

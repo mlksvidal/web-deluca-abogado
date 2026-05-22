@@ -61,7 +61,7 @@ export default function CuotaAlimentariaPage() {
         {/* Hero pequeño */}
         <section
           aria-labelledby="calc-alim-heading"
-          className="border-b border-[var(--color-border-default)]"
+          className="border-b border-border-default"
           style={{
             background: "linear-gradient(160deg, var(--color-marino) 0%, #1E3A6E 100%)",
             paddingTop: "120px",

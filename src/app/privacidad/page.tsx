@@ -59,28 +59,21 @@ function SchemaLegalPage() {
 
 function SectionTitle({ id, children }: { id: string; children: React.ReactNode }) {
   return (
-    <h2
-      id={id}
-      className="font-serif text-xl font-semibold text-[var(--color-marino)] mt-10 mb-4 scroll-mt-24"
-    >
+    <h2 id={id} className="font-serif text-xl font-semibold text-marino mt-10 mb-4 scroll-mt-24">
       {children}
     </h2>
   );
 }
 
 function Paragraph({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="font-body text-base leading-relaxed text-[var(--color-carbon-soft)] mb-4">
-      {children}
-    </p>
-  );
+  return <p className="font-body text-base leading-relaxed text-carbon-soft mb-4">{children}</p>;
 }
 
 function BulletList({ items }: { items: string[] }) {
   return (
     <ul className="list-disc list-outside pl-5 mb-4 space-y-1.5">
       {items.map((item, i) => (
-        <li key={i} className="font-body text-base text-[var(--color-carbon-soft)] leading-relaxed">
+        <li key={i} className="font-body text-base text-carbon-soft leading-relaxed">
           {item}
         </li>
       ))}
@@ -108,14 +101,14 @@ export default function PrivacidadPage() {
 
       {/* Hero editorial */}
       <section
-        className="border-b border-[var(--color-border-default)]"
+        className="border-b border-border-default"
         style={{ background: "var(--color-marino)" }}
       >
         <div className="max-w-3xl mx-auto px-6 py-14 md:py-20">
           <p className="font-ui text-xs uppercase tracking-widest text-[rgba(201,169,97,0.80)] mb-3">
             Marco legal
           </p>
-          <h1 className="font-serif text-3xl md:text-4xl font-bold text-[var(--color-bg)] leading-tight mb-4">
+          <h1 className="font-serif text-3xl md:text-4xl font-bold text-bg leading-tight mb-4">
             Política de Privacidad
           </h1>
           <p className="font-body text-base text-[rgba(250,247,242,0.75)] max-w-xl">
@@ -136,7 +129,7 @@ export default function PrivacidadPage() {
       >
         {/* Índice rápido */}
         <nav aria-label="Índice de secciones" className="mb-10">
-          <p className="font-ui text-xs uppercase tracking-wide text-[var(--color-text-tertiary)] mb-3">
+          <p className="font-ui text-xs uppercase tracking-wide text-text-tertiary mb-3">
             Contenido
           </p>
           <ol className="list-decimal list-inside space-y-1.5">
@@ -156,7 +149,7 @@ export default function PrivacidadPage() {
               <li key={href}>
                 <a
                   href={href}
-                  className="font-ui text-sm text-[var(--color-marino)] hover:text-[var(--color-dorado-deep)] transition-colors duration-150 underline underline-offset-2"
+                  className="font-ui text-sm text-marino hover:text-dorado-deep transition-colors duration-150 underline underline-offset-2"
                 >
                   {label}
                 </a>
@@ -165,30 +158,26 @@ export default function PrivacidadPage() {
           </ol>
         </nav>
 
-        <hr className="border-[var(--color-border-default)] mb-10" />
+        <hr className="border-border-default mb-10" />
 
         {/* § 1 — Responsable del tratamiento */}
         <SectionTitle id="responsable">1. Responsable del tratamiento</SectionTitle>
         <Paragraph>El responsable del tratamiento de sus datos personales es:</Paragraph>
         <InfoBox>
-          <p className="font-ui text-sm font-semibold text-[var(--color-marino)] mb-1">
-            Dr. Pablo De Luca
-          </p>
-          <p className="font-body text-sm text-[var(--color-carbon-soft)]">
+          <p className="font-ui text-sm font-semibold text-marino mb-1">Dr. Pablo De Luca</p>
+          <p className="font-body text-sm text-carbon-soft">
             Matrícula: {siteConfig.matricula} — {siteConfig.colegioName}
           </p>
-          <p className="font-body text-sm text-[var(--color-carbon-soft)]">
+          <p className="font-body text-sm text-carbon-soft">
             Email:{" "}
             <a
               href={`mailto:${siteConfig.email}`}
-              className="text-[var(--color-marino)] underline underline-offset-2 hover:text-[var(--color-dorado-deep)]"
+              className="text-marino underline underline-offset-2 hover:text-dorado-deep"
             >
               {siteConfig.email}
             </a>
           </p>
-          <p className="font-body text-sm text-[var(--color-carbon-soft)]">
-            Domicilio: {siteConfig.addressFull}
-          </p>
+          <p className="font-body text-sm text-carbon-soft">Domicilio: {siteConfig.addressFull}</p>
         </InfoBox>
 
         {/* § 2 — Datos recolectados */}
@@ -197,7 +186,7 @@ export default function PrivacidadPage() {
           Recolectamos únicamente los datos necesarios para brindar los servicios solicitados. Los
           datos varían según el canal de contacto:
         </Paragraph>
-        <p className="font-ui text-sm font-semibold text-[var(--color-marino)] mb-2">
+        <p className="font-ui text-sm font-semibold text-marino mb-2">
           Formulario de reserva de turnos:
         </p>
         <BulletList
@@ -213,7 +202,7 @@ export default function PrivacidadPage() {
             "Fecha y hora del consentimiento",
           ]}
         />
-        <p className="font-ui text-sm font-semibold text-[var(--color-marino)] mb-2 mt-4">
+        <p className="font-ui text-sm font-semibold text-marino mb-2 mt-4">
           Formulario de descarga de recursos (guías y modelos):
         </p>
         <BulletList
@@ -225,7 +214,7 @@ export default function PrivacidadPage() {
             "Dirección IP parcial (auditoría)",
           ]}
         />
-        <p className="font-ui text-sm font-semibold text-[var(--color-marino)] mb-2 mt-4">
+        <p className="font-ui text-sm font-semibold text-marino mb-2 mt-4">
           Datos técnicos recolectados automáticamente:
         </p>
         <BulletList
@@ -258,7 +247,7 @@ export default function PrivacidadPage() {
         {/* § 4 — Datos sensibles */}
         <SectionTitle id="datos-sensibles">4. Datos sensibles</SectionTitle>
         <InfoBox>
-          <p className="font-body text-sm text-[var(--color-carbon-soft)]">
+          <p className="font-body text-sm text-carbon-soft">
             <strong>Artículo 7, Ley 25.326:</strong> Se consideran datos sensibles aquellos que
             revelan origen racial o étnico, opiniones políticas, convicciones religiosas o morales,
             afiliación sindical, información referente a la salud o la vida sexual.
@@ -288,11 +277,9 @@ export default function PrivacidadPage() {
         <div className="overflow-x-auto mb-4">
           <table className="w-full border-collapse text-sm font-ui">
             <thead>
-              <tr className="border-b border-[var(--color-border-default)]">
-                <th className="text-left py-2.5 pr-4 text-[var(--color-marino)] font-semibold">
-                  Tipo de dato
-                </th>
-                <th className="text-left py-2.5 text-[var(--color-marino)] font-semibold">
+              <tr className="border-b border-border-default">
+                <th className="text-left py-2.5 pr-4 text-marino font-semibold">Tipo de dato</th>
+                <th className="text-left py-2.5 text-marino font-semibold">
                   Plazo de conservación
                 </th>
               </tr>
@@ -304,9 +291,9 @@ export default function PrivacidadPage() {
                 ["Registros de auditoría (logs de acceso)", "5 años (requisito regulatorio)"],
                 ["Datos de consentimiento", "5 años (respaldo legal)"],
               ].map(([tipo, plazo]) => (
-                <tr key={tipo} className="border-b border-[var(--color-border-default)]">
-                  <td className="py-2.5 pr-4 text-[var(--color-carbon-soft)]">{tipo}</td>
-                  <td className="py-2.5 text-[var(--color-carbon-soft)]">{plazo}</td>
+                <tr key={tipo} className="border-b border-border-default">
+                  <td className="py-2.5 pr-4 text-carbon-soft">{tipo}</td>
+                  <td className="py-2.5 text-carbon-soft">{plazo}</td>
                 </tr>
               ))}
             </tbody>
@@ -328,16 +315,10 @@ export default function PrivacidadPage() {
         <div className="overflow-x-auto mb-4">
           <table className="w-full border-collapse text-sm font-ui">
             <thead>
-              <tr className="border-b border-[var(--color-border-default)]">
-                <th className="text-left py-2.5 pr-4 text-[var(--color-marino)] font-semibold">
-                  Prestador
-                </th>
-                <th className="text-left py-2.5 pr-4 text-[var(--color-marino)] font-semibold">
-                  Finalidad
-                </th>
-                <th className="text-left py-2.5 text-[var(--color-marino)] font-semibold">
-                  Datos transferidos
-                </th>
+              <tr className="border-b border-border-default">
+                <th className="text-left py-2.5 pr-4 text-marino font-semibold">Prestador</th>
+                <th className="text-left py-2.5 pr-4 text-marino font-semibold">Finalidad</th>
+                <th className="text-left py-2.5 text-marino font-semibold">Datos transferidos</th>
               </tr>
             </thead>
             <tbody>
@@ -360,12 +341,10 @@ export default function PrivacidadPage() {
                 ],
                 ["Upstash Redis", "Control de límite de solicitudes (anti-spam)", "IP anonimizada"],
               ].map(([prestador, finalidad, datos]) => (
-                <tr key={prestador} className="border-b border-[var(--color-border-default)]">
-                  <td className="py-2.5 pr-4 font-medium text-[var(--color-marino)]">
-                    {prestador}
-                  </td>
-                  <td className="py-2.5 pr-4 text-[var(--color-carbon-soft)]">{finalidad}</td>
-                  <td className="py-2.5 text-[var(--color-carbon-soft)]">{datos}</td>
+                <tr key={prestador} className="border-b border-border-default">
+                  <td className="py-2.5 pr-4 font-medium text-marino">{prestador}</td>
+                  <td className="py-2.5 pr-4 text-carbon-soft">{finalidad}</td>
+                  <td className="py-2.5 text-carbon-soft">{datos}</td>
                 </tr>
               ))}
             </tbody>
@@ -389,7 +368,7 @@ export default function PrivacidadPage() {
           Para ejercer cualquiera de estos derechos, comuníquese a{" "}
           <a
             href={`mailto:${siteConfig.email}`}
-            className="text-[var(--color-marino)] underline underline-offset-2 hover:text-[var(--color-dorado-deep)]"
+            className="text-marino underline underline-offset-2 hover:text-dorado-deep"
           >
             {siteConfig.email}
           </a>{" "}
@@ -406,17 +385,15 @@ export default function PrivacidadPage() {
           de la Ley 25.326.
         </Paragraph>
         <InfoBox>
-          <p className="font-body text-sm text-[var(--color-carbon-soft)]">
+          <p className="font-body text-sm text-carbon-soft">
             Registro AAIP N.°:{" "}
-            <span className="font-semibold text-[var(--color-marino)]">
-              [a confirmar por el Dr. De Luca]
-            </span>{" "}
-            — La verificación puede realizarse en{" "}
+            <span className="font-semibold text-marino">[a confirmar por el Dr. De Luca]</span> — La
+            verificación puede realizarse en{" "}
             <a
               href="https://servicios.aaip.gob.ar/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--color-marino)] underline underline-offset-2 hover:text-[var(--color-dorado-deep)]"
+              className="text-marino underline underline-offset-2 hover:text-dorado-deep"
             >
               servicios.aaip.gob.ar
             </a>
@@ -430,7 +407,7 @@ export default function PrivacidadPage() {
             href="https://www.argentina.gob.ar/aaip"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[var(--color-marino)] underline underline-offset-2 hover:text-[var(--color-dorado-deep)]"
+            className="text-marino underline underline-offset-2 hover:text-dorado-deep"
           >
             www.argentina.gob.ar/aaip
           </a>
@@ -471,43 +448,41 @@ export default function PrivacidadPage() {
           tratamiento de sus datos personales, contáctese con:
         </Paragraph>
         <InfoBox>
-          <p className="font-ui text-sm font-semibold text-[var(--color-marino)] mb-1">
+          <p className="font-ui text-sm font-semibold text-marino mb-1">
             Responsable de privacidad de datos
           </p>
-          <p className="font-body text-sm text-[var(--color-carbon-soft)]">
-            Dr. Pablo De Luca — Estudio Jurídico
-          </p>
-          <p className="font-body text-sm text-[var(--color-carbon-soft)]">
+          <p className="font-body text-sm text-carbon-soft">Dr. Pablo De Luca — Estudio Jurídico</p>
+          <p className="font-body text-sm text-carbon-soft">
             Email:{" "}
             <a
               href={`mailto:${siteConfig.email}`}
-              className="text-[var(--color-marino)] underline underline-offset-2 hover:text-[var(--color-dorado-deep)]"
+              className="text-marino underline underline-offset-2 hover:text-dorado-deep"
             >
               {siteConfig.email}
             </a>
           </p>
-          <p className="font-body text-sm text-[var(--color-carbon-soft)] mt-1">
+          <p className="font-body text-sm text-carbon-soft mt-1">
             Asunto: &ldquo;Consulta de privacidad&rdquo;
           </p>
         </InfoBox>
 
-        <hr className="border-[var(--color-border-default)] my-10" />
+        <hr className="border-border-default my-10" />
 
         {/* Footer legal */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-between">
-          <p className="font-ui text-xs text-[var(--color-text-tertiary)]">
+          <p className="font-ui text-xs text-text-tertiary">
             Política vigente desde el {LAST_UPDATED_DISPLAY}
           </p>
           <div className="flex gap-4">
             <Link
               href="/terminos"
-              className="font-ui text-xs text-[var(--color-marino)] underline underline-offset-2 hover:text-[var(--color-dorado-deep)] transition-colors"
+              className="font-ui text-xs text-marino underline underline-offset-2 hover:text-dorado-deep transition-colors"
             >
               Términos de uso
             </Link>
             <Link
               href="/"
-              className="font-ui text-xs text-[var(--color-marino)] underline underline-offset-2 hover:text-[var(--color-dorado-deep)] transition-colors"
+              className="font-ui text-xs text-marino underline underline-offset-2 hover:text-dorado-deep transition-colors"
             >
               Inicio
             </Link>

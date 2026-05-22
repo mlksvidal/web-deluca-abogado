@@ -61,14 +61,14 @@ function SchemaOrg() {
 function BookingLoadError() {
   return (
     <div className="flex flex-col items-center gap-6 py-16 text-center">
-      <div className="flex size-16 items-center justify-center rounded-full bg-[var(--color-bg-secondary)]">
-        <RefreshCw className="size-7 text-[var(--color-text-tertiary)]" aria-hidden="true" />
+      <div className="flex size-16 items-center justify-center rounded-full bg-bg-secondary">
+        <RefreshCw className="size-7 text-text-tertiary" aria-hidden="true" />
       </div>
       <div className="space-y-2">
-        <h2 className="font-serif text-xl font-medium text-[var(--color-marino)]">
+        <h2 className="font-serif text-xl font-medium text-marino">
           No pudimos cargar el calendario
         </h2>
-        <p className="font-body text-[var(--color-text-secondary)] max-w-md">
+        <p className="font-body text-text-secondary max-w-md">
           Hubo un problema al obtener la disponibilidad. Podés intentar recargar la página o
           comunicarte directamente por WhatsApp.
         </p>
@@ -76,7 +76,7 @@ function BookingLoadError() {
       <div className="flex flex-col gap-3 sm:flex-row">
         <Link
           href="/reservar"
-          className="inline-flex items-center justify-center gap-2 rounded-[4px] border-2 border-[var(--color-marino)] px-6 py-2.5 font-ui text-sm font-medium text-[var(--color-marino)] transition-colors hover:bg-[var(--color-marino)] hover:text-[var(--color-bg)] focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+          className="inline-flex items-center justify-center gap-2 rounded-[4px] border-2 border-marino px-6 py-2.5 font-ui text-sm font-medium text-marino transition-colors hover:bg-marino hover:text-bg focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
         >
           <RefreshCw className="size-4" aria-hidden="true" />
           Recargar página
@@ -85,7 +85,7 @@ function BookingLoadError() {
           href={`https://wa.me/${siteConfig.whatsapp}?text=Hola%2C%20quisiera%20reservar%20un%20turno`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 rounded-[4px] bg-[var(--color-marino)] px-6 py-2.5 font-ui text-sm font-medium text-[var(--color-bg)] transition-colors hover:bg-[var(--color-marino-hover)] focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+          className="inline-flex items-center justify-center gap-2 rounded-[4px] bg-marino px-6 py-2.5 font-ui text-sm font-medium text-bg transition-colors hover:bg-marino-hover focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
         >
           <MessageCircle className="size-4" aria-hidden="true" />
           Reservar por WhatsApp
@@ -106,17 +106,17 @@ export default async function ReservarPage() {
       <SchemaOrg />
 
       {/* Skip link target — ya definido en layout pero reforzar en sección */}
-      <div className="min-h-screen bg-[var(--color-bg)]">
+      <div className="min-h-screen bg-bg">
         {/* ─── Hero de la página ─────────────────────────────────────────── */}
-        <div className="border-b border-[var(--color-border-default)] bg-[var(--color-marino)] px-4 py-12 md:py-16">
+        <div className="border-b border-border-default bg-marino px-4 py-12 md:py-16">
           <div className="mx-auto max-w-5xl">
-            <p className="mb-2 font-ui text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-dorado)]">
+            <p className="mb-2 font-ui text-xs font-medium uppercase tracking-[0.15em] text-dorado">
               Reservar consulta
             </p>
-            <h1 className="font-serif text-3xl font-medium text-[var(--color-bg)] md:text-4xl">
+            <h1 className="font-serif text-3xl font-medium text-bg md:text-4xl">
               Agendá tu turno online
             </h1>
-            <p className="mt-3 font-body text-[var(--color-bg)]/80 max-w-xl text-base leading-relaxed">
+            <p className="mt-3 font-body text-bg/80 max-w-xl text-base leading-relaxed">
               Elegí el día y horario que mejor te quede. Te enviamos confirmación por email. La
               primera consulta es sin cargo.
             </p>
@@ -130,12 +130,12 @@ export default async function ReservarPage() {
               ].map(({ step, label }) => (
                 <div key={step} className="flex items-center gap-2">
                   <span
-                    className="flex size-7 items-center justify-center rounded-full border border-[var(--color-dorado)] font-ui text-xs font-semibold text-[var(--color-dorado)]"
+                    className="flex size-7 items-center justify-center rounded-full border border-dorado font-ui text-xs font-semibold text-dorado"
                     aria-hidden="true"
                   >
                     {step}
                   </span>
-                  <span className="font-ui text-sm text-[var(--color-bg)]/80">{label}</span>
+                  <span className="font-ui text-sm text-bg/80">{label}</span>
                 </div>
               ))}
             </div>
@@ -151,7 +151,7 @@ export default async function ReservarPage() {
           )}
 
           {/* Info adicional */}
-          <div className="mt-12 border-t border-[var(--color-border-default)] pt-8">
+          <div className="mt-12 border-t border-border-default pt-8">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
               {[
                 {
@@ -168,10 +168,10 @@ export default async function ReservarPage() {
                 },
               ].map(({ title, body }) => (
                 <div key={title} className="space-y-1">
-                  <p className="font-ui text-xs font-semibold uppercase tracking-wide text-[var(--color-marino)]">
+                  <p className="font-ui text-xs font-semibold uppercase tracking-wide text-marino">
                     {title}
                   </p>
-                  <p className="font-body text-sm text-[var(--color-text-secondary)]">{body}</p>
+                  <p className="font-body text-sm text-text-secondary">{body}</p>
                 </div>
               ))}
             </div>

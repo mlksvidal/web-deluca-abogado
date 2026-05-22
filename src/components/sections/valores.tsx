@@ -162,12 +162,12 @@ export function Valores() {
         <Reveal>
           <div className="text-center mb-12 md:mb-16">
             <p
-              className="font-ui text-xs font-[500] uppercase text-[var(--color-dorado)] mb-3"
+              className="font-ui text-xs font-[500] uppercase text-dorado mb-3"
               style={{ letterSpacing: "0.18em" }}
             >
               Cómo trabajamos
             </p>
-            <h2 id="valores-heading" className="text-[var(--color-marino)]">
+            <h2 id="valores-heading" className="text-marino">
               Cinco pilares que guían cada caso
             </h2>
           </div>

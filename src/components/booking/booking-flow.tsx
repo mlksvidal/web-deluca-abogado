@@ -116,18 +116,18 @@ export function BookingFlow({ availableDates }: BookingFlowProps) {
       <div className="space-y-6">
         {/* Calendario */}
         <div
-          className="rounded-[6px] border border-[var(--color-border-default)] bg-white p-5 shadow-[var(--shadow-sm)]"
+          className="rounded-[6px] border border-border-default bg-white p-5 shadow-[var(--shadow-sm)]"
           aria-label="Seleccioná una fecha"
         >
-          <h2 className="mb-4 font-ui text-sm font-semibold uppercase tracking-wide text-[var(--color-marino)]">
+          <h2 className="mb-4 font-ui text-sm font-semibold uppercase tracking-wide text-marino">
             1. Elegí un día
           </h2>
           {availableDates.length === 0 ? (
             <div className="py-8 text-center">
-              <p className="font-ui text-sm text-[var(--color-text-tertiary)]">
+              <p className="font-ui text-sm text-text-tertiary">
                 No hay disponibilidad en los próximos 30 días.
               </p>
-              <p className="mt-1 font-ui text-sm text-[var(--color-text-tertiary)]">
+              <p className="mt-1 font-ui text-sm text-text-tertiary">
                 Consultanos por WhatsApp para coordinar.
               </p>
             </div>
@@ -142,12 +142,12 @@ export function BookingFlow({ availableDates }: BookingFlowProps) {
 
         {/* Horarios del día seleccionado */}
         <div
-          className="rounded-[6px] border border-[var(--color-border-default)] bg-white p-5 shadow-[var(--shadow-sm)]"
+          className="rounded-[6px] border border-border-default bg-white p-5 shadow-[var(--shadow-sm)]"
           aria-label="Horarios disponibles"
           aria-live="polite"
           aria-atomic="false"
         >
-          <h2 className="mb-4 font-ui text-sm font-semibold uppercase tracking-wide text-[var(--color-marino)]">
+          <h2 className="mb-4 font-ui text-sm font-semibold uppercase tracking-wide text-marino">
             2. Elegí un horario
           </h2>
           <SlotGrid
@@ -162,8 +162,8 @@ export function BookingFlow({ availableDates }: BookingFlowProps) {
 
       {/* ─── Columna derecha: Formulario ────────────────────────────────── */}
       <div>
-        <div className="rounded-[6px] border border-[var(--color-border-default)] bg-white p-6 shadow-[var(--shadow-sm)] lg:sticky lg:top-28">
-          <h2 className="mb-6 font-ui text-sm font-semibold uppercase tracking-wide text-[var(--color-marino)]">
+        <div className="rounded-[6px] border border-border-default bg-white p-6 shadow-[var(--shadow-sm)] lg:sticky lg:top-28">
+          <h2 className="mb-6 font-ui text-sm font-semibold uppercase tracking-wide text-marino">
             3. Tus datos
           </h2>
           <BookingForm

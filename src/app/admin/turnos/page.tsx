@@ -78,21 +78,18 @@ function BookingDetailModal({ booking, onClose }: { booking: Booking; onClose: (
       <div className="absolute inset-0 bg-black/40" onClick={onClose} aria-hidden="true" />
 
       {/* Panel */}
-      <div className="relative z-10 w-full max-w-lg bg-[var(--color-bg)] rounded-[12px] shadow-[0_20px_60px_rgba(0,0,0,0.20)] overflow-hidden">
+      <div className="relative z-10 w-full max-w-lg bg-bg rounded-[12px] shadow-[0_20px_60px_rgba(0,0,0,0.20)] overflow-hidden">
         {/* Header */}
         <div
-          className="flex items-center justify-between px-6 py-4 border-b border-[var(--color-border-default)]"
+          className="flex items-center justify-between px-6 py-4 border-b border-border-default"
           style={{ background: "var(--color-marino)" }}
         >
-          <h2
-            id="modal-title"
-            className="font-serif text-base font-semibold text-[var(--color-bg)]"
-          >
+          <h2 id="modal-title" className="font-serif text-base font-semibold text-bg">
             Detalle del turno
           </h2>
           <button
             onClick={onClose}
-            className="text-[rgba(250,247,242,0.60)] hover:text-[var(--color-bg)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:rounded-[4px]"
+            className="text-[rgba(250,247,242,0.60)] hover:text-bg transition-colors focus-visible:outline-2 focus-visible:outline-dorado focus-visible:rounded-[4px]"
             aria-label="Cerrar detalle"
           >
             <X size={18} />
@@ -108,30 +105,28 @@ function BookingDetailModal({ booking, onClose }: { booking: Booking; onClose: (
             >
               {STATUS_LABELS[booking.status]}
             </span>
-            <span className="font-ui text-xs text-[var(--color-text-tertiary)]">
+            <span className="font-ui text-xs text-text-tertiary">
               ID: {booking.id.slice(0, 8)}…
             </span>
           </div>
 
           {/* Cliente */}
           <div>
-            <p className="font-ui text-xs uppercase tracking-wide text-[var(--color-text-tertiary)] mb-2">
+            <p className="font-ui text-xs uppercase tracking-wide text-text-tertiary mb-2">
               Cliente
             </p>
             <div className="space-y-1.5">
-              <p className="font-ui text-sm font-semibold text-[var(--color-marino)]">
-                {booking.clientName}
-              </p>
+              <p className="font-ui text-sm font-semibold text-marino">{booking.clientName}</p>
               <a
                 href={`mailto:${booking.clientEmail}`}
-                className="flex items-center gap-2 font-body text-sm text-[var(--color-carbon-soft)] hover:text-[var(--color-marino)] transition-colors"
+                className="flex items-center gap-2 font-body text-sm text-carbon-soft hover:text-marino transition-colors"
               >
                 <Mail size={13} aria-hidden="true" />
                 {booking.clientEmail}
               </a>
               <a
                 href={`tel:${booking.clientPhone}`}
-                className="flex items-center gap-2 font-body text-sm text-[var(--color-carbon-soft)] hover:text-[var(--color-marino)] transition-colors"
+                className="flex items-center gap-2 font-body text-sm text-carbon-soft hover:text-marino transition-colors"
               >
                 <Phone size={13} aria-hidden="true" />
                 {booking.clientPhone}
@@ -141,17 +136,15 @@ function BookingDetailModal({ booking, onClose }: { booking: Booking; onClose: (
 
           {/* Turno */}
           <div>
-            <p className="font-ui text-xs uppercase tracking-wide text-[var(--color-text-tertiary)] mb-2">
-              Turno
-            </p>
+            <p className="font-ui text-xs uppercase tracking-wide text-text-tertiary mb-2">Turno</p>
             <div className="space-y-1.5">
               <div className="flex items-center gap-2">
-                <Clock size={13} className="text-[var(--color-dorado-deep)]" aria-hidden="true" />
-                <span className="font-ui text-sm font-semibold text-[var(--color-marino)]">
+                <Clock size={13} className="text-dorado-deep" aria-hidden="true" />
+                <span className="font-ui text-sm font-semibold text-marino">
                   {formatDateAR(booking.slotStartUtc)}
                 </span>
               </div>
-              <p className="font-ui text-sm text-[var(--color-carbon-soft)]">
+              <p className="font-ui text-sm text-carbon-soft">
                 Área: {AREA_LABELS[booking.legalArea] ?? booking.legalArea}
               </p>
             </div>
@@ -159,20 +152,20 @@ function BookingDetailModal({ booking, onClose }: { booking: Booking; onClose: (
 
           {/* Descripción */}
           <div>
-            <p className="font-ui text-xs uppercase tracking-wide text-[var(--color-text-tertiary)] mb-2">
+            <p className="font-ui text-xs uppercase tracking-wide text-text-tertiary mb-2">
               Descripción del caso
             </p>
             <div
-              className="rounded-[8px] border border-[var(--color-border-default)] px-4 py-3"
+              className="rounded-[8px] border border-border-default px-4 py-3"
               style={{ background: "var(--color-bg-warm)" }}
             >
               <div className="flex items-start gap-2">
                 <FileText
                   size={13}
-                  className="mt-0.5 shrink-0 text-[var(--color-text-tertiary)]"
+                  className="mt-0.5 shrink-0 text-text-tertiary"
                   aria-hidden="true"
                 />
-                <p className="font-body text-sm text-[var(--color-carbon-soft)] leading-relaxed whitespace-pre-wrap break-words">
+                <p className="font-body text-sm text-carbon-soft leading-relaxed whitespace-pre-wrap break-words">
                   {booking.description}
                 </p>
               </div>
@@ -180,16 +173,16 @@ function BookingDetailModal({ booking, onClose }: { booking: Booking; onClose: (
           </div>
 
           {/* Metadatos */}
-          <div className="pt-2 border-t border-[var(--color-border-default)]">
-            <p className="font-ui text-xs uppercase tracking-wide text-[var(--color-text-tertiary)] mb-2">
+          <div className="pt-2 border-t border-border-default">
+            <p className="font-ui text-xs uppercase tracking-wide text-text-tertiary mb-2">
               Registro
             </p>
             <div className="space-y-1">
-              <p className="font-ui text-xs text-[var(--color-text-tertiary)]">
+              <p className="font-ui text-xs text-text-tertiary">
                 Creado: {formatDateAR(booking.createdAt)}
               </p>
               {booking.consentimientoAt && (
-                <p className="font-ui text-xs text-[var(--color-text-tertiary)]">
+                <p className="font-ui text-xs text-text-tertiary">
                   Consentimiento: {formatDateAR(booking.consentimientoAt)}
                 </p>
               )}
@@ -198,10 +191,10 @@ function BookingDetailModal({ booking, onClose }: { booking: Booking; onClose: (
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 border-t border-[var(--color-border-default)] flex justify-end">
+        <div className="px-6 py-4 border-t border-border-default flex justify-end">
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded-[6px] border border-[var(--color-border-default)] font-ui text-sm font-medium text-[var(--color-marino)] hover:bg-[var(--color-marino-subtle)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+            className="px-4 py-2 rounded-[6px] border border-border-default font-ui text-sm font-medium text-marino hover:bg-marino-subtle transition-colors focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
           >
             Cerrar
           </button>
@@ -239,21 +232,18 @@ function ConfirmDialog({
       aria-describedby="confirm-desc"
     >
       <div className="absolute inset-0 bg-black/40" onClick={onCancel} aria-hidden="true" />
-      <div className="relative z-10 w-full max-w-sm bg-[var(--color-bg)] rounded-[12px] shadow-[0_20px_60px_rgba(0,0,0,0.20)] px-6 py-6">
-        <h2
-          id="confirm-title"
-          className="font-serif text-lg font-semibold text-[var(--color-marino)] mb-2"
-        >
+      <div className="relative z-10 w-full max-w-sm bg-bg rounded-[12px] shadow-[0_20px_60px_rgba(0,0,0,0.20)] px-6 py-6">
+        <h2 id="confirm-title" className="font-serif text-lg font-semibold text-marino mb-2">
           {title}
         </h2>
-        <p id="confirm-desc" className="font-body text-sm text-[var(--color-carbon-soft)] mb-6">
+        <p id="confirm-desc" className="font-body text-sm text-carbon-soft mb-6">
           {message}
         </p>
         <div className="flex gap-3 justify-end">
           <button
             onClick={onCancel}
             disabled={loading}
-            className="px-4 py-2 rounded-[6px] border border-[var(--color-border-default)] font-ui text-sm font-medium text-[var(--color-marino)] hover:bg-[var(--color-marino-subtle)] transition-colors disabled:opacity-50"
+            className="px-4 py-2 rounded-[6px] border border-border-default font-ui text-sm font-medium text-marino hover:bg-marino-subtle transition-colors disabled:opacity-50"
           >
             No, volver
           </button>
@@ -284,22 +274,18 @@ function BookingRow({
   onComplete: (b: Booking) => void;
 }) {
   return (
-    <tr className="border-b border-[var(--color-border-default)] hover:bg-[var(--color-bg-warm)] transition-colors">
-      <td className="px-4 py-3 font-ui text-sm text-[var(--color-marino)] tabular-nums whitespace-nowrap">
+    <tr className="border-b border-border-default hover:bg-bg-warm transition-colors">
+      <td className="px-4 py-3 font-ui text-sm text-marino tabular-nums whitespace-nowrap">
         {formatDateAR(booking.slotStartUtc)}
       </td>
       <td className="px-4 py-3">
-        <p className="font-ui text-sm font-medium text-[var(--color-marino)]">
-          {booking.clientName}
-        </p>
+        <p className="font-ui text-sm font-medium text-marino">{booking.clientName}</p>
       </td>
-      <td className="px-4 py-3 font-body text-sm text-[var(--color-carbon-soft)]">
-        {booking.clientEmail}
-      </td>
-      <td className="px-4 py-3 font-body text-sm text-[var(--color-carbon-soft)] whitespace-nowrap">
+      <td className="px-4 py-3 font-body text-sm text-carbon-soft">{booking.clientEmail}</td>
+      <td className="px-4 py-3 font-body text-sm text-carbon-soft whitespace-nowrap">
         {booking.clientPhone}
       </td>
-      <td className="px-4 py-3 font-ui text-xs text-[var(--color-carbon-soft)]">
+      <td className="px-4 py-3 font-ui text-xs text-carbon-soft">
         {AREA_LABELS[booking.legalArea] ?? booking.legalArea}
       </td>
       <td className="px-4 py-3">
@@ -315,7 +301,7 @@ function BookingRow({
             onClick={() => onView(booking)}
             title="Ver detalle"
             aria-label={`Ver detalle del turno de ${booking.clientName}`}
-            className="p-1.5 rounded-[4px] text-[var(--color-text-tertiary)] hover:text-[var(--color-marino)] hover:bg-[var(--color-marino-subtle)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)]"
+            className="p-1.5 rounded-[4px] text-text-tertiary hover:text-marino hover:bg-marino-subtle transition-colors focus-visible:outline-2 focus-visible:outline-dorado"
           >
             <Eye size={15} />
           </button>
@@ -326,7 +312,7 @@ function BookingRow({
                 onClick={() => onComplete(booking)}
                 title="Marcar como atendido"
                 aria-label={`Marcar turno de ${booking.clientName} como atendido`}
-                className="p-1.5 rounded-[4px] text-[var(--color-text-tertiary)] hover:text-[#15803D] hover:bg-[#DCFCE7] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)]"
+                className="p-1.5 rounded-[4px] text-text-tertiary hover:text-[#15803D] hover:bg-[#DCFCE7] transition-colors focus-visible:outline-2 focus-visible:outline-dorado"
               >
                 <CheckCircle size={15} />
               </button>
@@ -334,7 +320,7 @@ function BookingRow({
                 onClick={() => onCancel(booking)}
                 title="Cancelar turno"
                 aria-label={`Cancelar turno de ${booking.clientName}`}
-                className="p-1.5 rounded-[4px] text-[var(--color-text-tertiary)] hover:text-[#DC2626] hover:bg-[#FEF2F2] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)]"
+                className="p-1.5 rounded-[4px] text-text-tertiary hover:text-[#DC2626] hover:bg-[#FEF2F2] transition-colors focus-visible:outline-2 focus-visible:outline-dorado"
               >
                 <XCircle size={15} />
               </button>
@@ -489,8 +475,8 @@ export default function AdminTurnosPage() {
             <Calendar size={16} />
           </div>
           <div>
-            <h1 className="font-serif text-xl font-semibold text-[var(--color-marino)]">Turnos</h1>
-            <p className="font-body text-xs text-[var(--color-text-secondary)]">
+            <h1 className="font-serif text-xl font-semibold text-marino">Turnos</h1>
+            <p className="font-body text-xs text-text-secondary">
               {total > 0 ? `${total} registros` : "Sin registros"}
             </p>
           </div>
@@ -498,14 +484,14 @@ export default function AdminTurnosPage() {
 
         {/* Filtros */}
         <div
-          className="flex flex-wrap gap-3 mb-5 p-4 rounded-[8px] border border-[var(--color-border-default)]"
+          className="flex flex-wrap gap-3 mb-5 p-4 rounded-[8px] border border-border-default"
           style={{ background: "var(--color-bg)" }}
         >
           {/* Búsqueda */}
           <div className="relative flex-1 min-w-[200px]">
             <Search
               size={14}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-text-tertiary)]"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-text-tertiary"
               aria-hidden="true"
             />
             <input
@@ -513,7 +499,7 @@ export default function AdminTurnosPage() {
               placeholder="Buscar por nombre o email…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-8 pr-4 py-2 rounded-[6px] border border-[var(--color-border-default)] font-ui text-sm text-[var(--color-marino)] placeholder:text-[var(--color-text-tertiary)] focus:outline-none focus:border-[var(--color-marino)] focus:ring-1 focus:ring-[var(--color-marino)]"
+              className="w-full pl-8 pr-4 py-2 rounded-[6px] border border-border-default font-ui text-sm text-marino placeholder:text-text-tertiary focus:outline-none focus:border-marino focus:ring-1 focus:ring-marino"
               style={{ background: "var(--color-bg-warm)" }}
               aria-label="Buscar por nombre o email"
             />
@@ -523,7 +509,7 @@ export default function AdminTurnosPage() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value as BookingStatus | "")}
-            className="px-3 py-2 rounded-[6px] border border-[var(--color-border-default)] font-ui text-sm text-[var(--color-marino)] focus:outline-none focus:border-[var(--color-marino)] focus:ring-1 focus:ring-[var(--color-marino)]"
+            className="px-3 py-2 rounded-[6px] border border-border-default font-ui text-sm text-marino focus:outline-none focus:border-marino focus:ring-1 focus:ring-marino"
             style={{ background: "var(--color-bg-warm)" }}
             aria-label="Filtrar por estado"
           >
@@ -538,7 +524,7 @@ export default function AdminTurnosPage() {
             type="date"
             value={dateFrom}
             onChange={(e) => setDateFrom(e.target.value)}
-            className="px-3 py-2 rounded-[6px] border border-[var(--color-border-default)] font-ui text-sm text-[var(--color-marino)] focus:outline-none focus:border-[var(--color-marino)] focus:ring-1 focus:ring-[var(--color-marino)]"
+            className="px-3 py-2 rounded-[6px] border border-border-default font-ui text-sm text-marino focus:outline-none focus:border-marino focus:ring-1 focus:ring-marino"
             style={{ background: "var(--color-bg-warm)" }}
             aria-label="Fecha desde"
           />
@@ -548,7 +534,7 @@ export default function AdminTurnosPage() {
             type="date"
             value={dateTo}
             onChange={(e) => setDateTo(e.target.value)}
-            className="px-3 py-2 rounded-[6px] border border-[var(--color-border-default)] font-ui text-sm text-[var(--color-marino)] focus:outline-none focus:border-[var(--color-marino)] focus:ring-1 focus:ring-[var(--color-marino)]"
+            className="px-3 py-2 rounded-[6px] border border-border-default font-ui text-sm text-marino focus:outline-none focus:border-marino focus:ring-1 focus:ring-marino"
             style={{ background: "var(--color-bg-warm)" }}
             aria-label="Fecha hasta"
           />
@@ -556,16 +542,14 @@ export default function AdminTurnosPage() {
           <button
             onClick={applyFilters}
             disabled={isPending}
-            className="px-4 py-2 rounded-[6px] font-ui text-sm font-semibold text-[var(--color-bg)] bg-[var(--color-marino)] hover:bg-[var(--color-marino-hover)] transition-colors disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+            className="px-4 py-2 rounded-[6px] font-ui text-sm font-semibold text-bg bg-marino hover:bg-marino-hover transition-colors disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
           >
             Filtrar
           </button>
         </div>
 
         {/* Estado de carga / error */}
-        {isPending && (
-          <p className="font-ui text-sm text-[var(--color-text-secondary)] py-4">Cargando…</p>
-        )}
+        {isPending && <p className="font-ui text-sm text-text-secondary py-4">Cargando…</p>}
         {error && (
           <div
             className="mb-4 px-4 py-3 rounded-[6px] border font-ui text-sm"
@@ -582,19 +566,19 @@ export default function AdminTurnosPage() {
               <div className="py-16 text-center">
                 <Calendar
                   size={32}
-                  className="mx-auto mb-3 text-[var(--color-text-tertiary)]"
+                  className="mx-auto mb-3 text-text-tertiary"
                   aria-hidden="true"
                 />
-                <p className="font-ui text-sm text-[var(--color-text-secondary)]">
+                <p className="font-ui text-sm text-text-secondary">
                   No hay turnos que coincidan con los filtros.
                 </p>
               </div>
             ) : (
-              <div className="overflow-x-auto rounded-[8px] border border-[var(--color-border-default)]">
+              <div className="overflow-x-auto rounded-[8px] border border-border-default">
                 <table className="w-full text-left" aria-label="Lista de turnos">
                   <thead>
                     <tr
-                      className="border-b border-[var(--color-border-default)]"
+                      className="border-b border-border-default"
                       style={{ background: "var(--color-bg-warm)" }}
                     >
                       {[
@@ -608,7 +592,7 @@ export default function AdminTurnosPage() {
                       ].map((col) => (
                         <th
                           key={col}
-                          className="px-4 py-3 font-ui text-xs font-semibold uppercase tracking-wide text-[var(--color-text-tertiary)] whitespace-nowrap"
+                          className="px-4 py-3 font-ui text-xs font-semibold uppercase tracking-wide text-text-tertiary whitespace-nowrap"
                           scope="col"
                         >
                           {col}
@@ -634,7 +618,7 @@ export default function AdminTurnosPage() {
             {/* Paginación */}
             {totalPages > 1 && (
               <div className="flex items-center justify-between mt-4">
-                <p className="font-ui text-xs text-[var(--color-text-tertiary)]">
+                <p className="font-ui text-xs text-text-tertiary">
                   Página {page} de {totalPages} · {total} registros
                 </p>
                 <div className="flex gap-2">
@@ -642,7 +626,7 @@ export default function AdminTurnosPage() {
                     onClick={() => changePage(page - 1)}
                     disabled={page <= 1 || isPending}
                     aria-label="Página anterior"
-                    className="flex items-center gap-1 px-3 py-1.5 rounded-[6px] border border-[var(--color-border-default)] font-ui text-xs font-medium text-[var(--color-marino)] hover:bg-[var(--color-marino-subtle)] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                    className="flex items-center gap-1 px-3 py-1.5 rounded-[6px] border border-border-default font-ui text-xs font-medium text-marino hover:bg-marino-subtle disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                   >
                     <ChevronLeft size={14} aria-hidden="true" />
                     Anterior
@@ -651,7 +635,7 @@ export default function AdminTurnosPage() {
                     onClick={() => changePage(page + 1)}
                     disabled={page >= totalPages || isPending}
                     aria-label="Página siguiente"
-                    className="flex items-center gap-1 px-3 py-1.5 rounded-[6px] border border-[var(--color-border-default)] font-ui text-xs font-medium text-[var(--color-marino)] hover:bg-[var(--color-marino-subtle)] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                    className="flex items-center gap-1 px-3 py-1.5 rounded-[6px] border border-border-default font-ui text-xs font-medium text-marino hover:bg-marino-subtle disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                   >
                     Siguiente
                     <ChevronRight size={14} aria-hidden="true" />

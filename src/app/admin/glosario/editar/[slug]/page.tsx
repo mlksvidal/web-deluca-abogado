@@ -51,21 +51,17 @@ export default async function AdminGlosarioEditarPage({
       <div className="mb-6">
         <Link
           href="/admin/glosario"
-          className="inline-flex items-center gap-1.5 font-ui text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-marino)] transition-colors duration-150 mb-4 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:rounded-[4px]"
+          className="inline-flex items-center gap-1.5 font-ui text-sm text-text-secondary hover:text-marino transition-colors duration-150 mb-4 focus-visible:outline-2 focus-visible:outline-dorado focus-visible:rounded-[4px]"
         >
           <ChevronLeft size={14} />
           Volver al glosario
         </Link>
-        <h1 className="font-serif text-2xl font-semibold text-[var(--color-marino)]">
-          Editar: {termino.termino}
-        </h1>
-        <p className="font-ui text-xs text-[var(--color-text-tertiary)] mt-0.5">
-          /glosario/{termino.slug}
-        </p>
+        <h1 className="font-serif text-2xl font-semibold text-marino">Editar: {termino.termino}</h1>
+        <p className="font-ui text-xs text-text-tertiary mt-0.5">/glosario/{termino.slug}</p>
       </div>
 
       {/* Form */}
-      <div className="bg-[var(--color-bg)] border border-[var(--color-border-default)] rounded-[10px] p-6">
+      <div className="bg-bg border border-border-default rounded-[10px] p-6">
         <GlosarioForm mode="edit" termino={termino} allTerminos={allTerminos} />
       </div>
     </div>

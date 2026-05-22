@@ -43,20 +43,20 @@ function SelectTrigger({
       className={cn(
         // Base institucional — hereda specs de Input
         "flex w-full items-center justify-between gap-2",
-        "bg-[var(--color-bg)] text-[var(--color-carbon)]",
+        "bg-bg text-carbon",
         "font-ui text-base",
         "px-3.5 py-2.5 min-h-11",
-        "border border-[var(--color-border-default)]",
+        "border border-border-default",
         "rounded-[6px]",
         "shadow-[inset_0_1px_3px_rgba(15,30,61,0.08)]",
         "outline-none select-none whitespace-nowrap",
         "transition-[border-color,box-shadow] duration-150",
-        "hover:border-[var(--color-border-strong)]",
-        "focus-visible:border-2 focus-visible:border-[var(--color-marino)]",
+        "hover:border-border-strong",
+        "focus-visible:border-2 focus-visible:border-marino",
         "focus-visible:bg-white focus-visible:shadow-[0_0_0_3px_rgba(15,30,61,0.12)]",
         "disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-[#E2E8F0]",
-        "aria-invalid:border-2 aria-invalid:border-[var(--color-error)]",
-        "data-placeholder:text-[var(--color-text-tertiary)]",
+        "aria-invalid:border-2 aria-invalid:border-error",
+        "data-placeholder:text-text-tertiary",
         "data-[size=sm]:min-h-9 data-[size=sm]:text-sm data-[size=sm]:py-2",
         "*:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center",
         "[&_svg]:pointer-events-none [&_svg]:shrink-0",
@@ -67,7 +67,7 @@ function SelectTrigger({
       {children}
       <SelectPrimitive.Icon
         render={
-          <ChevronDownIcon className="pointer-events-none size-4 text-[var(--color-text-secondary)] transition-transform duration-200 data-popup-open:rotate-180" />
+          <ChevronDownIcon className="pointer-events-none size-4 text-text-secondary transition-transform duration-200 data-popup-open:rotate-180" />
         }
       />
     </SelectPrimitive.Trigger>
@@ -105,8 +105,8 @@ function SelectContent({
             "relative isolate z-[var(--z-dropdown)]",
             "max-h-(--available-height) w-(--anchor-width) min-w-40",
             "overflow-x-hidden overflow-y-auto",
-            "bg-[var(--color-bg)] text-[var(--color-carbon)]",
-            "border border-[var(--color-border-strong)]",
+            "bg-bg text-carbon",
+            "border border-border-strong",
             "rounded-[6px]",
             "shadow-[var(--shadow-lg)]",
             "origin-(--transform-origin)",
@@ -145,9 +145,9 @@ function SelectItem({ className, children, ...props }: SelectPrimitive.Item.Prop
         "px-3.5 py-2.5 text-sm font-ui",
         "outline-none select-none",
         "transition-colors duration-fast",
-        "hover:bg-[var(--color-marino-subtle)] hover:text-[var(--color-marino)]",
-        "focus:bg-[var(--color-marino-subtle)] focus:text-[var(--color-marino)]",
-        "data-selected:bg-[var(--color-marino)] data-selected:text-[var(--color-bg)]",
+        "hover:bg-marino-subtle hover:text-marino",
+        "focus:bg-marino-subtle focus:text-marino",
+        "data-selected:bg-marino data-selected:text-bg",
         "data-disabled:pointer-events-none data-disabled:text-[#94A3B8]",
         "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className

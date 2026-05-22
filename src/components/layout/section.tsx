@@ -24,9 +24,9 @@ type SectionProps = React.ComponentProps<"section"> & {
 function Section({ as: Tag = "section", variant = "default", className, ...props }: SectionProps) {
   const bgStyles = {
     default: "",
-    alt: "bg-[var(--color-bg-warm)]",
-    dark: "bg-[var(--color-marino)] text-[var(--color-bg)]",
-    secondary: "bg-[var(--color-bg-secondary)]",
+    alt: "bg-bg-warm",
+    dark: "bg-marino text-bg",
+    secondary: "bg-bg-secondary",
   };
 
   return (

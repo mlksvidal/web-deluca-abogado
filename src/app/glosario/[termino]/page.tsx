@@ -202,17 +202,17 @@ export default async function TerminoPage({ params }: { params: Promise<{ termin
 
       {/* ─── Hero editorial ───────────────────────────────────────── */}
       <section
-        className="pt-28 pb-10 border-b border-[var(--color-border-default)]"
+        className="pt-28 pb-10 border-b border-border-default"
         style={{ background: "var(--color-bg-secondary)" }}
       >
         <Container size="narrow">
           {/* Breadcrumb */}
           <nav aria-label="Ubicación en el sitio" className="mb-6">
-            <ol className="flex items-center flex-wrap gap-1 font-ui text-xs text-[var(--color-text-tertiary)]">
+            <ol className="flex items-center flex-wrap gap-1 font-ui text-xs text-text-tertiary">
               <li>
                 <Link
                   href="/glosario"
-                  className="hover:text-[var(--color-marino)] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)]"
+                  className="hover:text-marino transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-dorado"
                 >
                   Glosario
                 </Link>
@@ -223,7 +223,7 @@ export default async function TerminoPage({ params }: { params: Promise<{ termin
               <li>
                 <Link
                   href={`/glosario?letra=${t.letra}`}
-                  className="hover:text-[var(--color-marino)] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)]"
+                  className="hover:text-marino transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-dorado"
                 >
                   {t.letra}
                 </Link>
@@ -231,7 +231,7 @@ export default async function TerminoPage({ params }: { params: Promise<{ termin
               <li aria-hidden="true">
                 <ChevronRight size={12} />
               </li>
-              <li aria-current="page" className="text-[var(--color-carbon)] font-500">
+              <li aria-current="page" className="text-carbon font-500">
                 {t.termino}
               </li>
             </ol>
@@ -252,7 +252,7 @@ export default async function TerminoPage({ params }: { params: Promise<{ termin
           </div>
 
           {/* Título */}
-          <h1 className="font-serif text-[var(--text-4xl)] font-600 text-[var(--color-marino)] leading-tight mb-4">
+          <h1 className="font-serif text-[var(--text-4xl)] font-600 text-marino leading-tight mb-4">
             {t.termino}
           </h1>
 
@@ -273,12 +273,10 @@ export default async function TerminoPage({ params }: { params: Promise<{ termin
           <div className="space-y-10">
             {/* Definición corta */}
             <div>
-              <h2 className="font-ui text-xs font-600 tracking-[0.12em] uppercase text-[var(--color-dorado-deep)] mb-3">
+              <h2 className="font-ui text-xs font-600 tracking-[0.12em] uppercase text-dorado-deep mb-3">
                 Definición corta
               </h2>
-              <p className="font-body text-lg leading-relaxed text-[var(--color-carbon)]">
-                {t.definicionCorta}
-              </p>
+              <p className="font-body text-lg leading-relaxed text-carbon">{t.definicionCorta}</p>
             </div>
 
             <hr
@@ -292,7 +290,7 @@ export default async function TerminoPage({ params }: { params: Promise<{ termin
 
             {/* Definición completa */}
             <div>
-              <h2 className="font-ui text-xs font-600 tracking-[0.12em] uppercase text-[var(--color-dorado-deep)] mb-4">
+              <h2 className="font-ui text-xs font-600 tracking-[0.12em] uppercase text-dorado-deep mb-4">
                 Definición completa
               </h2>
               <div
@@ -312,7 +310,7 @@ export default async function TerminoPage({ params }: { params: Promise<{ termin
             {/* Sinónimos */}
             {t.sinonimos && t.sinonimos.length > 0 && (
               <div>
-                <h2 className="font-ui text-xs font-600 tracking-[0.12em] uppercase text-[var(--color-dorado-deep)] mb-3">
+                <h2 className="font-ui text-xs font-600 tracking-[0.12em] uppercase text-dorado-deep mb-3">
                   Sinónimos y términos equivalentes
                 </h2>
                 <div className="flex flex-wrap gap-2" role="list" aria-label="Sinónimos">
@@ -320,7 +318,7 @@ export default async function TerminoPage({ params }: { params: Promise<{ termin
                     <span
                       key={sin}
                       role="listitem"
-                      className="px-3 py-1 rounded-full font-ui text-sm text-[var(--color-text-secondary)] border border-[var(--color-border-default)] bg-[var(--color-bg-warm)]"
+                      className="px-3 py-1 rounded-full font-ui text-sm text-text-secondary border border-border-default bg-bg-warm"
                     >
                       {sin}
                     </span>
@@ -332,7 +330,7 @@ export default async function TerminoPage({ params }: { params: Promise<{ termin
             {/* Términos relacionados */}
             {relacionados.length > 0 && (
               <div>
-                <h2 className="font-ui text-xs font-600 tracking-[0.12em] uppercase text-[var(--color-dorado-deep)] mb-4">
+                <h2 className="font-ui text-xs font-600 tracking-[0.12em] uppercase text-dorado-deep mb-4">
                   Términos relacionados
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -340,7 +338,7 @@ export default async function TerminoPage({ params }: { params: Promise<{ termin
                     <Link
                       key={relSlug}
                       href={`/glosario/${relSlug}`}
-                      className="flex items-center gap-3 px-4 py-3 rounded-[6px] border border-[var(--color-border-default)] bg-[var(--color-bg)] hover:border-[var(--color-marino)] hover:-translate-y-[1px] hover:shadow-[var(--shadow-sm)] transition-all duration-200 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+                      className="flex items-center gap-3 px-4 py-3 rounded-[6px] border border-border-default bg-bg hover:border-marino hover:-translate-y-[1px] hover:shadow-[var(--shadow-sm)] transition-all duration-200 focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
                       aria-label={`Ver definición de ${relSlug}`}
                     >
                       <span
@@ -353,7 +351,7 @@ export default async function TerminoPage({ params }: { params: Promise<{ termin
                       >
                         {relSlug.charAt(0).toUpperCase()}
                       </span>
-                      <span className="font-ui text-sm font-500 text-[var(--color-marino)] capitalize">
+                      <span className="font-ui text-sm font-500 text-marino capitalize">
                         {relSlug.replace(/-/g, " ")}
                       </span>
                     </Link>
@@ -367,7 +365,7 @@ export default async function TerminoPage({ params }: { params: Promise<{ termin
 
       {/* ─── CTA al final ─────────────────────────────────────────── */}
       <section
-        className="py-14 border-t border-[var(--color-border-default)]"
+        className="py-14 border-t border-border-default"
         style={{ background: "var(--color-marino)" }}
       >
         <Container size="narrow">
@@ -378,7 +376,7 @@ export default async function TerminoPage({ params }: { params: Promise<{ termin
             >
               Consulta profesional
             </p>
-            <h2 className="font-serif text-2xl font-500 text-[var(--color-bg)] mb-3">
+            <h2 className="font-serif text-2xl font-500 text-bg mb-3">
               ¿Necesitás asesoramiento sobre este tema?
             </h2>
             <p className="font-body text-sm mb-8" style={{ color: "rgba(250,247,242,0.65)" }}>
@@ -386,7 +384,7 @@ export default async function TerminoPage({ params }: { params: Promise<{ termin
             </p>
             <a
               href="/reservar"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-[6px] font-ui text-sm font-600 transition-all duration-250 hover:-translate-y-[2px] focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-[6px] font-ui text-sm font-600 transition-all duration-250 hover:-translate-y-[2px] focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
               style={{ background: "var(--color-dorado)", color: "var(--color-marino)" }}
             >
               Reservar consulta →
@@ -396,11 +394,11 @@ export default async function TerminoPage({ params }: { params: Promise<{ termin
       </section>
 
       {/* ─── Volver al glosario ───────────────────────────────────── */}
-      <div className="py-6 border-t border-[var(--color-border-default)]">
+      <div className="py-6 border-t border-border-default">
         <Container size="narrow">
           <Link
             href="/glosario"
-            className="font-ui text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-marino)] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:rounded-[4px] flex items-center gap-1"
+            className="font-ui text-sm text-text-secondary hover:text-marino transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-dorado focus-visible:rounded-[4px] flex items-center gap-1"
           >
             ← Volver al glosario
           </Link>

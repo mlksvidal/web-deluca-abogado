@@ -55,28 +55,21 @@ function SchemaLegalPage() {
 
 function SectionTitle({ id, children }: { id: string; children: React.ReactNode }) {
   return (
-    <h2
-      id={id}
-      className="font-serif text-xl font-semibold text-[var(--color-marino)] mt-10 mb-4 scroll-mt-24"
-    >
+    <h2 id={id} className="font-serif text-xl font-semibold text-marino mt-10 mb-4 scroll-mt-24">
       {children}
     </h2>
   );
 }
 
 function Paragraph({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="font-body text-base leading-relaxed text-[var(--color-carbon-soft)] mb-4">
-      {children}
-    </p>
-  );
+  return <p className="font-body text-base leading-relaxed text-carbon-soft mb-4">{children}</p>;
 }
 
 function BulletList({ items }: { items: string[] }) {
   return (
     <ul className="list-disc list-outside pl-5 mb-4 space-y-1.5">
       {items.map((item, i) => (
-        <li key={i} className="font-body text-base text-[var(--color-carbon-soft)] leading-relaxed">
+        <li key={i} className="font-body text-base text-carbon-soft leading-relaxed">
           {item}
         </li>
       ))}
@@ -87,12 +80,12 @@ function BulletList({ items }: { items: string[] }) {
 function DisclaimerBox({ children }: { children: React.ReactNode }) {
   return (
     <div
-      className="border border-[var(--color-border-strong)] rounded-[8px] px-5 py-4 my-6"
+      className="border border-border-strong rounded-[8px] px-5 py-4 my-6"
       style={{ background: "var(--color-bg-warm)" }}
       role="note"
       aria-label="Advertencia legal importante"
     >
-      <p className="font-ui text-xs uppercase tracking-widest text-[var(--color-marino)] font-semibold mb-2">
+      <p className="font-ui text-xs uppercase tracking-widest text-marino font-semibold mb-2">
         Aviso legal importante
       </p>
       {children}
@@ -109,14 +102,14 @@ export default function TerminosPage() {
 
       {/* Hero editorial */}
       <section
-        className="border-b border-[var(--color-border-default)]"
+        className="border-b border-border-default"
         style={{ background: "var(--color-marino)" }}
       >
         <div className="max-w-3xl mx-auto px-6 py-14 md:py-20">
           <p className="font-ui text-xs uppercase tracking-widest text-[rgba(201,169,97,0.80)] mb-3">
             Marco legal
           </p>
-          <h1 className="font-serif text-3xl md:text-4xl font-bold text-[var(--color-bg)] leading-tight mb-4">
+          <h1 className="font-serif text-3xl md:text-4xl font-bold text-bg leading-tight mb-4">
             Términos y Condiciones de Uso
           </h1>
           <p className="font-body text-base text-[rgba(250,247,242,0.75)] max-w-xl">
@@ -135,7 +128,7 @@ export default function TerminosPage() {
       >
         {/* Índice rápido */}
         <nav aria-label="Índice de secciones" className="mb-10">
-          <p className="font-ui text-xs uppercase tracking-wide text-[var(--color-text-tertiary)] mb-3">
+          <p className="font-ui text-xs uppercase tracking-wide text-text-tertiary mb-3">
             Contenido
           </p>
           <ol className="list-decimal list-inside space-y-1.5">
@@ -156,7 +149,7 @@ export default function TerminosPage() {
               <li key={href}>
                 <a
                   href={href}
-                  className="font-ui text-sm text-[var(--color-marino)] hover:text-[var(--color-dorado-deep)] transition-colors duration-150 underline underline-offset-2"
+                  className="font-ui text-sm text-marino hover:text-dorado-deep transition-colors duration-150 underline underline-offset-2"
                 >
                   {label}
                 </a>
@@ -165,7 +158,7 @@ export default function TerminosPage() {
           </ol>
         </nav>
 
-        <hr className="border-[var(--color-border-default)] mb-10" />
+        <hr className="border-border-default mb-10" />
 
         {/* § 1 — Aceptación */}
         <SectionTitle id="aceptacion">1. Aceptación de los términos</SectionTitle>
@@ -203,18 +196,18 @@ export default function TerminosPage() {
           3. Naturaleza informativa del contenido
         </SectionTitle>
         <DisclaimerBox>
-          <p className="font-body text-sm text-[var(--color-carbon-soft)] leading-relaxed">
+          <p className="font-body text-sm text-carbon-soft leading-relaxed">
             Todo el contenido publicado en este Sitio — incluyendo artículos del blog, el glosario
             jurídico, guías descargables y cualquier otro material — tiene{" "}
             <strong>carácter exclusivamente informativo y orientativo</strong>. Dicho contenido no
             constituye ni reemplaza el asesoramiento jurídico profesional.
           </p>
-          <p className="font-body text-sm text-[var(--color-carbon-soft)] leading-relaxed mt-2">
+          <p className="font-body text-sm text-carbon-soft leading-relaxed mt-2">
             Cada situación legal es particular y requiere análisis individualizado por un
             profesional habilitado. Para recibir asesoramiento legal vinculante,{" "}
             <Link
               href="/reservar"
-              className="text-[var(--color-marino)] font-semibold underline underline-offset-2 hover:text-[var(--color-dorado-deep)]"
+              className="text-marino font-semibold underline underline-offset-2 hover:text-dorado-deep"
             >
               reserve una consulta
             </Link>
@@ -237,14 +230,14 @@ export default function TerminosPage() {
           herramientas:
         </Paragraph>
         <DisclaimerBox>
-          <p className="font-body text-sm text-[var(--color-carbon-soft)] leading-relaxed">
+          <p className="font-body text-sm text-carbon-soft leading-relaxed">
             Los resultados de las calculadoras y verificadores son{" "}
             <strong>estimaciones orientativas</strong> basadas en parámetros generales. No
             constituyen liquidaciones definitivas, peritajes, ni dictámenes jurídicos. Los montos,
             plazos y cálculos pueden variar en función de las circunstancias particulares de cada
             caso, jurisprudencia aplicable, actualizaciones legislativas y criterios judiciales.
           </p>
-          <p className="font-body text-sm text-[var(--color-carbon-soft)] leading-relaxed mt-2">
+          <p className="font-body text-sm text-carbon-soft leading-relaxed mt-2">
             El Estudio no garantiza la exactitud, integridad o vigencia de los resultados obtenidos.
             El uso de estas herramientas no genera relación profesional ni responsabilidad legal
             alguna.
@@ -327,30 +320,30 @@ export default function TerminosPage() {
           Sitio, puede comunicarse al correo:{" "}
           <a
             href={`mailto:${siteConfig.email}`}
-            className="text-[var(--color-marino)] underline underline-offset-2 hover:text-[var(--color-dorado-deep)]"
+            className="text-marino underline underline-offset-2 hover:text-dorado-deep"
           >
             {siteConfig.email}
           </a>
           .
         </Paragraph>
 
-        <hr className="border-[var(--color-border-default)] my-10" />
+        <hr className="border-border-default my-10" />
 
         {/* Footer legal */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-between">
-          <p className="font-ui text-xs text-[var(--color-text-tertiary)]">
+          <p className="font-ui text-xs text-text-tertiary">
             Vigente desde el {LAST_UPDATED_DISPLAY}
           </p>
           <div className="flex gap-4">
             <Link
               href="/privacidad"
-              className="font-ui text-xs text-[var(--color-marino)] underline underline-offset-2 hover:text-[var(--color-dorado-deep)] transition-colors"
+              className="font-ui text-xs text-marino underline underline-offset-2 hover:text-dorado-deep transition-colors"
             >
               Política de privacidad
             </Link>
             <Link
               href="/"
-              className="font-ui text-xs text-[var(--color-marino)] underline underline-offset-2 hover:text-[var(--color-dorado-deep)] transition-colors"
+              className="font-ui text-xs text-marino underline underline-offset-2 hover:text-dorado-deep transition-colors"
             >
               Inicio
             </Link>

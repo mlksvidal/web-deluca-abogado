@@ -31,7 +31,7 @@ const buttonVariants = cva(
     "transition-all duration-250 ease-primary",
     "select-none cursor-pointer whitespace-nowrap",
     "outline-none",
-    "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3",
+    "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3",
     "disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0",
     // Contenedor de isolate para shimmer
@@ -44,10 +44,10 @@ const buttonVariants = cva(
       variant: {
         /** Marino bg + blanco roto texto — CTA principal */
         primary: [
-          "bg-[var(--color-marino)] text-[var(--color-bg)]",
+          "bg-marino text-bg",
           "shadow-[var(--shadow-sm)]",
           "rounded-sm",
-          "hover:bg-[var(--color-marino-hover)] hover:-translate-y-0.5",
+          "hover:bg-marino-hover hover:-translate-y-0.5",
           "hover:shadow-[var(--shadow-accent)]",
           "active:translate-y-0 active:shadow-[var(--shadow-xs)] active:bg-[#0A1630]",
           "duration-250",
@@ -55,46 +55,46 @@ const buttonVariants = cva(
 
         /** Outline marino + inversión en hover — CTA secundario sobre fondos claros */
         secondary: [
-          "bg-transparent text-[var(--color-marino)]",
-          "border-2 border-[var(--color-marino)]",
+          "bg-transparent text-marino",
+          "border-2 border-marino",
           "rounded-sm",
-          "hover:bg-[var(--color-marino)] hover:text-[var(--color-bg)]",
+          "hover:bg-marino hover:text-bg",
           "hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]",
-          "active:translate-y-0 active:bg-[#0A1630] active:text-[var(--color-bg)]",
+          "active:translate-y-0 active:bg-[#0A1630] active:text-bg",
         ].join(" "),
 
         /** Transparente — acciones secundarias en contexto claro */
         ghost: [
-          "bg-transparent text-[var(--color-marino)]",
+          "bg-transparent text-marino",
           "rounded-sm",
-          "hover:bg-[var(--color-marino-subtle)]",
-          "active:bg-[var(--color-marino-subtle)]",
+          "hover:bg-marino-subtle",
+          "active:bg-marino-subtle",
           // sin shimmer — sobreescribir antes pseudo-elemento
           "[&::before]:hidden",
         ].join(" "),
 
         /** Solo texto con underline animado */
         link: [
-          "bg-transparent text-[var(--color-marino)]",
+          "bg-transparent text-marino",
           "p-0 h-auto tracking-normal normal-case font-normal",
-          "underline underline-offset-4 decoration-[var(--color-dorado)]",
+          "underline underline-offset-4 decoration-dorado",
           "hover:decoration-2",
           "[&::before]:hidden",
         ].join(" "),
 
         /** Dorado bg + marino texto — SOLO sobre fondos oscuros (hero, booking card) */
         gold: [
-          "bg-[var(--color-dorado)] text-[var(--color-marino)]",
+          "bg-dorado text-marino",
           "rounded-sm",
           "shadow-[var(--shadow-sm)]",
-          "hover:bg-[var(--color-dorado-hover)] hover:-translate-y-0.5",
+          "hover:bg-dorado-hover hover:-translate-y-0.5",
           "hover:shadow-[var(--shadow-accent)]",
-          "active:translate-y-0 active:bg-[var(--color-dorado-deep)]",
+          "active:translate-y-0 active:bg-dorado-deep",
         ].join(" "),
 
         /** Rojo — solo en modales de cancelación/destrucción */
         danger: [
-          "bg-[var(--color-emergencia)] text-white",
+          "bg-emergencia text-white",
           "rounded-sm",
           "shadow-[var(--shadow-sm)]",
           "hover:bg-[#991B1B] hover:-translate-y-px",
@@ -104,7 +104,7 @@ const buttonVariants = cva(
 
         /** Outline hero — sobre overlay marino en hero section */
         "ghost-inverse": [
-          "bg-transparent text-[var(--color-bg)]",
+          "bg-transparent text-bg",
           "border border-[rgba(250,247,242,0.5)]",
           "rounded-sm",
           "hover:border-[rgba(250,247,242,0.8)] hover:bg-[rgba(250,247,242,0.10)]",

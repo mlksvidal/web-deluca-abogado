@@ -57,10 +57,8 @@ export default async function AdminGlosarioPage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="font-serif text-2xl font-semibold text-[var(--color-marino)]">
-            Glosario jurídico
-          </h1>
-          <p className="font-ui text-sm text-[var(--color-text-secondary)] mt-0.5">
+          <h1 className="font-serif text-2xl font-semibold text-marino">Glosario jurídico</h1>
+          <p className="font-ui text-sm text-text-secondary mt-0.5">
             {terminos.length} término{terminos.length !== 1 ? "s" : ""} publicados
           </p>
         </div>
@@ -69,14 +67,14 @@ export default async function AdminGlosarioPage() {
             href="/glosario"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-[6px] font-ui text-xs font-500 text-[var(--color-text-secondary)] border border-[var(--color-border-default)] bg-[var(--color-bg)] hover:border-[var(--color-marino)] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)]"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-[6px] font-ui text-xs font-500 text-text-secondary border border-border-default bg-bg hover:border-marino transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-dorado"
           >
             <ExternalLink size={12} />
             Ver sitio
           </Link>
           <Link
             href="/admin/glosario/nuevo"
-            className="flex items-center gap-1.5 px-4 py-2 rounded-[6px] font-ui text-sm font-600 transition-colors duration-150 hover:-translate-y-[1px] focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)]"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-[6px] font-ui text-sm font-600 transition-colors duration-150 hover:-translate-y-[1px] focus-visible:outline-2 focus-visible:outline-dorado"
             style={{ background: "var(--color-marino)", color: "var(--color-bg)" }}
           >
             <Plus size={14} />
@@ -86,11 +84,9 @@ export default async function AdminGlosarioPage() {
       </div>
 
       {terminos.length === 0 ? (
-        <div className="text-center py-16 bg-[var(--color-bg)] rounded-[8px] border border-[var(--color-border-default)]">
-          <p className="font-serif text-lg text-[var(--color-text-secondary)] mb-2">
-            Aún no hay términos
-          </p>
-          <p className="font-ui text-sm text-[var(--color-text-tertiary)] mb-6">
+        <div className="text-center py-16 bg-bg rounded-[8px] border border-border-default">
+          <p className="font-serif text-lg text-text-secondary mb-2">Aún no hay términos</p>
+          <p className="font-ui text-sm text-text-tertiary mb-6">
             Agregá el primer término al glosario.
           </p>
           <Link
@@ -118,54 +114,49 @@ export default async function AdminGlosarioPage() {
                   className="flex-1 h-px"
                   style={{ background: "var(--color-border-default)" }}
                 />
-                <span className="font-ui text-xs text-[var(--color-text-tertiary)]">
+                <span className="font-ui text-xs text-text-tertiary">
                   {porLetra[letra].length} término{porLetra[letra].length !== 1 ? "s" : ""}
                 </span>
               </div>
 
               {/* Tabla de términos */}
-              <div className="bg-[var(--color-bg)] rounded-[8px] border border-[var(--color-border-default)] overflow-hidden">
+              <div className="bg-bg rounded-[8px] border border-border-default overflow-hidden">
                 <table className="w-full text-sm">
                   <thead>
                     <tr
-                      className="border-b border-[var(--color-border-default)]"
+                      className="border-b border-border-default"
                       style={{ background: "var(--color-bg-warm)" }}
                     >
-                      <th className="text-left px-4 py-2.5 font-ui text-xs font-600 text-[var(--color-text-secondary)] tracking-wide uppercase">
+                      <th className="text-left px-4 py-2.5 font-ui text-xs font-600 text-text-secondary tracking-wide uppercase">
                         Término
                       </th>
-                      <th className="text-left px-4 py-2.5 font-ui text-xs font-600 text-[var(--color-text-secondary)] tracking-wide uppercase hidden sm:table-cell">
+                      <th className="text-left px-4 py-2.5 font-ui text-xs font-600 text-text-secondary tracking-wide uppercase hidden sm:table-cell">
                         Área
                       </th>
-                      <th className="text-left px-4 py-2.5 font-ui text-xs font-600 text-[var(--color-text-secondary)] tracking-wide uppercase hidden md:table-cell">
+                      <th className="text-left px-4 py-2.5 font-ui text-xs font-600 text-text-secondary tracking-wide uppercase hidden md:table-cell">
                         Sinónimos
                       </th>
-                      <th className="text-right px-4 py-2.5 font-ui text-xs font-600 text-[var(--color-text-secondary)] tracking-wide uppercase">
+                      <th className="text-right px-4 py-2.5 font-ui text-xs font-600 text-text-secondary tracking-wide uppercase">
                         Acciones
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[var(--color-border-default)]">
+                  <tbody className="divide-y divide-border-default">
                     {porLetra[letra].map((t) => (
-                      <tr
-                        key={t.id}
-                        className="hover:bg-[var(--color-bg-warm)] transition-colors duration-100"
-                      >
+                      <tr key={t.id} className="hover:bg-bg-warm transition-colors duration-100">
                         <td className="px-4 py-3">
-                          <div className="font-ui text-sm font-500 text-[var(--color-marino)]">
-                            {t.termino}
-                          </div>
-                          <div className="font-ui text-xs text-[var(--color-text-tertiary)] mt-0.5">
+                          <div className="font-ui text-sm font-500 text-marino">{t.termino}</div>
+                          <div className="font-ui text-xs text-text-tertiary mt-0.5">
                             /glosario/{t.slug}
                           </div>
                         </td>
                         <td className="px-4 py-3 hidden sm:table-cell">
-                          <span className="font-ui text-xs text-[var(--color-text-secondary)]">
+                          <span className="font-ui text-xs text-text-secondary">
                             {t.areaLegal ? (AREA_LABELS[t.areaLegal] ?? t.areaLegal) : "—"}
                           </span>
                         </td>
                         <td className="px-4 py-3 hidden md:table-cell">
-                          <span className="font-ui text-xs text-[var(--color-text-tertiary)]">
+                          <span className="font-ui text-xs text-text-tertiary">
                             {t.sinonimos && t.sinonimos.length > 0
                               ? t.sinonimos.slice(0, 2).join(", ") +
                                 (t.sinonimos.length > 2 ? ` +${t.sinonimos.length - 2}` : "")
@@ -178,14 +169,14 @@ export default async function AdminGlosarioPage() {
                               href={`/glosario/${t.slug}`}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="p-1.5 rounded-[4px] text-[var(--color-text-tertiary)] hover:text-[var(--color-marino)] hover:bg-[var(--color-bg-secondary)] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)]"
+                              className="p-1.5 rounded-[4px] text-text-tertiary hover:text-marino hover:bg-bg-secondary transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-dorado"
                               aria-label={`Ver ${t.termino} en el sitio`}
                             >
                               <ExternalLink size={13} />
                             </Link>
                             <Link
                               href={`/admin/glosario/editar/${t.slug}`}
-                              className="p-1.5 rounded-[4px] text-[var(--color-text-tertiary)] hover:text-[var(--color-marino)] hover:bg-[var(--color-bg-secondary)] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)]"
+                              className="p-1.5 rounded-[4px] text-text-tertiary hover:text-marino hover:bg-bg-secondary transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-dorado"
                               aria-label={`Editar ${t.termino}`}
                             >
                               <Pencil size={13} />

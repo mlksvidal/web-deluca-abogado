@@ -94,7 +94,7 @@ function NavLink({
         "relative py-1 px-0.5",
         "font-ui text-sm font-medium tracking-[0.03em] uppercase",
         "transition-colors duration-normal",
-        "text-[var(--color-carbon-soft)] hover:text-[var(--color-marino)]"
+        "text-carbon-soft hover:text-marino"
       )}
     >
       {children}
@@ -131,8 +131,8 @@ function NavDropdown({ item, scrolled }: { item: NavItem; scrolled: boolean }) {
           "flex items-center gap-1",
           "transition-colors duration-normal",
           "outline-none",
-          "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3",
-          "text-[var(--color-carbon-soft)] hover:text-[var(--color-marino)]"
+          "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3",
+          "text-carbon-soft hover:text-marino"
         )}
       >
         {item.label}
@@ -150,8 +150,8 @@ function NavDropdown({ item, scrolled }: { item: NavItem; scrolled: boolean }) {
           className={cn(
             "absolute top-full left-0 mt-2",
             "min-w-[200px]",
-            "bg-[var(--color-bg)]",
-            "border border-[var(--color-border-default)]",
+            "bg-bg",
+            "border border-border-default",
             "rounded-[6px]",
             "shadow-[var(--shadow-lg)]",
             "py-1",
@@ -166,9 +166,9 @@ function NavDropdown({ item, scrolled }: { item: NavItem; scrolled: boolean }) {
               onClick={() => setOpen(false)}
               className={cn(
                 "block px-4 py-2.5",
-                "font-ui text-sm text-[var(--color-carbon-soft)]",
+                "font-ui text-sm text-carbon-soft",
                 "transition-colors duration-fast",
-                "hover:bg-[var(--color-marino-subtle)] hover:text-[var(--color-marino)]"
+                "hover:bg-marino-subtle hover:text-marino"
               )}
             >
               {child.label}
@@ -217,7 +217,7 @@ function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void })
         <div
           className={cn(
             "fixed inset-0 z-[var(--z-overlay)]",
-            "bg-[var(--color-overlay)]",
+            "bg-overlay",
             "transition-opacity duration-400"
           )}
           aria-hidden="true"
@@ -234,7 +234,7 @@ function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void })
         className={cn(
           "fixed top-0 right-0 bottom-0 z-[calc(var(--z-overlay)+1)]",
           "w-[min(80vw,320px)]",
-          "bg-[var(--color-bg)]",
+          "bg-bg",
           "flex flex-col",
           "shadow-[var(--shadow-xl)]",
           "transition-transform duration-400 ease-primary",
@@ -242,18 +242,18 @@ function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void })
         )}
       >
         {/* Header del drawer */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--color-border-default)]">
-          <span className="font-serif text-lg font-medium text-[var(--color-marino)]">Menú</span>
+        <div className="flex items-center justify-between px-6 py-4 border-b border-border-default">
+          <span className="font-serif text-lg font-medium text-marino">Menú</span>
           <button
             onClick={onClose}
             aria-label="Cerrar menú"
             className={cn(
               "w-11 h-11 flex items-center justify-center",
-              "text-[var(--color-carbon-soft)]",
-              "hover:text-[var(--color-marino)]",
+              "text-carbon-soft",
+              "hover:text-marino",
               "transition-colors duration-fast",
               "rounded-[4px]",
-              "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3"
+              "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3"
             )}
           >
             <X size={20} strokeWidth={1.5} aria-hidden="true" />
@@ -269,11 +269,11 @@ function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void })
                 className={cn(
                   "w-full text-left px-6 py-4",
                   "font-ui text-base font-medium tracking-[0.03em] uppercase",
-                  "text-[var(--color-carbon-soft)]",
-                  "border-b border-[var(--color-border-default)]",
+                  "text-carbon-soft",
+                  "border-b border-border-default",
                   "transition-colors duration-fast",
-                  "hover:bg-[var(--color-marino-subtle)] hover:text-[var(--color-marino)]",
-                  "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)]"
+                  "hover:bg-marino-subtle hover:text-marino",
+                  "focus-visible:outline-2 focus-visible:outline-dorado"
                 )}
               >
                 {item.label}
@@ -286,10 +286,10 @@ function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void })
                   onClick={onClose}
                   className={cn(
                     "block px-10 py-3",
-                    "font-ui text-sm text-[var(--color-text-secondary)]",
-                    "border-b border-[var(--color-border-default)]",
+                    "font-ui text-sm text-text-secondary",
+                    "border-b border-border-default",
                     "transition-colors duration-fast",
-                    "hover:bg-[var(--color-marino-subtle)] hover:text-[var(--color-marino)]"
+                    "hover:bg-marino-subtle hover:text-marino"
                   )}
                 >
                   {child.label}
@@ -300,7 +300,7 @@ function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void })
         </nav>
 
         {/* CTA al fondo del drawer */}
-        <div className="p-6 border-t border-[var(--color-border-default)]">
+        <div className="p-6 border-t border-border-default">
           <Link href="/reservar" onClick={onClose} className="block">
             <Button variant="primary" size="lg" className="w-full" withArrow>
               Reservar consulta
@@ -334,7 +334,7 @@ function Header() {
           "focus:absolute focus:z-[calc(var(--z-toast)+1)]",
           "focus:top-4 focus:left-4",
           "focus:px-4 focus:py-2",
-          "focus:bg-[var(--color-marino)] focus:text-[var(--color-bg)]",
+          "focus:bg-marino focus:text-bg",
           "focus:rounded-[4px]",
           "focus:font-ui focus:text-sm focus:font-medium"
         )}
@@ -351,7 +351,7 @@ function Header() {
             "bg-[rgba(250,247,242,0.85)] backdrop-blur-md border-b border-[rgba(15,30,61,0.04)] h-20",
           // Estado 1: sólido con sombra al hacer scroll
           scrolled &&
-            "bg-[rgba(250,247,242,0.97)] border-b border-[var(--color-border-default)] shadow-[var(--shadow-sm)] h-16"
+            "bg-[rgba(250,247,242,0.97)] border-b border-border-default shadow-[var(--shadow-sm)] h-16"
         )}
       >
         <div
@@ -371,16 +371,13 @@ function Header() {
               <span
                 className={cn(
                   "font-serif font-[500] leading-tight tracking-[-0.01em]",
-                  "text-[22px] text-[var(--color-marino)]"
+                  "text-[22px] text-marino"
                 )}
               >
                 Pablo De Luca
               </span>
               <span
-                className={cn(
-                  "font-ui text-[10px] font-[500] uppercase",
-                  "text-[var(--color-dorado)]"
-                )}
+                className={cn("font-ui text-[10px] font-[500] uppercase", "text-dorado")}
                 style={{ letterSpacing: "0.18em" }}
               >
                 ABOGADO
@@ -422,9 +419,9 @@ function Header() {
                 "rounded-[4px]",
                 "transition-colors duration-fast",
                 scrolled
-                  ? "text-[var(--color-marino)] hover:bg-[var(--color-marino-subtle)]"
-                  : "text-[var(--color-bg)] hover:bg-[rgba(250,247,242,0.15)]",
-                "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3"
+                  ? "text-marino hover:bg-marino-subtle"
+                  : "text-bg hover:bg-[rgba(250,247,242,0.15)]",
+                "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3"
               )}
             >
               <Menu size={22} strokeWidth={1.5} aria-hidden="true" />

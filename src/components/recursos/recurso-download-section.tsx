@@ -14,18 +14,18 @@ export function RecursoDownloadSection({ recurso }: RecursoDownloadSectionProps)
     <div
       className={cn(
         "rounded-[12px] overflow-hidden",
-        "border-t-4 border-t-[var(--color-marino)]",
-        "border border-[var(--color-border-default)]",
+        "border-t-4 border-t-marino",
+        "border border-border-default",
         "shadow-[var(--shadow-md)]"
       )}
       style={{ background: "var(--color-bg)" }}
     >
       {/* Header del panel */}
-      <div className="px-6 pt-6 pb-4 border-b border-[var(--color-border-default)]">
-        <h2 className="font-serif text-xl font-semibold text-[var(--color-marino)] leading-snug">
+      <div className="px-6 pt-6 pb-4 border-b border-border-default">
+        <h2 className="font-serif text-xl font-semibold text-marino leading-snug">
           Descargá este documento
         </h2>
-        <p className="font-body text-sm text-[var(--color-text-secondary)] mt-1">
+        <p className="font-body text-sm text-text-secondary mt-1">
           Completá tus datos y accedé al PDF de forma gratuita.
         </p>
       </div>

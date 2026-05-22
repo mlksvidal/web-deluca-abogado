@@ -139,10 +139,10 @@ export function DownloadForm({ recurso, onSuccess, className }: DownloadFormProp
         </div>
 
         <div className="space-y-2">
-          <h3 className="font-serif text-xl font-semibold text-[var(--color-marino)]">
+          <h3 className="font-serif text-xl font-semibold text-marino">
             ¡Listo! Tu descarga está lista.
           </h3>
-          <p className="font-body text-sm text-[var(--color-text-secondary)] max-w-sm mx-auto">
+          <p className="font-body text-sm text-text-secondary max-w-sm mx-auto">
             También enviamos una copia a tu email para que puedas acceder cuando quieras.
           </p>
         </div>
@@ -153,12 +153,12 @@ export function DownloadForm({ recurso, onSuccess, className }: DownloadFormProp
           className={cn(
             "inline-flex items-center gap-2.5",
             "px-7 py-3 h-12",
-            "bg-[var(--color-marino)] text-[var(--color-bg)]",
+            "bg-marino text-bg",
             "font-ui text-sm font-medium tracking-wide uppercase",
             "rounded-sm",
-            "hover:bg-[var(--color-marino-hover)] hover:-translate-y-0.5",
+            "hover:bg-marino-hover hover:-translate-y-0.5",
             "transition-all duration-250",
-            "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3"
+            "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3"
           )}
           aria-label={`Descargar ${downloadResult.recursoTitulo}`}
         >
@@ -166,9 +166,7 @@ export function DownloadForm({ recurso, onSuccess, className }: DownloadFormProp
           Descargar ahora
         </a>
 
-        <p className="font-ui text-xs text-[var(--color-text-tertiary)]">
-          El archivo se descarga en formato PDF.
-        </p>
+        <p className="font-ui text-xs text-text-tertiary">El archivo se descarga en formato PDF.</p>
       </div>
     );
   }
@@ -186,10 +184,8 @@ export function DownloadForm({ recurso, onSuccess, className }: DownloadFormProp
           <Clock size={28} aria-hidden="true" />
         </div>
         <div className="space-y-1.5">
-          <h3 className="font-serif text-lg font-semibold text-[var(--color-marino)]">
-            Demasiadas solicitudes
-          </h3>
-          <p className="font-body text-sm text-[var(--color-text-secondary)]">
+          <h3 className="font-serif text-lg font-semibold text-marino">Demasiadas solicitudes</h3>
+          <p className="font-body text-sm text-text-secondary">
             Alcanzaste el límite de descargas. Podés volver a intentarlo en{" "}
             <strong>
               {minutes > 60
@@ -230,7 +226,7 @@ export function DownloadForm({ recurso, onSuccess, className }: DownloadFormProp
       <div className="space-y-1.5">
         <Label htmlFor="dl-nombre">
           Nombre{" "}
-          <span className="text-[var(--color-error)]" aria-hidden="true">
+          <span className="text-error" aria-hidden="true">
             *
           </span>
         </Label>
@@ -244,11 +240,7 @@ export function DownloadForm({ recurso, onSuccess, className }: DownloadFormProp
           {...register("nombre")}
         />
         {errors.nombre && (
-          <p
-            id="dl-nombre-error"
-            role="alert"
-            className="font-ui text-xs text-[var(--color-error)]"
-          >
+          <p id="dl-nombre-error" role="alert" className="font-ui text-xs text-error">
             {errors.nombre.message}
           </p>
         )}
@@ -258,7 +250,7 @@ export function DownloadForm({ recurso, onSuccess, className }: DownloadFormProp
       <div className="space-y-1.5">
         <Label htmlFor="dl-email">
           Email{" "}
-          <span className="text-[var(--color-error)]" aria-hidden="true">
+          <span className="text-error" aria-hidden="true">
             *
           </span>
         </Label>
@@ -272,7 +264,7 @@ export function DownloadForm({ recurso, onSuccess, className }: DownloadFormProp
           {...register("email")}
         />
         {errors.email && (
-          <p id="dl-email-error" role="alert" className="font-ui text-xs text-[var(--color-error)]">
+          <p id="dl-email-error" role="alert" className="font-ui text-xs text-error">
             {errors.email.message}
           </p>
         )}
@@ -282,7 +274,7 @@ export function DownloadForm({ recurso, onSuccess, className }: DownloadFormProp
       <div className="space-y-1.5">
         <Label htmlFor="dl-area">
           Área de interés{" "}
-          <span className="text-[var(--color-error)]" aria-hidden="true">
+          <span className="text-error" aria-hidden="true">
             *
           </span>
         </Label>
@@ -304,7 +296,7 @@ export function DownloadForm({ recurso, onSuccess, className }: DownloadFormProp
           </SelectContent>
         </Select>
         {errors.areaInteres && (
-          <p role="alert" className="font-ui text-xs text-[var(--color-error)]">
+          <p role="alert" className="font-ui text-xs text-error">
             {errors.areaInteres.message}
           </p>
         )}
@@ -321,24 +313,20 @@ export function DownloadForm({ recurso, onSuccess, className }: DownloadFormProp
             {...register("consentimiento")}
             className={cn(
               "mt-0.5 h-4 w-4 shrink-0 cursor-pointer",
-              "rounded-[3px] border-[var(--color-border-strong)]",
-              "text-[var(--color-marino)]",
-              "accent-[var(--color-marino)]",
-              "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+              "rounded-[3px] border-border-strong",
+              "text-marino",
+              "accent-marino",
+              "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
             )}
           />
-          <span className="font-ui text-xs text-[var(--color-text-secondary)] leading-relaxed group-hover:text-[var(--color-carbon)]">
+          <span className="font-ui text-xs text-text-secondary leading-relaxed group-hover:text-carbon">
             Acepto el tratamiento de mis datos personales conforme a la <strong>Ley 25.326</strong>{" "}
             de Protección de Datos Personales. Mis datos serán utilizados únicamente para el envío
             del documento solicitado y comunicaciones del Estudio De Luca.
           </span>
         </label>
         {errors.consentimiento && (
-          <p
-            id="dl-consentimiento-error"
-            role="alert"
-            className="font-ui text-xs text-[var(--color-error)]"
-          >
+          <p id="dl-consentimiento-error" role="alert" className="font-ui text-xs text-error">
             {errors.consentimiento.message}
           </p>
         )}
@@ -350,12 +338,8 @@ export function DownloadForm({ recurso, onSuccess, className }: DownloadFormProp
           role="alert"
           className="flex items-start gap-2.5 rounded-[6px] border border-[#FCA5A5] bg-[#FEE2E2] px-4 py-3"
         >
-          <AlertCircle
-            size={16}
-            className="shrink-0 mt-0.5 text-[var(--color-error)]"
-            aria-hidden="true"
-          />
-          <p className="font-ui text-sm text-[var(--color-error)]">{submitError}</p>
+          <AlertCircle size={16} className="shrink-0 mt-0.5 text-error" aria-hidden="true" />
+          <p className="font-ui text-sm text-error">{submitError}</p>
         </div>
       )}
 
@@ -373,7 +357,7 @@ export function DownloadForm({ recurso, onSuccess, className }: DownloadFormProp
         Descargar gratis
       </Button>
 
-      <p className="text-center font-ui text-xs text-[var(--color-text-tertiary)]">
+      <p className="text-center font-ui text-xs text-text-tertiary">
         Documento en PDF · Gratuito · Sin spam
       </p>
     </form>

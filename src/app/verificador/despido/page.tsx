@@ -112,7 +112,7 @@ export default function VerificadorDespidoPage() {
 
       {/* ─── Hero pequeño ─────────────────────────────────────────── */}
       <section
-        className="pt-28 pb-10 border-b border-[var(--color-border-default)]"
+        className="pt-28 pb-10 border-b border-border-default"
         style={{ background: "var(--color-bg-secondary)" }}
       >
         <Container size="narrow">
@@ -124,11 +124,11 @@ export default function VerificadorDespidoPage() {
             Verificador legal gratuito
           </p>
 
-          <h1 className="font-serif text-[var(--text-4xl)] font-600 text-[var(--color-marino)] leading-tight mb-4">
+          <h1 className="font-serif text-[var(--text-4xl)] font-600 text-marino leading-tight mb-4">
             ¿Tu despido fue legal?
           </h1>
 
-          <p className="font-body text-base text-[var(--color-text-secondary)] leading-relaxed mb-6 max-w-lg">
+          <p className="font-body text-base text-text-secondary leading-relaxed mb-6 max-w-lg">
             Respondé 5 preguntas sobre tu situación y recibí un diagnóstico orientativo basado en la
             Ley de Contrato de Trabajo argentina.
           </p>
@@ -143,7 +143,7 @@ export default function VerificadorDespidoPage() {
             ].map((item) => (
               <span
                 key={item}
-                className="flex items-center gap-1.5 font-ui text-xs text-[var(--color-text-secondary)]"
+                className="flex items-center gap-1.5 font-ui text-xs text-text-secondary"
               >
                 <span
                   className="w-1.5 h-1.5 rounded-full shrink-0"
@@ -166,11 +166,11 @@ export default function VerificadorDespidoPage() {
 
       {/* ─── Nota legal al pie ────────────────────────────────────── */}
       <section
-        className="py-8 border-t border-[var(--color-border-default)]"
+        className="py-8 border-t border-border-default"
         style={{ background: "var(--color-bg-warm)" }}
       >
         <Container size="narrow">
-          <p className="font-ui text-xs text-center text-[var(--color-text-tertiary)] leading-relaxed max-w-2xl mx-auto">
+          <p className="font-ui text-xs text-center text-text-tertiary leading-relaxed max-w-2xl mx-auto">
             Esta herramienta es orientativa y no constituye asesoramiento jurídico profesional. Los
             resultados dependen de los datos ingresados por el usuario. Cada caso laboral tiene
             particularidades que solo puede evaluar un abogado. El uso de este verificador no crea

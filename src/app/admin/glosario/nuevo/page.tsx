@@ -31,21 +31,19 @@ export default async function AdminGlosarioNuevoPage() {
       <div className="mb-6">
         <Link
           href="/admin/glosario"
-          className="inline-flex items-center gap-1.5 font-ui text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-marino)] transition-colors duration-150 mb-4 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:rounded-[4px]"
+          className="inline-flex items-center gap-1.5 font-ui text-sm text-text-secondary hover:text-marino transition-colors duration-150 mb-4 focus-visible:outline-2 focus-visible:outline-dorado focus-visible:rounded-[4px]"
         >
           <ChevronLeft size={14} />
           Volver al glosario
         </Link>
-        <h1 className="font-serif text-2xl font-semibold text-[var(--color-marino)]">
-          Nuevo término
-        </h1>
-        <p className="font-ui text-sm text-[var(--color-text-secondary)] mt-0.5">
+        <h1 className="font-serif text-2xl font-semibold text-marino">Nuevo término</h1>
+        <p className="font-ui text-sm text-text-secondary mt-0.5">
           Completá los campos para agregar un nuevo término al glosario.
         </p>
       </div>
 
       {/* Form */}
-      <div className="bg-[var(--color-bg)] border border-[var(--color-border-default)] rounded-[10px] p-6">
+      <div className="bg-bg border border-border-default rounded-[10px] p-6">
         <GlosarioForm mode="create" allTerminos={allTerminos} />
       </div>
     </div>

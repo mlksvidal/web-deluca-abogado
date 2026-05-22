@@ -59,7 +59,7 @@ function WhatsAppFab() {
         // Active
         "active:scale-[0.96]",
         // Focus visible
-        "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-4",
+        "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-4",
         // Visibilidad con fade
         "transition-[opacity,transform]",
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2 pointer-events-none",

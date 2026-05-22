@@ -34,7 +34,7 @@ function SelloMatricula({ variant = "dark", className }: SelloMatriculaProps) {
         "group",
         "transition-opacity duration-250",
         "hover:opacity-80",
-        "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3",
+        "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3",
         className
       )}
     >
@@ -60,7 +60,7 @@ function SelloMatricula({ variant = "dark", className }: SelloMatriculaProps) {
         <span
           className={cn(
             "font-ui text-xs font-semibold tracking-[0.06em] uppercase",
-            isDark ? "text-[rgba(250,247,242,0.60)]" : "text-[var(--color-text-tertiary)]"
+            isDark ? "text-[rgba(250,247,242,0.60)]" : "text-text-tertiary"
           )}
         >
           Matrícula {siteConfig.matricula}
@@ -68,7 +68,7 @@ function SelloMatricula({ variant = "dark", className }: SelloMatriculaProps) {
         <span
           className={cn(
             "font-ui text-xs",
-            isDark ? "text-[rgba(250,247,242,0.40)]" : "text-[var(--color-text-tertiary)]"
+            isDark ? "text-[rgba(250,247,242,0.40)]" : "text-text-tertiary"
           )}
         >
           {siteConfig.colegioName}

@@ -130,33 +130,33 @@ export function BookingCalendar({
           ),
           button_previous: cn(
             "flex size-(--cell-size) items-center justify-center",
-            "rounded-[4px] border border-[var(--color-border-default)]",
-            "text-[var(--color-marino)] hover:bg-[var(--color-marino-subtle)]",
+            "rounded-[4px] border border-border-default",
+            "text-marino hover:bg-marino-subtle",
             "transition-colors duration-150 cursor-pointer",
             "disabled:opacity-40 disabled:cursor-not-allowed",
             defaultClassNames.button_previous
           ),
           button_next: cn(
             "flex size-(--cell-size) items-center justify-center",
-            "rounded-[4px] border border-[var(--color-border-default)]",
-            "text-[var(--color-marino)] hover:bg-[var(--color-marino-subtle)]",
+            "rounded-[4px] border border-border-default",
+            "text-marino hover:bg-marino-subtle",
             "transition-colors duration-150 cursor-pointer",
             "disabled:opacity-40 disabled:cursor-not-allowed",
             defaultClassNames.button_next
           ),
           month_caption: cn(
             "flex h-(--cell-size) items-center justify-center",
-            "font-ui text-sm font-medium text-[var(--color-marino)] uppercase tracking-wide",
+            "font-ui text-sm font-medium text-marino uppercase tracking-wide",
             defaultClassNames.month_caption
           ),
           caption_label: cn(
-            "font-ui text-sm font-semibold text-[var(--color-marino)] select-none uppercase tracking-wide",
+            "font-ui text-sm font-semibold text-marino select-none uppercase tracking-wide",
             defaultClassNames.caption_label
           ),
           weekdays: cn("flex", defaultClassNames.weekdays),
           weekday: cn(
             "flex-1 text-center text-[0.7rem] font-ui font-medium",
-            "text-[var(--color-text-tertiary)] uppercase tracking-wide select-none py-1",
+            "text-text-tertiary uppercase tracking-wide select-none py-1",
             defaultClassNames.weekday
           ),
           week: cn("mt-1 flex w-full", defaultClassNames.week),
@@ -170,14 +170,14 @@ export function BookingCalendar({
             "font-ui text-sm",
             "transition-all duration-150 cursor-pointer",
             // Estado base disponible
-            "text-[var(--color-carbon)] hover:bg-[var(--color-marino-subtle)] hover:text-[var(--color-marino)]",
+            "text-carbon hover:bg-marino-subtle hover:text-marino",
             // Estado seleccionado — bg dorado con texto marino (AA ratio 7.33:1)
-            "aria-pressed:bg-[var(--color-dorado)] aria-pressed:text-[var(--color-marino)] aria-pressed:font-semibold",
-            "data-[selected=true]:bg-[var(--color-dorado)] data-[selected=true]:text-[var(--color-marino)] data-[selected=true]:font-semibold",
+            "aria-pressed:bg-dorado aria-pressed:text-marino aria-pressed:font-semibold",
+            "data-[selected=true]:bg-dorado data-[selected=true]:text-marino data-[selected=true]:font-semibold",
             // Estado deshabilitado
-            "disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-[var(--color-carbon)]",
+            "disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-carbon",
             // Focus
-            "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2",
+            "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2",
             defaultClassNames.day_button
           ),
           today: cn("font-semibold", defaultClassNames.today),

@@ -19,7 +19,7 @@ function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="skeleton"
       className={cn(
         // Fondo base cálido (no gris frío)
-        "bg-[var(--color-bg-secondary)]",
+        "bg-bg-secondary",
         // Animación pulse sutil — no shimmer lateral (tono institucional)
         "animate-pulse",
         "rounded-[4px]",
@@ -46,9 +46,7 @@ function SlotGridSkeleton({ rows = 4 }: { rows?: number }) {
           ))}
         </div>
       ))}
-      <p className="text-xs text-[var(--color-text-tertiary)] font-ui mt-2">
-        Buscando disponibilidad…
-      </p>
+      <p className="text-xs text-text-tertiary font-ui mt-2">Buscando disponibilidad…</p>
     </div>
   );
 }
@@ -56,10 +54,7 @@ function SlotGridSkeleton({ rows = 4 }: { rows?: number }) {
 /** Skeleton para tabla admin */
 function TableRowSkeleton({ cols = 5 }: { cols?: number }) {
   return (
-    <div
-      className="flex gap-4 items-center py-3 border-b border-[var(--color-border-default)]"
-      aria-hidden="true"
-    >
+    <div className="flex gap-4 items-center py-3 border-b border-border-default" aria-hidden="true">
       {Array.from({ length: cols }).map((_, i) => (
         <Skeleton key={i} className="h-4 flex-1" style={{ animationDelay: `${i * 40}ms` }} />
       ))}

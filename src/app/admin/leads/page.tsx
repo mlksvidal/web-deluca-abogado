@@ -86,28 +86,26 @@ function exportToCSV(leads: LeadDescarga[]) {
 
 function LeadRow({ lead }: { lead: LeadDescarga }) {
   return (
-    <tr className="border-b border-[var(--color-border-default)] hover:bg-[var(--color-bg-warm)] transition-colors">
-      <td className="px-4 py-3 font-ui text-xs text-[var(--color-carbon-soft)] tabular-nums whitespace-nowrap">
+    <tr className="border-b border-border-default hover:bg-bg-warm transition-colors">
+      <td className="px-4 py-3 font-ui text-xs text-carbon-soft tabular-nums whitespace-nowrap">
         {formatDateAR(lead.createdAt)}
       </td>
-      <td className="px-4 py-3 font-ui text-sm font-medium text-[var(--color-marino)]">
-        {lead.nombre}
-      </td>
-      <td className="px-4 py-3 font-body text-sm text-[var(--color-carbon-soft)]">
+      <td className="px-4 py-3 font-ui text-sm font-medium text-marino">{lead.nombre}</td>
+      <td className="px-4 py-3 font-body text-sm text-carbon-soft">
         <a
           href={`mailto:${lead.email}`}
-          className="hover:text-[var(--color-marino)] transition-colors underline underline-offset-2"
+          className="hover:text-marino transition-colors underline underline-offset-2"
         >
           {lead.email}
         </a>
       </td>
-      <td className="px-4 py-3 font-ui text-xs text-[var(--color-carbon-soft)]">
+      <td className="px-4 py-3 font-ui text-xs text-carbon-soft">
         {AREA_LABELS[lead.areaInteres] ?? lead.areaInteres}
       </td>
-      <td className="px-4 py-3 font-ui text-xs text-[var(--color-carbon-soft)]">
+      <td className="px-4 py-3 font-ui text-xs text-carbon-soft">
         {RECURSO_LABELS[lead.recursoSlug] ?? lead.recursoSlug}
       </td>
-      <td className="px-4 py-3 font-ui text-xs text-[var(--color-text-tertiary)] tabular-nums">
+      <td className="px-4 py-3 font-ui text-xs text-text-tertiary tabular-nums">
         {displayIp(lead.ip)}
       </td>
     </tr>
@@ -214,10 +212,8 @@ export default function AdminLeadsPage() {
             <Download size={16} />
           </div>
           <div>
-            <h1 className="font-serif text-xl font-semibold text-[var(--color-marino)]">
-              Leads de descarga
-            </h1>
-            <p className="font-body text-xs text-[var(--color-text-secondary)]">
+            <h1 className="font-serif text-xl font-semibold text-marino">Leads de descarga</h1>
+            <p className="font-body text-xs text-text-secondary">
               {total > 0 ? `${total} registros` : "Sin registros"}
             </p>
           </div>
@@ -227,7 +223,7 @@ export default function AdminLeadsPage() {
         <button
           onClick={handleExport}
           disabled={filtered.length === 0}
-          className="flex items-center gap-2 px-4 py-2 rounded-[6px] border border-[var(--color-border-default)] font-ui text-sm font-medium text-[var(--color-marino)] hover:bg-[var(--color-marino-subtle)] transition-colors disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+          className="flex items-center gap-2 px-4 py-2 rounded-[6px] border border-border-default font-ui text-sm font-medium text-marino hover:bg-marino-subtle transition-colors disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
           aria-label="Exportar leads a CSV"
         >
           <FileDown size={14} aria-hidden="true" />
@@ -237,14 +233,14 @@ export default function AdminLeadsPage() {
 
       {/* Filtros */}
       <div
-        className="flex flex-wrap gap-3 mb-5 p-4 rounded-[8px] border border-[var(--color-border-default)]"
+        className="flex flex-wrap gap-3 mb-5 p-4 rounded-[8px] border border-border-default"
         style={{ background: "var(--color-bg)" }}
       >
         {/* Búsqueda */}
         <div className="relative flex-1 min-w-[200px]">
           <Search
             size={14}
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-text-tertiary)]"
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-text-tertiary"
             aria-hidden="true"
           />
           <input
@@ -252,7 +248,7 @@ export default function AdminLeadsPage() {
             placeholder="Buscar por nombre o email…"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-8 pr-4 py-2 rounded-[6px] border border-[var(--color-border-default)] font-ui text-sm text-[var(--color-marino)] placeholder:text-[var(--color-text-tertiary)] focus:outline-none focus:border-[var(--color-marino)] focus:ring-1 focus:ring-[var(--color-marino)]"
+            className="w-full pl-8 pr-4 py-2 rounded-[6px] border border-border-default font-ui text-sm text-marino placeholder:text-text-tertiary focus:outline-none focus:border-marino focus:ring-1 focus:ring-marino"
             style={{ background: "var(--color-bg-warm)" }}
             aria-label="Buscar por nombre o email"
           />
@@ -262,7 +258,7 @@ export default function AdminLeadsPage() {
         <select
           value={areaFilter}
           onChange={(e) => setAreaFilter(e.target.value)}
-          className="px-3 py-2 rounded-[6px] border border-[var(--color-border-default)] font-ui text-sm text-[var(--color-marino)] focus:outline-none focus:border-[var(--color-marino)] focus:ring-1 focus:ring-[var(--color-marino)]"
+          className="px-3 py-2 rounded-[6px] border border-border-default font-ui text-sm text-marino focus:outline-none focus:border-marino focus:ring-1 focus:ring-marino"
           style={{ background: "var(--color-bg-warm)" }}
           aria-label="Filtrar por área"
         >
@@ -278,7 +274,7 @@ export default function AdminLeadsPage() {
         <select
           value={recursoFilter}
           onChange={(e) => setRecursoFilter(e.target.value)}
-          className="px-3 py-2 rounded-[6px] border border-[var(--color-border-default)] font-ui text-sm text-[var(--color-marino)] focus:outline-none focus:border-[var(--color-marino)] focus:ring-1 focus:ring-[var(--color-marino)]"
+          className="px-3 py-2 rounded-[6px] border border-border-default font-ui text-sm text-marino focus:outline-none focus:border-marino focus:ring-1 focus:ring-marino"
           style={{ background: "var(--color-bg-warm)" }}
           aria-label="Filtrar por recurso"
         >
@@ -295,7 +291,7 @@ export default function AdminLeadsPage() {
           type="date"
           value={dateFrom}
           onChange={(e) => setDateFrom(e.target.value)}
-          className="px-3 py-2 rounded-[6px] border border-[var(--color-border-default)] font-ui text-sm text-[var(--color-marino)] focus:outline-none focus:border-[var(--color-marino)] focus:ring-1 focus:ring-[var(--color-marino)]"
+          className="px-3 py-2 rounded-[6px] border border-border-default font-ui text-sm text-marino focus:outline-none focus:border-marino focus:ring-1 focus:ring-marino"
           style={{ background: "var(--color-bg-warm)" }}
           aria-label="Fecha desde"
         />
@@ -305,7 +301,7 @@ export default function AdminLeadsPage() {
           type="date"
           value={dateTo}
           onChange={(e) => setDateTo(e.target.value)}
-          className="px-3 py-2 rounded-[6px] border border-[var(--color-border-default)] font-ui text-sm text-[var(--color-marino)] focus:outline-none focus:border-[var(--color-marino)] focus:ring-1 focus:ring-[var(--color-marino)]"
+          className="px-3 py-2 rounded-[6px] border border-border-default font-ui text-sm text-marino focus:outline-none focus:border-marino focus:ring-1 focus:ring-marino"
           style={{ background: "var(--color-bg-warm)" }}
           aria-label="Fecha hasta"
         />
@@ -313,16 +309,14 @@ export default function AdminLeadsPage() {
         <button
           onClick={applyFilters}
           disabled={isPending}
-          className="px-4 py-2 rounded-[6px] font-ui text-sm font-semibold text-[var(--color-bg)] bg-[var(--color-marino)] hover:bg-[var(--color-marino-hover)] transition-colors disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+          className="px-4 py-2 rounded-[6px] font-ui text-sm font-semibold text-bg bg-marino hover:bg-marino-hover transition-colors disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
         >
           Filtrar
         </button>
       </div>
 
       {/* Estado carga / error */}
-      {isPending && (
-        <p className="font-ui text-sm text-[var(--color-text-secondary)] py-4">Cargando…</p>
-      )}
+      {isPending && <p className="font-ui text-sm text-text-secondary py-4">Cargando…</p>}
       {error && (
         <div
           className="mb-4 px-4 py-3 rounded-[6px] border font-ui text-sm"
@@ -337,21 +331,17 @@ export default function AdminLeadsPage() {
         <>
           {filtered.length === 0 ? (
             <div className="py-16 text-center">
-              <Download
-                size={32}
-                className="mx-auto mb-3 text-[var(--color-text-tertiary)]"
-                aria-hidden="true"
-              />
-              <p className="font-ui text-sm text-[var(--color-text-secondary)]">
+              <Download size={32} className="mx-auto mb-3 text-text-tertiary" aria-hidden="true" />
+              <p className="font-ui text-sm text-text-secondary">
                 No hay leads que coincidan con los filtros.
               </p>
             </div>
           ) : (
-            <div className="overflow-x-auto rounded-[8px] border border-[var(--color-border-default)]">
+            <div className="overflow-x-auto rounded-[8px] border border-border-default">
               <table className="w-full text-left" aria-label="Lista de leads de descarga">
                 <thead>
                   <tr
-                    className="border-b border-[var(--color-border-default)]"
+                    className="border-b border-border-default"
                     style={{ background: "var(--color-bg-warm)" }}
                   >
                     {[
@@ -364,7 +354,7 @@ export default function AdminLeadsPage() {
                     ].map((col) => (
                       <th
                         key={col}
-                        className="px-4 py-3 font-ui text-xs font-semibold uppercase tracking-wide text-[var(--color-text-tertiary)] whitespace-nowrap"
+                        className="px-4 py-3 font-ui text-xs font-semibold uppercase tracking-wide text-text-tertiary whitespace-nowrap"
                         scope="col"
                       >
                         {col}
@@ -384,7 +374,7 @@ export default function AdminLeadsPage() {
           {/* Paginación */}
           {totalPages > 1 && (
             <div className="flex items-center justify-between mt-4">
-              <p className="font-ui text-xs text-[var(--color-text-tertiary)]">
+              <p className="font-ui text-xs text-text-tertiary">
                 Página {page} de {totalPages} · {total} registros
               </p>
               <div className="flex gap-2">
@@ -392,7 +382,7 @@ export default function AdminLeadsPage() {
                   onClick={() => changePage(page - 1)}
                   disabled={page <= 1 || isPending}
                   aria-label="Página anterior"
-                  className="flex items-center gap-1 px-3 py-1.5 rounded-[6px] border border-[var(--color-border-default)] font-ui text-xs font-medium text-[var(--color-marino)] hover:bg-[var(--color-marino-subtle)] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-[6px] border border-border-default font-ui text-xs font-medium text-marino hover:bg-marino-subtle disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                 >
                   <ChevronLeft size={14} aria-hidden="true" />
                   Anterior
@@ -401,7 +391,7 @@ export default function AdminLeadsPage() {
                   onClick={() => changePage(page + 1)}
                   disabled={page >= totalPages || isPending}
                   aria-label="Página siguiente"
-                  className="flex items-center gap-1 px-3 py-1.5 rounded-[6px] border border-[var(--color-border-default)] font-ui text-xs font-medium text-[var(--color-marino)] hover:bg-[var(--color-marino-subtle)] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-[6px] border border-border-default font-ui text-xs font-medium text-marino hover:bg-marino-subtle disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                 >
                   Siguiente
                   <ChevronRight size={14} aria-hidden="true" />

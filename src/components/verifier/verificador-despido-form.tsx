@@ -135,11 +135,9 @@ function RadioOption({
       htmlFor={id}
       className={cn(
         "flex items-start gap-3 p-4 rounded-[6px] cursor-pointer border transition-all duration-150",
-        "hover:border-[var(--color-marino)] hover:bg-[var(--color-bg-warm)]",
-        "focus-within:ring-2 focus-within:ring-[var(--color-marino)]/10",
-        checked
-          ? "border-[var(--color-marino)] bg-[var(--color-marino-subtle)]"
-          : "border-[var(--color-border-default)] bg-[var(--color-bg)]"
+        "hover:border-marino hover:bg-bg-warm",
+        "focus-within:ring-2 focus-within:ring-marino/10",
+        checked ? "border-marino bg-marino-subtle" : "border-border-default bg-bg"
       )}
     >
       <input
@@ -154,15 +152,13 @@ function RadioOption({
       <span
         className={cn(
           "mt-0.5 shrink-0 w-4 h-4 rounded-full border-2 flex items-center justify-center transition-colors duration-150",
-          checked
-            ? "border-[var(--color-marino)] bg-[var(--color-marino)]"
-            : "border-[var(--color-border-strong)] bg-[var(--color-bg)]"
+          checked ? "border-marino bg-marino" : "border-border-strong bg-bg"
         )}
         aria-hidden="true"
       >
         {checked && <span className="w-1.5 h-1.5 rounded-full bg-white" />}
       </span>
-      <span className="font-body text-sm text-[var(--color-carbon)] leading-snug">{children}</span>
+      <span className="font-body text-sm text-carbon leading-snug">{children}</span>
     </label>
   );
 }
@@ -214,10 +210,10 @@ export function VerificadorDespidoForm() {
         <div className="space-y-8">
           {/* ─── Pregunta 1 ──────────────────────────────────────── */}
           <fieldset>
-            <legend className="font-serif text-lg font-500 text-[var(--color-marino)] mb-1">
+            <legend className="font-serif text-lg font-500 text-marino mb-1">
               1. ¿Qué tipo de despido fue?
             </legend>
-            <p className="font-body text-sm text-[var(--color-text-secondary)] mb-3">
+            <p className="font-body text-sm text-text-secondary mb-3">
               Cómo te comunicó el empleador el fin de la relación laboral.
             </p>
             <div className="space-y-2">
@@ -242,10 +238,10 @@ export function VerificadorDespidoForm() {
 
           {/* ─── Pregunta 2 ──────────────────────────────────────── */}
           <fieldset>
-            <legend className="font-serif text-lg font-500 text-[var(--color-marino)] mb-1">
+            <legend className="font-serif text-lg font-500 text-marino mb-1">
               2. ¿Recibiste preaviso por escrito?
             </legend>
-            <p className="font-body text-sm text-[var(--color-text-secondary)] mb-3">
+            <p className="font-body text-sm text-text-secondary mb-3">
               El preaviso es la notificación anticipada del despido (normalmente 1 o 2 meses).
             </p>
             <div className="space-y-2">
@@ -270,10 +266,10 @@ export function VerificadorDespidoForm() {
 
           {/* ─── Pregunta 3 ──────────────────────────────────────── */}
           <fieldset>
-            <legend className="font-serif text-lg font-500 text-[var(--color-marino)] mb-1">
+            <legend className="font-serif text-lg font-500 text-marino mb-1">
               3. ¿Cuántos años trabajaste en esa empresa?
             </legend>
-            <p className="font-body text-sm text-[var(--color-text-secondary)] mb-3">
+            <p className="font-body text-sm text-text-secondary mb-3">
               La antigüedad afecta el monto del preaviso e indemnización.
             </p>
             <div className="space-y-2">
@@ -299,10 +295,10 @@ export function VerificadorDespidoForm() {
 
           {/* ─── Pregunta 4 ──────────────────────────────────────── */}
           <fieldset>
-            <legend className="font-serif text-lg font-500 text-[var(--color-marino)] mb-1">
+            <legend className="font-serif text-lg font-500 text-marino mb-1">
               4. ¿Estabas registrado correctamente en AFIP?
             </legend>
-            <p className="font-body text-sm text-[var(--color-text-secondary)] mb-3">
+            <p className="font-body text-sm text-text-secondary mb-3">
               Estar &ldquo;en blanco&rdquo; significa que el empleador realizaba los aportes y
               contribuciones legales.
             </p>
@@ -329,10 +325,10 @@ export function VerificadorDespidoForm() {
 
           {/* ─── Pregunta 5 ──────────────────────────────────────── */}
           <fieldset>
-            <legend className="font-serif text-lg font-500 text-[var(--color-marino)] mb-1">
+            <legend className="font-serif text-lg font-500 text-marino mb-1">
               5. ¿Te informaron el motivo del despido?
             </legend>
-            <p className="font-body text-sm text-[var(--color-text-secondary)] mb-3">
+            <p className="font-body text-sm text-text-secondary mb-3">
               El empleador tiene obligación legal de comunicar el motivo por escrito (art. 243 LCT).
             </p>
             <div className="space-y-2">
@@ -362,7 +358,7 @@ export function VerificadorDespidoForm() {
               disabled={!allAnswered}
               className={cn(
                 "w-full py-4 rounded-[6px] font-ui text-base font-600 transition-all duration-250",
-                "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2",
+                "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2",
                 allAnswered
                   ? "cursor-pointer hover:-translate-y-[2px] hover:shadow-[var(--shadow-md)]"
                   : "cursor-not-allowed opacity-50"
@@ -379,7 +375,7 @@ export function VerificadorDespidoForm() {
             {!allAnswered && (
               <p
                 id="submit-hint"
-                className="mt-2 text-center font-ui text-xs text-[var(--color-text-tertiary)]"
+                className="mt-2 text-center font-ui text-xs text-text-tertiary"
                 aria-live="polite"
               >
                 Respondé todas las preguntas para continuar.
@@ -431,10 +427,8 @@ export function VerificadorDespidoForm() {
             </div>
 
             {/* Razones */}
-            <div className="px-6 py-5 bg-[var(--color-bg)]">
-              <h3 className="font-ui text-sm font-600 text-[var(--color-carbon)] mb-3">
-                ¿Por qué?
-              </h3>
+            <div className="px-6 py-5 bg-bg">
+              <h3 className="font-ui text-sm font-600 text-carbon mb-3">¿Por qué?</h3>
               <ul className="space-y-2.5" role="list">
                 {resultado.razones.map((razon, i) => (
                   <li key={i} className="flex items-start gap-2.5">
@@ -444,7 +438,7 @@ export function VerificadorDespidoForm() {
                       style={{ color: "var(--color-dorado-deep)" }}
                       aria-hidden="true"
                     />
-                    <span className="font-body text-sm text-[var(--color-carbon-soft)] leading-relaxed">
+                    <span className="font-body text-sm text-carbon-soft leading-relaxed">
                       {razon}
                     </span>
                   </li>
@@ -459,10 +453,10 @@ export function VerificadorDespidoForm() {
                   borderColor: "var(--color-border-default)",
                 }}
               >
-                <p className="font-ui text-xs font-600 text-[var(--color-marino)] uppercase tracking-wide mb-1.5">
+                <p className="font-ui text-xs font-600 text-marino uppercase tracking-wide mb-1.5">
                   Recomendación
                 </p>
-                <p className="font-body text-sm text-[var(--color-carbon)] leading-relaxed">
+                <p className="font-body text-sm text-carbon leading-relaxed">
                   {resultado.recomendacion}
                 </p>
               </div>
@@ -492,7 +486,7 @@ export function VerificadorDespidoForm() {
                   className={cn(
                     "flex-1 text-center py-3 px-4 rounded-[6px] font-ui text-sm font-600",
                     "transition-all duration-250 hover:-translate-y-[2px] hover:shadow-[var(--shadow-md)]",
-                    "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+                    "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
                   )}
                   style={{ background: "var(--color-marino)", color: "var(--color-bg)" }}
                 >
@@ -503,11 +497,11 @@ export function VerificadorDespidoForm() {
                   onClick={handleReset}
                   className={cn(
                     "flex items-center justify-center gap-1.5 py-3 px-4 rounded-[6px] font-ui text-sm font-500",
-                    "border border-[var(--color-border-default)] bg-[var(--color-bg)]",
-                    "text-[var(--color-text-secondary)]",
-                    "hover:border-[var(--color-marino)] hover:text-[var(--color-marino)]",
+                    "border border-border-default bg-bg",
+                    "text-text-secondary",
+                    "hover:border-marino hover:text-marino",
                     "transition-colors duration-150",
-                    "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+                    "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
                   )}
                 >
                   <RotateCcw size={14} />

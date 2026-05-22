@@ -50,8 +50,8 @@ export default async function AdminBlogPage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="font-serif text-2xl font-semibold text-[var(--color-marino)]">Blog</h1>
-          <p className="font-ui text-sm text-[var(--color-text-secondary)] mt-0.5">
+          <h1 className="font-serif text-2xl font-semibold text-marino">Blog</h1>
+          <p className="font-ui text-sm text-text-secondary mt-0.5">
             {posts.length} artículo{posts.length !== 1 ? "s" : ""} en total
           </p>
         </div>
@@ -60,11 +60,11 @@ export default async function AdminBlogPage() {
           className={cn(
             "inline-flex items-center gap-2 h-10 px-5",
             "font-ui text-sm font-medium tracking-wide",
-            "bg-[var(--color-marino)] text-[var(--color-bg)]",
+            "bg-marino text-bg",
             "rounded-sm",
-            "hover:bg-[var(--color-marino-hover)] hover:-translate-y-0.5",
+            "hover:bg-marino-hover hover:-translate-y-0.5",
             "transition-all duration-250",
-            "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3"
+            "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3"
           )}
         >
           <Plus size={16} aria-hidden="true" />
@@ -81,15 +81,13 @@ export default async function AdminBlogPage() {
           <span className="text-4xl mb-4" aria-hidden="true">
             📄
           </span>
-          <p className="font-serif text-xl font-semibold text-[var(--color-marino)] mb-2">
-            Sin artículos aún
-          </p>
-          <p className="font-body text-sm text-[var(--color-text-secondary)] mb-6 max-w-sm">
+          <p className="font-serif text-xl font-semibold text-marino mb-2">Sin artículos aún</p>
+          <p className="font-body text-sm text-text-secondary mb-6 max-w-sm">
             Creá el primer artículo del blog con el botón de arriba.
           </p>
           <Link
             href="/admin/blog/nuevo"
-            className="inline-flex items-center gap-2 h-10 px-6 font-ui text-sm font-medium bg-[var(--color-marino)] text-[var(--color-bg)] rounded-sm hover:bg-[var(--color-marino-hover)] transition-colors duration-250"
+            className="inline-flex items-center gap-2 h-10 px-6 font-ui text-sm font-medium bg-marino text-bg rounded-sm hover:bg-marino-hover transition-colors duration-250"
           >
             <Plus size={15} aria-hidden="true" />
             Crear primer artículo
@@ -97,44 +95,41 @@ export default async function AdminBlogPage() {
         </div>
       ) : (
         <div
-          className="rounded-[10px] border border-[var(--color-border-default)] overflow-hidden"
+          className="rounded-[10px] border border-border-default overflow-hidden"
           style={{ background: "var(--color-bg)" }}
         >
           <table className="w-full text-left">
             <thead>
               <tr
-                className="border-b border-[var(--color-border-default)]"
+                className="border-b border-border-default"
                 style={{ background: "var(--color-bg-secondary)" }}
               >
-                <th className="px-5 py-3 font-ui text-xs font-semibold text-[var(--color-text-tertiary)] uppercase tracking-wide">
+                <th className="px-5 py-3 font-ui text-xs font-semibold text-text-tertiary uppercase tracking-wide">
                   Título
                 </th>
-                <th className="hidden sm:table-cell px-5 py-3 font-ui text-xs font-semibold text-[var(--color-text-tertiary)] uppercase tracking-wide">
+                <th className="hidden sm:table-cell px-5 py-3 font-ui text-xs font-semibold text-text-tertiary uppercase tracking-wide">
                   Área
                 </th>
-                <th className="px-5 py-3 font-ui text-xs font-semibold text-[var(--color-text-tertiary)] uppercase tracking-wide">
+                <th className="px-5 py-3 font-ui text-xs font-semibold text-text-tertiary uppercase tracking-wide">
                   Estado
                 </th>
-                <th className="hidden md:table-cell px-5 py-3 font-ui text-xs font-semibold text-[var(--color-text-tertiary)] uppercase tracking-wide">
+                <th className="hidden md:table-cell px-5 py-3 font-ui text-xs font-semibold text-text-tertiary uppercase tracking-wide">
                   Última edición
                 </th>
-                <th className="px-5 py-3 font-ui text-xs font-semibold text-[var(--color-text-tertiary)] uppercase tracking-wide text-right">
+                <th className="px-5 py-3 font-ui text-xs font-semibold text-text-tertiary uppercase tracking-wide text-right">
                   Acciones
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[var(--color-border-default)]">
+            <tbody className="divide-y divide-border-default">
               {posts.map((post) => (
-                <tr
-                  key={post.id}
-                  className="hover:bg-[var(--color-bg-secondary)] transition-colors duration-100"
-                >
+                <tr key={post.id} className="hover:bg-bg-secondary transition-colors duration-100">
                   {/* Título */}
                   <td className="px-5 py-3.5">
-                    <span className="font-ui text-sm font-medium text-[var(--color-marino)] line-clamp-1">
+                    <span className="font-ui text-sm font-medium text-marino line-clamp-1">
                       {post.title}
                     </span>
-                    <span className="block font-ui text-xs text-[var(--color-text-tertiary)] mt-0.5">
+                    <span className="block font-ui text-xs text-text-tertiary mt-0.5">
                       /{post.slug}
                     </span>
                   </td>
@@ -167,7 +162,7 @@ export default async function AdminBlogPage() {
 
                   {/* Fecha */}
                   <td className="hidden md:table-cell px-5 py-3.5">
-                    <span className="font-ui text-xs text-[var(--color-text-tertiary)]">
+                    <span className="font-ui text-xs text-text-tertiary">
                       {post.updatedAt
                         ? format(new Date(post.updatedAt), "d MMM yyyy", { locale: es })
                         : "—"}
@@ -182,7 +177,7 @@ export default async function AdminBlogPage() {
                           href={`/blog/${post.slug}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 h-8 px-3 font-ui text-xs text-[var(--color-text-secondary)] border border-[var(--color-border-default)] rounded-[4px] hover:border-[var(--color-marino)] hover:text-[var(--color-marino)] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+                          className="inline-flex items-center gap-1 h-8 px-3 font-ui text-xs text-text-secondary border border-border-default rounded-[4px] hover:border-marino hover:text-marino transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
                           aria-label={`Ver artículo publicado: ${post.title}`}
                         >
                           <Eye size={13} aria-hidden="true" />
@@ -191,7 +186,7 @@ export default async function AdminBlogPage() {
                       )}
                       <Link
                         href={`/admin/blog/editar/${post.slug}`}
-                        className="inline-flex items-center gap-1 h-8 px-3 font-ui text-xs bg-[var(--color-marino)] text-[var(--color-bg)] rounded-[4px] hover:bg-[var(--color-marino-hover)] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+                        className="inline-flex items-center gap-1 h-8 px-3 font-ui text-xs bg-marino text-bg rounded-[4px] hover:bg-marino-hover transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
                         aria-label={`Editar artículo: ${post.title}`}
                       >
                         <Pencil size={13} aria-hidden="true" />

@@ -88,20 +88,20 @@ function TagsInput({
 
   return (
     <div>
-      <Label htmlFor={id} className="font-ui text-sm font-500 text-[var(--color-carbon)]">
+      <Label htmlFor={id} className="font-ui text-sm font-500 text-carbon">
         {label}
       </Label>
-      <div className="mt-1.5 flex flex-wrap gap-1.5 min-h-[42px] p-2 rounded-[6px] border border-[var(--color-border-default)] bg-[var(--color-bg)] focus-within:border-[var(--color-marino)] focus-within:ring-2 focus-within:ring-[var(--color-marino)]/10 transition-colors duration-150">
+      <div className="mt-1.5 flex flex-wrap gap-1.5 min-h-[42px] p-2 rounded-[6px] border border-border-default bg-bg focus-within:border-marino focus-within:ring-2 focus-within:ring-marino/10 transition-colors duration-150">
         {value.map((tag) => (
           <span
             key={tag}
-            className="flex items-center gap-1 px-2 py-0.5 rounded-full font-ui text-xs text-[var(--color-marino)] border border-[var(--color-border-default)] bg-[var(--color-bg-warm)]"
+            className="flex items-center gap-1 px-2 py-0.5 rounded-full font-ui text-xs text-marino border border-border-default bg-bg-warm"
           >
             {tag}
             <button
               type="button"
               onClick={() => removeTag(tag)}
-              className="hover:text-[var(--color-error)] transition-colors duration-100 focus-visible:outline-none"
+              className="hover:text-error transition-colors duration-100 focus-visible:outline-none"
               aria-label={`Eliminar ${tag}`}
             >
               <X size={10} />
@@ -118,10 +118,10 @@ function TagsInput({
             if (inputValue.trim()) addTag(inputValue);
           }}
           placeholder={value.length === 0 ? placeholder : ""}
-          className="flex-1 min-w-[120px] font-ui text-sm text-[var(--color-carbon)] bg-transparent outline-none placeholder:text-[var(--color-text-tertiary)]"
+          className="flex-1 min-w-[120px] font-ui text-sm text-carbon bg-transparent outline-none placeholder:text-text-tertiary"
         />
       </div>
-      <p className="mt-1 font-ui text-xs text-[var(--color-text-tertiary)]">
+      <p className="mt-1 font-ui text-xs text-text-tertiary">
         Presioná Enter o coma para agregar. Backspace para eliminar el último.
       </p>
     </div>
@@ -281,12 +281,9 @@ export function GlosarioForm({ mode, termino, allTerminos = [] }: GlosarioFormPr
         {/* Término + Slug + Letra */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <Label
-              htmlFor="termino"
-              className="font-ui text-sm font-500 text-[var(--color-carbon)]"
-            >
+            <Label htmlFor="termino" className="font-ui text-sm font-500 text-carbon">
               Término{" "}
-              <span className="text-[var(--color-error)]" aria-hidden="true">
+              <span className="text-error" aria-hidden="true">
                 *
               </span>
             </Label>
@@ -300,17 +297,14 @@ export function GlosarioForm({ mode, termino, allTerminos = [] }: GlosarioFormPr
               aria-describedby={fieldErrors.termino ? "termino-error" : undefined}
             />
             {fieldErrors.termino && (
-              <p id="termino-error" className="mt-1 font-ui text-xs text-[var(--color-error)]">
+              <p id="termino-error" className="mt-1 font-ui text-xs text-error">
                 {fieldErrors.termino[0]}
               </p>
             )}
           </div>
 
           <div>
-            <Label
-              htmlFor="area-legal"
-              className="font-ui text-sm font-500 text-[var(--color-carbon)]"
-            >
+            <Label htmlFor="area-legal" className="font-ui text-sm font-500 text-carbon">
               Área legal
             </Label>
             <Select
@@ -336,7 +330,7 @@ export function GlosarioForm({ mode, termino, allTerminos = [] }: GlosarioFormPr
         {/* Slug + Letra (solo-lectura calculados / editables en edit) */}
         <div className="grid grid-cols-3 gap-4">
           <div className="col-span-2">
-            <Label htmlFor="slug" className="font-ui text-sm font-500 text-[var(--color-carbon)]">
+            <Label htmlFor="slug" className="font-ui text-sm font-500 text-carbon">
               Slug (URL)
             </Label>
             <Input
@@ -347,11 +341,11 @@ export function GlosarioForm({ mode, termino, allTerminos = [] }: GlosarioFormPr
               readOnly={mode === "create"}
               className={cn(
                 "mt-1.5 font-mono text-xs",
-                mode === "create" && "bg-[var(--color-bg-secondary)] cursor-default"
+                mode === "create" && "bg-bg-secondary cursor-default"
               )}
               aria-describedby="slug-hint"
             />
-            <p id="slug-hint" className="mt-1 font-ui text-xs text-[var(--color-text-tertiary)]">
+            <p id="slug-hint" className="mt-1 font-ui text-xs text-text-tertiary">
               {mode === "create"
                 ? "Se genera automáticamente."
                 : "Modificar el slug rompe URLs existentes."}
@@ -359,7 +353,7 @@ export function GlosarioForm({ mode, termino, allTerminos = [] }: GlosarioFormPr
           </div>
 
           <div>
-            <Label htmlFor="letra" className="font-ui text-sm font-500 text-[var(--color-carbon)]">
+            <Label htmlFor="letra" className="font-ui text-sm font-500 text-carbon">
               Letra (A-Z)
             </Label>
             <Input
@@ -370,7 +364,7 @@ export function GlosarioForm({ mode, termino, allTerminos = [] }: GlosarioFormPr
               readOnly={mode === "create"}
               className={cn(
                 "mt-1.5 text-center font-serif text-lg font-600",
-                mode === "create" && "bg-[var(--color-bg-secondary)] cursor-default"
+                mode === "create" && "bg-bg-secondary cursor-default"
               )}
               style={{ color: "var(--color-dorado-deep)" }}
             />
@@ -379,17 +373,12 @@ export function GlosarioForm({ mode, termino, allTerminos = [] }: GlosarioFormPr
 
         {/* Definición corta */}
         <div>
-          <Label
-            htmlFor="def-corta"
-            className="font-ui text-sm font-500 text-[var(--color-carbon)]"
-          >
+          <Label htmlFor="def-corta" className="font-ui text-sm font-500 text-carbon">
             Definición corta{" "}
-            <span className="text-[var(--color-error)]" aria-hidden="true">
+            <span className="text-error" aria-hidden="true">
               *
             </span>
-            <span className="ml-2 font-ui text-xs text-[var(--color-text-tertiary)]">
-              (máx. 500 caracteres)
-            </span>
+            <span className="ml-2 font-ui text-xs text-text-tertiary">(máx. 500 caracteres)</span>
           </Label>
           <textarea
             id="def-corta"
@@ -400,35 +389,27 @@ export function GlosarioForm({ mode, termino, allTerminos = [] }: GlosarioFormPr
             rows={2}
             placeholder="Resumen breve de 1-2 oraciones que aparece en las cards del glosario."
             className={cn(
-              "mt-1.5 w-full px-3 py-2.5 rounded-[6px] font-body text-sm text-[var(--color-carbon)]",
-              "border border-[var(--color-border-default)] bg-[var(--color-bg)]",
-              "placeholder:text-[var(--color-text-tertiary)]",
-              "focus:outline-none focus:border-[var(--color-marino)] focus:ring-2 focus:ring-[var(--color-marino)]/10",
+              "mt-1.5 w-full px-3 py-2.5 rounded-[6px] font-body text-sm text-carbon",
+              "border border-border-default bg-bg",
+              "placeholder:text-text-tertiary",
+              "focus:outline-none focus:border-marino focus:ring-2 focus:ring-marino/10",
               "transition-colors duration-150 resize-none"
             )}
             aria-describedby="def-corta-count"
           />
-          <p
-            id="def-corta-count"
-            className="mt-1 font-ui text-xs text-[var(--color-text-tertiary)] text-right"
-          >
+          <p id="def-corta-count" className="mt-1 font-ui text-xs text-text-tertiary text-right">
             {form.definicionCorta.length}/500
           </p>
         </div>
 
         {/* Definición larga (Markdown) */}
         <div>
-          <Label
-            htmlFor="def-larga"
-            className="font-ui text-sm font-500 text-[var(--color-carbon)]"
-          >
+          <Label htmlFor="def-larga" className="font-ui text-sm font-500 text-carbon">
             Definición completa{" "}
-            <span className="text-[var(--color-error)]" aria-hidden="true">
+            <span className="text-error" aria-hidden="true">
               *
             </span>
-            <span className="ml-2 font-ui text-xs text-[var(--color-text-tertiary)]">
-              (Markdown soportado)
-            </span>
+            <span className="ml-2 font-ui text-xs text-text-tertiary">(Markdown soportado)</span>
           </Label>
           <textarea
             id="def-larga"
@@ -439,14 +420,14 @@ export function GlosarioForm({ mode, termino, allTerminos = [] }: GlosarioFormPr
             rows={12}
             placeholder="Explicación detallada del término en Markdown. Podés usar **negrita**, _cursiva_, listas y encabezados."
             className={cn(
-              "mt-1.5 w-full px-3 py-2.5 rounded-[6px] font-mono text-xs text-[var(--color-carbon)]",
-              "border border-[var(--color-border-default)] bg-[var(--color-bg)]",
-              "placeholder:text-[var(--color-text-tertiary)]",
-              "focus:outline-none focus:border-[var(--color-marino)] focus:ring-2 focus:ring-[var(--color-marino)]/10",
+              "mt-1.5 w-full px-3 py-2.5 rounded-[6px] font-mono text-xs text-carbon",
+              "border border-border-default bg-bg",
+              "placeholder:text-text-tertiary",
+              "focus:outline-none focus:border-marino focus:ring-2 focus:ring-marino/10",
               "transition-colors duration-150 resize-y"
             )}
           />
-          <p className="mt-1 font-ui text-xs text-[var(--color-text-tertiary)] text-right">
+          <p className="mt-1 font-ui text-xs text-text-tertiary text-right">
             {form.definicionLarga.length}/10000
           </p>
         </div>
@@ -463,13 +444,11 @@ export function GlosarioForm({ mode, termino, allTerminos = [] }: GlosarioFormPr
         {/* Términos relacionados */}
         {otrosTerminos.length > 0 && (
           <div>
-            <Label className="font-ui text-sm font-500 text-[var(--color-carbon)]">
-              Términos relacionados
-            </Label>
-            <p className="font-ui text-xs text-[var(--color-text-tertiary)] mt-0.5 mb-2">
+            <Label className="font-ui text-sm font-500 text-carbon">Términos relacionados</Label>
+            <p className="font-ui text-xs text-text-tertiary mt-0.5 mb-2">
               Seleccioná otros términos del glosario que estén vinculados a este.
             </p>
-            <div className="flex flex-wrap gap-2 max-h-48 overflow-y-auto p-3 rounded-[6px] border border-[var(--color-border-default)] bg-[var(--color-bg)]">
+            <div className="flex flex-wrap gap-2 max-h-48 overflow-y-auto p-3 rounded-[6px] border border-border-default bg-bg">
               {otrosTerminos.map((t) => {
                 const selected = form.terminosRelacionados.includes(t.slug);
                 return (
@@ -479,10 +458,10 @@ export function GlosarioForm({ mode, termino, allTerminos = [] }: GlosarioFormPr
                     onClick={() => toggleRelacionado(t.slug)}
                     className={cn(
                       "px-2.5 py-1 rounded-full font-ui text-xs transition-all duration-150",
-                      "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-1",
+                      "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-1",
                       selected
-                        ? "bg-[var(--color-marino)] text-[var(--color-bg)] border border-[var(--color-marino)]"
-                        : "bg-[var(--color-bg-warm)] text-[var(--color-text-secondary)] border border-[var(--color-border-default)] hover:border-[var(--color-marino)]"
+                        ? "bg-marino text-bg border border-marino"
+                        : "bg-bg-warm text-text-secondary border border-border-default hover:border-marino"
                     )}
                     aria-pressed={selected}
                   >
@@ -492,7 +471,7 @@ export function GlosarioForm({ mode, termino, allTerminos = [] }: GlosarioFormPr
               })}
             </div>
             {form.terminosRelacionados.length > 0 && (
-              <p className="mt-1 font-ui text-xs text-[var(--color-text-tertiary)]">
+              <p className="mt-1 font-ui text-xs text-text-tertiary">
                 {form.terminosRelacionados.length} término
                 {form.terminosRelacionados.length !== 1 ? "s" : ""} relacionado
                 {form.terminosRelacionados.length !== 1 ? "s" : ""} seleccionado
@@ -503,7 +482,7 @@ export function GlosarioForm({ mode, termino, allTerminos = [] }: GlosarioFormPr
         )}
 
         {/* Acciones */}
-        <div className="flex items-center justify-between pt-4 border-t border-[var(--color-border-default)]">
+        <div className="flex items-center justify-between pt-4 border-t border-border-default">
           <div>
             {mode === "edit" && (
               <Button
@@ -515,8 +494,8 @@ export function GlosarioForm({ mode, termino, allTerminos = [] }: GlosarioFormPr
                 className={cn(
                   "font-ui text-sm gap-1.5",
                   confirmDelete
-                    ? "text-[var(--color-error)] hover:bg-[#FEF2F2]"
-                    : "text-[var(--color-text-secondary)] hover:text-[var(--color-error)]"
+                    ? "text-error hover:bg-[#FEF2F2]"
+                    : "text-text-secondary hover:text-error"
                 )}
               >
                 {deleting ? <Loader2 size={14} className="animate-spin" /> : <Trash2 size={14} />}
@@ -532,7 +511,7 @@ export function GlosarioForm({ mode, termino, allTerminos = [] }: GlosarioFormPr
               size="sm"
               onClick={() => router.push("/admin/glosario")}
               disabled={saving}
-              className="font-ui text-sm text-[var(--color-text-secondary)]"
+              className="font-ui text-sm text-text-secondary"
             >
               Cancelar
             </Button>

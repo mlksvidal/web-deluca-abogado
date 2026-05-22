@@ -95,20 +95,20 @@ export default async function ConfirmacionPage({ searchParams }: ConfirmacionPag
   const waUrl = `https://wa.me/${siteConfig.whatsapp}?text=${waMsg}`;
 
   return (
-    <div className="min-h-screen bg-[var(--color-bg)]">
+    <div className="min-h-screen bg-bg">
       <div className="mx-auto max-w-2xl px-4 py-16 md:py-24">
         {/* ─── Header de éxito ──────────────────────────────────────────── */}
         <div className="mb-10 flex flex-col items-center text-center">
           <div
-            className="mb-6 flex size-20 items-center justify-center rounded-full bg-[var(--color-marino)]"
+            className="mb-6 flex size-20 items-center justify-center rounded-full bg-marino"
             aria-hidden="true"
           >
-            <CheckCircle2 className="size-10 text-[var(--color-dorado)]" aria-hidden="true" />
+            <CheckCircle2 className="size-10 text-dorado" aria-hidden="true" />
           </div>
-          <h1 className="font-serif text-3xl font-medium text-[var(--color-marino)] md:text-4xl">
+          <h1 className="font-serif text-3xl font-medium text-marino md:text-4xl">
             Turno confirmado
           </h1>
-          <p className="mt-3 font-body text-[var(--color-text-secondary)] max-w-md">
+          <p className="mt-3 font-body text-text-secondary max-w-md">
             Tu consulta está agendada. Revisá tu email para ver la confirmación con todos los
             detalles.
           </p>
@@ -116,21 +116,21 @@ export default async function ConfirmacionPage({ searchParams }: ConfirmacionPag
 
         {/* ─── Card con detalles del turno ─────────────────────────────── */}
         <div
-          className="mb-8 overflow-hidden rounded-[6px] border border-[var(--color-border-default)] bg-white shadow-[var(--shadow-md)]"
+          className="mb-8 overflow-hidden rounded-[6px] border border-border-default bg-white shadow-[var(--shadow-md)]"
           aria-label="Detalles del turno confirmado"
         >
           {/* Header marino */}
-          <div className="bg-[var(--color-marino)] px-6 py-4">
-            <p className="font-ui text-xs font-medium uppercase tracking-[0.12em] text-[var(--color-dorado)]">
+          <div className="bg-marino px-6 py-4">
+            <p className="font-ui text-xs font-medium uppercase tracking-[0.12em] text-dorado">
               Detalles del turno
             </p>
-            <p className="mt-1 font-serif text-lg font-medium text-[var(--color-bg)]">
+            <p className="mt-1 font-serif text-lg font-medium text-bg">
               {fechaDisplay} a las {horaDisplay} hs
             </p>
           </div>
 
           {/* Body */}
-          <dl className="divide-y divide-[var(--color-border-default)]">
+          <dl className="divide-y divide-border-default">
             {[
               { label: "Cliente", value: booking.clientName },
               { label: "Email", value: booking.clientEmail },
@@ -139,7 +139,7 @@ export default async function ConfirmacionPage({ searchParams }: ConfirmacionPag
               {
                 label: "ID de reserva",
                 value: (
-                  <span className="font-mono text-xs text-[var(--color-text-tertiary)]">
+                  <span className="font-mono text-xs text-text-tertiary">
                     {booking.id.slice(0, 8)}…
                   </span>
                 ),
@@ -149,10 +149,10 @@ export default async function ConfirmacionPage({ searchParams }: ConfirmacionPag
                 key={label}
                 className="flex flex-col gap-0.5 px-6 py-3 sm:flex-row sm:items-center sm:gap-4"
               >
-                <dt className="min-w-[120px] font-ui text-xs font-semibold uppercase tracking-wide text-[var(--color-text-tertiary)]">
+                <dt className="min-w-[120px] font-ui text-xs font-semibold uppercase tracking-wide text-text-tertiary">
                   {label}
                 </dt>
-                <dd className="font-ui text-sm text-[var(--color-carbon)]">{value}</dd>
+                <dd className="font-ui text-sm text-carbon">{value}</dd>
               </div>
             ))}
           </dl>
@@ -160,7 +160,7 @@ export default async function ConfirmacionPage({ searchParams }: ConfirmacionPag
 
         {/* ─── Pasos siguientes ─────────────────────────────────────────── */}
         <div className="mb-8 space-y-4">
-          <h2 className="font-ui text-sm font-semibold uppercase tracking-wide text-[var(--color-marino)]">
+          <h2 className="font-ui text-sm font-semibold uppercase tracking-wide text-marino">
             ¿Qué pasa ahora?
           </h2>
           <ul className="space-y-3" aria-label="Próximos pasos">
@@ -180,13 +180,10 @@ export default async function ConfirmacionPage({ searchParams }: ConfirmacionPag
             ].map(({ icon: Icon, text }, i) => (
               <li
                 key={i}
-                className="flex items-start gap-3 rounded-[6px] bg-[var(--color-bg-secondary)] px-4 py-3"
+                className="flex items-start gap-3 rounded-[6px] bg-bg-secondary px-4 py-3"
               >
-                <Icon
-                  className="mt-0.5 size-4 shrink-0 text-[var(--color-marino)]"
-                  aria-hidden="true"
-                />
-                <p className="font-body text-sm text-[var(--color-text-secondary)]">{text}</p>
+                <Icon className="mt-0.5 size-4 shrink-0 text-marino" aria-hidden="true" />
+                <p className="font-body text-sm text-text-secondary">{text}</p>
               </li>
             ))}
           </ul>
@@ -196,7 +193,7 @@ export default async function ConfirmacionPage({ searchParams }: ConfirmacionPag
         <div className="flex flex-col gap-3 sm:flex-row">
           <Link
             href="/"
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-[4px] border-2 border-[var(--color-marino)] px-6 py-2.5 font-ui text-sm font-medium text-[var(--color-marino)] transition-colors hover:bg-[var(--color-marino)] hover:text-[var(--color-bg)] focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-[4px] border-2 border-marino px-6 py-2.5 font-ui text-sm font-medium text-marino transition-colors hover:bg-marino hover:text-bg focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
           >
             <Home className="size-4" aria-hidden="true" />
             Volver al inicio
@@ -205,7 +202,7 @@ export default async function ConfirmacionPage({ searchParams }: ConfirmacionPag
             href={waUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-[4px] bg-[var(--color-marino)] px-6 py-2.5 font-ui text-sm font-medium text-[var(--color-bg)] transition-colors hover:bg-[var(--color-marino-hover)] focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-[4px] bg-marino px-6 py-2.5 font-ui text-sm font-medium text-bg transition-colors hover:bg-marino-hover focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
           >
             <MessageCircle className="size-4" aria-hidden="true" />
             Cancelar por WhatsApp
@@ -213,11 +210,11 @@ export default async function ConfirmacionPage({ searchParams }: ConfirmacionPag
         </div>
 
         {/* Nota legal */}
-        <p className="mt-8 text-center font-ui text-xs text-[var(--color-text-tertiary)]">
+        <p className="mt-8 text-center font-ui text-xs text-text-tertiary">
           Turno confirmado bajo la{" "}
           <Link
             href="/privacidad"
-            className="underline underline-offset-2 decoration-[var(--color-dorado)] hover:decoration-2"
+            className="underline underline-offset-2 decoration-dorado hover:decoration-2"
           >
             Política de Privacidad
           </Link>{" "}

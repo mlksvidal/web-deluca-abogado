@@ -40,12 +40,12 @@ export function BlogPagination({ page, total, pageSize }: BlogPaginationProps) {
         className={cn(
           "inline-flex items-center justify-center w-9 h-9 rounded-[6px]",
           "font-ui text-sm",
-          "border border-[var(--color-border-default)]",
+          "border border-border-default",
           "transition-colors duration-150",
-          "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2",
+          "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2",
           page === 1
-            ? "opacity-40 cursor-not-allowed bg-transparent text-[var(--color-text-tertiary)]"
-            : "bg-[var(--color-bg)] text-[var(--color-carbon-soft)] hover:border-[var(--color-marino)] hover:text-[var(--color-marino)]"
+            ? "opacity-40 cursor-not-allowed bg-transparent text-text-tertiary"
+            : "bg-bg text-carbon-soft hover:border-marino hover:text-marino"
         )}
       >
         <ChevronLeft size={16} aria-hidden="true" />
@@ -61,10 +61,10 @@ export function BlogPagination({ page, total, pageSize }: BlogPaginationProps) {
             "inline-flex items-center justify-center w-9 h-9 rounded-[6px]",
             "font-ui text-sm font-medium",
             "border transition-colors duration-150",
-            "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2",
+            "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2",
             p === page
-              ? "bg-[var(--color-marino)] text-[var(--color-bg)] border-[var(--color-marino)]"
-              : "bg-[var(--color-bg)] text-[var(--color-carbon-soft)] border-[var(--color-border-default)] hover:border-[var(--color-marino)] hover:text-[var(--color-marino)]"
+              ? "bg-marino text-bg border-marino"
+              : "bg-bg text-carbon-soft border-border-default hover:border-marino hover:text-marino"
           )}
         >
           {p}
@@ -78,12 +78,12 @@ export function BlogPagination({ page, total, pageSize }: BlogPaginationProps) {
         className={cn(
           "inline-flex items-center justify-center w-9 h-9 rounded-[6px]",
           "font-ui text-sm",
-          "border border-[var(--color-border-default)]",
+          "border border-border-default",
           "transition-colors duration-150",
-          "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2",
+          "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2",
           page === totalPages
-            ? "opacity-40 cursor-not-allowed bg-transparent text-[var(--color-text-tertiary)]"
-            : "bg-[var(--color-bg)] text-[var(--color-carbon-soft)] hover:border-[var(--color-marino)] hover:text-[var(--color-marino)]"
+            ? "opacity-40 cursor-not-allowed bg-transparent text-text-tertiary"
+            : "bg-bg text-carbon-soft hover:border-marino hover:text-marino"
         )}
       >
         <ChevronRight size={16} aria-hidden="true" />

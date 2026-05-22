@@ -34,16 +34,16 @@ function Disclaimer({
 }: DisclaimerProps) {
   const variantStyles = {
     default: {
-      container: "bg-[#F7F1E4] border-[var(--color-dorado-muted)] text-[var(--color-carbon-soft)]",
-      iconColor: "text-[var(--color-dorado-deep)]",
+      container: "bg-[#F7F1E4] border-dorado-muted text-carbon-soft",
+      iconColor: "text-dorado-deep",
     },
     warning: {
       container: "bg-[#FEF3C7] border-[#FCD34D] text-[#92400E]",
       iconColor: "text-[#B45309]",
     },
     info: {
-      container: "bg-[var(--color-marino-subtle)] border-[#C5CFDF] text-[var(--color-marino)]",
-      iconColor: "text-[var(--color-marino)]",
+      container: "bg-marino-subtle border-[#C5CFDF] text-marino",
+      iconColor: "text-marino",
     },
   };
 

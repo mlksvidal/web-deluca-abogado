@@ -119,13 +119,11 @@ function HitoItem({ hito, index }: { hito: HitoDivorcio; index: number }) {
           >
             {String(hito.numero).padStart(2, "0")}
           </span>
-          <h3 className="font-serif text-lg font-500 text-[var(--color-marino)] leading-snug">
-            {hito.titulo}
-          </h3>
+          <h3 className="font-serif text-lg font-500 text-marino leading-snug">{hito.titulo}</h3>
         </div>
 
         {/* Descripción */}
-        <p className="font-body text-sm text-[var(--color-text-secondary)] leading-relaxed mb-3 ml-9">
+        <p className="font-body text-sm text-text-secondary leading-relaxed mb-3 ml-9">
           {hito.descripcion}
         </p>
 

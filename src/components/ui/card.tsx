@@ -22,37 +22,37 @@ const cardVariants = cva(
     variants: {
       variant: {
         default: [
-          "bg-[var(--color-bg)] text-[var(--color-carbon)]",
-          "border border-[var(--color-border-default)]",
+          "bg-bg text-carbon",
+          "border border-border-default",
           "rounded-[6px]",
           "shadow-[var(--shadow-sm)]",
         ].join(" "),
 
         ghost: [
-          "bg-[var(--color-bg-secondary)] text-[var(--color-carbon)]",
-          "border border-[var(--color-border-default)]",
+          "bg-bg-secondary text-carbon",
+          "border border-border-default",
           "rounded-[6px]",
         ].join(" "),
 
         dark: [
-          "bg-transparent text-[var(--color-bg)]",
+          "bg-transparent text-bg",
           "border border-[rgba(201,169,97,0.30)]",
           "rounded-[6px]",
         ].join(" "),
 
         /** Card con franja dorada izquierda — para info destacada */
         accent: [
-          "bg-[var(--color-bg)] text-[var(--color-carbon)]",
-          "border border-[var(--color-border-default)]",
-          "border-l-[3px] border-l-[var(--color-dorado)]",
+          "bg-bg text-carbon",
+          "border border-border-default",
+          "border-l-[3px] border-l-dorado",
           "rounded-[6px]",
           "shadow-[var(--shadow-sm)]",
         ].join(" "),
 
         /** Card oscura completa — para CTA card en booking */
         "dark-solid": [
-          "bg-[var(--color-marino)] text-[var(--color-bg)]",
-          "border-t-4 border-t-[var(--color-dorado)] border-x-0 border-b-0",
+          "bg-marino text-bg",
+          "border-t-4 border-t-dorado border-x-0 border-b-0",
           "rounded-[8px]",
           "shadow-[var(--shadow-xl)]",
         ].join(" "),
@@ -94,10 +94,7 @@ function CardDescription({ className, ...props }: React.ComponentProps<"p">) {
   return (
     <p
       data-slot="card-description"
-      className={cn(
-        "font-body text-sm text-[var(--color-text-secondary)] leading-normal",
-        className
-      )}
+      className={cn("font-body text-sm text-text-secondary leading-normal", className)}
       {...props}
     />
   );
@@ -111,10 +108,7 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-footer"
-      className={cn(
-        "flex items-center px-6 py-4 border-t border-[var(--color-border-default)]",
-        className
-      )}
+      className={cn("flex items-center px-6 py-4 border-t border-border-default", className)}
       {...props}
     />
   );

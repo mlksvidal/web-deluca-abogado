@@ -55,8 +55,8 @@ function ContactItem({
         href={href}
         className={cn(
           "block transition-colors duration-fast",
-          "hover:text-[var(--color-bg)]",
-          "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3"
+          "hover:text-bg",
+          "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3"
         )}
       >
         {content}
@@ -69,10 +69,7 @@ function ContactItem({
 
 function Footer() {
   return (
-    <footer
-      role="contentinfo"
-      className="bg-[var(--color-marino-deep,#0A152B)] text-[var(--color-bg)]"
-    >
+    <footer role="contentinfo" className="bg-[var(--color-marino-deep,#0A152B)] text-bg">
       {/* Cuerpo principal */}
       <div
         className="py-16"
@@ -85,7 +82,7 @@ function Footer() {
           <div className="space-y-6">
             {/* Logo texto */}
             <div>
-              <p className="font-serif text-xl font-semibold text-[var(--color-bg)] leading-tight tracking-[-0.01em]">
+              <p className="font-serif text-xl font-semibold text-bg leading-tight tracking-[-0.01em]">
                 Dr. Pablo De Luca
               </p>
               <p className="font-ui text-sm text-[rgba(250,247,242,0.55)] tracking-[0.06em] uppercase mt-1">
@@ -107,8 +104,8 @@ function Footer() {
                 aria-label="Instagram del Estudio De Luca"
                 className={cn(
                   "text-[rgba(250,247,242,0.50)]",
-                  "hover:text-[var(--color-dorado)] transition-colors duration-fast",
-                  "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3"
+                  "hover:text-dorado transition-colors duration-fast",
+                  "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3"
                 )}
               >
                 {/* Instagram icon SVG */}
@@ -135,8 +132,8 @@ function Footer() {
                 aria-label="LinkedIn del Dr. Pablo De Luca"
                 className={cn(
                   "text-[rgba(250,247,242,0.50)]",
-                  "hover:text-[var(--color-dorado)] transition-colors duration-fast",
-                  "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3"
+                  "hover:text-dorado transition-colors duration-fast",
+                  "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3"
                 )}
               >
                 {/* LinkedIn icon SVG */}
@@ -161,7 +158,7 @@ function Footer() {
 
           {/* Col 2 — Contacto (PROMINENTE — anti-pattern prevenido) */}
           <div className="space-y-5">
-            <h3 className="font-ui text-xs font-semibold tracking-[0.1em] uppercase text-[var(--color-dorado)]">
+            <h3 className="font-ui text-xs font-semibold tracking-[0.1em] uppercase text-dorado">
               Contacto
             </h3>
             <nav aria-label="Información de contacto" className="space-y-4">
@@ -196,7 +193,7 @@ function Footer() {
           <div className="space-y-8">
             {/* Áreas */}
             <div className="space-y-4">
-              <h3 className="font-ui text-xs font-semibold tracking-[0.1em] uppercase text-[var(--color-dorado)]">
+              <h3 className="font-ui text-xs font-semibold tracking-[0.1em] uppercase text-dorado">
                 Áreas de Práctica
               </h3>
               <nav aria-label="Áreas legales">
@@ -209,8 +206,8 @@ function Footer() {
                           "nav-underline",
                           "font-ui text-sm text-[rgba(250,247,242,0.75)]",
                           "transition-colors duration-fast",
-                          "hover:text-[var(--color-bg)]",
-                          "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3"
+                          "hover:text-bg",
+                          "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3"
                         )}
                       >
                         {area.label}
@@ -223,7 +220,7 @@ function Footer() {
 
             {/* Legales */}
             <div className="space-y-4">
-              <h3 className="font-ui text-xs font-semibold tracking-[0.1em] uppercase text-[var(--color-dorado)]">
+              <h3 className="font-ui text-xs font-semibold tracking-[0.1em] uppercase text-dorado">
                 Legal
               </h3>
               <nav aria-label="Links legales">
@@ -236,8 +233,8 @@ function Footer() {
                           "nav-underline",
                           "font-ui text-sm text-[rgba(250,247,242,0.75)]",
                           "transition-colors duration-fast",
-                          "hover:text-[var(--color-bg)]",
-                          "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3"
+                          "hover:text-bg",
+                          "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3"
                         )}
                       >
                         {item.label}
@@ -290,7 +287,7 @@ function Footer() {
                     className={cn(
                       "font-ui text-xs text-[rgba(250,247,242,0.40)]",
                       "hover:text-[rgba(250,247,242,0.80)] transition-colors duration-fast",
-                      "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3"
+                      "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3"
                     )}
                   >
                     {item.label}

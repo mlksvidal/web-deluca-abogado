@@ -32,7 +32,7 @@ function IncapacidadSlider({ value, onChange }: { value: number; onChange: (v: n
       <div className="flex items-center justify-between">
         <Label htmlFor="art-incapacidad">
           Porcentaje de incapacidad{" "}
-          <span className="text-[var(--color-error)]" aria-hidden="true">
+          <span className="text-error" aria-hidden="true">
             *
           </span>
         </Label>
@@ -60,28 +60,28 @@ function IncapacidadSlider({ value, onChange }: { value: number; onChange: (v: n
           aria-valuetext={`${value}% de incapacidad`}
           className={cn(
             "w-full h-2 rounded-full appearance-none cursor-pointer",
-            "bg-[var(--color-border-default)]",
+            "bg-border-default",
             "[&::-webkit-slider-thumb]:appearance-none",
             "[&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5",
             "[&::-webkit-slider-thumb]:rounded-full",
             "[&::-webkit-slider-thumb]:bg-marino",
-            "[&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-[var(--color-dorado)]",
+            "[&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-dorado",
             "[&::-webkit-slider-thumb]:shadow-[var(--shadow-sm)]",
             "[&::-webkit-slider-thumb]:cursor-grab",
             "[&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5",
             "[&::-moz-range-thumb]:rounded-full",
             "[&::-moz-range-thumb]:bg-marino",
-            "[&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-[var(--color-dorado)]",
+            "[&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-dorado",
             "[&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:shadow-[var(--shadow-sm)]",
-            "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+            "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
           )}
           style={{
             background: `linear-gradient(to right, var(--color-marino) ${value}%, var(--color-border-default) ${value}%)`,
           }}
         />
         <div className="flex justify-between mt-1">
-          <span className="font-ui text-xs text-[var(--color-text-tertiary)]">1%</span>
-          <span className="font-ui text-xs text-[var(--color-text-tertiary)]">100%</span>
+          <span className="font-ui text-xs text-text-tertiary">1%</span>
+          <span className="font-ui text-xs text-text-tertiary">100%</span>
         </div>
       </div>
     </div>
@@ -104,7 +104,7 @@ function DesglosRow({
   return (
     <div
       className={cn(
-        "flex items-start justify-between py-3 border-b border-[var(--color-border-default)] last:border-0",
+        "flex items-start justify-between py-3 border-b border-border-default last:border-0",
         highlighted && "font-semibold"
       )}
     >
@@ -112,11 +112,7 @@ function DesglosRow({
         <span className={cn("font-ui text-sm", highlighted ? "text-marino" : "text-carbon-soft")}>
           {label}
         </span>
-        {sub && (
-          <span className="block font-body text-xs text-[var(--color-text-tertiary)] mt-0.5">
-            {sub}
-          </span>
-        )}
+        {sub && <span className="block font-body text-xs text-text-tertiary mt-0.5">{sub}</span>}
       </div>
       <span
         className={cn(
@@ -140,7 +136,7 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoART }) {
       aria-live="polite"
       className={cn(
         "mt-8 rounded-[8px] overflow-hidden",
-        "border border-[var(--color-border-default)]",
+        "border border-border-default",
         "shadow-[var(--shadow-md)]",
         "animate-in fade-in slide-in-from-bottom-4 duration-500"
       )}
@@ -177,9 +173,9 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoART }) {
       </div>
 
       {/* RIPTE notice */}
-      <div className="px-6 py-3 bg-[var(--color-marino-subtle)] border-t border-[var(--color-border-default)]">
+      <div className="px-6 py-3 bg-marino-subtle border-t border-border-default">
         <p className="font-ui text-xs text-marino font-medium">Sujeto al piso RIPTE vigente</p>
-        <p className="font-body text-xs text-[var(--color-text-secondary)] mt-0.5">
+        <p className="font-body text-xs text-text-secondary mt-0.5">
           La Ley 26.773 establece actualización trimestral por RIPTE (Remuneración Imponible
           Promedio de los Trabajadores Estables). El valor real puede ser mayor.
         </p>
@@ -187,15 +183,15 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoART }) {
 
       {/* Notas técnicas */}
       {desglose.notas.length > 0 && (
-        <div className="bg-bg-warm px-6 py-4 border-t border-[var(--color-border-default)]">
-          <p className="font-ui text-xs font-semibold uppercase tracking-wider text-[var(--color-text-tertiary)] mb-2">
+        <div className="bg-bg-warm px-6 py-4 border-t border-border-default">
+          <p className="font-ui text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-2">
             Detalle del cálculo
           </p>
           <ul className="space-y-1">
             {desglose.notas.map((nota, i) => (
               <li
                 key={i}
-                className="font-body text-xs text-carbon-soft leading-relaxed pl-2 border-l-2 border-[var(--color-dorado-muted)]"
+                className="font-body text-xs text-carbon-soft leading-relaxed pl-2 border-l-2 border-dorado-muted"
               >
                 {nota}
               </li>
@@ -205,7 +201,7 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoART }) {
       )}
 
       {/* Disclaimer + CTA */}
-      <div className="px-6 py-5 space-y-4 border-t border-[var(--color-border-default)] bg-bg">
+      <div className="px-6 py-5 space-y-4 border-t border-border-default bg-bg">
         <Disclaimer variant="warning" title="Estimación orientativa">
           {resultado.disclaimer}
         </Disclaimer>
@@ -307,7 +303,7 @@ export function FormIndemnizacionART() {
             }}
           />
           {errors.incapacidad && (
-            <p role="alert" className="mt-1 font-ui text-xs text-[var(--color-error)]">
+            <p role="alert" className="mt-1 font-ui text-xs text-error">
               {errors.incapacidad}
             </p>
           )}
@@ -317,13 +313,13 @@ export function FormIndemnizacionART() {
         <div className="space-y-1.5">
           <Label htmlFor="art-sueldo">
             Sueldo bruto mensual — IBM (ARS){" "}
-            <span className="text-[var(--color-error)]" aria-hidden="true">
+            <span className="text-error" aria-hidden="true">
               *
             </span>
           </Label>
           <div className="relative">
             <span
-              className="pointer-events-none absolute inset-y-0 left-3.5 flex items-center font-ui text-sm text-[var(--color-text-tertiary)]"
+              className="pointer-events-none absolute inset-y-0 left-3.5 flex items-center font-ui text-sm text-text-tertiary"
               aria-hidden="true"
             >
               $
@@ -344,15 +340,11 @@ export function FormIndemnizacionART() {
             />
           </div>
           {errors.sueldo ? (
-            <p
-              id="error-art-sueldo"
-              role="alert"
-              className="font-ui text-xs text-[var(--color-error)]"
-            >
+            <p id="error-art-sueldo" role="alert" className="font-ui text-xs text-error">
               {errors.sueldo}
             </p>
           ) : (
-            <p id="hint-art-sueldo" className="font-ui text-xs text-[var(--color-text-tertiary)]">
+            <p id="hint-art-sueldo" className="font-ui text-xs text-text-tertiary">
               Ingreso Base Mensual (IBM) al momento del accidente
             </p>
           )}
@@ -362,7 +354,7 @@ export function FormIndemnizacionART() {
         <div className="space-y-1.5">
           <Label htmlFor="art-tipo">
             Tipo de accidente{" "}
-            <span className="text-[var(--color-error)]" aria-hidden="true">
+            <span className="text-error" aria-hidden="true">
               *
             </span>
           </Label>
@@ -391,11 +383,7 @@ export function FormIndemnizacionART() {
             </SelectContent>
           </Select>
           {errors.tipoAccidente && (
-            <p
-              id="error-art-tipo"
-              role="alert"
-              className="font-ui text-xs text-[var(--color-error)]"
-            >
+            <p id="error-art-tipo" role="alert" className="font-ui text-xs text-error">
               {errors.tipoAccidente}
             </p>
           )}
@@ -405,7 +393,7 @@ export function FormIndemnizacionART() {
         <div className="space-y-1.5">
           <Label htmlFor="art-edad">
             Edad del trabajador al momento del accidente{" "}
-            <span className="text-[var(--color-error)]" aria-hidden="true">
+            <span className="text-error" aria-hidden="true">
               *
             </span>
           </Label>
@@ -426,15 +414,11 @@ export function FormIndemnizacionART() {
             className="max-w-[160px]"
           />
           {errors.edad ? (
-            <p
-              id="error-art-edad"
-              role="alert"
-              className="font-ui text-xs text-[var(--color-error)]"
-            >
+            <p id="error-art-edad" role="alert" className="font-ui text-xs text-error">
               {errors.edad}
             </p>
           ) : (
-            <p id="hint-art-edad" className="font-ui text-xs text-[var(--color-text-tertiary)]">
+            <p id="hint-art-edad" className="font-ui text-xs text-text-tertiary">
               Entre 18 y 65 años (Ley 24.557)
             </p>
           )}

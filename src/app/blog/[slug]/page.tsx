@@ -187,10 +187,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <nav aria-label="Navegación de breadcrumb" className="mb-6">
             <ol className="flex flex-wrap items-center gap-1.5 font-ui text-xs text-[rgba(250,247,242,0.55)]">
               <li>
-                <Link
-                  href="/"
-                  className="hover:text-[var(--color-dorado)] transition-colors duration-150"
-                >
+                <Link href="/" className="hover:text-dorado transition-colors duration-150">
                   Inicio
                 </Link>
               </li>
@@ -198,10 +195,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <ChevronRight size={12} />
               </li>
               <li>
-                <Link
-                  href="/blog"
-                  className="hover:text-[var(--color-dorado)] transition-colors duration-150"
-                >
+                <Link href="/blog" className="hover:text-dorado transition-colors duration-150">
                   Blog
                 </Link>
               </li>
@@ -210,7 +204,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </li>
               <li
                 aria-current="page"
-                className="text-[var(--color-dorado)] truncate max-w-[200px]"
+                className="text-dorado truncate max-w-[200px]"
                 title={post.title}
               >
                 {post.title}
@@ -226,7 +220,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {/* Título */}
           <h1
             id="post-heading"
-            className="font-serif font-semibold text-[var(--color-bg)] leading-tight mb-6"
+            className="font-serif font-semibold text-bg leading-tight mb-6"
             style={{ fontSize: "clamp(1.6rem, 1rem + 2.8vw, 2.75rem)" }}
           >
             {post.title}
@@ -268,7 +262,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {/* Back link */}
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1.5 font-ui text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-marino)] transition-colors duration-150 mb-8 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2 focus-visible:rounded-[2px]"
+            className="inline-flex items-center gap-1.5 font-ui text-sm text-text-secondary hover:text-marino transition-colors duration-150 mb-8 focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2 focus-visible:rounded-[2px]"
           >
             <ArrowLeft size={15} aria-hidden="true" />
             Volver al blog
@@ -292,7 +286,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             }}
             aria-label="Consulta legal relacionada"
           >
-            <h2 className="font-serif text-2xl font-semibold text-[var(--color-bg)] mb-3 leading-snug">
+            <h2 className="font-serif text-2xl font-semibold text-bg mb-3 leading-snug">
               ¿Tenés una consulta similar?
             </h2>
             <p className="font-body text-[rgba(250,247,242,0.75)] mb-6 max-w-md mx-auto">
@@ -301,7 +295,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </p>
             <Link
               href="/reservar"
-              className="inline-flex items-center gap-2.5 h-12 px-8 font-ui text-sm font-medium tracking-wide uppercase rounded-sm bg-[var(--color-dorado)] text-[var(--color-marino)] hover:bg-[var(--color-dorado-hover)] hover:-translate-y-0.5 transition-all duration-250 shadow-[var(--shadow-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3"
+              className="inline-flex items-center gap-2.5 h-12 px-8 font-ui text-sm font-medium tracking-wide uppercase rounded-sm bg-dorado text-marino hover:bg-dorado-hover hover:-translate-y-0.5 transition-all duration-250 shadow-[var(--shadow-accent)] focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3"
             >
               Reservar consulta
               <ArrowRight size={16} aria-hidden="true" />
@@ -324,7 +318,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <Container>
             <h2
               id="relacionados-heading"
-              className="font-serif text-2xl font-semibold text-[var(--color-marino)] mb-8"
+              className="font-serif text-2xl font-semibold text-marino mb-8"
             >
               Artículos relacionados
             </h2>
@@ -340,27 +334,25 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 return (
                   <article
                     key={related.id}
-                    className="flex flex-col bg-[var(--color-bg)] border border-[var(--color-border-default)] rounded-[10px] shadow-[var(--shadow-sm)] overflow-hidden hover:shadow-[var(--shadow-md)] hover:-translate-y-0.5 transition-all duration-300"
+                    className="flex flex-col bg-bg border border-border-default rounded-[10px] shadow-[var(--shadow-sm)] overflow-hidden hover:shadow-[var(--shadow-md)] hover:-translate-y-0.5 transition-all duration-300"
                   >
                     <div className="flex flex-col flex-1 px-5 py-5">
                       <Badge variant="area-legal" className="w-fit mb-2.5">
                         {relatedAreaLabel}
                       </Badge>
-                      <h3 className="font-serif text-base font-semibold text-[var(--color-marino)] leading-snug mb-2 line-clamp-2">
+                      <h3 className="font-serif text-base font-semibold text-marino leading-snug mb-2 line-clamp-2">
                         <Link
                           href={`/blog/${related.slug}`}
-                          className="hover:text-[var(--color-marino-hover)] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2 focus-visible:rounded-[2px]"
+                          className="hover:text-marino-hover transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2 focus-visible:rounded-[2px]"
                         >
                           {related.title}
                         </Link>
                       </h3>
-                      <p className="font-body text-sm text-[var(--color-carbon-soft)] leading-relaxed line-clamp-2 flex-1 mb-3">
+                      <p className="font-body text-sm text-carbon-soft leading-relaxed line-clamp-2 flex-1 mb-3">
                         {related.excerpt}
                       </p>
                       {relatedDate && (
-                        <span className="font-ui text-xs text-[var(--color-text-tertiary)]">
-                          {relatedDate}
-                        </span>
+                        <span className="font-ui text-xs text-text-tertiary">{relatedDate}</span>
                       )}
                     </div>
                   </article>

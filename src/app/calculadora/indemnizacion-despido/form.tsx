@@ -56,7 +56,7 @@ function DesglosRow({
   return (
     <div
       className={cn(
-        "flex items-center justify-between py-3 border-b border-[var(--color-border-default)] last:border-0",
+        "flex items-center justify-between py-3 border-b border-border-default last:border-0",
         highlighted && "font-semibold"
       )}
     >
@@ -90,7 +90,7 @@ function EmailCapture() {
 
   if (sent) {
     return (
-      <p className="font-ui text-sm text-[var(--color-success)] text-center py-2">
+      <p className="font-ui text-sm text-success text-center py-2">
         Recibimos tu email. Te enviaremos el cálculo detallado a la brevedad.
       </p>
     );
@@ -136,7 +136,7 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoDespido }) {
       aria-live="polite"
       className={cn(
         "mt-8 rounded-[8px] overflow-hidden",
-        "border border-[var(--color-border-default)]",
+        "border border-border-default",
         "shadow-[var(--shadow-md)]",
         "animate-in fade-in slide-in-from-bottom-4 duration-500"
       )}
@@ -177,15 +177,15 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoDespido }) {
 
       {/* Notas técnicas */}
       {desglose.notas.length > 0 && !esVacio && (
-        <div className="bg-bg-warm px-6 py-4 border-t border-[var(--color-border-default)]">
-          <p className="font-ui text-xs font-semibold uppercase tracking-wider text-[var(--color-text-tertiary)] mb-2">
+        <div className="bg-bg-warm px-6 py-4 border-t border-border-default">
+          <p className="font-ui text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-2">
             Detalle del cálculo
           </p>
           <ul className="space-y-1">
             {desglose.notas.map((nota, i) => (
               <li
                 key={i}
-                className="font-body text-xs text-carbon-soft leading-relaxed pl-2 border-l-2 border-[var(--color-dorado-muted)]"
+                className="font-body text-xs text-carbon-soft leading-relaxed pl-2 border-l-2 border-dorado-muted"
               >
                 {nota}
               </li>
@@ -195,7 +195,7 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoDespido }) {
       )}
 
       {/* Disclaimer + CTA */}
-      <div className="px-6 py-5 space-y-4 border-t border-[var(--color-border-default)] bg-bg">
+      <div className="px-6 py-5 space-y-4 border-t border-border-default bg-bg">
         <Disclaimer variant="warning" title="Estimación orientativa">
           {resultado.disclaimer}
         </Disclaimer>
@@ -207,11 +207,11 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoDespido }) {
             </Button>
           </Link>
 
-          <div className="border border-[var(--color-border-default)] rounded-[6px] p-4">
+          <div className="border border-border-default rounded-[6px] p-4">
             <p className="font-ui text-sm font-medium text-carbon-soft mb-0.5">
               Recibí el cálculo detallado en PDF
             </p>
-            <p className="font-body text-xs text-[var(--color-text-tertiary)] mb-2">
+            <p className="font-body text-xs text-text-tertiary mb-2">
               Te lo enviamos a tu correo sin costo.
             </p>
             <EmailCapture />
@@ -311,7 +311,7 @@ export function FormIndemnizacionDespido() {
             <div className="space-y-1.5">
               <Label htmlFor="calc-anios">
                 Años trabajados{" "}
-                <span className="text-[var(--color-error)]" aria-hidden="true">
+                <span className="text-error" aria-hidden="true">
                   *
                 </span>
               </Label>
@@ -331,11 +331,7 @@ export function FormIndemnizacionDespido() {
                 aria-describedby={errors.anios ? "error-anios" : undefined}
               />
               {errors.anios && (
-                <p
-                  id="error-anios"
-                  role="alert"
-                  className="font-ui text-xs text-[var(--color-error)]"
-                >
+                <p id="error-anios" role="alert" className="font-ui text-xs text-error">
                   {errors.anios}
                 </p>
               )}
@@ -368,13 +364,13 @@ export function FormIndemnizacionDespido() {
         <div className="space-y-1.5">
           <Label htmlFor="calc-sueldo">
             Sueldo bruto último mes (ARS){" "}
-            <span className="text-[var(--color-error)]" aria-hidden="true">
+            <span className="text-error" aria-hidden="true">
               *
             </span>
           </Label>
           <div className="relative">
             <span
-              className="pointer-events-none absolute inset-y-0 left-3.5 flex items-center font-ui text-sm text-[var(--color-text-tertiary)]"
+              className="pointer-events-none absolute inset-y-0 left-3.5 flex items-center font-ui text-sm text-text-tertiary"
               aria-hidden="true"
             >
               $
@@ -397,11 +393,11 @@ export function FormIndemnizacionDespido() {
             />
           </div>
           {errors.sueldo ? (
-            <p id="error-sueldo" role="alert" className="font-ui text-xs text-[var(--color-error)]">
+            <p id="error-sueldo" role="alert" className="font-ui text-xs text-error">
               {errors.sueldo}
             </p>
           ) : (
-            <p id="hint-sueldo" className="font-ui text-xs text-[var(--color-text-tertiary)]">
+            <p id="hint-sueldo" className="font-ui text-xs text-text-tertiary">
               Mejor remuneración normal y habitual (sin SAC ni horas extra ocasionales)
             </p>
           )}
@@ -411,7 +407,7 @@ export function FormIndemnizacionDespido() {
         <div className="space-y-1.5">
           <Label htmlFor="calc-tipo">
             Tipo de despido{" "}
-            <span className="text-[var(--color-error)]" aria-hidden="true">
+            <span className="text-error" aria-hidden="true">
               *
             </span>
           </Label>
@@ -441,7 +437,7 @@ export function FormIndemnizacionDespido() {
             </SelectContent>
           </Select>
           {errors.tipoDespido && (
-            <p id="error-tipo" role="alert" className="font-ui text-xs text-[var(--color-error)]">
+            <p id="error-tipo" role="alert" className="font-ui text-xs text-error">
               {errors.tipoDespido}
             </p>
           )}
@@ -466,10 +462,10 @@ export function FormIndemnizacionDespido() {
                 className={cn(
                   "w-5 h-5 rounded-[4px] border-2 flex items-center justify-center",
                   "transition-colors duration-150",
-                  "border-[var(--color-border-strong)]",
-                  "group-hover:border-[var(--color-marino)]",
-                  "peer-checked:bg-marino peer-checked:border-[var(--color-marino)]",
-                  "peer-focus-visible:outline-2 peer-focus-visible:outline-[var(--color-dorado)] peer-focus-visible:outline-offset-2"
+                  "border-border-strong",
+                  "group-hover:border-marino",
+                  "peer-checked:bg-marino peer-checked:border-marino",
+                  "peer-focus-visible:outline-2 peer-focus-visible:outline-dorado peer-focus-visible:outline-offset-2"
                 )}
                 aria-hidden="true"
               >
@@ -491,7 +487,7 @@ export function FormIndemnizacionDespido() {
               className="font-ui text-sm text-carbon-soft leading-snug cursor-pointer"
             >
               Preaviso omitido
-              <span className="block font-body text-xs text-[var(--color-text-tertiary)] mt-0.5">
+              <span className="block font-body text-xs text-text-tertiary mt-0.5">
                 El empleador no otorgó el período de preaviso (art. 232 LCT)
               </span>
             </label>
@@ -510,10 +506,10 @@ export function FormIndemnizacionDespido() {
                 className={cn(
                   "w-5 h-5 rounded-[4px] border-2 flex items-center justify-center",
                   "transition-colors duration-150",
-                  "border-[var(--color-border-strong)]",
-                  "group-hover:border-[var(--color-marino)]",
-                  "peer-checked:bg-marino peer-checked:border-[var(--color-marino)]",
-                  "peer-focus-visible:outline-2 peer-focus-visible:outline-[var(--color-dorado)] peer-focus-visible:outline-offset-2"
+                  "border-border-strong",
+                  "group-hover:border-marino",
+                  "peer-checked:bg-marino peer-checked:border-marino",
+                  "peer-focus-visible:outline-2 peer-focus-visible:outline-dorado peer-focus-visible:outline-offset-2"
                 )}
                 aria-hidden="true"
               >
@@ -535,7 +531,7 @@ export function FormIndemnizacionDespido() {
               className="font-ui text-sm text-carbon-soft leading-snug cursor-pointer"
             >
               Certificados art. 80 no entregados
-              <span className="block font-body text-xs text-[var(--color-text-tertiary)] mt-0.5">
+              <span className="block font-body text-xs text-text-tertiary mt-0.5">
                 Multa equivalente a 3 sueldos por falta de certificados laborales
               </span>
             </label>

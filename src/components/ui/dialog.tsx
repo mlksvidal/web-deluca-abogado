@@ -29,7 +29,7 @@ function DialogOverlay({ className, ...props }: DialogPrimitive.Backdrop.Props) 
       data-slot="dialog-overlay"
       className={cn(
         "fixed inset-0 isolate z-[var(--z-overlay)]",
-        "bg-[var(--color-overlay)]",
+        "bg-overlay",
         "duration-200",
         "data-open:animate-in data-open:fade-in-0",
         "data-closed:animate-out data-closed:fade-out-0",
@@ -57,8 +57,8 @@ function DialogContent({
           "fixed top-1/2 left-1/2 z-[var(--z-modal)]",
           "grid w-full max-w-[calc(100%-2rem)] sm:max-w-[520px]",
           "-translate-x-1/2 -translate-y-1/2",
-          "bg-[var(--color-bg)] text-[var(--color-carbon)]",
-          "border-t-4 border-t-[var(--color-marino)]",
+          "bg-bg text-carbon",
+          "border-t-4 border-t-marino",
           "rounded-[8px]",
           "shadow-[var(--shadow-xl)]",
           "p-8 gap-4",
@@ -92,10 +92,7 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="dialog-header"
-      className={cn(
-        "flex flex-col gap-2 pb-4 border-b border-[var(--color-border-default)]",
-        className
-      )}
+      className={cn("flex flex-col gap-2 pb-4 border-b border-border-default", className)}
       {...props}
     />
   );
@@ -114,7 +111,7 @@ function DialogFooter({
       data-slot="dialog-footer"
       className={cn(
         "-mx-8 -mb-8 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end",
-        "px-8 py-5 pt-5 border-t border-[var(--color-border-default)]",
+        "px-8 py-5 pt-5 border-t border-border-default",
         "rounded-b-[8px]",
         className
       )}
@@ -134,7 +131,7 @@ function DialogTitle({ className, ...props }: DialogPrimitive.Title.Props) {
       data-slot="dialog-title"
       className={cn(
         "font-serif text-2xl font-medium leading-snug tracking-tight",
-        "text-[var(--color-marino)]",
+        "text-marino",
         className
       )}
       {...props}
@@ -147,8 +144,8 @@ function DialogDescription({ className, ...props }: DialogPrimitive.Description.
     <DialogPrimitive.Description
       data-slot="dialog-description"
       className={cn(
-        "font-body text-base text-[var(--color-text-secondary)] leading-[1.7]",
-        "[&_a]:underline [&_a]:underline-offset-3 [&_a]:text-[var(--color-marino)]",
+        "font-body text-base text-text-secondary leading-[1.7]",
+        "[&_a]:underline [&_a]:underline-offset-3 [&_a]:text-marino",
         className
       )}
       {...props}

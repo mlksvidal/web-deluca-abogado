@@ -30,16 +30,13 @@ const badgeVariants = cva(
       variant: {
         /** Default — área legal en cards */
         "area-legal": [
-          "bg-[var(--color-bg-secondary)] text-[var(--color-text-secondary)]",
-          "border-[var(--color-border-default)]",
+          "bg-bg-secondary text-text-secondary",
+          "border-border-default",
           "text-xs px-2 py-0.5 rounded-[2px]",
         ].join(" "),
 
         /** Credencial institucional — marino sólido */
-        credencial: [
-          "bg-[var(--color-marino)] text-[var(--color-bg)]",
-          "text-xs px-2.5 py-1 rounded-[2px]",
-        ].join(" "),
+        credencial: ["bg-marino text-bg", "text-xs px-2.5 py-1 rounded-[2px]"].join(" "),
 
         /** Estado turno — confirmado */
         confirmed: [
@@ -55,30 +52,24 @@ const badgeVariants = cva(
 
         /** Estado turno — cancelado */
         cancelled: [
-          "bg-[#FEE2E2] text-[var(--color-error)] border-[#FCA5A5]",
+          "bg-[#FEE2E2] text-error border-[#FCA5A5]",
           "text-xs px-2 py-0.5 rounded-[2px]",
         ].join(" "),
 
         /** Estado turno — completado */
         completed: [
-          "bg-[var(--color-marino-subtle)] text-[var(--color-marino)] border-[#C5CFDF]",
+          "bg-marino-subtle text-marino border-[#C5CFDF]",
           "text-xs px-2 py-0.5 rounded-[2px]",
         ].join(" "),
 
         /** Info genérico */
-        info: [
-          "bg-[var(--color-marino-subtle)] text-[var(--color-marino)]",
-          "text-xs px-2 py-0.5 rounded-[2px]",
-        ].join(" "),
+        info: ["bg-marino-subtle text-marino", "text-xs px-2 py-0.5 rounded-[2px]"].join(" "),
 
         /** Warning genérico */
         warning: ["bg-[#FEF3C7] text-[#B45309]", "text-xs px-2 py-0.5 rounded-[2px]"].join(" "),
 
         /** Danger genérico */
-        danger: [
-          "bg-[#FEE2E2] text-[var(--color-error)]",
-          "text-xs px-2 py-0.5 rounded-[2px]",
-        ].join(" "),
+        danger: ["bg-[#FEE2E2] text-error", "text-xs px-2 py-0.5 rounded-[2px]"].join(" "),
 
         /** Success genérico */
         success: ["bg-[#DCFCE7] text-[#15803D]", "text-xs px-2 py-0.5 rounded-[2px]"].join(" "),

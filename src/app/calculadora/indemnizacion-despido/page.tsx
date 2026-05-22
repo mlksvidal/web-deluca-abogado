@@ -64,7 +64,7 @@ export default function IndemnizacionDespidoPage() {
         {/* Hero pequeño */}
         <section
           aria-labelledby="calc-despido-heading"
-          className="border-b border-[var(--color-border-default)]"
+          className="border-b border-border-default"
           style={{
             background: "linear-gradient(160deg, var(--color-marino) 0%, #1E3A6E 100%)",
             paddingTop: "120px",

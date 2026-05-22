@@ -59,7 +59,7 @@ export function SlotGrid({
   if (!dateLocal) {
     return (
       <div className="flex flex-col items-center justify-center gap-3 py-10 text-center">
-        <p className="font-ui text-sm text-[var(--color-text-tertiary)]">
+        <p className="font-ui text-sm text-text-tertiary">
           Seleccioná un día en el calendario para ver los horarios disponibles.
         </p>
       </div>
@@ -75,12 +75,12 @@ export function SlotGrid({
   if (slots.length === 0) {
     return (
       <div role="status" className="flex flex-col items-center gap-4 py-8 text-center">
-        <CalendarX className="size-10 text-[var(--color-text-tertiary)]" aria-hidden="true" />
+        <CalendarX className="size-10 text-text-tertiary" aria-hidden="true" />
         <div className="space-y-1">
-          <p className="font-ui text-sm font-medium text-[var(--color-carbon)]">
+          <p className="font-ui text-sm font-medium text-carbon">
             Sin disponibilidad para ese día.
           </p>
-          <p className="font-ui text-sm text-[var(--color-text-tertiary)]">
+          <p className="font-ui text-sm text-text-tertiary">
             Probá otro día o contactanos por WhatsApp.
           </p>
         </div>
@@ -90,11 +90,11 @@ export function SlotGrid({
           rel="noopener noreferrer"
           className={cn(
             "inline-flex items-center gap-2",
-            "font-ui text-sm font-medium text-[var(--color-marino)]",
-            "border border-[var(--color-marino)] rounded-[4px] px-4 py-2",
-            "hover:bg-[var(--color-marino)] hover:text-[var(--color-bg)]",
+            "font-ui text-sm font-medium text-marino",
+            "border border-marino rounded-[4px] px-4 py-2",
+            "hover:bg-marino hover:text-bg",
             "transition-colors duration-150",
-            "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+            "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
           )}
         >
           <MessageCircle className="size-4" aria-hidden="true" />
@@ -127,17 +127,17 @@ export function SlotGrid({
                 "font-ui text-sm font-medium tabular-nums",
                 "border",
                 "transition-all duration-150 cursor-pointer select-none",
-                "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2",
+                "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2",
                 // Estado base
                 !isSelected && [
-                  "border-[var(--color-border-default)]",
-                  "bg-[var(--color-bg)] text-[var(--color-carbon)]",
-                  "hover:border-[var(--color-marino)] hover:text-[var(--color-marino)] hover:bg-[var(--color-marino-subtle)]",
+                  "border-border-default",
+                  "bg-bg text-carbon",
+                  "hover:border-marino hover:text-marino hover:bg-marino-subtle",
                 ],
                 // Estado seleccionado — dorado sobre marino AA 7.33:1
                 isSelected && [
-                  "border-[var(--color-dorado)] bg-[var(--color-dorado)]",
-                  "text-[var(--color-marino)] font-semibold",
+                  "border-dorado bg-dorado",
+                  "text-marino font-semibold",
                   "shadow-[var(--shadow-accent)]",
                 ]
               )}
@@ -150,7 +150,7 @@ export function SlotGrid({
       </div>
       {selectedSlot && (
         <p
-          className="mt-3 font-ui text-xs text-[var(--color-disponible)] font-medium"
+          className="mt-3 font-ui text-xs text-disponible font-medium"
           role="status"
           aria-live="polite"
         >

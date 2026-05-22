@@ -110,7 +110,7 @@ export default async function GlosarioPage() {
 
       {/* ─── Hero de sección ──────────────────────────────────────── */}
       <section
-        className="pt-28 pb-12 border-b border-[var(--color-border-default)]"
+        className="pt-28 pb-12 border-b border-border-default"
         style={{ background: "var(--color-bg-secondary)" }}
       >
         <Container>
@@ -122,11 +122,11 @@ export default async function GlosarioPage() {
             Glosario jurídico A-Z
           </p>
 
-          <h1 className="font-serif text-[var(--text-4xl)] font-600 text-[var(--color-marino)] leading-tight mb-4 max-w-2xl">
+          <h1 className="font-serif text-[var(--text-4xl)] font-600 text-marino leading-tight mb-4 max-w-2xl">
             Términos legales en lenguaje claro
           </h1>
 
-          <p className="font-body text-base text-[var(--color-text-secondary)] max-w-xl leading-relaxed">
+          <p className="font-body text-base text-text-secondary max-w-xl leading-relaxed">
             El derecho tiene su propio vocabulario. Acá encontrás los términos más frecuentes del
             derecho laboral, civil, penal y comercial argentino — explicados sin tecnicismos.
           </p>
@@ -146,20 +146,20 @@ export default async function GlosarioPage() {
 
       {/* ─── CTA footer ───────────────────────────────────────────── */}
       <section
-        className="py-14 border-t border-[var(--color-border-default)]"
+        className="py-14 border-t border-border-default"
         style={{ background: "var(--color-bg-warm)" }}
       >
         <Container>
           <div className="max-w-xl mx-auto text-center">
-            <p className="font-serif text-xl font-500 text-[var(--color-marino)] mb-3">
+            <p className="font-serif text-xl font-500 text-marino mb-3">
               ¿Necesitás más que una definición?
             </p>
-            <p className="font-body text-sm text-[var(--color-text-secondary)] mb-6">
+            <p className="font-body text-sm text-text-secondary mb-6">
               Cada caso es distinto. Un análisis profesional puede marcar la diferencia.
             </p>
             <a
               href="/reservar"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-[6px] font-ui text-sm font-600 transition-all duration-250 hover:-translate-y-[2px] focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-[6px] font-ui text-sm font-600 transition-all duration-250 hover:-translate-y-[2px] focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
               style={{
                 background: "var(--color-marino)",
                 color: "var(--color-bg)",

@@ -31,10 +31,10 @@ export default function VerificadorIndexPage() {
         >
           Herramientas gratuitas
         </p>
-        <h1 className="font-serif text-[var(--text-4xl)] font-600 text-[var(--color-marino)] leading-tight mb-4">
+        <h1 className="font-serif text-[var(--text-4xl)] font-600 text-marino leading-tight mb-4">
           Verificadores legales
         </h1>
-        <p className="font-body text-base text-[var(--color-text-secondary)] leading-relaxed mb-10">
+        <p className="font-body text-base text-text-secondary leading-relaxed mb-10">
           Diagnósticos orientativos basados en la legislación argentina vigente. No reemplazan el
           asesoramiento profesional.
         </p>
@@ -44,7 +44,7 @@ export default function VerificadorIndexPage() {
             <Link
               key={v.href}
               href={v.href}
-              className="flex items-start gap-4 p-6 bg-[var(--color-bg)] border border-[var(--color-border-default)] rounded-[8px] hover:border-[var(--color-marino)] hover:shadow-[var(--shadow-md)] hover:-translate-y-[2px] transition-all duration-250 group focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+              className="flex items-start gap-4 p-6 bg-bg border border-border-default rounded-[8px] hover:border-marino hover:shadow-[var(--shadow-md)] hover:-translate-y-[2px] transition-all duration-250 group focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
             >
               <div className="flex-1">
                 <span
@@ -57,16 +57,14 @@ export default function VerificadorIndexPage() {
                 >
                   {v.tag}
                 </span>
-                <h2 className="font-serif text-lg font-500 text-[var(--color-marino)] mb-1">
-                  {v.titulo}
-                </h2>
-                <p className="font-body text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                <h2 className="font-serif text-lg font-500 text-marino mb-1">{v.titulo}</h2>
+                <p className="font-body text-sm text-text-secondary leading-relaxed">
                   {v.descripcion}
                 </p>
               </div>
               <ArrowRight
                 size={18}
-                className="shrink-0 mt-1 text-[var(--color-text-tertiary)] group-hover:text-[var(--color-marino)] group-hover:translate-x-1 transition-all duration-200"
+                className="shrink-0 mt-1 text-text-tertiary group-hover:text-marino group-hover:translate-x-1 transition-all duration-200"
                 aria-hidden="true"
               />
             </Link>

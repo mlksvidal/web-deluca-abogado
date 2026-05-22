@@ -25,28 +25,26 @@ export default function AdminSalirPage() {
         style={{ background: "var(--color-marino-subtle)" }}
         aria-hidden="true"
       >
-        <LogOut size={24} className="text-[var(--color-marino)]" />
+        <LogOut size={24} className="text-marino" />
       </div>
 
-      <h1 className="font-serif text-2xl font-semibold text-[var(--color-marino)] mb-3">
-        Para cerrar sesión
-      </h1>
+      <h1 className="font-serif text-2xl font-semibold text-marino mb-3">Para cerrar sesión</h1>
 
-      <p className="font-body text-base text-[var(--color-carbon-soft)] max-w-sm mb-2">
+      <p className="font-body text-base text-carbon-soft max-w-sm mb-2">
         El acceso administrativo utiliza autenticación básica del navegador.
       </p>
 
-      <p className="font-body text-base text-[var(--color-text-secondary)] max-w-sm mb-8">
+      <p className="font-body text-base text-text-secondary max-w-sm mb-8">
         Para finalizar la sesión completamente,{" "}
-        <strong className="text-[var(--color-marino)]">cerrá esta pestaña del navegador</strong>. El
-        navegador olvidará las credenciales al cerrar la pestaña o ventana.
+        <strong className="text-marino">cerrá esta pestaña del navegador</strong>. El navegador
+        olvidará las credenciales al cerrar la pestaña o ventana.
       </p>
 
       <div
         className="rounded-[8px] border px-5 py-4 max-w-sm text-left mb-8"
         style={{ borderColor: "var(--color-border-default)", background: "var(--color-bg)" }}
       >
-        <p className="font-ui text-xs font-semibold text-[var(--color-marino)] uppercase tracking-wide mb-2">
+        <p className="font-ui text-xs font-semibold text-marino uppercase tracking-wide mb-2">
           Alternativa (Chrome / Firefox / Edge)
         </p>
         <ol className="list-decimal list-inside space-y-1">
@@ -56,7 +54,7 @@ export default function AdminSalirPage() {
             'Seleccionar "Contraseñas y otros datos de inicio de sesión"',
             "Confirmar borrado",
           ].map((step, i) => (
-            <li key={i} className="font-body text-xs text-[var(--color-carbon-soft)]">
+            <li key={i} className="font-body text-xs text-carbon-soft">
               {step}
             </li>
           ))}
@@ -65,7 +63,7 @@ export default function AdminSalirPage() {
 
       <Link
         href="/"
-        className="font-ui text-sm font-medium text-[var(--color-marino)] underline underline-offset-2 hover:text-[var(--color-dorado-deep)] transition-colors"
+        className="font-ui text-sm font-medium text-marino underline underline-offset-2 hover:text-dorado-deep transition-colors"
       >
         Volver al sitio público
       </Link>

@@ -41,7 +41,7 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoCuotaAlimentaria })
       aria-live="polite"
       className={cn(
         "mt-8 rounded-[8px] overflow-hidden",
-        "border border-[var(--color-border-default)]",
+        "border border-border-default",
         "shadow-[var(--shadow-md)]",
         "animate-in fade-in slide-in-from-bottom-4 duration-500"
       )}
@@ -63,20 +63,20 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoCuotaAlimentaria })
       </div>
 
       {/* Rango */}
-      <div className="bg-bg px-6 py-4 border-b border-[var(--color-border-default)]">
-        <p className="font-ui text-xs font-semibold uppercase tracking-wider text-[var(--color-text-tertiary)] mb-3">
+      <div className="bg-bg px-6 py-4 border-b border-border-default">
+        <p className="font-ui text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-3">
           Rango jurisprudencial
         </p>
         <div className="flex items-center gap-3">
-          <div className="flex-1 text-center p-3 rounded-[6px] bg-bg-warm border border-[var(--color-border-default)]">
-            <p className="font-ui text-xs text-[var(--color-text-tertiary)] mb-0.5">Mínimo</p>
+          <div className="flex-1 text-center p-3 rounded-[6px] bg-bg-warm border border-border-default">
+            <p className="font-ui text-xs text-text-tertiary mb-0.5">Mínimo</p>
             <p className="font-serif text-lg font-semibold text-marino">
               {formatARS(resultado.rangoMin)}
             </p>
           </div>
-          <div className="text-[var(--color-border-strong)] font-ui text-sm">—</div>
-          <div className="flex-1 text-center p-3 rounded-[6px] bg-bg-warm border border-[var(--color-border-default)]">
-            <p className="font-ui text-xs text-[var(--color-text-tertiary)] mb-0.5">Máximo</p>
+          <div className="text-border-strong font-ui text-sm">—</div>
+          <div className="flex-1 text-center p-3 rounded-[6px] bg-bg-warm border border-border-default">
+            <p className="font-ui text-xs text-text-tertiary mb-0.5">Máximo</p>
             <p className="font-serif text-lg font-semibold text-marino">
               {formatARS(resultado.rangoMax)}
             </p>
@@ -86,15 +86,15 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoCuotaAlimentaria })
 
       {/* Notas */}
       {resultado.notas.length > 0 && (
-        <div className="bg-bg-warm px-6 py-4 border-b border-[var(--color-border-default)]">
-          <p className="font-ui text-xs font-semibold uppercase tracking-wider text-[var(--color-text-tertiary)] mb-2">
+        <div className="bg-bg-warm px-6 py-4 border-b border-border-default">
+          <p className="font-ui text-xs font-semibold uppercase tracking-wider text-text-tertiary mb-2">
             Criterio aplicado
           </p>
           <ul className="space-y-1">
             {resultado.notas.map((nota, i) => (
               <li
                 key={i}
-                className="font-body text-xs text-carbon-soft leading-relaxed pl-2 border-l-2 border-[var(--color-dorado-muted)]"
+                className="font-body text-xs text-carbon-soft leading-relaxed pl-2 border-l-2 border-dorado-muted"
               >
                 {nota}
               </li>
@@ -223,13 +223,13 @@ export function FormCuotaAlimentaria() {
         <div className="space-y-1.5">
           <Label htmlFor="alim-sueldo">
             Sueldo bruto mensual del obligado (ARS){" "}
-            <span className="text-[var(--color-error)]" aria-hidden="true">
+            <span className="text-error" aria-hidden="true">
               *
             </span>
           </Label>
           <div className="relative">
             <span
-              className="pointer-events-none absolute inset-y-0 left-3.5 flex items-center font-ui text-sm text-[var(--color-text-tertiary)]"
+              className="pointer-events-none absolute inset-y-0 left-3.5 flex items-center font-ui text-sm text-text-tertiary"
               aria-hidden="true"
             >
               $
@@ -250,15 +250,11 @@ export function FormCuotaAlimentaria() {
             />
           </div>
           {errors.sueldo ? (
-            <p
-              id="error-alim-sueldo"
-              role="alert"
-              className="font-ui text-xs text-[var(--color-error)]"
-            >
+            <p id="error-alim-sueldo" role="alert" className="font-ui text-xs text-error">
               {errors.sueldo}
             </p>
           ) : (
-            <p id="hint-alim-sueldo" className="font-ui text-xs text-[var(--color-text-tertiary)]">
+            <p id="hint-alim-sueldo" className="font-ui text-xs text-text-tertiary">
               Ingreso bruto declarado o estimado del progenitor obligado
             </p>
           )}
@@ -268,7 +264,7 @@ export function FormCuotaAlimentaria() {
         <div className="space-y-1.5">
           <Label htmlFor="alim-nhijos">
             Cantidad de hijos{" "}
-            <span className="text-[var(--color-error)]" aria-hidden="true">
+            <span className="text-error" aria-hidden="true">
               *
             </span>
           </Label>
@@ -285,11 +281,7 @@ export function FormCuotaAlimentaria() {
             className="max-w-[120px]"
           />
           {errors.hijos && (
-            <p
-              id="error-alim-hijos"
-              role="alert"
-              className="font-ui text-xs text-[var(--color-error)]"
-            >
+            <p id="error-alim-hijos" role="alert" className="font-ui text-xs text-error">
               {errors.hijos}
             </p>
           )}
@@ -299,13 +291,13 @@ export function FormCuotaAlimentaria() {
         <fieldset className="space-y-3">
           <legend className="font-ui text-sm font-medium text-carbon-soft">
             Edades de los hijos{" "}
-            <span className="text-[var(--color-error)]" aria-hidden="true">
+            <span className="text-error" aria-hidden="true">
               *
             </span>
           </legend>
 
           {errors.edades && (
-            <p role="alert" className="font-ui text-xs text-[var(--color-error)]">
+            <p role="alert" className="font-ui text-xs text-error">
               {errors.edades}
             </p>
           )}
@@ -343,10 +335,10 @@ export function FormCuotaAlimentaria() {
                     aria-label={`Eliminar hijo ${i + 1}`}
                     className={cn(
                       "flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-[6px]",
-                      "text-[var(--color-text-tertiary)]",
-                      "hover:text-[var(--color-error)] hover:bg-[#FEE2E2]",
+                      "text-text-tertiary",
+                      "hover:text-error hover:bg-[#FEE2E2]",
                       "transition-colors duration-150",
-                      "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)]"
+                      "focus-visible:outline-2 focus-visible:outline-dorado"
                     )}
                   >
                     <Trash2 size={15} aria-hidden="true" />
@@ -362,8 +354,8 @@ export function FormCuotaAlimentaria() {
               onClick={addHijo}
               className={cn(
                 "flex items-center gap-1.5 font-ui text-sm text-marino",
-                "hover:text-[var(--color-marino-hover)] transition-colors duration-150",
-                "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+                "hover:text-marino-hover transition-colors duration-150",
+                "focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
               )}
             >
               <Plus size={15} aria-hidden="true" />
@@ -386,10 +378,10 @@ export function FormCuotaAlimentaria() {
               className={cn(
                 "w-5 h-5 rounded-[4px] border-2 flex items-center justify-center",
                 "transition-colors duration-150",
-                "border-[var(--color-border-strong)]",
-                "group-hover:border-[var(--color-marino)]",
-                "peer-checked:bg-marino peer-checked:border-[var(--color-marino)]",
-                "peer-focus-visible:outline-2 peer-focus-visible:outline-[var(--color-dorado)] peer-focus-visible:outline-offset-2"
+                "border-border-strong",
+                "group-hover:border-marino",
+                "peer-checked:bg-marino peer-checked:border-marino",
+                "peer-focus-visible:outline-2 peer-focus-visible:outline-dorado peer-focus-visible:outline-offset-2"
               )}
               aria-hidden="true"
             >
@@ -411,7 +403,7 @@ export function FormCuotaAlimentaria() {
             className="font-ui text-sm text-carbon-soft leading-snug cursor-pointer"
           >
             El obligado tiene otras obligaciones alimentarias activas
-            <span className="block font-body text-xs text-[var(--color-text-tertiary)] mt-0.5">
+            <span className="block font-body text-xs text-text-tertiary mt-0.5">
               Ej: hijos de otra relación o alimentos a ascendientes
             </span>
           </label>

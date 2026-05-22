@@ -101,7 +101,7 @@ export default function ProcesoDivorcioPage() {
 
       {/* ─── Hero ─────────────────────────────────────────────────── */}
       <section
-        className="pt-28 pb-10 border-b border-[var(--color-border-default)]"
+        className="pt-28 pb-10 border-b border-border-default"
         style={{ background: "var(--color-bg-secondary)" }}
       >
         <Container size="narrow">
@@ -113,11 +113,11 @@ export default function ProcesoDivorcioPage() {
             Guía jurídica
           </p>
 
-          <h1 className="font-serif text-[var(--text-4xl)] font-600 text-[var(--color-marino)] leading-tight mb-4">
+          <h1 className="font-serif text-[var(--text-4xl)] font-600 text-marino leading-tight mb-4">
             Así es un divorcio en Argentina paso a paso
           </h1>
 
-          <p className="font-body text-base text-[var(--color-text-secondary)] leading-relaxed max-w-lg mb-6">
+          <p className="font-body text-base text-text-secondary leading-relaxed max-w-lg mb-6">
             Desde la consulta inicial hasta la inscripción registral — cada etapa del proceso de
             divorcio explicada de forma clara, con duración estimada.
           </p>
@@ -132,7 +132,7 @@ export default function ProcesoDivorcioPage() {
             ].map((item) => (
               <span
                 key={item}
-                className="flex items-center gap-1.5 font-ui text-xs text-[var(--color-text-secondary)]"
+                className="flex items-center gap-1.5 font-ui text-xs text-text-secondary"
               >
                 <span
                   className="w-1.5 h-1.5 rounded-full shrink-0"
@@ -148,7 +148,7 @@ export default function ProcesoDivorcioPage() {
 
       {/* ─── Disclaimer ───────────────────────────────────────────── */}
       <div
-        className="py-3 border-b border-[var(--color-border-default)]"
+        className="py-3 border-b border-border-default"
         style={{ background: "rgba(180,83,9,0.04)" }}
       >
         <Container size="narrow">
@@ -168,11 +168,11 @@ export default function ProcesoDivorcioPage() {
 
       {/* ─── FAQ rápido ───────────────────────────────────────────── */}
       <section
-        className="py-12 border-t border-[var(--color-border-default)]"
+        className="py-12 border-t border-border-default"
         style={{ background: "var(--color-bg-warm)" }}
       >
         <Container size="narrow">
-          <h2 className="font-serif text-2xl font-500 text-[var(--color-marino)] mb-8 text-center">
+          <h2 className="font-serif text-2xl font-500 text-marino mb-8 text-center">
             Preguntas frecuentes
           </h2>
           <div className="space-y-6">
@@ -194,14 +194,9 @@ export default function ProcesoDivorcioPage() {
                 a: "Sí. Existe el procedimiento de citación por edictos para cónyuge en paradero desconocido. El proceso es más largo, pero es posible.",
               },
             ].map(({ q, a }) => (
-              <div
-                key={q}
-                className="border-b border-[var(--color-border-default)] pb-5 last:border-0 last:pb-0"
-              >
-                <h3 className="font-ui text-sm font-600 text-[var(--color-marino)] mb-2">{q}</h3>
-                <p className="font-body text-sm text-[var(--color-text-secondary)] leading-relaxed">
-                  {a}
-                </p>
+              <div key={q} className="border-b border-border-default pb-5 last:border-0 last:pb-0">
+                <h3 className="font-ui text-sm font-600 text-marino mb-2">{q}</h3>
+                <p className="font-body text-sm text-text-secondary leading-relaxed">{a}</p>
               </div>
             ))}
           </div>
@@ -210,7 +205,7 @@ export default function ProcesoDivorcioPage() {
 
       {/* ─── CTA final ────────────────────────────────────────────── */}
       <section
-        className="py-14 border-t border-[var(--color-border-default)]"
+        className="py-14 border-t border-border-default"
         style={{ background: "var(--color-marino)" }}
       >
         <Container size="narrow">
@@ -221,7 +216,7 @@ export default function ProcesoDivorcioPage() {
             >
               Consultá con un especialista
             </p>
-            <h2 className="font-serif text-2xl font-500 text-[var(--color-bg)] mb-3">
+            <h2 className="font-serif text-2xl font-500 text-bg mb-3">
               ¿Empezás un proceso de divorcio?
             </h2>
             <p
@@ -233,7 +228,7 @@ export default function ProcesoDivorcioPage() {
             </p>
             <a
               href="/reservar"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-[6px] font-ui text-sm font-600 transition-all duration-250 hover:-translate-y-[2px] hover:shadow-[0_4px_20px_rgba(201,169,97,0.3)] focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-[6px] font-ui text-sm font-600 transition-all duration-250 hover:-translate-y-[2px] hover:shadow-[0_4px_20px_rgba(201,169,97,0.3)] focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-2"
               style={{ background: "var(--color-dorado)", color: "var(--color-marino)" }}
             >
               Reservar una consulta →

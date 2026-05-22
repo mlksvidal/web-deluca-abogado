@@ -69,14 +69,14 @@ function CalculadoraCard({
   return (
     <Link
       href={href}
-      className="group block rounded-[10px] overflow-hidden transition-all duration-300 ease-primary focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-3"
+      className="group block rounded-[10px] overflow-hidden transition-all duration-300 ease-primary focus-visible:outline-2 focus-visible:outline-dorado focus-visible:outline-offset-3"
       style={{
         border: "1px solid var(--color-border-default)",
         boxShadow: "var(--shadow-sm)",
       }}
     >
       <article
-        className="flex flex-col h-full bg-bg transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[var(--shadow-lg)] group-hover:border-[var(--color-dorado)]"
+        className="flex flex-col h-full bg-bg transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[var(--shadow-lg)] group-hover:border-dorado"
         style={{
           borderRadius: "inherit",
         }}
@@ -224,11 +224,11 @@ export default function CalculadorasIndexPage() {
             </div>
 
             {/* Bottom note */}
-            <p className="mt-12 text-center font-body text-sm text-[var(--color-text-tertiary)] max-w-[480px] mx-auto">
+            <p className="mt-12 text-center font-body text-sm text-text-tertiary max-w-[480px] mx-auto">
               Los resultados son estimaciones orientativas. Para un análisis preciso de tu caso,{" "}
               <Link
                 href="/reservar"
-                className="text-marino underline underline-offset-2 decoration-[var(--color-dorado)] hover:decoration-2 transition-all duration-150"
+                className="text-marino underline underline-offset-2 decoration-dorado hover:decoration-2 transition-all duration-150"
               >
                 reservá una consulta
               </Link>
