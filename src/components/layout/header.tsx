@@ -47,87 +47,59 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Estudio", href: "/#estudio" },
 ];
 
-/** Monograma PD con sparkle — hover de rotación */
+/** Monograma PD con sparkle — fiel al manual de marca */
 function LogoMonogram({ variant = "light" }: { variant?: "light" | "dark" }) {
   const isLight = variant === "light";
+  const letterFill = isLight ? "var(--color-marino, #0E1B33)" : "var(--color-dorado, #C9A45A)";
+  const sparkle = "#C9A45A";
   return (
     <span
       className={cn(
-        "relative flex-shrink-0 w-10 h-10",
+        "relative flex-shrink-0 w-11 h-11",
         "transition-transform duration-500 ease-primary",
         "group-hover/logo:rotate-[-6deg]",
         "flex items-center justify-center"
       )}
       aria-hidden="true"
     >
-      {/* SVG inline: PD serif + sparkle dorado */}
       <svg
-        width="40"
-        height="40"
-        viewBox="0 0 40 40"
+        width="44"
+        height="44"
+        viewBox="0 0 44 44"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* P serif */}
+        {/* P serif grande — más a la izquierda */}
         <text
-          x="4"
-          y="28"
-          fontFamily="'Playfair Display', 'Didot', 'Times New Roman', serif"
-          fontSize="22"
+          x="-2"
+          y="35"
+          fontFamily="'Playfair Display', 'Didot', 'Times New Roman', Georgia, serif"
+          fontSize="38"
           fontWeight="500"
-          fill={isLight ? "var(--color-marino)" : "var(--color-dorado)"}
-          letterSpacing="-1"
+          fill={letterFill}
+          letterSpacing="-2"
         >
           P
         </text>
-        {/* D serif — superpuesta */}
+        {/* D serif — overlapping con la P (stroke compartido) */}
         <text
-          x="17"
-          y="28"
-          fontFamily="'Playfair Display', 'Didot', 'Times New Roman', serif"
-          fontSize="22"
+          x="14"
+          y="35"
+          fontFamily="'Playfair Display', 'Didot', 'Times New Roman', Georgia, serif"
+          fontSize="38"
           fontWeight="500"
-          fill={isLight ? "var(--color-marino)" : "var(--color-dorado)"}
+          fill={letterFill}
+          letterSpacing="-2"
         >
           D
         </text>
-        {/* Sparkle de 4 puntas entre letras, parte superior */}
-        <line
-          x1="19"
-          y1="4"
-          x2="19"
-          y2="12"
-          stroke="#C9A45A"
-          strokeWidth="1.4"
-          strokeLinecap="round"
-        />
-        <line
-          x1="15"
-          y1="8"
-          x2="23"
-          y2="8"
-          stroke="#C9A45A"
-          strokeWidth="1.4"
-          strokeLinecap="round"
-        />
-        <line
-          x1="16.5"
-          y1="5.5"
-          x2="21.5"
-          y2="10.5"
-          stroke="#C9A45A"
-          strokeWidth="0.9"
-          strokeLinecap="round"
-        />
-        <line
-          x1="21.5"
-          y1="5.5"
-          x2="16.5"
-          y2="10.5"
-          stroke="#C9A45A"
-          strokeWidth="0.9"
-          strokeLinecap="round"
-        />
+        {/* Sparkle de 4 puntas estilo asterisco — esquina superior derecha */}
+        <g stroke={sparkle} strokeWidth="1.6" strokeLinecap="round">
+          <line x1="33" y1="5" x2="33" y2="13" />
+          <line x1="29" y1="9" x2="37" y2="9" />
+          <line x1="30.5" y1="6.5" x2="35.5" y2="11.5" strokeWidth="1" />
+          <line x1="35.5" y1="6.5" x2="30.5" y2="11.5" strokeWidth="1" />
+        </g>
       </svg>
     </span>
   );
