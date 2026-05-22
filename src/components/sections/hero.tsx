@@ -146,23 +146,8 @@ export function Hero() {
               ))}
             </h1>
 
-            {/* Bajada */}
-            <p
-              className="hero-bajada mb-12"
-              style={{
-                fontFamily: "var(--font-lora, Lora, Georgia, serif)",
-                fontSize: "1.15rem",
-                lineHeight: 1.6,
-                color: "var(--color-carbon-soft, #3A3A3A)",
-                maxWidth: "520px",
-              }}
-            >
-              Patrocinio profesional en Civil, Familia, Laboral, Penal y Comercial. Atención
-              presencial en San Rafael, Mendoza y consultas a distancia para toda la Argentina.
-            </p>
-
             {/* CTAs */}
-            <div className="hero-ctas flex flex-wrap gap-4 mb-5">
+            <div className="hero-ctas flex flex-wrap gap-4 mb-5 mt-10">
               <Link
                 href="/reservar"
                 className="btn-primary-hero inline-flex items-center gap-2.5"
@@ -269,70 +254,54 @@ export function Hero() {
               </span>
             </div>
 
-            {/* Bloque 3 pasos — versión sutil, como nota al pie del hero */}
-            <div className="hero-meta" style={{ position: "relative", paddingTop: "32px" }}>
-              {/* Hairline dorado superior */}
-              <div
-                className="hero-hairline"
-                aria-hidden="true"
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: "1px",
-                }}
-              />
-
-              <div
-                className="proceso grid gap-6"
-                style={{ gridTemplateColumns: "repeat(3, 1fr)" }}
-                role="list"
-                aria-label="Proceso de trabajo"
-              >
-                {PASOS.map((paso, i) => (
-                  <div
-                    key={paso.num}
-                    className="paso"
-                    role="listitem"
-                    style={
-                      {
-                        position: "relative",
-                        "--step-delay": `${0.9 + i * 0.15}s`,
-                      } as React.CSSProperties
-                    }
-                  >
-                    {/* Número dorado ultra-fino — sin línea decorativa */}
+            {/* Breadcrumb proceso — una sola línea sutil */}
+            <div
+              className="hero-proceso-line"
+              role="list"
+              aria-label="Proceso de trabajo"
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "center",
+                gap: "10px 14px",
+                fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
+                fontSize: "12px",
+                letterSpacing: ".06em",
+                color: "var(--color-carbon-soft, #3A3A3A)",
+                opacity: 0.85,
+              }}
+            >
+              {PASOS.map((paso, i) => (
+                <div
+                  key={paso.num}
+                  role="listitem"
+                  style={{ display: "inline-flex", alignItems: "center", gap: "10px" }}
+                >
+                  {i > 0 && (
                     <span
-                      className="paso-num"
+                      aria-hidden="true"
                       style={{
-                        fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
-                        fontWeight: 300,
-                        fontSize: ".78rem",
-                        color: "var(--color-dorado, #C9A961)",
-                        letterSpacing: ".12em",
-                        display: "block",
-                        marginBottom: "6px",
+                        width: "16px",
+                        height: "1px",
+                        background: "var(--color-dorado, #C9A961)",
+                        opacity: 0.5,
+                      }}
+                    />
+                  )}
+                  <span style={{ display: "inline-flex", alignItems: "baseline", gap: "8px" }}>
+                    <span
+                      style={{
+                        fontWeight: 500,
+                        color: "var(--color-dorado-deep, #B89344)",
+                        fontVariantNumeric: "tabular-nums",
                       }}
                     >
                       {paso.num}
                     </span>
-                    <p
-                      style={{
-                        fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
-                        fontSize: ".78rem",
-                        fontWeight: 400,
-                        color: "var(--color-carbon-soft, #3A3A3A)",
-                        lineHeight: 1.5,
-                        margin: 0,
-                        opacity: 0.75,
-                      }}
-                    >
-                      {paso.titulo}
-                    </p>
-                  </div>
-                ))}
-              </div>
+                    <span>{paso.titulo}</span>
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
 
