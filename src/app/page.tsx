@@ -1,65 +1,138 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import { siteConfig } from "@/lib/site-config";
+import { Hero } from "@/components/sections/hero";
+import { TriajeWizard } from "@/components/triage/triage-wizard";
+import { Areas } from "@/components/sections/areas";
+import { Casos } from "@/components/sections/casos";
+import { About } from "@/components/sections/about";
+import { Contacto } from "@/components/sections/contacto";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: siteConfig.seoTitle,
+  description: siteConfig.seoDescription,
+  openGraph: {
+    title: siteConfig.seoTitle,
+    description: siteConfig.seoDescription,
+    url: siteConfig.siteUrl,
+    siteName: siteConfig.studioName,
+    images: [
+      {
+        url: `${siteConfig.siteUrl}${siteConfig.ogImage}`,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.seoTitle,
+      },
+    ],
+    locale: "es_AR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.seoTitle,
+    description: siteConfig.seoDescription,
+    images: [`${siteConfig.siteUrl}${siteConfig.ogImage}`],
+  },
+  alternates: {
+    canonical: siteConfig.siteUrl,
+  },
+};
+
+/**
+ * Landing page — composición de secciones (T18).
+ *
+ * Orden:
+ *   1. Hero (#inicio)
+ *   2. TriajeWizard (#consulta) — alta conversión inmediata
+ *   3. Áreas (#areas)
+ *   4. Casos (#casos)
+ *   5. About (#trayectoria)
+ *   6. Contacto (#estudio)
+ */
+export default function HomePage() {
+  // Schema.org — LocalBusiness + ItemList de áreas
+  const schemaOrg = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LegalService",
+        "@id": `${siteConfig.siteUrl}/#legal-service`,
+        name: siteConfig.studioName,
+        url: siteConfig.siteUrl,
+        telephone: siteConfig.phone,
+        email: siteConfig.email,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: siteConfig.city,
+          addressRegion: siteConfig.province,
+          addressCountry: siteConfig.country,
+          postalCode: "5600",
+        },
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            opens: "09:00",
+            closes: "13:00",
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            opens: "16:00",
+            closes: "20:00",
+          },
+        ],
+        priceRange: "$$",
+        areaServed: {
+          "@type": "State",
+          name: "Mendoza",
+        },
+      },
+      {
+        "@type": "ItemList",
+        name: "Áreas de práctica",
+        itemListElement: siteConfig.areas.map((area, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          item: {
+            "@type": "Service",
+            name: area.label,
+            provider: { "@id": `${siteConfig.siteUrl}/#legal-service` },
+            url: `${siteConfig.siteUrl}/#areas`,
+          },
+        })),
+      },
+    ],
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      {/* Schema.org */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
+      />
+
+      <main id="main-content">
+        {/* 1. Hero — section#inicio */}
+        <Hero />
+
+        {/* 2. Triaje WhatsApp — sección de alta conversión inmediata */}
+        <div id="consulta">
+          <TriajeWizard />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+        {/* 3. Áreas de práctica — section#areas (id puesto en el componente) */}
+        <Areas />
+
+        {/* 4. Casos resueltos — section#casos */}
+        <Casos />
+
+        {/* 5. About / Trayectoria — section#trayectoria */}
+        <About />
+
+        {/* 6. Contacto + Mapa — section#estudio */}
+        <Contacto />
       </main>
-    </div>
+    </>
   );
 }

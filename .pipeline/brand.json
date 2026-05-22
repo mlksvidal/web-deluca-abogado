@@ -1,0 +1,525 @@
+{
+  "project": "web-deluca-abogado",
+  "version": 1,
+  "created_at": "2026-05-21",
+
+  "identity": {
+    "name_full": "Estudio Jurídico Dr. Pablo De Luca",
+    "name_short": "Estudio De Luca",
+    "monogram": "PDL",
+    "tagline_short": "Derecho claro. Defensa real.",
+    "tagline_long": "En el Estudio De Luca asesoramos a personas y empresas de San Rafael con criterio jurídico sólido y un lenguaje que se entiende. Porque un cliente informado toma mejores decisiones, y una buena defensa empieza por conocer tus derechos.",
+    "tone": "claro, criterioso, cercano, directo, respetuoso, profesional sin pompa, humano",
+    "personality": [
+      "confianza ganada",
+      "criterio antes que ruido",
+      "claridad antes que jerga",
+      "acompañamiento real",
+      "trayectoria probada"
+    ],
+    "target": "Personas y familias de San Rafael y región de Mendoza que enfrentan situaciones legales en derecho civil, familiar, laboral y penal. También PyMEs y emprendedores que necesitan asesoría comercial confiable.",
+    "voice": {
+      "formality": 3,
+      "complexity": 2,
+      "character": 2,
+      "emotion": 3
+    },
+    "copy_guidelines": {
+      "use": [
+        "Te asesoramos en...",
+        "Podés reservar una consulta sin cargo.",
+        "Te explicamos qué opciones tenés.",
+        "Analizamos tu caso y te damos un diagnóstico claro.",
+        "Honorarios por escrito, sin sorpresas.",
+        "Estamos disponibles. Escribinos.",
+        "Cada caso es distinto — por eso empezamos por escucharte.",
+        "Sabés lo que está pasando en tu caso, siempre."
+      ],
+      "avoid": [
+        "Tenemos el agrado de...",
+        "Le informo que...",
+        "En virtud de lo expuesto...",
+        "Nuestro distinguido cliente...",
+        "Mediante la presente...",
+        "A los efectos de...",
+        "Se hace saber que...",
+        "Cumplimos en notificar...",
+        "Háganos saber sus inquietudes",
+        "Somos líderes en..."
+      ]
+    },
+    "service_promises": [
+      "Consulta inicial sin cargo — conocé tu situación antes de comprometerte",
+      "Respuesta en menos de 24 horas hábiles — no te dejamos esperando",
+      "Honorarios claros y por escrito desde la primera reunión",
+      "Acompañamiento hasta el cierre del caso — no desaparecemos a mitad del proceso",
+      "Secreto profesional garantizado — lo que nos contás, queda entre nosotros"
+    ],
+    "values": [
+      "Criterio antes que ruido — analizamos antes de actuar",
+      "Información clara antes que jerga — tu caso en palabras que entendés",
+      "Compromiso real antes que promesas — no prometemos lo que no podemos cumplir",
+      "Trayectoria que respalda — años de ejercicio en San Rafael, con resultados"
+    ]
+  },
+
+  "colors": {
+    "primary": {
+      "hex": "#0F1E3D",
+      "name": "Marino",
+      "use": "Fondos de secciones de autoridad (hero overlay, stats, footer), headers sobre fondos claros, backgrounds de CTAs de alta jerarquía. Color de identidad máxima."
+    },
+    "primary_hover": {
+      "hex": "#1E3A6E",
+      "name": "Marino hover",
+      "use": "Estado hover de elementos sobre marino. Transiciones de botones primary."
+    },
+    "primary_deep": {
+      "hex": "#0A152B",
+      "name": "Marino deep",
+      "use": "Footer bg, overlays más oscuros, sombras con color."
+    },
+    "secondary": {
+      "hex": "#C9A961",
+      "name": "Dorado",
+      "use": "Acento de distinción. Como texto: SOLO sobre marino (#0F1E3D) o carbón (#1A1A1A) — contraste 7.33:1 y 7.73:1 respectivamente. Como decorativo (border, línea, ícono, subrayado): libre sobre cualquier fondo. Como fondo: SOLO con texto marino (CTA hero + booking card). NUNCA como texto sobre fondos claros."
+    },
+    "secondary_hover": {
+      "hex": "#DDB96E",
+      "name": "Dorado hover",
+      "use": "Estado hover de elementos dorados. Kicker luminoso."
+    },
+    "secondary_deep": {
+      "hex": "#B89344",
+      "name": "Dorado deep",
+      "use": "Estado activo/pressed de dorado. Borde más oscuro en estado focus."
+    },
+    "neutral": {
+      "hex": "#FAF7F2",
+      "name": "Blanco roto",
+      "use": "Fondo principal del sitio. Bg de secciones alternas claras. Base para texto carbón. Contraste con marino: 15.43:1 AAA."
+    },
+    "neutral_warm": {
+      "hex": "#F2EBDE",
+      "name": "Bg warm",
+      "use": "Fondo de secciones alternadas (áreas legales, recursos). Ligeramente más cálido que blanco roto — rompe monotonía sin romper el sistema."
+    },
+    "text_dark": {
+      "hex": "#1A1A1A",
+      "name": "Carbón",
+      "use": "Texto principal sobre fondos claros. Párrafos, headings h2-h4 sobre bg claro. Contraste con blanco roto: 16.29:1 AAA."
+    },
+    "text_dark_soft": {
+      "hex": "#3A3A3A",
+      "name": "Carbón soft",
+      "use": "Texto secundario, descripciones de cards, metadata. Mantiene jerarquía bajo el carbón principal."
+    },
+    "text_light": {
+      "hex": "#FAF7F2",
+      "name": "Blanco roto (como texto)",
+      "use": "Texto sobre fondos oscuros (marino, marino deep). Nav links, texto en hero, párrafos de footer."
+    },
+    "accent_emergency": {
+      "hex": "#A91D1D",
+      "name": "Rojo emergencia",
+      "use": "Exclusivo para FAB de emergencia 24h y badge urgente. No usar en contextos generales. Nunca en decoración."
+    },
+    "accent_available": {
+      "hex": "#2EA043",
+      "name": "Verde disponible",
+      "use": "FAB WhatsApp, indicador de slots disponibles en calendario, badge de disponibilidad. Nunca usar en branding general."
+    },
+    "text_muted": {
+      "hex": "#6B7280",
+      "name": "Gris muted",
+      "use": "Texto terciario: captions, metadata, placeholders activos, texto deshabilitado. Contraste con blanco roto: 4.52:1 AA mínimo."
+    }
+  },
+
+  "typography": {
+    "heading": {
+      "family": "Playfair Display",
+      "weights": ["400", "500", "600"],
+      "source": "google_fonts",
+      "url": "https://fonts.google.com/specimen/Playfair+Display",
+      "use": "Hero h1, titulares de sección h2, pull quotes, nombres de áreas legales, tagline principal. Tracking: -0.02em. Italic disponible para énfasis emocional (kickers, cursiva dorada)."
+    },
+    "body": {
+      "family": "Lora",
+      "weights": ["400", "500"],
+      "source": "google_fonts",
+      "url": "https://fonts.google.com/specimen/Lora",
+      "use": "Párrafos de contenido extenso (About, descripción de áreas, artículos de blog, glosario). Máxima legibilidad en bloques largos. Line-height: 1.7."
+    },
+    "ui": {
+      "family": "Inter",
+      "weights": ["300", "400", "500", "600"],
+      "source": "google_fonts",
+      "url": "https://fonts.google.com/specimen/Inter",
+      "use": "Navegación, labels de formularios, badges, botones, captions, tablas, calculadoras, UI funcional. Tracking labels: 0.1em uppercase."
+    },
+    "scale": {
+      "hero": {
+        "size": "clamp(3rem, 2rem + 5vw, 5.5rem)",
+        "family": "Playfair Display",
+        "weight": "600",
+        "line_height": "1.1",
+        "tracking": "-0.02em",
+        "use": "Titular principal del hero"
+      },
+      "h1": {
+        "size": "clamp(2.25rem, 1.5rem + 3.75vw, 4rem)",
+        "family": "Playfair Display",
+        "weight": "600",
+        "line_height": "1.15",
+        "tracking": "-0.02em",
+        "use": "Título de página interior"
+      },
+      "h2": {
+        "size": "clamp(1.75rem, 1.25rem + 2.5vw, 2.75rem)",
+        "family": "Playfair Display",
+        "weight": "500",
+        "line_height": "1.2",
+        "tracking": "-0.01em",
+        "use": "Títulos de sección en landing"
+      },
+      "h3": {
+        "size": "clamp(1.375rem, 1rem + 1.875vw, 2rem)",
+        "family": "Playfair Display",
+        "weight": "400",
+        "line_height": "1.3",
+        "tracking": "-0.01em",
+        "use": "Títulos de card, subsecciones"
+      },
+      "h4": {
+        "size": "clamp(1.125rem, 0.875rem + 1.25vw, 1.5rem)",
+        "family": "Inter",
+        "weight": "600",
+        "line_height": "1.4",
+        "tracking": "0",
+        "use": "Labels de sección, títulos de formulario, títulos admin"
+      },
+      "h5": {
+        "size": "1rem",
+        "family": "Inter",
+        "weight": "600",
+        "line_height": "1.4",
+        "tracking": "0.05em",
+        "use": "Subtítulos de card, metadata importante"
+      },
+      "h6": {
+        "size": "0.875rem",
+        "family": "Inter",
+        "weight": "600",
+        "line_height": "1.4",
+        "tracking": "0.08em",
+        "use": "Kicker/overline (uppercase), labels de formulario pequeños"
+      },
+      "body_lg": {
+        "size": "1.125rem",
+        "family": "Lora",
+        "weight": "400",
+        "line_height": "1.7",
+        "use": "Párrafo hero bajada, intros de sección importantes"
+      },
+      "body": {
+        "size": "1rem",
+        "family": "Lora",
+        "weight": "400",
+        "line_height": "1.7",
+        "use": "Cuerpo de texto general, descripciones de áreas, blog"
+      },
+      "body_sm": {
+        "size": "0.9375rem",
+        "family": "Lora",
+        "weight": "400",
+        "line_height": "1.6",
+        "use": "Texto secundario de cards, descripción en listing"
+      },
+      "caption": {
+        "size": "0.875rem",
+        "family": "Inter",
+        "weight": "400",
+        "line_height": "1.5",
+        "use": "Captions de imagen, disclaimers, notas al pie"
+      },
+      "label": {
+        "size": "0.8125rem",
+        "family": "Inter",
+        "weight": "500",
+        "line_height": "1.4",
+        "tracking": "0.06em",
+        "transform": "uppercase",
+        "use": "Labels de formulario, etiquetas de campo"
+      },
+      "micro": {
+        "size": "0.75rem",
+        "family": "Inter",
+        "weight": "400",
+        "line_height": "1.4",
+        "use": "Metadata: hora, fecha, contadores de caracteres, texto legal mínimo"
+      }
+    }
+  },
+
+  "spacing": {
+    "base": 4,
+    "note": "Escala base 4px. Todos los valores son múltiplos de 4.",
+    "scale": {
+      "xs": "4px",
+      "sm": "8px",
+      "md": "16px",
+      "lg": "24px",
+      "xl": "32px",
+      "2xl": "48px",
+      "3xl": "64px",
+      "4xl": "96px",
+      "5xl": "128px",
+      "6xl": "192px"
+    },
+    "section_padding": {
+      "desktop": "96px 0",
+      "tablet": "72px 0",
+      "mobile": "56px 0"
+    },
+    "container_max": "1280px",
+    "container_padding": {
+      "desktop": "0 48px",
+      "tablet": "0 32px",
+      "mobile": "0 20px"
+    }
+  },
+
+  "borders": {
+    "radius": {
+      "none": "0",
+      "sm": "4px",
+      "md": "6px",
+      "lg": "8px",
+      "xl": "12px",
+      "full": "9999px"
+    },
+    "rule_content": "Cards y panels de contenido: max radius 8px (lg). Formularios y inputs: 6px (md). Badges y pills: 4px (sm) o full para pills redondas. NUNCA > 8px en cards de contenido institucional.",
+    "widths": {
+      "hairline": "0.5px",
+      "thin": "1px",
+      "base": "1.5px",
+      "medium": "2px"
+    },
+    "decorative_line": {
+      "width": "40px",
+      "height": "2px",
+      "color": "dorado (#C9A961)",
+      "use": "Línea separadora de sección debajo de kicker/overline"
+    }
+  },
+
+  "shadows": {
+    "note": "Sin box-shadow estilo 2010. Usar sombras cálidas difusas.",
+    "sm": "0 2px 8px rgba(15, 30, 61, 0.06)",
+    "md": "0 4px 16px rgba(15, 30, 61, 0.08)",
+    "lg": "0 8px 32px rgba(15, 30, 61, 0.10)",
+    "xl": "0 16px 48px rgba(15, 30, 61, 0.12)",
+    "dorado": "0 4px 20px rgba(201, 169, 97, 0.20)",
+    "use": "shadow-sm para cards en reposo, shadow-md para cards en hover, shadow-lg para modales, shadow-dorado para elementos con acento dorado en hover"
+  },
+
+  "motion": {
+    "ease_primary": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "ease_out": "cubic-bezier(0.16, 1, 0.3, 1)",
+    "ease_in_out": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "duration_fast": "150ms",
+    "duration_normal": "250ms",
+    "duration_slow": "600ms",
+    "duration_reveal": "800ms",
+    "stagger_delay": "80ms",
+    "parallax_factor": "0.15",
+    "rules": {
+      "max_translateY": "24px",
+      "max_scale": "1.03",
+      "whatsapp_fab_scale": "1.08",
+      "no_rotation": "true — cero rotaciones en hover o animacion",
+      "no_blur": "true — cero backdrop-blur o filter:blur",
+      "reduced_motion": "prefers-reduced-motion: desactiva TODO — mostrar estado final directo sin transicion"
+    }
+  },
+
+  "icons": {
+    "style": "line / stroke",
+    "stroke_width": "1.5px",
+    "color": "currentColor (compatible con temas claro/oscuro)",
+    "viewbox": "24x24",
+    "library_ui": "Lucide — trazo 1.5px. Íconos UI aprobados: menu, x, chevron-down, chevron-right, chevron-left, check, check-circle, alert-circle, info, phone, mail, map-pin, clock, calendar, calendar-x, award, graduation-cap, book-open, users, loader-circle, refresh-cw, external-link, download, search, filter",
+    "custom_legal": "SVG custom para las 4 áreas legales (ver logo_brief). Mismo estilo: 24x24, stroke 1.5px, currentColor. Encapsulados en icon-frame dorado.",
+    "rule_no_fill": "Preferir íconos sin relleno sólido. Si requieren relleno (ej: check-circle filled), usar solo en estados de éxito/confirmación.",
+    "rule_size": "24px base en contenido. 20px en nav/formularios. 32-40px en cards de área. 48-64px en iconografía de sección."
+  },
+
+  "logo_brief": {
+    "concept": "Identidad monolínea elegante con ancla tipográfica en Playfair Display. El monograma PDL es el núcleo: tres iniciales compuestas con peso geométrico pero carácter serif. La paleta principal es dorado sobre marino o marino sobre dorado. Sin gradientes, sin sombras, sin ornamentos innecesarios.",
+    "style": "Monoline elegante, trazo fino uniforme (1.5-2px en vista 32px+), serif geométrico, sin rellenos en el monograma, sin sombras, equilibrio entre clásico (serif de Playfair) y contemporáneo (geometría limpia y proporcionada).",
+    "primary_colors": {
+      "foreground": "#C9A961",
+      "background": "#0F1E3D",
+      "alt_foreground": "#0F1E3D",
+      "alt_background": "#FAF7F2"
+    },
+    "variants": [
+      {
+        "id": "v1_monogram_favicon",
+        "name": "Monograma PDL — favicon y nav",
+        "description": "Letras 'P', 'D', 'L' compuestas como monograma entrelazado o stacked. Contenidas en un círculo o cuadrado con radio suave (4-6px). Fondo marino #0F1E3D, letras doradas #C9A961. Proporciones: cuadrado 1:1. El trazo del monograma debe leerse perfectamente a 32px.",
+        "sizes": ["32x32 favicon", "36x36 nav logo"],
+        "formats": ["SVG", "PNG @1x", "PNG @2x"],
+        "bg": "#0F1E3D",
+        "fg": "#C9A961",
+        "note": "Debe funcionar sobre fondos claros (FAF7F2) y oscuros (0F1E3D). Probar en ambos contextos."
+      },
+      {
+        "id": "v2_logotipo_horizontal",
+        "name": "Logotipo horizontal — nav y email",
+        "description": "Monograma PDL (versión compacta sin contenedor) a la izquierda, separado por línea hairline dorada, seguido de texto 'Pablo De Luca' en Playfair Display weight 500 + debajo 'Abogado' en Inter weight 400 tracking 0.1em uppercase, tamaño 60% de la línea principal. La palabra 'Abogado' puede ser sustituida por 'Estudio Jurídico' en versión formal.",
+        "sizes": [
+          "200x48 para nav (desktop)",
+          "160x40 para nav (mobile)",
+          "300x72 para email header"
+        ],
+        "formats": ["SVG", "PNG @1x", "PNG @2x"],
+        "color_variants": [
+          "Sobre marino: dorado #C9A961 (texto y separador) + blanco roto #FAF7F2 (texto nombre)",
+          "Sobre blanco roto: marino #0F1E3D (texto nombre) + dorado #C9A961 (separador y monograma)",
+          "Monocromático marino: todos los elementos en #0F1E3D (para papel membretado B&N)"
+        ]
+      },
+      {
+        "id": "v3_watermark",
+        "name": "PDL — solo letra para watermark",
+        "description": "Las letras P, D, L en Playfair Display italic, compuestas en línea o apiladas, sin ningún contenedor. Peso 400 (regular), tamaño relativo. Usado en el fondo de documentos, PDFs y footer pattern decorativo. Color: dorado #C9A961 al 10-15% de opacidad sobre blanco roto, o blanco #FAF7F2 al 8% sobre marino.",
+        "formats": ["SVG"],
+        "note": "Versión mínima, solo tipografía, para aplicaciones sutiles en background pattern."
+      },
+      {
+        "id": "v4_sello_institucional",
+        "name": "Sello/lacre institucional — footer decorativo",
+        "description": "Composición circular tipo sello. Círculo exterior con texto curvo en arco superior: 'ESTUDIO JURÍDICO · DR. PABLO DE LUCA ·' en Inter weight 500 tracking amplio. En el centro: monograma PDL o balanza de justicia minimalista (monolínea). Arco inferior: 'SAN RAFAEL · MENDOZA'. Dos puntos decorativos a las 3 y 9 para separar texto. Todo en trazo fino sin relleno. Uso: decorativo en footer sobre marino, también para papel membretado.",
+        "formats": ["SVG"],
+        "color_variants": [
+          "Dorado #C9A961 sobre marino #0F1E3D (uso digital footer)",
+          "Marino #0F1E3D sobre blanco roto (uso impresión/membrete)"
+        ]
+      }
+    ],
+    "icon_set_legal": {
+      "description": "4 íconos SVG custom para las áreas legales. Estilo: monolínea, viewBox 24x24, stroke 1.5px, currentColor, sin fill excepto donde esencial para forma reconocible.",
+      "icons": [
+        {
+          "id": "icon_civil_familia",
+          "area": "Civil y Familia",
+          "description": "Balanza de justicia. Columna central con círculo en la cima, dos brazos horizontales simétricos con platillos circulares en cada extremo colgando de cadena de 2 eslabones. Trazo limpio, pesos balanceados."
+        },
+        {
+          "id": "icon_penal",
+          "area": "Penal",
+          "description": "Escudo institucional. Escudo con forma clásica (arco superior recto, laterales rectos, base en punta redondeada). Interior con línea horizontal que lo divide en dos tercios superior y un tercio inferior. Sin ornamentos interiores — el escudo habla solo."
+        },
+        {
+          "id": "icon_laboral",
+          "area": "Laboral",
+          "description": "Gavel (mazo judicial). Cabeza rectangular con proporciones correctas, mango cilíndrico con inclinación de 45°. Línea de impacto opcional (2-3 líneas cortas en arco) para dynamismo."
+        },
+        {
+          "id": "icon_comercial",
+          "area": "Comercial y Empresarial",
+          "description": "Edificio institucional simplificado. Fachada rectangular con 3 columnas de ventanas (2x3 grid de rectángulos pequeños), base con escalones de entrada (2 líneas horizontales salientes). Sin detalle excesivo — reconocible en 24px."
+        }
+      ]
+    },
+    "sello_matricula": {
+      "description": "Ícono circular opcional para footer. Texto en arco: 'MATRÍCULA · COLEGIO ABOG. MENDOZA'. Centro vacío o con número de matrícula cuando esté disponible. Mismo sistema que sello institucional pero más pequeño y específico.",
+      "note": "El número de matrícula real del Dr. es un dato pendiente — dejar placeholder [N°] en el SVG hasta confirmación."
+    },
+    "output_checklist": [
+      "v1_monogram_favicon.svg + v1_monogram_favicon@1x.png + v1_monogram_favicon@2x.png",
+      "v2_logotipo_horizontal_dark.svg (sobre marino) + v2_logotipo_horizontal_light.svg (sobre blanco roto) + v2_logotipo_horizontal_mono.svg + PNG @1x @2x de cada variante",
+      "v3_watermark.svg",
+      "v4_sello_institucional_dark.svg + v4_sello_institucional_light.svg",
+      "icon_civil_familia.svg",
+      "icon_penal.svg",
+      "icon_laboral.svg",
+      "icon_comercial.svg",
+      "sello_matricula.svg (con [N°] placeholder)"
+    ]
+  },
+
+  "applications": {
+    "web": {
+      "nav": "Logotipo horizontal v2 (variante sobre marino — dorado + blanco roto). En mobile: monograma v1 solo. Fondo nav: marino #0F1E3D sticky.",
+      "footer": "Logotipo horizontal v2 (variante sobre marino) + sello institucional v4 a la derecha. Bg marino deep #0A152B.",
+      "favicon": "v1_monogram_favicon.svg (o .ico derivado). 32x32 sobre marino.",
+      "og_image": "Composición con fondo marino, logotipo centrado o izquierda, tagline corto en blanco roto, línea dorada decorativa. 1200x630px."
+    },
+    "social": {
+      "instagram": {
+        "profile_pic": "v1_monogram_favicon — sobre marino, 400x400px",
+        "feed_posts": "Fondo blanco roto o marino según tono del contenido. Tipografía Playfair + Inter. Línea dorada como separador decorativo. Sin texto sobre dorado como bg (contraste insuficiente).",
+        "stories": "Fondo marino con texto blanco roto. Kicker dorado. Botón CTA en fondo dorado con texto marino.",
+        "bio_copy": "Abogado en San Rafael, Mendoza. Civil · Laboral · Penal · Comercial. Consulta inicial sin cargo. 📍 Mendoza AR"
+      },
+      "linkedin": {
+        "profile_pic": "v1_monogram_favicon sobre marino",
+        "banner": "Logotipo horizontal v2 + tagline largo + áreas legales (4 badges en Inter). Bg marino con línea dorada.",
+        "post_style": "Tono más formal que Instagram. Insights jurídicos + casos de éxito anónimos + actualizaciones legales AR."
+      }
+    },
+    "email": {
+      "signature": {
+        "layout": "Logotipo horizontal v2 (light, sobre blanco). Nombre completo en Playfair 600 marino. Título en Inter 400. Datos: teléfono, email, dirección. Línea separadora dorada horizontal 40px. Fondo blanco, no marino (compatibilidad con clientes de correo).",
+        "format": "HTML tabla responsive 600px max-width. PNG inline para logo (no SVG — compatibilidad Outlook)."
+      },
+      "transaccional": {
+        "header": "Bg marino #0F1E3D. Logo v2 variante dorado. Padding 32px.",
+        "body": "Bg blanco roto #FAF7F2. Texto carbón. Padding 32px. Tipografía: Inter (fallback para email).",
+        "cta_button": "Fondo marino. Texto blanco roto. Border-radius 6px. NO botón dorado en email — contraste blanco sobre dorado falla.",
+        "footer": "Bg marino deep. Texto gris claro. Matrícula + disclaimer GDPR AR (Ley 25.326). Tamaño 12px."
+      }
+    },
+    "print": {
+      "papel_membretado": "A4. Logo horizontal v2 variante monocromática (marino) en esquina superior izquierda. Línea dorada horizontal debajo del header (1pt). Footer con dirección + teléfono + email + sello institucional v4 variante marino. Tipografía del cuerpo: Lora o Times New Roman como fallback.",
+      "tarjeta": "85x55mm estándar. Anverso: fondo marino, monograma v1 dorado grande, nombre en Playfair blanco roto. Reverso: datos de contacto sobre blanco roto.",
+      "carteleria": "Fondo marino. Logo horizontal v2 (dorado + blanco roto). Áreas legales en Inter uppercase dorado. Dirección + WhatsApp en Lora o Inter blanco roto. Sello matrícula en esquina inferior derecha."
+    }
+  },
+
+  "asset_specs": {
+    "logo_monogram": { "width": 32, "height": 32, "bg": "transparent", "formats": ["SVG", "PNG"] },
+    "logo_nav": { "width": 200, "height": 48, "bg": "transparent", "formats": ["SVG", "PNG"] },
+    "logo_email": { "width": 300, "height": 72, "bg": "transparent", "formats": ["PNG"] },
+    "sello": { "width": 200, "height": 200, "bg": "transparent", "formats": ["SVG", "PNG"] },
+    "og_image": { "width": 1200, "height": 630, "format": "PNG", "bg": "#0F1E3D" },
+    "icons_legal": {
+      "width": 24,
+      "height": 24,
+      "bg": "transparent",
+      "formats": ["SVG"],
+      "count": 4
+    }
+  },
+
+  "prompt_ingredients": {
+    "style_tags": [
+      "institutional legal branding",
+      "classic serif typography",
+      "navy and gold palette",
+      "Argentine law firm",
+      "trust authority",
+      "monoline elegant",
+      "minimal ornament",
+      "premium accessible",
+      "San Rafael Mendoza",
+      "traditional modern legal"
+    ],
+    "photo_style": "Professional legal office photography. Natural light through tall windows, dark wood furniture, leather-bound books, Argentine legal codes visible. Warm navy and cream tones. Documentary style, no posed stock-photo feel. Human presence as secondary element — context over portrait.",
+    "logo_style": "Monoline legal monogram. Playfair Display serif letterforms. Navy blue and gold. Clean geometric proportions. Institutional gravitas. No gradients, no shadows, no ornamental flourishes. Thinks Brioni suits and leather briefcases, not tech startup.",
+    "avoid_global": "watermark text overlay UI elements borders frame cartoon 3D render gradients purple pink magenta playful emoji stock photo generic clipart neon saturated colors rounded blob shapes glassmorphism neumorphism"
+  }
+}

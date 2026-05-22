@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Pablo De Luca — Mock visual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --marino:#0F1E3D;
+    --marino-hover:#1E3A6E;
+    --marino-deep:#0A152B;
+    --dorado:#C9A961;
+    --dorado-hover:#DDB96E;
+    --dorado-deep:#B89344;
+    --bg:#FAF7F2;
+    --bg-warm:#F2EBDE;
+    --carbon:#1A1A1A;
+    --carbon-soft:#3A3A3A;
+    --line:rgba(15,30,61,.12);
+    --line-gold:rgba(201,169,97,.4);
+    --ff-serif:'Playfair Display', Georgia, 'Times New Roman', serif;
+    --ff-body:'Lora', Georgia, serif;
+    --ff-ui:'Inter', system-ui, -apple-system, sans-serif;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--ff-body);
+    color:var(--carbon);
+    background:var(--bg);
+    line-height:1.6;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+  .container{max-width:1280px;margin:0 auto;padding:0 max(24px, calc((100vw - 1200px) / 2))}
+  .kicker{
+    font-family:var(--ff-ui);
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--dorado-deep);
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+  }
+  .kicker::before{content:"";width:32px;height:1px;background:var(--dorado-deep)}
+  h1,h2,h3,h4{font-family:var(--ff-serif);font-weight:500;letter-spacing:-0.02em;color:var(--marino)}
+  h1{font-size:clamp(3rem, 2rem + 5vw, 5.5rem);line-height:1.05;font-weight:500}
+  h2{font-size:clamp(2.25rem, 1.5rem + 2.5vw, 3.5rem);line-height:1.15;margin-bottom:24px}
+  h3{font-size:1.5rem;line-height:1.3}
+  p{margin-bottom:1em}
+  a{color:inherit;text-decoration:none}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 28px;
+    font-family:var(--ff-ui);
+    font-size:14px;font-weight:500;letter-spacing:.04em;
+    text-transform:uppercase;
+    border:none;cursor:pointer;
+    transition:transform .3s var(--ease), background .3s var(--ease), color .3s var(--ease), box-shadow .4s var(--ease);
+    border-radius:2px;
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .btn::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(120deg, transparent 30%, rgba(201,169,97,.35) 50%, transparent 70%);
+    transform:translateX(-110%);
+    transition:transform .8s var(--ease);
+    z-index:-1;
+    pointer-events:none;
+  }
+  .btn:hover::before{transform:translateX(110%)}
+  .btn-primary{background:var(--marino);color:var(--bg);box-shadow:0 4px 12px -4px rgba(15,30,61,.3)}
+  .btn-primary:hover{background:var(--marino-hover);transform:translateY(-2px);box-shadow:0 12px 24px -8px rgba(15,30,61,.5)}
+  .btn-outline{background:transparent;color:var(--marino);border:1px solid var(--marino)}
+  .btn-outline:hover{background:var(--marino);color:var(--bg);transform:translateY(-2px)}
+  .btn-gold{background:var(--dorado);color:var(--marino)}
+  .btn-gold:hover{background:var(--dorado-hover);transform:translateY(-2px)}
+  .btn .arrow{transition:transform .3s var(--ease)}
+  .btn:hover .arrow{transform:translateX(5px)}
+
+  /* ===== NAV ===== */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(250,247,242,.95);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+    padding:16px 0;
+  }
+  .nav-inner{display:flex;justify-content:space-between;align-items:center}
+  .logo{font-family:var(--ff-serif);font-size:22px;font-weight:600;color:var(--marino);letter-spacing:-.01em;display:flex;align-items:center;gap:12px;transition:transform .35s var(--ease)}
+  .logo:hover{transform:translateX(2px)}
+  .logo-mark{
+    width:36px;height:36px;border:1px solid var(--dorado);
+    display:grid;place-items:center;
+    font-family:var(--ff-serif);font-size:14px;font-weight:600;
+    color:var(--dorado-deep);
+    background:transparent;
+    transition:transform .5s var(--ease), background .35s var(--ease), color .35s var(--ease);
+  }
+  .logo:hover .logo-mark{
+    background:var(--marino);color:var(--dorado);transform:rotate(-6deg);
+  }
+  .nav-links{display:flex;gap:36px;font-family:var(--ff-ui);font-size:14px;font-weight:500;color:var(--carbon-soft)}
+  .nav-links a{position:relative;padding:4px 0;transition:color .3s var(--ease)}
+  .nav-links a::after{
+    content:"";
+    position:absolute;
+    bottom:0;left:0;right:100%;
+    height:1px;
+    background:var(--dorado);
+    transition:right .35s var(--ease);
+  }
+  .nav-links a:hover{color:var(--marino)}
+  .nav-links a:hover::after{right:0}
+  .nav-cta{padding:10px 20px;font-size:13px}
+
+  /* ===== HERO ===== */
+  .hero{
+    padding:160px 0 100px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;bottom:0;
+    background:
+      radial-gradient(circle at 85% 30%, rgba(201,169,97,.06), transparent 50%),
+      radial-gradient(circle at 15% 70%, rgba(15,30,61,.04), transparent 50%);
+    pointer-events:none;
+    z-index:0;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 1fr;
+    gap:80px;
+    align-items:center;
+    position:relative;
+    z-index:1;
+  }
+  .hero-text .kicker{margin-bottom:32px;opacity:0;transform:translateY(12px);animation:heroEntry .9s var(--ease) forwards;animation-delay:.15s}
+  .hero h1{margin-bottom:32px;overflow:hidden}
+  .hero h1 .word{
+    display:inline-block;
+    opacity:0;
+    transform:translateY(120%);
+    animation:wordRise 1.1s var(--ease) forwards;
+  }
+  .hero h1 .word:nth-child(1){animation-delay:.35s}
+  .hero h1 .word:nth-child(2){animation-delay:.43s}
+  .hero h1 .word:nth-child(3){animation-delay:.51s}
+  .hero h1 .word:nth-child(4){animation-delay:.59s}
+  .hero h1 .word:nth-child(5){animation-delay:.67s}
+  .hero h1 .word:nth-child(6){animation-delay:.75s}
+  .hero h1 .word:nth-child(7){animation-delay:.83s}
+  .hero h1 .word:nth-child(8){animation-delay:.91s}
+  @keyframes wordRise{
+    to{opacity:1;transform:translateY(0)}
+  }
+  @keyframes heroEntry{
+    to{opacity:1;transform:translateY(0)}
+  }
+  .hero h1 .accent{
+    font-style:italic;
+    color:var(--dorado-deep);
+    font-weight:400;
+    position:relative;
+  }
+  .hero h1 .accent::after{
+    content:"";
+    position:absolute;
+    bottom:.1em;left:0;
+    width:0;height:2px;
+    background:var(--dorado);
+    animation:accentLine .8s var(--ease) forwards;
+    animation-delay:1.2s;
+  }
+  @keyframes accentLine{
+    to{width:100%}
+  }
+  .hero-bajada{
+    font-size:1.2rem;line-height:1.55;
+    color:var(--carbon-soft);
+    max-width:520px;
+    margin-bottom:48px;
+    opacity:0;
+    transform:translateY(16px);
+    animation:heroEntry .9s var(--ease) forwards;
+    animation-delay:1.1s;
+  }
+  .hero-ctas{
+    display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;
+    opacity:0;
+    transform:translateY(16px);
+    animation:heroEntry .9s var(--ease) forwards;
+    animation-delay:1.3s;
+  }
+  .cta-meta{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--ff-ui);
+    font-size:.82rem;
+    color:var(--carbon-soft);
+    letter-spacing:.02em;
+    margin-bottom:48px;
+    opacity:0;
+    transform:translateY(8px);
+    animation:heroEntry .9s var(--ease) forwards;
+    animation-delay:1.5s;
+  }
+  .cta-meta strong{color:var(--marino);font-weight:600}
+  .cta-meta-dot{
+    width:7px;height:7px;
+    border-radius:50%;
+    background:#2EA043;
+    position:relative;
+    flex-shrink:0;
+  }
+  .cta-meta-dot::after{
+    content:"";
+    position:absolute;
+    inset:-3px;
+    border-radius:50%;
+    background:#2EA043;
+    opacity:.4;
+    animation:dotPulse 2.2s var(--ease) infinite;
+  }
+  @keyframes dotPulse{
+    0%{transform:scale(.6);opacity:.5}
+    100%{transform:scale(1.9);opacity:0}
+  }
+  /* ===== HERO PROCESO + DISPONIBILIDAD ===== */
+  .hero-meta{
+    position:relative;
+    padding-top:40px;
+  }
+  .hero-meta::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;
+    width:0;height:1px;
+    background:linear-gradient(90deg, var(--line) 0%, var(--dorado) 30%, var(--dorado) 70%, var(--line) 100%);
+    animation:hairlineDraw 1.6s var(--ease) .8s forwards;
+  }
+  @keyframes hairlineDraw{
+    from{width:0}
+    to{width:100%}
+  }
+  .proceso{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:36px;
+    margin-bottom:32px;
+  }
+  .paso{
+    position:relative;
+    opacity:0;
+    transform:translateY(16px);
+    animation:statRise .8s var(--ease) forwards;
+  }
+  .paso:nth-child(1){animation-delay:.9s}
+  .paso:nth-child(2){animation-delay:1.05s}
+  .paso:nth-child(3){animation-delay:1.2s}
+  @keyframes statRise{
+    to{opacity:1;transform:translateY(0)}
+  }
+  .paso-num{
+    font-family:var(--ff-serif);
+    font-style:italic;
+    font-size:1rem;
+    color:var(--dorado-deep);
+    letter-spacing:.04em;
+    display:block;
+    margin-bottom:10px;
+  }
+  .paso-num::before{
+    content:"";
+    display:inline-block;
+    width:20px;height:1px;
+    background:var(--dorado);
+    vertical-align:middle;
+    margin-right:10px;
+    transform-origin:left center;
+    transform:scaleX(0);
+    animation:numLine .6s var(--ease) forwards;
+    animation-delay:inherit;
+  }
+  .paso:nth-child(1) .paso-num::before{animation-delay:1.1s}
+  .paso:nth-child(2) .paso-num::before{animation-delay:1.25s}
+  .paso:nth-child(3) .paso-num::before{animation-delay:1.4s}
+  @keyframes numLine{
+    to{transform:scaleX(1)}
+  }
+  .paso h4{
+    font-family:var(--ff-serif);
+    font-size:1.1rem;
+    color:var(--marino);
+    line-height:1.3;
+    margin-bottom:8px;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  .paso p{
+    font-family:var(--ff-ui);
+    font-size:.85rem;
+    color:var(--carbon-soft);
+    line-height:1.5;
+    margin:0;
+  }
+  .disponibilidad{
+    display:flex;
+    align-items:center;
+    gap:24px;
+    padding:18px 24px;
+    background:rgba(15,30,61,.04);
+    border:1px solid var(--line);
+    border-left:3px solid var(--dorado);
+    margin-top:8px;
+    opacity:0;
+    transform:translateY(12px);
+    animation:statRise .9s var(--ease) forwards;
+    animation-delay:1.5s;
+    flex-wrap:wrap;
+  }
+  .disp-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--ff-ui);
+    font-size:.82rem;
+    color:var(--marino);
+    letter-spacing:.02em;
+  }
+  .disp-item strong{font-weight:600}
+  .disp-dot{
+    width:8px;height:8px;
+    border-radius:50%;
+    background:#2EA043;
+    position:relative;
+    flex-shrink:0;
+  }
+  .disp-dot::after{
+    content:"";
+    position:absolute;
+    inset:-3px;
+    border-radius:50%;
+    background:#2EA043;
+    opacity:.5;
+    animation:dotPulse 2s var(--ease) infinite;
+  }
+  @keyframes dotPulse{
+    0%{transform:scale(.5);opacity:.7}
+    100%{transform:scale(1.8);opacity:0}
+  }
+  .disp-divider{
+    width:1px;height:16px;
+    background:var(--line);
+    flex-shrink:0;
+  }
+  .disp-emergency{
+    margin-left:auto;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px;
+    background:#A91D1D;
+    color:var(--bg);
+    font-family:var(--ff-ui);
+    font-size:.78rem;
+    font-weight:600;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    border-radius:2px;
+    transition:transform .3s var(--ease), background .3s var(--ease);
+    cursor:pointer;
+    text-decoration:none;
+  }
+  .disp-emergency:hover{
+    background:#C72525;
+    transform:translateY(-1px);
+  }
+  .disp-emergency-icon{
+    width:14px;height:14px;
+    animation:emergencyShake 2.4s var(--ease) infinite;
+  }
+  @keyframes emergencyShake{
+    0%,90%,100%{transform:rotate(0)}
+    93%{transform:rotate(-6deg)}
+    96%{transform:rotate(6deg)}
+  }
+  @media (max-width:880px){
+    .proceso{grid-template-columns:1fr;gap:20px}
+    .disponibilidad{flex-direction:column;align-items:flex-start;gap:14px}
+    .disp-emergency{margin-left:0;align-self:stretch;justify-content:center}
+    .disp-divider{display:none}
+  }
+
+  /* Placeholder foto del Dr. */
+  .hero-photo-wrap{will-change:transform}
+  .hero-photo{
+    position:relative;
+    aspect-ratio:4/5;
+    background:linear-gradient(135deg, #E8E0D0 0%, #D4C5A8 100%);
+    border:1px solid var(--line-gold);
+    overflow:hidden;
+    clip-path:inset(0 0 100% 0);
+    animation:photoReveal 1.4s var(--ease) forwards;
+    animation-delay:.6s;
+  }
+  @keyframes photoReveal{
+    to{clip-path:inset(0 0 0 0)}
+  }
+  .hero-photo::before{
+    content:"";
+    position:absolute;
+    top:24px;left:24px;right:24px;bottom:24px;
+    border:1px solid var(--dorado);
+    pointer-events:none;
+    z-index:2;
+  }
+  .hero-photo .placeholder-mark{
+    position:absolute;
+    inset:0;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    z-index:1;
+    background:repeating-linear-gradient(
+      45deg,
+      transparent 0,
+      transparent 20px,
+      rgba(15,30,61,.03) 20px,
+      rgba(15,30,61,.03) 21px
+    );
+  }
+  .placeholder-icon{
+    width:80px;height:80px;
+    color:var(--marino);
+    opacity:.4;
+    margin-bottom:20px;
+  }
+  .placeholder-text{
+    font-family:var(--ff-ui);
+    font-size:11px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--marino);
+    opacity:.6;
+  }
+  .hero-photo-badge{
+    position:absolute;
+    bottom:-1px;right:24px;
+    background:var(--marino);
+    color:var(--bg);
+    padding:16px 24px;
+    z-index:3;
+    font-family:var(--ff-ui);
+  }
+  .hero-photo-badge .title{
+    font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.7;margin-bottom:6px;display:block;
+  }
+  .hero-photo-badge .name{
+    font-family:var(--ff-serif);font-size:18px;font-weight:500;
+  }
+
+  /* ===== REVEAL ON SCROLL ===== */
+  .reveal{
+    opacity:0;
+    transform:translateY(36px);
+    transition:opacity .95s var(--ease), transform .95s var(--ease);
+  }
+  .reveal.is-visible{opacity:1;transform:translateY(0)}
+  .reveal-mask{
+    clip-path:inset(0 0 100% 0);
+    transition:clip-path 1.1s var(--ease);
+  }
+  .reveal-mask.is-visible{clip-path:inset(0 0 0 0)}
+  .reveal-delay-1{transition-delay:.08s}
+  .reveal-delay-2{transition-delay:.16s}
+  .reveal-delay-3{transition-delay:.24s}
+  .reveal-delay-4{transition-delay:.32s}
+  @media (prefers-reduced-motion: reduce){
+    .reveal,.reveal.is-visible{opacity:1;transform:none;transition:none}
+    *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  }
+
+  /* ===== ÁREAS ===== */
+  .areas{
+    padding:120px 0;
+    background:var(--bg-warm);
+    position:relative;
+  }
+  .section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:64px;
+    gap:48px;
+  }
+  .section-header-text{max-width:600px}
+  .section-header .kicker{margin-bottom:20px}
+  .section-header p{color:var(--carbon-soft);max-width:380px;font-size:.95rem}
+  .areas-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:24px;
+  }
+  .area-card{
+    background:var(--bg);
+    border:1px solid var(--line);
+    padding:48px;
+    transition:transform .45s var(--ease), border-color .45s var(--ease), box-shadow .45s var(--ease);
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+  }
+  .area-card::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;
+    width:100%;height:100%;
+    background:linear-gradient(135deg, transparent 40%, rgba(201,169,97,.04) 100%);
+    opacity:0;
+    transition:opacity .5s var(--ease);
+    pointer-events:none;
+  }
+  .area-card:hover::before{opacity:1}
+  .area-card .area-icon{transition:border-color .4s var(--ease), background .4s var(--ease), color .4s var(--ease)}
+  .area-card:hover .area-icon{
+    border-color:var(--dorado-deep);
+    background:var(--marino);
+    color:var(--dorado);
+  }
+  .area-card::after{
+    content:"";
+    position:absolute;
+    bottom:0;left:0;
+    width:0;height:2px;
+    background:var(--dorado);
+    transition:width .4s var(--ease);
+  }
+  .area-card:hover{
+    border-color:var(--dorado);
+    transform:translateY(-4px);
+    box-shadow:0 24px 48px -16px rgba(15,30,61,.12);
+  }
+  .area-card:hover::after{width:100%}
+  .area-icon{
+    width:56px;height:56px;
+    border:1px solid var(--dorado);
+    display:grid;place-items:center;
+    margin-bottom:28px;
+    color:var(--dorado-deep);
+  }
+  .area-card h3{margin-bottom:16px}
+  .area-card p{color:var(--carbon-soft);font-size:.95rem;margin-bottom:24px}
+  .area-card .area-link{
+    font-family:var(--ff-ui);font-size:13px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--marino);
+    display:inline-flex;align-items:center;gap:8px;
+    font-weight:500;
+  }
+  .area-card .area-link .arrow{transition:transform .25s var(--ease)}
+  .area-card:hover .area-link .arrow{transform:translateX(4px);color:var(--dorado-deep)}
+
+  /* ===== TRAYECTORIA TIMELINE ===== */
+  .trayectoria{
+    padding:120px 0;
+    background:var(--marino);
+    color:var(--bg);
+    position:relative;
+  }
+  .trayectoria h2{color:var(--bg)}
+  .trayectoria .kicker{color:var(--dorado)}
+  .trayectoria .kicker::before{background:var(--dorado)}
+  .trayectoria .section-header p{color:rgba(250,247,242,.7)}
+  .timeline{
+    position:relative;
+    padding:64px 0 0;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:0;top:0;
+    width:0;height:1px;
+    background:linear-gradient(90deg, transparent, var(--dorado) 15%, var(--dorado) 85%, transparent);
+    transition:width 1.4s var(--ease);
+  }
+  .trayectoria.is-visible .timeline::before{width:100%}
+  .timeline-item.reveal.reveal-delay-1{transition-delay:.4s}
+  .timeline-item.reveal.reveal-delay-2{transition-delay:.55s}
+  .timeline-item.reveal.reveal-delay-3{transition-delay:.7s}
+  .timeline-item.reveal.reveal-delay-4{transition-delay:.85s}
+  .timeline-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:56px;
+  }
+  .timeline-item{
+    position:relative;
+    padding-top:40px;
+  }
+  .timeline-item::before{
+    content:"";
+    position:absolute;
+    top:-72px;
+    left:0;
+    width:12px;height:12px;
+    border-radius:50%;
+    background:var(--dorado);
+    box-shadow:0 0 0 4px var(--marino-deep), 0 0 0 5px var(--dorado);
+  }
+  .timeline-year{
+    font-family:var(--ff-serif);
+    font-size:1rem;
+    color:var(--dorado);
+    letter-spacing:.04em;
+    margin-bottom:18px;
+    font-style:italic;
+    display:inline-block;
+    padding-bottom:4px;
+    border-bottom:1px solid rgba(201,169,97,.3);
+  }
+  .timeline-item h4{
+    color:var(--bg);
+    font-size:1.2rem;
+    line-height:1.35;
+    margin-bottom:14px;
+    font-family:var(--ff-serif);
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  .timeline-item p{
+    color:rgba(250,247,242,.7);
+    font-size:.92rem;
+    line-height:1.6;
+  }
+  @media (max-width:1024px){
+    .timeline-grid{grid-template-columns:repeat(2,1fr);gap:48px 56px}
+    .timeline-item:nth-child(3),
+    .timeline-item:nth-child(4){padding-top:56px}
+  }
+  @media (max-width:640px){
+    .timeline-grid{grid-template-columns:1fr;gap:48px}
+    .timeline-item::before{top:-32px}
+    .timeline-item:nth-child(3),
+    .timeline-item:nth-child(4){padding-top:40px}
+  }
+
+  /* ===== CASOS RESUELTOS NARRATIVOS ===== */
+  .casos{
+    padding:120px 0;
+    background:var(--marino);
+    color:var(--bg);
+  }
+  .casos h2{color:var(--bg)}
+  .casos .kicker{color:var(--dorado)}
+  .casos .kicker::before{background:var(--dorado)}
+  .casos .section-header p{color:rgba(250,247,242,.65)}
+  .casos-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+    margin-bottom:48px;
+  }
+  .caso-card{
+    background:rgba(250,247,242,.04);
+    border:1px solid rgba(201,169,97,.18);
+    padding:36px 32px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    transition:transform .45s var(--ease), border-color .45s var(--ease), background .45s var(--ease);
+    position:relative;
+    overflow:hidden;
+  }
+  .caso-card::after{
+    content:"";
+    position:absolute;
+    top:0;left:0;
+    width:0;height:2px;
+    background:var(--dorado);
+    transition:width .5s var(--ease);
+  }
+  .caso-card:hover{
+    background:rgba(250,247,242,.06);
+    border-color:rgba(201,169,97,.5);
+    transform:translateY(-4px);
+  }
+  .caso-card:hover::after{width:100%}
+  .caso-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:16px;
+    border-bottom:1px solid rgba(250,247,242,.08);
+  }
+  .caso-area{
+    font-family:var(--ff-ui);
+    font-size:.7rem;
+    text-transform:uppercase;
+    letter-spacing:.2em;
+    color:var(--dorado);
+    padding:5px 10px;
+    border:1px solid rgba(201,169,97,.4);
+    border-radius:2px;
+  }
+  .caso-duracion{
+    font-family:var(--ff-ui);
+    font-size:.78rem;
+    color:rgba(250,247,242,.55);
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .caso-duracion::before{
+    content:"⏱";
+    font-size:.8rem;
+    opacity:.6;
+  }
+  .caso-card h3{
+    color:var(--bg);
+    font-size:1.2rem;
+    line-height:1.35;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  .caso-desc{
+    color:rgba(250,247,242,.7);
+    font-size:.92rem;
+    line-height:1.6;
+    margin:0;
+    flex:1;
+  }
+  .caso-result{
+    padding:18px 0 0;
+    border-top:1px solid rgba(250,247,242,.08);
+  }
+  .caso-result-label{
+    font-family:var(--ff-ui);
+    font-size:.7rem;
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    color:var(--dorado);
+    display:block;
+    margin-bottom:8px;
+  }
+  .caso-result-text{
+    color:rgba(250,247,242,.92);
+    font-family:var(--ff-body);
+    font-size:.92rem;
+    line-height:1.55;
+    font-style:italic;
+  }
+  .casos-note{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:18px 24px;
+    background:rgba(250,247,242,.04);
+    border-left:3px solid var(--dorado);
+    color:rgba(250,247,242,.6);
+    font-family:var(--ff-ui);
+    font-size:.82rem;
+  }
+  .casos-note svg{color:var(--dorado);flex-shrink:0}
+  @media (max-width:1024px){
+    .casos-grid{grid-template-columns:1fr;gap:20px}
+  }
+
+  /* ===== ESTUDIO + MAPA ===== */
+  .estudio{
+    padding:120px 0;
+    background:var(--bg);
+  }
+  .estudio-grid{
+    display:grid;
+    grid-template-columns:1fr 1.1fr;
+    gap:80px;
+    align-items:center;
+  }
+  .estudio-info .kicker{margin-bottom:24px}
+  .estudio-info h2{margin-bottom:32px}
+  .estudio-info p{color:var(--carbon-soft);max-width:480px;margin-bottom:32px}
+  .estudio-data{
+    list-style:none;
+    border-top:1px solid var(--line);
+  }
+  .estudio-data li{
+    display:grid;
+    grid-template-columns:140px 1fr;
+    padding:20px 0;
+    border-bottom:1px solid var(--line);
+    align-items:start;
+  }
+  .estudio-data .label{
+    font-family:var(--ff-ui);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.15em;
+    color:var(--carbon-soft);
+    padding-top:3px;
+  }
+  .estudio-data .value{
+    font-family:var(--ff-body);
+    color:var(--marino);
+    font-weight:500;
+  }
+  .estudio-data .value small{
+    display:block;
+    color:var(--carbon-soft);
+    font-weight:400;
+    font-size:.85rem;
+    margin-top:4px;
+  }
+  .map-placeholder{
+    position:relative;
+    aspect-ratio:1/1.05;
+    background:#E8E5DD;
+    border:1px solid var(--line);
+    overflow:hidden;
+  }
+  .map-placeholder svg{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+  .map-pin{
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%, -100%);
+    z-index:2;
+  }
+  .map-pin-icon{
+    width:32px;height:32px;
+    background:var(--dorado);
+    border:2px solid var(--bg);
+    border-radius:50%;
+    box-shadow:0 6px 12px rgba(0,0,0,.2);
+    display:grid;place-items:center;
+    color:var(--marino);
+    animation:pinBounce 2.2s var(--ease) infinite;
+    position:relative;
+  }
+  .map-pin-icon::before,
+  .map-pin-icon::after{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    border:2px solid var(--dorado);
+    border-radius:50%;
+    animation:pinRipple 2.4s var(--ease) infinite;
+    pointer-events:none;
+    opacity:0;
+  }
+  .map-pin-icon::after{animation-delay:1.2s}
+  @keyframes pinRipple{
+    0%{transform:scale(1);opacity:.7}
+    100%{transform:scale(2.4);opacity:0}
+  }
+  @keyframes pinBounce{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+  }
+  .map-pin-label{
+    position:absolute;
+    top:100%;left:50%;
+    transform:translate(-50%, 8px);
+    background:var(--marino);color:var(--bg);
+    font-family:var(--ff-ui);
+    font-size:11px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    padding:6px 12px;
+    white-space:nowrap;
+  }
+  .map-overlay-text{
+    position:absolute;
+    bottom:20px;left:20px;
+    background:var(--bg);
+    padding:8px 14px;
+    font-family:var(--ff-ui);
+    font-size:11px;
+    color:var(--carbon-soft);
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    border:1px solid var(--line);
+    z-index:3;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer{
+    background:var(--marino-deep);
+    color:var(--bg);
+    padding:80px 0 40px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:64px;
+    margin-bottom:64px;
+    padding-bottom:48px;
+    border-bottom:1px solid rgba(250,247,242,.1);
+  }
+  .footer h4{color:var(--dorado);font-family:var(--ff-ui);font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:20px;font-weight:500}
+  .footer-brand h3{color:var(--bg);font-family:var(--ff-serif);margin-bottom:16px}
+  .footer-brand p{color:rgba(250,247,242,.6);font-size:.9rem;max-width:340px}
+  .footer ul{list-style:none}
+  .footer ul li{margin-bottom:10px;font-size:.9rem;color:rgba(250,247,242,.7)}
+  .footer ul li a:hover{color:var(--dorado)}
+  .footer-bottom{display:flex;justify-content:space-between;font-size:.8rem;color:rgba(250,247,242,.4);font-family:var(--ff-ui)}
+
+  /* ===== EMERGENCIA FAB (sobre WhatsApp FAB) ===== */
+  .emergency-fab{
+    position:fixed;
+    bottom:96px;right:24px;
+    z-index:50;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 16px;
+    background:#A91D1D;
+    color:var(--bg);
+    font-family:var(--ff-ui);
+    font-size:.74rem;
+    font-weight:600;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    border-radius:40px;
+    box-shadow:0 10px 24px -6px rgba(169,29,29,.5);
+    transition:transform .3s var(--ease), background .3s var(--ease), box-shadow .3s var(--ease);
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  .emergency-fab:hover{
+    background:#C72525;
+    transform:translateY(-2px) scale(1.02);
+    box-shadow:0 14px 28px -6px rgba(169,29,29,.6);
+  }
+  .emergency-fab-icon{
+    width:14px;height:14px;
+    flex-shrink:0;
+    animation:emergencyShake 3s var(--ease) infinite;
+  }
+  @keyframes emergencyShake{
+    0%,92%,100%{transform:rotate(0)}
+    94%{transform:rotate(-8deg)}
+    97%{transform:rotate(8deg)}
+  }
+  @media (max-width:640px){
+    .emergency-fab{
+      bottom:92px;right:16px;
+      font-size:.66rem;
+      padding:8px 12px;
+    }
+  }
+
+  /* ===== WHATSAPP FAB ===== */
+  .whatsapp-fab{
+    position:fixed;bottom:24px;right:24px;
+    width:60px;height:60px;
+    background:#25D366;
+    border-radius:50%;
+    display:grid;place-items:center;
+    box-shadow:0 12px 28px -4px rgba(37,211,102,.5);
+    z-index:50;
+    color:white;
+    transition:transform .3s var(--ease);
+  }
+  .whatsapp-fab::before,
+  .whatsapp-fab::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    background:#25D366;
+    opacity:.4;
+    animation:waPulse 2.6s var(--ease) infinite;
+    pointer-events:none;
+    z-index:-1;
+  }
+  .whatsapp-fab::after{animation-delay:1.3s}
+  @keyframes waPulse{
+    0%{transform:scale(1);opacity:.5}
+    100%{transform:scale(1.7);opacity:0}
+  }
+  .whatsapp-fab:hover{transform:scale(1.1) rotate(-6deg)}
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px){
+    .hero-grid, .estudio-grid{grid-template-columns:1fr;gap:60px}
+    .areas-grid{grid-template-columns:1fr}
+    .timeline-grid{grid-template-columns:repeat(2,1fr)}
+    .footer-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:640px){
+    .nav-links{display:none}
+    .hero{padding:120px 0 60px}
+    .hero-meta{flex-wrap:wrap;gap:24px}
+    .section-header{flex-direction:column;align-items:flex-start;gap:24px}
+    .timeline-grid{grid-template-columns:1fr}
+    .footer-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">PDL</span>
+      <span>Pablo De Luca</span>
+    </a>
+    <div class="nav-links">
+      <a href="#areas">Áreas</a>
+      <a href="#casos">Casos</a>
+      <a href="#estudio">Estudio</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a href="#reserva" class="btn btn-primary nav-cta">Reservar consulta</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="kicker">Dr. Pablo De Luca · Abogado · Mat. XXXX</span>
+        <h1><span class="word">Asesoría</span> <span class="word">jurídica</span> <span class="word">con</span> <span class="word accent">criterio,</span> <span class="word">claridad</span> <span class="word">y</span> <span class="word">compromiso.</span></h1>
+        <p class="hero-bajada">Patrocinio profesional en Civil, Familia, Laboral, Penal y Comercial. Atención presencial en San Rafael, Mendoza y consultas a distancia para toda la Argentina.</p>
+        <div class="hero-ctas">
+          <a href="#reserva" class="btn btn-primary">Reservar consulta <span class="arrow">→</span></a>
+          <a href="#areas" class="btn btn-outline">Ver áreas de trabajo</a>
+        </div>
+        <div class="cta-meta">
+          <span class="cta-meta-dot"></span>
+          <span>Próximo turno disponible: <strong>jueves 10:30</strong></span>
+        </div>
+        <div class="hero-meta">
+          <div class="proceso">
+            <div class="paso">
+              <span class="paso-num">01</span>
+              <h4>Consulta inicial sin cargo</h4>
+              <p>30 minutos para entender tu caso y orientarte sobre las opciones legales reales.</p>
+            </div>
+            <div class="paso">
+              <span class="paso-num">02</span>
+              <h4>Estrategia + honorarios claros</h4>
+              <p>Plan personalizado, presupuesto cerrado o por etapas. Sin sorpresas, todo por escrito.</p>
+            </div>
+            <div class="paso">
+              <span class="paso-num">03</span>
+              <h4>Acompañamiento al cierre</h4>
+              <p>Te mantengo informado en cada paso del proceso, presencial o por canal digital.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-photo-wrap" data-parallax="0.08">
+      <div class="hero-photo" data-placeholder="dr-photo-main">
+        <div class="placeholder-mark">
+          <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+          </svg>
+          <div class="placeholder-text">Retrato del Dr.<br>· se reemplazará ·</div>
+        </div>
+        <div class="hero-photo-badge">
+          <span class="title">Estudio Jurídico</span>
+          <span class="name">Dr. Pablo De Luca</span>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÁREAS -->
+<section class="areas" id="areas">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header-text">
+        <span class="kicker">Áreas de práctica</span>
+        <h2>Cuatro especialidades, una misma <em style="font-family:var(--ff-serif);color:var(--dorado-deep)">forma</em> de trabajar.</h2>
+      </div>
+      <p>Cada caso recibe análisis personalizado. La estrategia se diseña entre cliente y abogado, sin promesas vacías ni honorarios sorpresa.</p>
+    </div>
+    <div class="areas-grid">
+      <div class="area-card reveal reveal-delay-1">
+        <div class="area-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2v20"/><path d="M5 8l7-3 7 3"/><path d="M5 8L2 16h6L5 8z"/><path d="M19 8l-3 8h6l-3-8z"/>
+          </svg>
+        </div>
+        <h3>Civil y Familia</h3>
+        <p>Sucesiones, divorcios, cuota alimentaria, contratos civiles, daños y perjuicios, régimen comunicacional.</p>
+        <a class="area-link">Ver más <span class="arrow">→</span></a>
+      </div>
+      <div class="area-card reveal reveal-delay-2">
+        <div class="area-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2L4 6v6c0 5 3.5 9.4 8 10 4.5-.6 8-5 8-10V6l-8-4z"/>
+          </svg>
+        </div>
+        <h3>Penal</h3>
+        <p>Defensa penal, querellas particulares, asistencia letrada en comisaría, procesos abreviados y juicios orales.</p>
+        <a class="area-link">Ver más <span class="arrow">→</span></a>
+      </div>
+      <div class="area-card reveal reveal-delay-3">
+        <div class="area-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="11" width="18" height="11" rx="1"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+          </svg>
+        </div>
+        <h3>Laboral</h3>
+        <p>Despidos sin causa, accidentes de trabajo (ART), reclamos por diferencias salariales, mobbing, registración.</p>
+        <a class="area-link">Ver más <span class="arrow">→</span></a>
+      </div>
+      <div class="area-card reveal reveal-delay-4">
+        <div class="area-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 21V8l9-5 9 5v13"/><path d="M9 21V12h6v9"/><path d="M3 21h18"/>
+          </svg>
+        </div>
+        <h3>Comercial / Empresarial</h3>
+        <p>Constitución de sociedades, contratos comerciales, asesoría continua a PyMEs, propiedad intelectual, marcas.</p>
+        <a class="area-link">Ver más <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASOS RESUELTOS NARRATIVOS -->
+<section class="casos" id="casos">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header-text">
+        <span class="kicker">Casos resueltos</span>
+        <h2>Tres historias reales, <em style="font-family:var(--ff-serif);color:var(--dorado)">resultados concretos</em>.</h2>
+      </div>
+      <p>Casos anonimizados. Identidades y detalles modificados para proteger la confidencialidad del cliente.</p>
+    </div>
+    <div class="casos-grid">
+      <article class="caso-card reveal reveal-delay-1">
+        <div class="caso-header">
+          <span class="caso-area">Laboral</span>
+          <span class="caso-duracion">4 meses</span>
+        </div>
+        <h3>Despido sin causa después de 12 años</h3>
+        <p class="caso-desc">Empleado de comercio despedido sin justa causa, sin preaviso ni liquidación final. Se inició conciliación previa y posterior demanda laboral.</p>
+        <div class="caso-result">
+          <span class="caso-result-label">Resultado</span>
+          <span class="caso-result-text">Indemnización completa + multa art. 80 LCT + intereses. Acuerdo homologado.</span>
+        </div>
+      </article>
+      <article class="caso-card reveal reveal-delay-2">
+        <div class="caso-header">
+          <span class="caso-area">Familia</span>
+          <span class="caso-duracion">6 meses</span>
+        </div>
+        <h3>Divorcio con régimen comunicacional complejo</h3>
+        <p class="caso-desc">Pareja con tres hijos menores, desacuerdo sobre cuidado personal y cuota alimentaria. Se buscó mediación y luego homologación judicial.</p>
+        <div class="caso-result">
+          <span class="caso-result-label">Resultado</span>
+          <span class="caso-result-text">Convenio de cuidado compartido + cuota actualizable. Sin litigio prolongado.</span>
+        </div>
+      </article>
+      <article class="caso-card reveal reveal-delay-3">
+        <div class="caso-header">
+          <span class="caso-area">Civil</span>
+          <span class="caso-duracion">8 meses</span>
+        </div>
+        <h3>Sucesión con bienes en disputa</h3>
+        <p class="caso-desc">Sucesión ab intestato con cuatro herederos y bienes inmuebles compartidos. Resistencia inicial de un heredero a la división.</p>
+        <div class="caso-result">
+          <span class="caso-result-label">Resultado</span>
+          <span class="caso-result-text">Declaratoria de herederos + partición homologada + inscripción registral completa.</span>
+        </div>
+      </article>
+    </div>
+    <div class="casos-note">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h0"/></svg>
+      <span>Los nombres, fechas y detalles fueron alterados. El secreto profesional es innegociable.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ESTUDIO + MAPA -->
+<section class="estudio" id="estudio">
+  <div class="container">
+    <div class="estudio-grid">
+      <div class="estudio-info">
+        <span class="kicker">El estudio</span>
+        <h2>Un espacio pensado para <em style="font-family:var(--ff-serif);color:var(--dorado-deep)">escuchar primero</em>.</h2>
+        <p>Atención personalizada, presencial y virtual. Horarios coordinados según disponibilidad mediante reserva online.</p>
+        <ul class="estudio-data">
+          <li>
+            <span class="label">Dirección</span>
+            <span class="value">Calle XXXX, San Rafael<small>Mendoza, Argentina</small></span>
+          </li>
+          <li>
+            <span class="label">Horario</span>
+            <span class="value">Lunes a Viernes 09:00–13:00 / 16:00–20:00<small>Consultas presenciales con turno previo</small></span>
+          </li>
+          <li>
+            <span class="label">WhatsApp</span>
+            <span class="value">+54 9 2604 61-4896<small>Atención rápida ante consultas urgentes</small></span>
+          </li>
+          <li>
+            <span class="label">Email</span>
+            <span class="value">contacto@pdeluca.com.ar<small>Respuesta en menos de 24h hábiles</small></span>
+          </li>
+        </ul>
+      </div>
+      <div class="map-placeholder">
+        <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg">
+          <!-- Grid de calles estilizado -->
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M0 20h40M20 0v40" stroke="#B8B0A0" stroke-width=".5"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)"/>
+          <path d="M0 180h400M0 240h400M120 0v420M280 0v420" stroke="#A89F8A" stroke-width="2"/>
+          <path d="M0 100h400M80 0v420" stroke="#998F78" stroke-width="3"/>
+          <rect x="140" y="60" width="60" height="30" fill="#C9A961" opacity=".3"/>
+          <rect x="220" y="280" width="50" height="40" fill="#0F1E3D" opacity=".15"/>
+          <rect x="40" y="280" width="40" height="30" fill="#0F1E3D" opacity=".15"/>
+          <text x="20" y="20" font-family="Inter, sans" font-size="9" fill="#998F78" letter-spacing="2">SAN RAFAEL</text>
+        </svg>
+        <div class="map-pin">
+          <div class="map-pin-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>
+          </div>
+          <div class="map-pin-label">Estudio De Luca</div>
+        </div>
+        <div class="map-overlay-text">Vista previa · Google Maps</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contacto">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Dr. Pablo De Luca</h3>
+        <p>Abogado matriculado · Patrocinio en Civil, Familia, Laboral, Penal y Comercial · San Rafael, Mendoza.</p>
+      </div>
+      <div>
+        <h4>Áreas</h4>
+        <ul>
+          <li><a href="#">Civil y Familia</a></li>
+          <li><a href="#">Penal</a></li>
+          <li><a href="#">Laboral</a></li>
+          <li><a href="#">Comercial</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>WhatsApp: +54 9 2604 61-4896</li>
+          <li>San Rafael, Mendoza</li>
+          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="#">Reservar consulta</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Estudio Jurídico De Luca. Todos los derechos reservados.</span>
+      <span>Matrícula XXXX · Colegio de Abogados de Mendoza</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Counter animation con easing
+  function animateCounter(el){
+    if(el.dataset.counterDone) return;
+    el.dataset.counterDone = "1";
+    const target = parseInt(el.dataset.counterTo, 10);
+    const duration = 1800; // ms
+    const start = performance.now();
+    const ease = t => 1 - Math.pow(1 - t, 3); // ease-out cubic
+    function tick(now){
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const value = Math.round(target * ease(progress));
+      el.textContent = value;
+      if(progress < 1) requestAnimationFrame(tick);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // Intersection Observer para reveals
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        // Si el target es la sección trayectoria, no hace nada extra (la clase ya activa todo)
+        // Si contiene stat-num-value, anima los counters
+        entry.target.querySelectorAll('.stat-num-value[data-counter-to]').forEach(animateCounter);
+        // Si EL MISMO target tiene data-counter-to, animar
+        if(entry.target.matches('.stat-num-value[data-counter-to]')){
+          animateCounter(entry.target);
+        }
+      }
+    });
+  }, { threshold: 0.25, rootMargin: '0px 0px -80px 0px' });
+
+  // Parallax leve (sutil, no cinematográfico)
+  const parallaxEls = [];
+  let parallaxRAF = null;
+  let lastScroll = 0;
+
+  function lerp(a, b, t){ return a + (b - a) * t; }
+
+  function updateParallax(){
+    const scrollY = window.scrollY;
+    parallaxEls.forEach(({el, factor, current}) => {
+      const target = -scrollY * factor;
+      const next = lerp(current.value, target, 0.12);
+      current.value = next;
+      el.style.transform = `translate3d(0, ${next.toFixed(2)}px, 0)`;
+    });
+    parallaxRAF = requestAnimationFrame(updateParallax);
+  }
+
+  function initParallax(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.querySelectorAll('[data-parallax]').forEach(el => {
+      const factor = parseFloat(el.dataset.parallax) || 0.1;
+      parallaxEls.push({ el, factor, current:{value:0} });
+    });
+    if(parallaxEls.length > 0){
+      parallaxRAF = requestAnimationFrame(updateParallax);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    document.querySelectorAll('.trayectoria').forEach(el => io.observe(el));
+    initParallax();
+    // Hero stats: animar después del entrance
+    setTimeout(() => {
+      document.querySelectorAll('.hero .stat-num-value[data-counter-to]').forEach(animateCounter);
+    }, 1400);
+  });
+})();
+</script>
+
+<a href="https://wa.me/5492604614896?text=URGENTE%3A%20necesito%20asistencia%20penal%20de%20urgencia" class="emergency-fab" aria-label="Emergencia penal 24 horas">
+  <svg class="emergency-fab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 22h20L12 2z"/><line x1="12" y1="10" x2="12" y2="14"/><circle cx="12" cy="17.5" r=".7" fill="currentColor"/></svg>
+  <span>Emergencia 24h</span>
+</a>
+
+<a href="https://wa.me/5492604614896" class="whatsapp-fab" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+</body>
+</html>

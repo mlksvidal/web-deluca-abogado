@@ -1,0 +1,68 @@
+proyecto: "web-deluca-abogado"
+tipo: "web"
+estructura: "single-repo"
+stack:
+  frontend: "Next.js 16 App Router + Turbopack"
+  backend: "Next.js API routes"
+  db: "Supabase (Postgres via Transaction Pooler 6543, postgres.js, prepare: false)"
+  orm: "Drizzle (con postgres.js driver)"
+  api: "REST (Next.js Route Handlers)"
+  auth: "Better Auth (solo si se agrega panel admin — postergable)"
+  extras: ["Resend (emails)", "Google Calendar API v3 (OAuth post-deploy)", "GSAP", "Lenis (smooth scroll)"]
+  ui: "Tailwind CSS + shadcn/ui"
+  design_system: "custom"
+  nothing_scope: []
+  component_source: "custom"
+  formatter: "npx prettier --write"
+fase_actual: "fase_1_planificacion"
+fases_completadas:
+  planificacion: null
+  arquitectura:
+    css: null
+    visual_direction: null
+    design: null
+    security: null
+  assets_creativos:
+    necesarios: true
+    branding: "pendiente"
+    image_backend: null  # se elegirá en Fase 2B (probablemente HF gratis ya que solo va logo + SVG)
+    logo: "pendiente"
+    images: "no-requerido"   # usuario pidió placeholders para fotos del Dr.
+    video: "no-requerido"
+desarrollo:
+  total_tareas: 0
+  tarea_actual: 0
+  tareas_completadas: []
+  tareas_en_progreso: []
+  tareas_fallidas: []
+  ultimo_save: "2026-05-21T20:50:00Z"
+certificacion:
+  seo: null
+  seo_tier: "pending"
+  api_tester: null
+  performance: null
+  reality_checker: null
+  a11y_violations: 0
+  bundle_size_pass: true
+  lint_pass: true
+publicacion:
+  git_commit: null
+  deploy_url: null
+phase_gate_retries: 0
+recertification_cycles: 0
+modificacion_tareas: []
+modificacion_origen: ""
+backup_disk: "/Users/lucas/Documents/web-deluca-abogado/.pipeline/estado.yaml"
+recovered: false
+qa_mode: "full"
+engram_degraded: false
+deploy_preautorizado: true   # el usuario autorizó deploy en el mensaje original — Fase 5 no re-pregunta
+notas:
+  - "NO generar retratos IA del Dr. — todos los slots de foto van con placeholder marcado"
+  - "Logo: SÍ generar (monograma PDL o balanza minimalista, dorado sobre azul marino)"
+  - "Iconografía SVG legal: balanzas, columnas, libros, sello"
+  - "Email del Dr.: PENDIENTE — pedir en Visual Direction Checkpoint o antes de Fase 5"
+  - "Google Calendar OAuth: endpoints + .env.example listos, activación final post-deploy"
+  - "Better Auth: solo si se incluye panel admin (postergable a Fase 2)"
+  - "Idioma: español argentino"
+  - "Constraints: LCP <2.5s, CLS <0.1, A11y AA, schema.org LegalService + LocalBusiness"

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><title>Sello Institucional — Estudio Jurídico Dr. Pablo De Luca — dorado</title><desc>Sello tipo lacre/institutional seal dorado para uso digital en footer sobre fondos marinos.</desc><defs><path id="upper-arc" fill="none" d="M18 71.9a82 82 0 1 1 164 0"/><path id="lower-arc" fill="none" d="M28 132a78 78 0 0 0 144 0"/><style>@import url(https://fonts.googleapis.com/css2?family=Inter:wght@500&amp;family=Playfair+Display:wght@500);</style></defs><path fill="#0f1e3d" d="M0 0h200v200H0z"/><circle cx="100" cy="100" r="94" fill="none" stroke="#c9a961"/><circle cx="100" cy="100" r="86" fill="none" stroke="#c9a961" stroke-width=".5" opacity=".5"/><text fill="#c9a961" font-family="'Inter', 'Helvetica Neue', 'Arial', sans-serif" font-size="8.5" font-weight="500" letter-spacing="2.2">
+    <textPath href="#upper-arc" startOffset="50%" text-anchor="middle">
+      ESTUDIO JURÍDICO · DR. PABLO DE LUCA ·
+    </textPath>
+  </text><text fill="#c9a961" font-family="'Inter', 'Helvetica Neue', 'Arial', sans-serif" font-size="8.5" font-weight="500" letter-spacing="2.8">
+    <textPath href="#lower-arc" startOffset="50%" text-anchor="middle">
+      SAN RAFAEL · MENDOZA
+    </textPath>
+  </text><text x="100" y="108" fill="#c9a961" font-family="'Playfair Display', 'Didot', 'Times New Roman', serif" font-size="36" font-weight="500" letter-spacing="2" text-anchor="middle">PDL</text><path stroke="#c9a961" stroke-linecap="round" stroke-width=".8" d="M72 118h56" opacity=".6"/></svg>

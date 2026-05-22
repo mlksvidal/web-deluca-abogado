@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><title>Sello Matrícula — Colegio de Abogados Mendoza</title><desc>Sello circular de matrícula. Placeholder [N°] hasta confirmación del número real.</desc><defs><path id="mat-upper" fill="none" d="M28 100a72 72 0 1 1 144 0"/><path id="mat-lower" fill="none" d="M34 118a68 68 0 0 0 132 0"/><style>@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Playfair+Display:wght@500);</style></defs><circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="100" cy="100" r="82" fill="none" stroke="currentColor" stroke-width=".6" opacity=".4"/><text fill="currentColor" font-family="'Inter', 'Helvetica Neue', sans-serif" font-size="8" font-weight="500" letter-spacing="2">
+    <textPath href="#mat-upper" startOffset="50%" text-anchor="middle">
+      MATRÍCULA · COLEGIO ABOG. MENDOZA
+    </textPath>
+  </text><text fill="currentColor" font-family="'Inter', 'Helvetica Neue', sans-serif" font-size="8" font-weight="500" letter-spacing="2.5">
+    <textPath href="#mat-lower" startOffset="50%" text-anchor="middle">
+      PROV. MENDOZA · ARG.
+    </textPath>
+  </text><text x="100" y="96" fill="currentColor" font-family="'Playfair Display', 'Didot', serif" font-size="28" font-weight="500" letter-spacing="1" text-anchor="middle">[N°]</text><path stroke="currentColor" stroke-width=".8" d="M72 106h56" opacity=".5"/><text x="100" y="118" fill="currentColor" font-family="'Inter', sans-serif" font-size="7" font-weight="400" letter-spacing="2" opacity=".7" text-anchor="middle">MATRÍCULA</text></svg>
