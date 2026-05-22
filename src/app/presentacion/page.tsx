@@ -259,6 +259,24 @@ export default function Page() {
   return (
     <>
       <style>{`
+        /* ============ HIDE SITE CHROME ON /presentacion ============ */
+        body:has(.deluca-presentacion) header,
+        body:has(.deluca-presentacion) footer[role="contentinfo"],
+        body:has(.deluca-presentacion) a[aria-label*="WhatsApp"],
+        body:has(.deluca-presentacion) a[aria-label*="Contactar"],
+        body:has(.deluca-presentacion) .skip-link {
+          display: none !important;
+        }
+        body:has(.deluca-presentacion) main#main-content,
+        body:has(.deluca-presentacion) main {
+          padding: 0 !important;
+          margin: 0 !important;
+          min-height: 0 !important;
+        }
+        body:has(.deluca-presentacion) {
+          background: #F7F7FC !important;
+        }
+
         :root {
           --c-bg: #F7F7FC;
           --c-text: #09090E;
@@ -282,7 +300,7 @@ export default function Page() {
           min-height: 100vh;
           background: var(--c-bg);
           color: var(--c-text);
-          font-family: var(--font);
+          font-family: var(--font-pres-grotesk, ui-sans-serif), system-ui, sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
           line-height: 1.4;
@@ -298,7 +316,28 @@ export default function Page() {
         .deluca-presentacion h2,
         .deluca-presentacion h3,
         .deluca-presentacion h4,
+        .deluca-presentacion h5,
+        .deluca-presentacion h6 {
+          font-family: var(--font-pres-grotesk, ui-sans-serif), system-ui, sans-serif;
+          font-weight: 400;
+          font-size: inherit;
+          line-height: inherit;
+          letter-spacing: 0;
+          color: inherit;
+          margin: 0;
+        }
+        .deluca-presentacion p,
+        .deluca-presentacion span,
+        .deluca-presentacion a,
+        .deluca-presentacion li,
+        .deluca-presentacion button,
+        .deluca-presentacion small,
+        .deluca-presentacion strong,
+        .deluca-presentacion em {
+          font-family: inherit;
+        }
         .deluca-presentacion p { margin: 0; font-weight: inherit; }
+        .deluca-presentacion a { text-decoration: none; color: inherit; }
 
         /* ============ NAV TOP ============ */
         .top-nav {
@@ -324,7 +363,7 @@ export default function Page() {
         }
         .brand small {
           display: block;
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: 11px;
           color: var(--c-muted);
           font-weight: 400;
@@ -332,7 +371,7 @@ export default function Page() {
         }
         .nav-meta {
           display: flex; align-items: center; gap: 24px;
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: 13px;
           color: var(--c-muted);
         }
@@ -363,7 +402,7 @@ export default function Page() {
         /* ============ HERO ============ */
         .hero { padding: clamp(72px, 14vw, 160px) 0 clamp(60px, 10vw, 120px); position: relative; }
         .hero-kicker {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: 13px;
           text-transform: uppercase;
           letter-spacing: 0.18em;
@@ -400,7 +439,7 @@ export default function Page() {
         .hero h1 .accent-2 { color: var(--c-transform); }
         .hero h1 .accent-3 { color: var(--c-result); -webkit-text-stroke: 1px var(--c-dark); }
         .hero-sub {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: clamp(1rem, 2vw, 1.3rem);
           line-height: 1.5;
           max-width: 56ch;
@@ -423,7 +462,7 @@ export default function Page() {
         }
         .hero-card:hover { transform: translateY(-3px); border-color: var(--c-text); }
         .hero-card-tag {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: 11px;
           letter-spacing: 0.18em;
           text-transform: uppercase;
@@ -439,7 +478,7 @@ export default function Page() {
         .hero-card-num.transform { color: var(--c-transform); }
         .hero-card-num.result { color: var(--c-result); -webkit-text-stroke: 1px var(--c-dark); }
         .hero-card-label {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: 14px;
           color: var(--c-muted);
         }
@@ -469,7 +508,7 @@ export default function Page() {
           .section-head { grid-template-columns: 1fr; align-items: start; }
         }
         .section-num {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: 13px;
           letter-spacing: 0.2em;
           text-transform: uppercase;
@@ -495,7 +534,7 @@ export default function Page() {
         section.deluca-section h2 em.transform { color: var(--c-transform); }
         section.deluca-section h2 em.result { color: var(--c-result); -webkit-text-stroke: 1px var(--c-dark); }
         .section-bajada {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: clamp(1rem, 1.5vw, 1.15rem);
           line-height: 1.55;
           color: var(--c-muted);
@@ -517,7 +556,7 @@ export default function Page() {
           position: relative;
         }
         .diag-card-tag {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: 11px;
           letter-spacing: 0.18em;
           text-transform: uppercase;
@@ -531,7 +570,7 @@ export default function Page() {
           line-height: 1.2;
         }
         .diag-card p {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           color: var(--c-muted);
           font-size: 0.98rem;
           line-height: 1.55;
@@ -539,7 +578,7 @@ export default function Page() {
 
         /* ============ SOLUCIÓN MANIFIESTO ============ */
         .manifiesto {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: clamp(1.2rem, 2.8vw, 2.2rem);
           font-weight: 400;
           line-height: 1.35;
@@ -572,7 +611,7 @@ export default function Page() {
         .manif-num.transform { color: var(--c-transform); }
         .manif-num.result { color: var(--c-result); }
         .manif-key-label {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: 0.9rem;
           color: rgba(247,247,252,0.65);
           line-height: 1.4;
@@ -588,7 +627,7 @@ export default function Page() {
           border-bottom: 1px solid var(--c-border);
         }
         .grupo-num {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: 12px;
           letter-spacing: 0.15em;
           color: var(--c-muted);
@@ -624,7 +663,7 @@ export default function Page() {
           flex-shrink: 0;
         }
         .item-desc {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: 0.92rem;
           color: var(--c-muted);
           line-height: 1.55;
@@ -652,7 +691,7 @@ export default function Page() {
           background: var(--c-transform);
           color: white;
           display: grid; place-items: center;
-          font-family: var(--font);
+          font-family: var(--font-pres-grotesk, ui-sans-serif), system-ui, sans-serif;
           font-weight: 600;
           font-size: 16px;
           border-radius: 50%;
@@ -667,7 +706,7 @@ export default function Page() {
           line-height: 1.25;
         }
         .benef p {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: 0.95rem;
           color: var(--c-muted);
           line-height: 1.55;
@@ -690,7 +729,7 @@ export default function Page() {
           .stack-row { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
         }
         .stack-layer {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: 12px;
           letter-spacing: 0.18em;
           text-transform: uppercase;
@@ -722,7 +761,7 @@ export default function Page() {
           display: flex; flex-direction: column; gap: 8px;
         }
         .metrica-label {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: 11px;
           letter-spacing: 0.16em;
           text-transform: uppercase;
@@ -738,7 +777,7 @@ export default function Page() {
           font-variant-numeric: tabular-nums;
         }
         .metrica-note {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: 12px;
           color: var(--c-muted);
         }
@@ -762,7 +801,7 @@ export default function Page() {
           padding: 4px 12px;
           background: var(--c-result);
           color: var(--c-dark);
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: 11px;
           font-weight: 600;
           letter-spacing: 0.14em;
@@ -776,7 +815,7 @@ export default function Page() {
           line-height: 1.25;
         }
         .roadmap-card p {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: 0.95rem;
           color: var(--c-muted);
           line-height: 1.55;
@@ -800,7 +839,7 @@ export default function Page() {
           .golive-resp { grid-column: 1 / -1; padding-left: 60px; font-size: 12px; }
         }
         .golive-num {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: 13px;
           color: var(--c-muted);
           font-variant-numeric: tabular-nums;
@@ -810,7 +849,7 @@ export default function Page() {
           font-weight: 400;
         }
         .golive-resp {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: 12px;
           letter-spacing: 0.1em;
           text-transform: uppercase;
@@ -845,7 +884,7 @@ export default function Page() {
           -webkit-text-stroke: 1px var(--c-bg);
         }
         .cta-final p {
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: clamp(1rem, 1.5vw, 1.2rem);
           color: rgba(247,247,252,0.65);
           max-width: 56ch;
@@ -859,7 +898,7 @@ export default function Page() {
         .cta-btn {
           display: inline-flex; align-items: center; gap: 10px;
           padding: 16px 32px;
-          font-family: var(--font);
+          font-family: var(--font-pres-grotesk, ui-sans-serif), system-ui, sans-serif;
           font-weight: 500;
           font-size: 0.95rem;
           letter-spacing: 0.04em;
@@ -883,7 +922,7 @@ export default function Page() {
         .footer-pres {
           padding: clamp(32px, 5vw, 56px) 0;
           border-top: 1px solid var(--c-border);
-          font-family: var(--font-sec);
+          font-family: var(--font-pres-manrope, ui-sans-serif), system-ui, sans-serif;
           font-size: 13px;
           color: var(--c-muted);
         }
