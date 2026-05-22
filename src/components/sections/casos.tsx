@@ -18,7 +18,7 @@ export function Casos() {
   return (
     <Section id="casos" variant="dark" aria-labelledby="casos-heading">
       <Container>
-        {/* Header */}
+        {/* Header — centrado */}
         <div className="casos-header">
           <Reveal>
             <span
@@ -39,13 +39,23 @@ export function Casos() {
                 aria-hidden="true"
                 style={{
                   display: "inline-block",
-                  width: "32px",
+                  width: "28px",
                   height: "1px",
                   background: "var(--color-dorado, #C9A961)",
                   flexShrink: 0,
                 }}
               />
               Casos resueltos
+              <span
+                aria-hidden="true"
+                style={{
+                  display: "inline-block",
+                  width: "28px",
+                  height: "1px",
+                  background: "var(--color-dorado, #C9A961)",
+                  flexShrink: 0,
+                }}
+              />
             </span>
           </Reveal>
 
@@ -61,6 +71,7 @@ export function Casos() {
                 color: "var(--color-bg-primary, #FAF7F2)",
                 marginBottom: "64px",
                 maxWidth: "680px",
+                margin: "0 auto 64px",
               }}
             >
               Tres historias reales,{" "}
@@ -248,7 +259,15 @@ export function Casos() {
       </Container>
 
       <style>{`
-        .casos-header { margin-bottom: 0; }
+        .casos-header {
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          max-width: 720px;
+          margin: 0 auto;
+          margin-bottom: 0;
+        }
 
         .casos-grid {
           display: grid;

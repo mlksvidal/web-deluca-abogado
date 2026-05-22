@@ -19,83 +19,93 @@ export function Contacto() {
   return (
     <Section id="estudio" variant="default" aria-labelledby="contacto-heading">
       <Container>
+        {/* ── Header de sección centrado ── */}
+        <div className="contacto-header">
+          <Reveal>
+            <span
+              style={{
+                fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
+                fontSize: "13px",
+                fontWeight: 500,
+                letterSpacing: ".18em",
+                textTransform: "uppercase",
+                color: "var(--color-dorado-deep, #B89344)",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "12px",
+                marginBottom: "20px",
+              }}
+            >
+              <span
+                aria-hidden="true"
+                style={{
+                  display: "inline-block",
+                  width: "28px",
+                  height: "1px",
+                  background: "var(--color-dorado-deep, #B89344)",
+                  flexShrink: 0,
+                }}
+              />
+              El estudio
+              <span
+                aria-hidden="true"
+                style={{
+                  display: "inline-block",
+                  width: "28px",
+                  height: "1px",
+                  background: "var(--color-dorado-deep, #B89344)",
+                  flexShrink: 0,
+                }}
+              />
+            </span>
+          </Reveal>
+
+          <Reveal delay={80}>
+            <h2
+              id="contacto-heading"
+              style={{
+                fontFamily: "var(--font-playfair, 'Playfair Display', Georgia, serif)",
+                fontSize: "clamp(1.8rem, 1.2rem + 2vw, 2.8rem)",
+                fontWeight: 500,
+                lineHeight: 1.15,
+                letterSpacing: "-0.02em",
+                color: "var(--color-marino, #0F1E3D)",
+                marginBottom: "16px",
+              }}
+            >
+              Encontranos en{" "}
+              <em
+                style={{
+                  fontStyle: "italic",
+                  fontWeight: 400,
+                  color: "var(--color-dorado-deep, #B89344)",
+                }}
+              >
+                San Rafael
+              </em>
+            </h2>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <p
+              style={{
+                fontFamily: "var(--font-lora, Lora, Georgia, serif)",
+                fontSize: "1rem",
+                lineHeight: 1.65,
+                color: "var(--color-carbon-soft, #3A3A3A)",
+                maxWidth: "56ch",
+                margin: "0 auto",
+              }}
+            >
+              Atención presencial con turno previo en San Rafael, Mendoza. Consultas a distancia
+              para toda la Argentina.
+            </p>
+          </Reveal>
+        </div>
+
         <div className="contacto-grid">
           {/* ── Columna izquierda: info ── */}
           <div className="contacto-info">
-            {/* Kicker */}
-            <Reveal>
-              <span
-                style={{
-                  fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
-                  fontSize: "13px",
-                  fontWeight: 500,
-                  letterSpacing: ".18em",
-                  textTransform: "uppercase",
-                  color: "var(--color-dorado-deep, #B89344)",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "12px",
-                  marginBottom: "24px",
-                }}
-              >
-                <span
-                  aria-hidden="true"
-                  style={{
-                    display: "inline-block",
-                    width: "32px",
-                    height: "1px",
-                    background: "var(--color-dorado-deep, #B89344)",
-                    flexShrink: 0,
-                  }}
-                />
-                El estudio
-              </span>
-            </Reveal>
-
-            {/* H2 */}
-            <Reveal delay={80}>
-              <h2
-                id="contacto-heading"
-                style={{
-                  fontFamily: "var(--font-playfair, 'Playfair Display', Georgia, serif)",
-                  fontSize: "clamp(1.8rem, 1.2rem + 2vw, 2.8rem)",
-                  fontWeight: 500,
-                  lineHeight: 1.15,
-                  letterSpacing: "-0.02em",
-                  color: "var(--color-marino, #0F1E3D)",
-                  marginBottom: "20px",
-                }}
-              >
-                Encontranos en{" "}
-                <em
-                  style={{
-                    fontStyle: "italic",
-                    fontWeight: 400,
-                    color: "var(--color-dorado-deep, #B89344)",
-                  }}
-                >
-                  San Rafael
-                </em>
-              </h2>
-            </Reveal>
-
-            {/* Bajada */}
-            <Reveal delay={120}>
-              <p
-                style={{
-                  fontFamily: "var(--font-lora, Lora, Georgia, serif)",
-                  fontSize: "1rem",
-                  lineHeight: 1.65,
-                  color: "var(--color-carbon-soft, #3A3A3A)",
-                  maxWidth: "440px",
-                  marginBottom: "36px",
-                }}
-              >
-                Atención presencial con turno previo en San Rafael, Mendoza. Consultas a distancia
-                para toda la Argentina.
-              </p>
-            </Reveal>
-
             {/* Dirección + Horario — solo 2 filas compactas */}
             <Reveal delay={160}>
               <dl
@@ -423,6 +433,16 @@ export function Contacto() {
       </Container>
 
       <style>{`
+        /* Header de sección centrado */
+        .contacto-header {
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          max-width: 720px;
+          margin: 0 auto 56px;
+        }
+
         /* CTA botón */
         .contacto-cta-btn {
           display: inline-flex;

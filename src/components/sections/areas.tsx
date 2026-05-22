@@ -297,22 +297,20 @@ export function Areas() {
       </Container>
 
       <style>{`
-        /* Header responsive */
+        /* Header centrado */
         .areas-header {
           display: flex;
           flex-direction: column;
+          align-items: center;
+          text-align: center;
           gap: 24px;
           margin-bottom: 64px;
+          max-width: 720px;
+          margin-left: auto;
+          margin-right: auto;
         }
-        @media (min-width: 1024px) {
-          .areas-header {
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 48px;
-          }
-          .areas-header-text { max-width: 600px; }
-        }
+        .areas-header-text { max-width: 720px; }
+        .areas-header p { max-width: 56ch !important; margin-left: auto; margin-right: auto; }
 
         /* Grid 2×2 */
         .areas-grid {
