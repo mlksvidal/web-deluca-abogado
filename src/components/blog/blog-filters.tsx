@@ -47,11 +47,21 @@ export function BlogFilters({ activeArea }: { activeArea: string }) {
               "font-ui text-sm font-medium tracking-wide",
               "rounded-full border",
               "transition-all duration-200 ease-primary",
-              "focus-visible:outline-2 focus-visible:outline-[var(--color-dorado)] focus-visible:outline-offset-2",
-              isActive
-                ? "bg-[var(--color-marino)] text-[var(--color-bg)] border-[var(--color-marino)]"
-                : "bg-transparent text-[var(--color-carbon-soft)] border-[var(--color-border-strong)] hover:border-[var(--color-marino)] hover:text-[var(--color-marino)]"
+              "focus-visible:outline-2 focus-visible:outline-offset-2"
             )}
+            style={
+              isActive
+                ? {
+                    background: "var(--color-marino)",
+                    color: "#F5F2EE",
+                    borderColor: "var(--color-marino)",
+                  }
+                : {
+                    background: "transparent",
+                    color: "var(--color-carbon-soft)",
+                    borderColor: "rgba(15,30,61,0.18)",
+                  }
+            }
           >
             {area.label}
           </button>

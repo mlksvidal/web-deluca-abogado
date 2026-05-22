@@ -87,15 +87,18 @@ export default async function BlogPage({ searchParams }: { searchParams: SearchP
 
             <h1
               id="blog-heading"
-              className="font-serif font-semibold text-[var(--color-bg)] leading-tight"
-              style={{ fontSize: "clamp(1.75rem, 1rem + 3vw, 3rem)" }}
+              className="font-serif font-semibold leading-tight"
+              style={{ color: "#F5F2EE", fontSize: "clamp(1.75rem, 1rem + 3vw, 3rem)" }}
             >
               Guías y artículos jurídicos
             </h1>
 
             <p
-              className="font-body text-[rgba(250,247,242,0.75)] leading-relaxed"
-              style={{ fontSize: "clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem)" }}
+              className="font-body leading-relaxed"
+              style={{
+                color: "rgba(250,247,242,0.75)",
+                fontSize: "clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem)",
+              }}
             >
               Información legal clara y accesible para que conozcas tus derechos. Escrita por el{" "}
               {siteConfig.drName}.
@@ -123,11 +126,12 @@ export default async function BlogPage({ searchParams }: { searchParams: SearchP
           {/* Encabezado de resultados */}
           {activeAreaLabel && (
             <p
-              className="font-ui text-sm text-[var(--color-text-secondary)] mb-6"
+              className="font-ui text-sm mb-6"
+              style={{ color: "var(--color-carbon-soft)" }}
               aria-live="polite"
             >
               Mostrando artículos de{" "}
-              <strong className="font-semibold text-[var(--color-marino)]">
+              <strong className="font-semibold" style={{ color: "var(--color-marino)" }}>
                 {activeAreaLabel}
               </strong>{" "}
               · {total} resultado{total !== 1 ? "s" : ""}
@@ -157,21 +161,36 @@ export default async function BlogPage({ searchParams }: { searchParams: SearchP
             >
               <div
                 className="w-16 h-16 rounded-full flex items-center justify-center mb-6 text-3xl"
-                style={{ background: "var(--color-bg-secondary)" }}
+                style={{ background: "rgba(15,30,61,0.06)" }}
                 aria-hidden="true"
               >
                 📄
               </div>
-              <h2 className="font-serif text-2xl font-semibold text-[var(--color-marino)] mb-2">
+              <h2
+                className="font-serif font-semibold mb-3"
+                style={{
+                  color: "var(--color-marino)",
+                  fontSize: "clamp(1.25rem, 1rem + 1.2vw, 1.65rem)",
+                  lineHeight: 1.3,
+                  letterSpacing: "-0.01em",
+                }}
+              >
                 {activeAreaLabel
                   ? `Sin artículos de ${activeAreaLabel} por ahora`
                   : "Sin artículos por ahora"}
               </h2>
-              <p className="font-body text-sm text-[var(--color-text-secondary)] max-w-sm">
+              <p
+                className="font-body max-w-md"
+                style={{ fontSize: "0.95rem", color: "var(--color-carbon-soft)", lineHeight: 1.6 }}
+              >
                 Estamos preparando contenido. Mientras tanto,{" "}
                 <a
                   href="/reservar"
-                  className="text-[var(--color-marino)] underline underline-offset-2 decoration-[var(--color-dorado)] hover:decoration-2 transition-all"
+                  className="underline underline-offset-2 hover:decoration-2 transition-all"
+                  style={{
+                    color: "var(--color-marino)",
+                    textDecorationColor: "var(--color-dorado)",
+                  }}
                 >
                   reservá una consulta
                 </a>{" "}
