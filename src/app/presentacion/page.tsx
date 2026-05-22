@@ -361,23 +361,35 @@ export default function Page() {
         body:has(.pres-editorial) main {
           padding: 0 !important; margin: 0 !important; min-height: 0 !important;
         }
-        body:has(.pres-editorial) { background: #FAF7F2 !important; }
+        body:has(.pres-editorial) { background: #0A1224 !important; }
 
-        /* ============== TOKENS — match con sitio principal ============== */
+        /* ============== TOKENS — DARK MODE editorial premium ============== */
         .pres-editorial {
-          --bg: #FAF7F2;
-          --bg-2: #F4EFE7;
-          --paper: #FFFFFE;
-          --marino: #0F1E3D;
-          --marino-2: #1E3A6E;
-          --dorado: #C9A961;
-          --dorado-deep: #B89344;
-          --carbon: #2A2A2A;
-          --carbon-soft: #3A3A3A;
-          --ink-soft: rgba(15,30,61,0.62);
-          --ink-muted: rgba(15,30,61,0.40);
-          --ink-line: rgba(15,30,61,0.10);
-          --ink-line-2: rgba(15,30,61,0.18);
+          /* Fondos en escala oscura (marino → negro) */
+          --bg: #0A1224;
+          --bg-2: #11193A;
+          --bg-deep: #050912;
+          --paper: #161F3C;
+
+          /* Texto y líneas (cream sobre oscuro) */
+          --cream: #F4EFE7;
+          --cream-2: #FAF7F2;
+          --ink: #F4EFE7;
+          --ink-soft: rgba(244,239,231,0.72);
+          --ink-muted: rgba(244,239,231,0.50);
+          --ink-faint: rgba(244,239,231,0.32);
+          --ink-line: rgba(244,239,231,0.10);
+          --ink-line-2: rgba(244,239,231,0.20);
+
+          /* Dorado (más claro para legibilidad sobre dark) */
+          --dorado: #D4B872;
+          --dorado-deep: #C9A961;
+
+          /* Marino (ahora se usa solo como acento donde antes era cream) */
+          --marino: #F4EFE7;
+          --marino-2: #D4B872;
+          --carbon-soft: rgba(244,239,231,0.78);
+
           --ease: cubic-bezier(0.22, 1, 0.36, 1);
           --gutter: clamp(20px, 4.5vw, 56px);
           --wrap: 1180px;
@@ -385,7 +397,7 @@ export default function Page() {
 
           min-height: 100vh;
           background: var(--bg);
-          color: var(--marino);
+          color: var(--cream);
           font-family: 'Lora', Georgia, 'Times New Roman', serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
@@ -432,9 +444,9 @@ export default function Page() {
           padding: 22px var(--gutter);
           display: flex; justify-content: space-between; align-items: center;
           border-bottom: 1px solid var(--ink-line);
-          background: rgba(250,247,242,0.92);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
+          background: rgba(10,18,36,0.82);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
           position: sticky; top: 0; z-index: 60;
         }
         .pres-brand {
@@ -442,13 +454,13 @@ export default function Page() {
         }
         .pres-brand-mark {
           width: 42px; height: 42px;
-          border: 1.5px solid var(--marino);
+          border: 1.5px solid var(--dorado);
           border-radius: 50%;
           display: grid; place-items: center;
           font-family: 'Playfair Display', serif;
           font-style: italic;
           font-size: 18px;
-          color: var(--marino);
+          color: var(--dorado);
           background: transparent;
         }
         .pres-brand-text {
@@ -682,13 +694,13 @@ export default function Page() {
         }
         section.chapter.tinted { background: var(--bg-2); }
         section.chapter.deep {
-          background: var(--marino);
-          color: var(--bg);
+          background: var(--bg-deep);
+          color: var(--cream);
         }
         section.chapter.deep h1,
         section.chapter.deep h2,
         section.chapter.deep h3,
-        section.chapter.deep h4 { color: var(--bg); }
+        section.chapter.deep h4 { color: var(--cream); }
 
         .chapter-head {
           text-align: center;
@@ -840,14 +852,14 @@ export default function Page() {
           font-weight: 500;
           letter-spacing: -0.015em;
           line-height: 1.25;
-          color: var(--bg);
+          color: var(--cream);
           max-width: 22ch;
         }
         .pilar p {
           font-family: 'Lora', Georgia, serif;
           font-size: 0.98rem;
           line-height: 1.7;
-          color: rgba(250,247,242,0.7);
+          color: rgba(244,239,231,0.72);
         }
 
         /* ============== INVENTARIO ============== */
@@ -1050,7 +1062,7 @@ export default function Page() {
           font-family: 'Lora', Georgia, serif;
           font-size: clamp(0.95rem, 1.3vw, 1.05rem);
           font-style: italic;
-          color: var(--bg);
+          color: var(--cream);
           line-height: 1.3;
         }
         .metrica-note {
@@ -1058,7 +1070,7 @@ export default function Page() {
           font-size: 10px;
           letter-spacing: 0.18em;
           text-transform: uppercase;
-          color: rgba(250,247,242,0.5);
+          color: rgba(244,239,231,0.52);
           font-weight: 500;
         }
 
@@ -1173,8 +1185,8 @@ export default function Page() {
         /* ============== CIERRE / COLOFÓN ============== */
         .colofon {
           padding: clamp(80px, 12vw, 140px) 0;
-          background: var(--marino);
-          color: var(--bg);
+          background: var(--bg-deep);
+          color: var(--cream);
           text-align: center;
           position: relative;
         }
@@ -1220,7 +1232,7 @@ export default function Page() {
           font-weight: 400;
           letter-spacing: -0.025em;
           line-height: 1.08;
-          color: var(--bg);
+          color: var(--cream);
           max-width: 22ch;
           margin: 0 auto 28px;
         }
@@ -1237,7 +1249,7 @@ export default function Page() {
           font-family: 'Lora', Georgia, serif;
           font-style: italic;
           font-size: clamp(1rem, 1.5vw, 1.2rem);
-          color: rgba(250,247,242,0.78);
+          color: rgba(244,239,231,0.78);
           max-width: 58ch;
           margin: 0 auto clamp(40px, 5vw, 56px);
           line-height: 1.65;
@@ -1262,19 +1274,19 @@ export default function Page() {
         .col-btn:hover .arrow { transform: translateX(4px); }
         .col-btn.primary {
           background: var(--dorado);
-          color: var(--marino);
+          color: #0A1224;
         }
         .col-btn.primary:hover {
-          background: var(--bg);
+          background: var(--cream);
           transform: translateY(-2px);
         }
         .col-btn.secondary {
           background: transparent;
-          color: var(--bg);
-          border-color: rgba(250,247,242,0.3);
+          color: var(--cream);
+          border-color: rgba(244,239,231,0.32);
         }
         .col-btn.secondary:hover {
-          background: rgba(250,247,242,0.08);
+          background: rgba(244,239,231,0.08);
           border-color: var(--dorado);
           transform: translateY(-2px);
         }
