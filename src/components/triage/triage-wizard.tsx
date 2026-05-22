@@ -8,8 +8,8 @@
  * Paso 3: Tipo de consulta (3 cards)
  * Resultado: preview mensaje + botón WhatsApp
  *
- * Client component. Animaciones: fade 250ms entre pasos (CSS, no framer).
- * Sin onMouseEnter/onMouseLeave inline — CSS puro para hover.
+ * Diseño: azul eléctrico #2952FF para cards seleccionadas, progress bar y botón Continuar.
+ * Fondo de sección: bg-warm (cálido, distinto del marino institucional).
  */
 
 import { useState, useId } from "react";
@@ -67,7 +67,7 @@ function buildWhatsAppMessage(state: WizardState): string {
   return `Hola Dr., tengo una consulta de ${area}, urgencia: ${urgencia}, tipo: ${tipo}. Me gustaría coordinar una entrevista.`;
 }
 
-// ── Sub-componente: RadioCard ───────────────────────────────────────────────
+// ── Sub-componente: RadioCard con azul eléctrico ──────────────────────────
 
 interface RadioCardProps {
   id: string;
@@ -90,21 +90,22 @@ function RadioCard({ id, name, checked, onChange, label, desc }: RadioCardProps)
         onChange={onChange}
         className="sr-only"
       />
+      {/* Indicador visual seleccionado */}
       <span className="triaje-card-check" aria-hidden="true">
         {checked ? (
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <circle cx="7" cy="7" r="6.5" stroke="var(--color-dorado, #C9A961)" />
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="7.5" fill="var(--color-azul-electrico, #2952FF)" />
             <path
-              d="M4 7l2.5 2.5L10 4.5"
-              stroke="var(--color-dorado, #C9A961)"
+              d="M4.5 8l2.5 2.5L11 5.5"
+              stroke="#fff"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
           </svg>
         ) : (
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <circle cx="7" cy="7" r="6.5" stroke="rgba(15,30,61,.25)" />
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="7.5" stroke="rgba(15,30,61,.2)" strokeWidth="1" />
           </svg>
         )}
       </span>
@@ -218,24 +219,27 @@ export function TriajeWizard() {
           </p>
         </div>
 
-        {/* Progress bar */}
-        <div
-          className="triaje-progress"
-          role="progressbar"
-          aria-valuemin={0}
-          aria-valuemax={100}
-          aria-valuenow={step === "done" ? 100 : Math.round(((currentStep - 1) / totalSteps) * 100)}
-          aria-label={step === "done" ? "Completado" : `Paso ${currentStep} de ${totalSteps}`}
-        >
-          <div className="triaje-progress-bar" style={{ width: `${progressPct}%` }} />
-          <div className="triaje-steps-label">
-            {step === "done" ? (
-              <span>¡Listo!</span>
-            ) : (
-              <span>
-                Paso {currentStep} de {totalSteps}
-              </span>
-            )}
+        {/* Progress bar — azul eléctrico, bien visible con label */}
+        <div className="triaje-progress-wrap">
+          <div className="triaje-progress-labels">
+            <span className="triaje-progress-step-label">
+              {step === "done" ? "¡Listo!" : `Paso ${currentStep} de ${totalSteps}`}
+            </span>
+            <span className="triaje-progress-pct">
+              {step === "done" ? "100%" : `${Math.round(progressPct)}%`}
+            </span>
+          </div>
+          <div
+            className="triaje-progress"
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={
+              step === "done" ? 100 : Math.round(((currentStep - 1) / totalSteps) * 100)
+            }
+            aria-label={step === "done" ? "Completado" : `Paso ${currentStep} de ${totalSteps}`}
+          >
+            <div className="triaje-progress-bar" style={{ width: `${progressPct}%` }} />
           </div>
         </div>
 
@@ -394,10 +398,10 @@ export function TriajeWizard() {
       </div>
 
       <style>{`
-        /* ── Section wrapper ── */
+        /* ── Section wrapper — fondo cálido, zona interactiva diferenciada ── */
         .triaje-section {
           background: var(--color-bg-warm, #F2EBDE);
-          padding: 64px 0;
+          padding: 72px 0;
           border-top: 1px solid rgba(15,30,61,.08);
           border-bottom: 1px solid rgba(15,30,61,.08);
         }
@@ -409,31 +413,44 @@ export function TriajeWizard() {
         }
 
         /* ── Header ── */
-        .triaje-header { margin-bottom: 32px; }
+        .triaje-header { margin-bottom: 28px; }
 
-        /* ── Progress bar ── */
+        /* ── Progress bar — azul eléctrico, bien visible ── */
+        .triaje-progress-wrap {
+          margin-bottom: 32px;
+        }
+        .triaje-progress-labels {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 8px;
+        }
+        .triaje-progress-step-label {
+          font-family: var(--font-ui, Inter, system-ui, sans-serif);
+          font-size: .78rem;
+          font-weight: 500;
+          color: var(--color-marino, #0F1E3D);
+          letter-spacing: .04em;
+        }
+        .triaje-progress-pct {
+          font-family: var(--font-ui, Inter, system-ui, sans-serif);
+          font-size: .72rem;
+          color: var(--color-azul-electrico, #2952FF);
+          font-weight: 600;
+          letter-spacing: .04em;
+        }
         .triaje-progress {
           position: relative;
           height: 4px;
-          background: rgba(15,30,61,.1);
+          background: rgba(15,30,61,.12);
           border-radius: 2px;
-          margin-bottom: 8px;
           overflow: hidden;
         }
         .triaje-progress-bar {
           height: 100%;
-          background: var(--color-dorado, #C9A961);
+          background: var(--color-azul-electrico, #2952FF);
           border-radius: 2px;
-          transition: width 350ms cubic-bezier(.22,1,.36,1);
-        }
-        .triaje-steps-label {
-          font-family: var(--font-ui, Inter, system-ui, sans-serif);
-          font-size: .78rem;
-          color: var(--color-carbon-soft, #3A3A3A);
-          letter-spacing: .04em;
-          text-align: right;
-          margin-bottom: 28px;
-          margin-top: 6px;
+          transition: width 400ms cubic-bezier(.22,1,.36,1);
         }
 
         /* ── Content ── */
@@ -472,29 +489,32 @@ export function TriajeWizard() {
           .triaje-cards--3col { grid-template-columns: repeat(3, 1fr); }
         }
 
-        /* ── Radio Card ── */
+        /* ── Radio Card — padding generoso, border 1.5px, azul eléctrico en hover/selected ── */
         .triaje-card {
           display: flex;
           align-items: flex-start;
-          gap: 12px;
-          padding: 18px 20px;
-          background: var(--color-bg-primary, #FAF7F2);
-          border: 1px solid rgba(15,30,61,.1);
+          gap: 14px;
+          padding: 24px 24px;
+          background: var(--color-bg, #FAF7F2);
+          border: 1.5px solid rgba(15,30,61,.1);
           cursor: pointer;
           transition: border-color .25s cubic-bezier(.22,1,.36,1),
                       box-shadow .25s cubic-bezier(.22,1,.36,1),
-                      background .25s cubic-bezier(.22,1,.36,1);
-          border-radius: 2px;
+                      background .25s cubic-bezier(.22,1,.36,1),
+                      transform .2s cubic-bezier(.22,1,.36,1);
+          border-radius: 4px;
           position: relative;
         }
         .triaje-card:hover {
-          border-color: rgba(201,169,97,.5);
-          box-shadow: 0 4px 12px -4px rgba(15,30,61,.1);
+          border-color: var(--color-azul-electrico, #2952FF);
+          background: var(--color-azul-electrico-soft, rgba(41,82,255,.08));
+          box-shadow: 0 4px 16px -4px var(--color-azul-electrico-shadow, rgba(41,82,255,.18));
         }
         .triaje-card--selected {
-          border-color: var(--color-dorado, #C9A961);
-          background: rgba(201,169,97,.05);
-          box-shadow: 0 4px 16px -6px rgba(201,169,97,.3);
+          border-color: var(--color-azul-electrico, #2952FF);
+          background: var(--color-azul-electrico, #2952FF);
+          box-shadow: 0 6px 20px -6px var(--color-azul-electrico-shadow, rgba(41,82,255,.35));
+          transform: scale(1.02);
         }
 
         .triaje-card-check {
@@ -507,20 +527,28 @@ export function TriajeWizard() {
         .triaje-card-text {
           display: flex;
           flex-direction: column;
-          gap: 3px;
+          gap: 4px;
         }
         .triaje-card-label {
           font-family: var(--font-ui, Inter, system-ui, sans-serif);
           font-size: .92rem;
-          font-weight: 500;
+          font-weight: 600;
           color: var(--color-marino, #0F1E3D);
           line-height: 1.3;
+          transition: color .2s;
+        }
+        .triaje-card--selected .triaje-card-label {
+          color: #fff;
         }
         .triaje-card-desc {
           font-family: var(--font-ui, Inter, system-ui, sans-serif);
           font-size: .8rem;
           color: var(--color-carbon-soft, #3A3A3A);
           line-height: 1.4;
+          transition: color .2s;
+        }
+        .triaje-card--selected .triaje-card-desc {
+          color: rgba(255,255,255,.75);
         }
 
         /* ── Navigation buttons ── */
@@ -543,29 +571,33 @@ export function TriajeWizard() {
           padding: 12px 24px;
           border: none;
           cursor: pointer;
-          border-radius: 2px;
+          border-radius: 4px;
           transition: transform .25s cubic-bezier(.22,1,.36,1),
                       background .25s cubic-bezier(.22,1,.36,1),
+                      box-shadow .25s cubic-bezier(.22,1,.36,1),
                       opacity .25s;
         }
         .triaje-btn--back {
           background: transparent;
           color: var(--color-carbon-soft, #3A3A3A);
-          border: 1px solid rgba(15,30,61,.15);
+          border: 1.5px solid rgba(15,30,61,.15);
         }
         .triaje-btn--back:hover {
           background: rgba(15,30,61,.05);
         }
+        /* Botón Continuar — azul eléctrico */
         .triaje-btn--next {
-          background: var(--color-marino, #0F1E3D);
-          color: var(--color-bg-primary, #FAF7F2);
+          background: var(--color-azul-electrico, #2952FF);
+          color: #fff;
+          box-shadow: 0 4px 14px -4px var(--color-azul-electrico-shadow, rgba(41,82,255,.3));
         }
         .triaje-btn--next:hover:not(.triaje-btn--disabled) {
-          background: var(--color-marino-hover, #1E3A6E);
+          background: var(--color-azul-electrico-hover, #4366FF);
           transform: translateY(-1px);
+          box-shadow: 0 8px 20px -6px var(--color-azul-electrico-shadow, rgba(41,82,255,.45));
         }
         .triaje-btn--disabled {
-          opacity: .4;
+          opacity: .35;
           cursor: not-allowed;
         }
 
@@ -578,9 +610,10 @@ export function TriajeWizard() {
 
         .triaje-result-preview {
           padding: 20px 24px;
-          background: var(--color-bg-primary, #FAF7F2);
+          background: var(--color-bg, #FAF7F2);
           border: 1px solid rgba(201,169,97,.3);
           border-left: 3px solid var(--color-dorado, #C9A961);
+          border-radius: 2px;
         }
 
         /* WhatsApp button */
@@ -596,7 +629,7 @@ export function TriajeWizard() {
           font-size: 15px;
           font-weight: 600;
           letter-spacing: .03em;
-          border-radius: 2px;
+          border-radius: 4px;
           text-decoration: none;
           box-shadow: 0 8px 20px -6px rgba(37,211,102,.5);
           transition: transform .3s cubic-bezier(.22,1,.36,1),
@@ -645,6 +678,7 @@ export function TriajeWizard() {
           .triaje-btn,
           .triaje-wa-btn {
             transition: none !important;
+            transform: none !important;
           }
         }
       `}</style>

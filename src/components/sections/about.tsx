@@ -1,42 +1,20 @@
 /**
  * About — Sección trayectoria del Dr. Pablo De Luca.
  *
- * Layout: split 2 cols (foto izquierda | texto derecha). Stack en mobile.
- * Credenciales con check-marks dorado.
- * SelloMatricula al pie.
+ * Layout refinado: sin lista de credenciales vertical.
+ * 3 stats horizontales compactos reemplazan la lista.
+ * Sello matrícula movido al footer (no se duplica aquí).
  */
 
 import { Section } from "@/components/layout/section";
 import { Container } from "@/components/layout/container";
-import { SelloMatricula } from "@/components/trust/sello-matricula";
 import { Reveal } from "@/components/utils/reveal";
 import { siteConfig } from "@/lib/site-config";
 
-const CREDENCIALES = [
-  {
-    titulo: "Matrícula CSJN / CAM",
-    detalle: `Habilitado ante ${siteConfig.colegioName}`,
-  },
-  {
-    titulo: "Universidad Nacional de Cuyo",
-    detalle: "Abogacía — egresado con distinción",
-  },
-  {
-    titulo: "Especialización en Derecho de Familia",
-    detalle: "Posgrado — FCJ-UNCuyo",
-  },
-  {
-    titulo: "Especialización en Derecho Laboral",
-    detalle: "Programa continuo — SAIJ Mendoza",
-  },
-  {
-    titulo: "Mediación Civil y Comercial",
-    detalle: "Mediador habilitado — MJDH",
-  },
-  {
-    titulo: "15+ años de ejercicio en San Rafael",
-    detalle: "Trayectoria continua en fuero local",
-  },
+const STATS = [
+  { value: siteConfig.matricula, label: "Matrícula habilitada" },
+  { value: "UNCuyo", label: "Universidad Nacional de Cuyo" },
+  { value: "15+", label: "años en San Rafael" },
 ];
 
 export function About() {
@@ -44,7 +22,7 @@ export function About() {
     <Section id="trayectoria" variant="default" aria-labelledby="about-heading">
       <Container>
         <div className="about-grid">
-          {/* ── Columna izquierda: placeholder foto ── */}
+          {/* ── Columna izquierda: foto placeholder ── */}
           <Reveal threshold={0.1} className="about-photo-col">
             <div
               className="about-photo"
@@ -52,6 +30,7 @@ export function About() {
               style={{
                 position: "relative",
                 aspectRatio: "4/5",
+                maxWidth: "380px",
                 background: "linear-gradient(135deg, #E8E0D0 0%, #D4C5A8 100%)",
                 border: "1px solid rgba(201,169,97,.4)",
                 overflow: "hidden",
@@ -86,13 +65,13 @@ export function About() {
               >
                 <div>
                   <svg
-                    width="64"
-                    height="64"
+                    width="56"
+                    height="56"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="var(--color-marino, #0F1E3D)"
                     strokeWidth="1.2"
-                    style={{ opacity: 0.4, marginBottom: "16px" }}
+                    style={{ opacity: 0.4, marginBottom: "14px" }}
                     aria-hidden="true"
                   >
                     <circle cx="12" cy="8" r="4" />
@@ -122,7 +101,7 @@ export function About() {
                   left: "20px",
                   background: "var(--color-marino, #0F1E3D)",
                   color: "var(--color-bg-primary, #FAF7F2)",
-                  padding: "12px 20px",
+                  padding: "10px 18px",
                   zIndex: 3,
                   fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
                 }}
@@ -133,16 +112,16 @@ export function About() {
                     letterSpacing: ".18em",
                     textTransform: "uppercase",
                     opacity: 0.65,
-                    marginBottom: "4px",
+                    marginBottom: "3px",
                     display: "block",
                   }}
                 >
-                  Abogado — San Rafael, Mendoza
+                  Abogado · San Rafael, Mendoza
                 </span>
                 <span
                   style={{
                     fontFamily: "var(--font-playfair, 'Playfair Display', Georgia, serif)",
-                    fontSize: "16px",
+                    fontSize: "15px",
                     fontWeight: 500,
                   }}
                 >
@@ -235,7 +214,7 @@ export function About() {
                   fontSize: "1rem",
                   lineHeight: 1.65,
                   color: "var(--color-carbon-soft, #3A3A3A)",
-                  marginBottom: "36px",
+                  marginBottom: "48px",
                   maxWidth: "520px",
                 }}
               >
@@ -245,93 +224,39 @@ export function About() {
               </p>
             </Reveal>
 
-            {/* Credenciales */}
+            {/* 3 stats horizontales */}
             <Reveal delay={160}>
-              <ul
-                role="list"
-                aria-label="Credenciales y formación"
-                style={{ listStyle: "none", marginBottom: "40px" }}
-              >
-                {CREDENCIALES.map((cred, i) => (
-                  <li
-                    key={i}
-                    style={{
-                      display: "flex",
-                      alignItems: "flex-start",
-                      gap: "14px",
-                      padding: "12px 0",
-                      borderBottom:
-                        i < CREDENCIALES.length - 1 ? "1px solid rgba(15,30,61,.08)" : "none",
-                    }}
-                  >
-                    {/* Check dorado */}
-                    <span
-                      aria-hidden="true"
+              <dl className="about-stats" aria-label="Datos de trayectoria">
+                {STATS.map((stat, i) => (
+                  <div key={i} className="about-stat">
+                    <dt
                       style={{
-                        flexShrink: 0,
-                        marginTop: "3px",
-                        width: "18px",
-                        height: "18px",
-                        display: "grid",
-                        placeItems: "center",
+                        fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
+                        fontSize: "10px",
+                        textTransform: "uppercase",
+                        letterSpacing: ".16em",
+                        color: "var(--color-carbon-soft, #3A3A3A)",
+                        marginBottom: "6px",
+                        opacity: 0.7,
                       }}
                     >
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        aria-hidden="true"
-                      >
-                        <circle
-                          cx="8"
-                          cy="8"
-                          r="7.5"
-                          stroke="var(--color-dorado, #C9A961)"
-                          strokeWidth="1"
-                        />
-                        <path
-                          d="M4.5 8l2.5 2.5L11 5.5"
-                          stroke="var(--color-dorado-deep, #B89344)"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
-                    <div>
-                      <span
-                        style={{
-                          fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
-                          fontSize: ".9rem",
-                          fontWeight: 500,
-                          color: "var(--color-marino, #0F1E3D)",
-                          display: "block",
-                          lineHeight: 1.35,
-                        }}
-                      >
-                        {cred.titulo}
-                      </span>
-                      <span
-                        style={{
-                          fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
-                          fontSize: ".8rem",
-                          color: "var(--color-carbon-soft, #3A3A3A)",
-                          display: "block",
-                          marginTop: "2px",
-                        }}
-                      >
-                        {cred.detalle}
-                      </span>
-                    </div>
-                  </li>
+                      {stat.label}
+                    </dt>
+                    <dd
+                      style={{
+                        fontFamily: "var(--font-playfair, 'Playfair Display', Georgia, serif)",
+                        fontSize: "1.35rem",
+                        fontWeight: 500,
+                        color: "var(--color-marino, #0F1E3D)",
+                        letterSpacing: "-0.01em",
+                        margin: 0,
+                      }}
+                    >
+                      {stat.value}
+                    </dd>
+                  </div>
                 ))}
-              </ul>
-            </Reveal>
-
-            {/* Sello matrícula */}
-            <Reveal delay={200}>
-              <SelloMatricula variant="light" />
+              </dl>
             </Reveal>
           </div>
         </div>
@@ -346,17 +271,57 @@ export function About() {
         }
         @media (min-width: 1024px) {
           .about-grid {
-            grid-template-columns: 1fr 1.2fr;
+            grid-template-columns: 1fr 1.3fr;
             gap: 80px;
           }
         }
         .about-photo-col {
-          max-width: 460px;
+          max-width: 380px;
           width: 100%;
         }
         @media (min-width: 1024px) {
           .about-photo-col {
             max-width: unset;
+          }
+        }
+
+        /* Stats row */
+        .about-stats {
+          display: flex;
+          gap: 0;
+          border-top: 1px solid rgba(15,30,61,.1);
+          padding-top: 0;
+        }
+        .about-stat {
+          flex: 1;
+          padding: 24px 0;
+          padding-right: 24px;
+          border-right: 1px solid rgba(15,30,61,.08);
+        }
+        .about-stat:last-child {
+          border-right: none;
+          padding-right: 0;
+          padding-left: 24px;
+        }
+        .about-stat:not(:first-child):not(:last-child) {
+          padding-left: 24px;
+        }
+        @media (max-width: 479px) {
+          .about-stats {
+            flex-direction: column;
+            gap: 0;
+          }
+          .about-stat {
+            border-right: none;
+            border-bottom: 1px solid rgba(15,30,61,.08);
+            padding: 16px 0;
+          }
+          .about-stat:last-child {
+            border-bottom: none;
+            padding-left: 0;
+          }
+          .about-stat:not(:first-child):not(:last-child) {
+            padding-left: 0;
           }
         }
       `}</style>

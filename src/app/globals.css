@@ -66,6 +66,12 @@
   --color-border-default: #d4c9b8;
   --color-border-strong: #b8aa96;
 
+  /* Azul eléctrico — zona interactiva (triaje wizard) */
+  --color-azul-electrico: #2952ff;
+  --color-azul-electrico-hover: #4366ff;
+  --color-azul-electrico-soft: rgba(41, 82, 255, 0.08);
+  --color-azul-electrico-shadow: rgba(41, 82, 255, 0.25);
+
   /* Semánticos de estado */
   --color-emergencia: #a91d1d;
   --color-disponible: #2ea043;

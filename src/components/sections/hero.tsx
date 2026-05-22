@@ -269,8 +269,8 @@ export function Hero() {
               </span>
             </div>
 
-            {/* Bloque 3 pasos */}
-            <div className="hero-meta" style={{ position: "relative", paddingTop: "40px" }}>
+            {/* Bloque 3 pasos — versión sutil, como nota al pie del hero */}
+            <div className="hero-meta" style={{ position: "relative", paddingTop: "32px" }}>
               {/* Hairline dorado superior */}
               <div
                 className="hero-hairline"
@@ -285,7 +285,7 @@ export function Hero() {
               />
 
               <div
-                className="proceso grid gap-9"
+                className="proceso grid gap-6"
                 style={{ gridTemplateColumns: "repeat(3, 1fr)" }}
                 role="list"
                 aria-label="Proceso de trabajo"
@@ -302,56 +302,33 @@ export function Hero() {
                       } as React.CSSProperties
                     }
                   >
+                    {/* Número dorado ultra-fino — sin línea decorativa */}
                     <span
                       className="paso-num"
                       style={{
-                        fontFamily: "var(--font-playfair, 'Playfair Display', Georgia, serif)",
-                        fontStyle: "italic",
-                        fontSize: "1rem",
-                        color: "var(--color-dorado-deep, #B89344)",
-                        letterSpacing: ".04em",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "10px",
-                        marginBottom: "10px",
+                        fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
+                        fontWeight: 300,
+                        fontSize: ".78rem",
+                        color: "var(--color-dorado, #C9A961)",
+                        letterSpacing: ".12em",
+                        display: "block",
+                        marginBottom: "6px",
                       }}
                     >
-                      <span
-                        className="paso-line"
-                        aria-hidden="true"
-                        style={{
-                          display: "inline-block",
-                          width: "20px",
-                          height: "1px",
-                          background: "var(--color-dorado, #C9A961)",
-                          flexShrink: 0,
-                        }}
-                      />
                       {paso.num}
                     </span>
-                    <h4
-                      style={{
-                        fontFamily: "var(--font-playfair, 'Playfair Display', Georgia, serif)",
-                        fontSize: "1.05rem",
-                        fontWeight: 500,
-                        color: "var(--color-marino, #0F1E3D)",
-                        lineHeight: 1.3,
-                        letterSpacing: "-0.01em",
-                        marginBottom: "8px",
-                      }}
-                    >
-                      {paso.titulo}
-                    </h4>
                     <p
                       style={{
                         fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
-                        fontSize: ".85rem",
+                        fontSize: ".78rem",
+                        fontWeight: 400,
                         color: "var(--color-carbon-soft, #3A3A3A)",
-                        lineHeight: 1.55,
+                        lineHeight: 1.5,
                         margin: 0,
+                        opacity: 0.75,
                       }}
                     >
-                      {paso.descripcion}
+                      {paso.titulo}
                     </p>
                   </div>
                 ))}

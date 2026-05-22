@@ -1,10 +1,9 @@
 /**
- * Contacto — Sección "El Estudio" + Mapa + CTA.
+ * Contacto — Sección "El Estudio" + Mapa.
  *
  * id="estudio" para nav anchor.
- * Split layout: info izquierda | mapa/placeholder derecha.
- * Tabla 4 datos: Dirección, Horario, WhatsApp, Email.
- * Si mapEmbedUrl tiene URL real → iframe; sino → placeholder SVG con pin animado.
+ * Layout compacto: dirección + horario a la izquierda | mapa más pequeño a la derecha.
+ * WhatsApp y Email se omiten aquí — ya están en el footer.
  */
 
 import Link from "next/link";
@@ -15,31 +14,6 @@ import { Reveal } from "@/components/utils/reveal";
 import { siteConfig } from "@/lib/site-config";
 
 const IS_REAL_MAP = siteConfig.mapEmbedUrl && !siteConfig.mapEmbedUrl.includes("placeholder");
-
-const DATOS_CONTACTO = [
-  {
-    label: "Dirección",
-    value: siteConfig.addressFull,
-    note: `${siteConfig.city}, ${siteConfig.province}`,
-  },
-  {
-    label: "Horario",
-    value: siteConfig.horariosDisplay,
-    note: "Consultas a distancia: por WhatsApp",
-  },
-  {
-    label: "WhatsApp",
-    value: siteConfig.whatsappDisplay,
-    href: `https://wa.me/${siteConfig.whatsapp}`,
-    note: "Respuesta en menos de 24h",
-  },
-  {
-    label: "Email",
-    value: siteConfig.email,
-    href: `mailto:${siteConfig.email}`,
-    note: null,
-  },
-];
 
 export function Contacto() {
   return (
@@ -113,87 +87,120 @@ export function Contacto() {
                   fontSize: "1rem",
                   lineHeight: 1.65,
                   color: "var(--color-carbon-soft, #3A3A3A)",
-                  maxWidth: "460px",
+                  maxWidth: "440px",
                   marginBottom: "36px",
                 }}
               >
-                Atención presencial con turno previo en San Rafael, Mendoza. También atendemos
-                consultas a distancia para clientes de toda la Argentina.
+                Atención presencial con turno previo en San Rafael, Mendoza. Consultas a distancia
+                para toda la Argentina.
               </p>
             </Reveal>
 
-            {/* Tabla de datos */}
+            {/* Dirección + Horario — solo 2 filas compactas */}
             <Reveal delay={160}>
               <dl
-                aria-label="Datos de contacto del estudio"
+                aria-label="Datos de ubicación del estudio"
                 style={{
                   borderTop: "1px solid rgba(15,30,61,.1)",
                   marginBottom: "40px",
                 }}
               >
-                {DATOS_CONTACTO.map((dato) => (
-                  <div
-                    key={dato.label}
+                {/* Dirección */}
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "120px 1fr",
+                    padding: "18px 0",
+                    borderBottom: "1px solid rgba(15,30,61,.08)",
+                    alignItems: "start",
+                    gap: "12px",
+                  }}
+                >
+                  <dt
                     style={{
-                      display: "grid",
-                      gridTemplateColumns: "140px 1fr",
-                      padding: "20px 0",
-                      borderBottom: "1px solid rgba(15,30,61,.08)",
-                      alignItems: "start",
-                      gap: "12px",
+                      fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
+                      fontSize: "11px",
+                      textTransform: "uppercase",
+                      letterSpacing: ".15em",
+                      color: "var(--color-carbon-soft, #3A3A3A)",
+                      paddingTop: "3px",
                     }}
                   >
-                    <dt
+                    Dirección
+                  </dt>
+                  <dd style={{ margin: 0 }}>
+                    <span
                       style={{
-                        fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
-                        fontSize: "11px",
-                        textTransform: "uppercase",
-                        letterSpacing: ".15em",
-                        color: "var(--color-carbon-soft, #3A3A3A)",
-                        paddingTop: "3px",
+                        fontFamily: "var(--font-lora, Lora, Georgia, serif)",
+                        color: "var(--color-marino, #0F1E3D)",
+                        fontWeight: 500,
+                        display: "block",
+                        fontSize: "1rem",
                       }}
                     >
-                      {dato.label}
-                    </dt>
-                    <dd style={{ margin: 0 }}>
-                      {dato.href ? (
-                        <a
-                          href={dato.href}
-                          target={dato.href.startsWith("https") ? "_blank" : undefined}
-                          rel={dato.href.startsWith("https") ? "noopener noreferrer" : undefined}
-                          className="contacto-dato-link"
-                        >
-                          {dato.value}
-                        </a>
-                      ) : (
-                        <span
-                          style={{
-                            fontFamily: "var(--font-lora, Lora, Georgia, serif)",
-                            color: "var(--color-marino, #0F1E3D)",
-                            fontWeight: 500,
-                            display: "block",
-                          }}
-                        >
-                          {dato.value}
-                        </span>
-                      )}
-                      {dato.note && (
-                        <small
-                          style={{
-                            display: "block",
-                            fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
-                            fontSize: ".8rem",
-                            color: "var(--color-carbon-soft, #3A3A3A)",
-                            fontWeight: 400,
-                            marginTop: "4px",
-                          }}
-                        >
-                          {dato.note}
-                        </small>
-                      )}
-                    </dd>
-                  </div>
-                ))}
+                      {siteConfig.addressFull}
+                    </span>
+                    <small
+                      style={{
+                        display: "block",
+                        fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
+                        fontSize: ".8rem",
+                        color: "var(--color-carbon-soft, #3A3A3A)",
+                        marginTop: "3px",
+                      }}
+                    >
+                      {siteConfig.city}, {siteConfig.province}
+                    </small>
+                  </dd>
+                </div>
+
+                {/* Horario */}
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "120px 1fr",
+                    padding: "18px 0",
+                    alignItems: "start",
+                    gap: "12px",
+                  }}
+                >
+                  <dt
+                    style={{
+                      fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
+                      fontSize: "11px",
+                      textTransform: "uppercase",
+                      letterSpacing: ".15em",
+                      color: "var(--color-carbon-soft, #3A3A3A)",
+                      paddingTop: "3px",
+                    }}
+                  >
+                    Horario
+                  </dt>
+                  <dd style={{ margin: 0 }}>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-lora, Lora, Georgia, serif)",
+                        color: "var(--color-marino, #0F1E3D)",
+                        fontWeight: 500,
+                        display: "block",
+                        fontSize: "1rem",
+                      }}
+                    >
+                      {siteConfig.horariosDisplay}
+                    </span>
+                    <small
+                      style={{
+                        display: "block",
+                        fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
+                        fontSize: ".8rem",
+                        color: "var(--color-carbon-soft, #3A3A3A)",
+                        marginTop: "3px",
+                      }}
+                    >
+                      Consultas a distancia: por WhatsApp
+                    </small>
+                  </dd>
+                </div>
               </dl>
             </Reveal>
 
@@ -206,7 +213,7 @@ export function Contacto() {
             </Reveal>
           </div>
 
-          {/* ── Columna derecha: mapa ── */}
+          {/* ── Columna derecha: mapa compacto ── */}
           <Reveal delay={120} className="contacto-mapa-col">
             <div className="contacto-mapa">
               {IS_REAL_MAP ? (
@@ -225,7 +232,7 @@ export function Contacto() {
                 <div className="mapa-placeholder" aria-hidden="true">
                   {/* Grid de calles SVG */}
                   <svg
-                    viewBox="0 0 400 420"
+                    viewBox="0 0 400 380"
                     fill="none"
                     style={{
                       position: "absolute",
@@ -237,47 +244,46 @@ export function Contacto() {
                     aria-hidden="true"
                   >
                     {/* Horizontales */}
-                    <line x1="0" y1="80" x2="400" y2="80" stroke="#0F1E3D" strokeWidth="1" />
-                    <line x1="0" y1="160" x2="400" y2="160" stroke="#0F1E3D" strokeWidth="2" />
-                    <line x1="0" y1="240" x2="400" y2="240" stroke="#0F1E3D" strokeWidth="1" />
-                    <line x1="0" y1="320" x2="400" y2="320" stroke="#0F1E3D" strokeWidth="1.5" />
-                    <line x1="0" y1="380" x2="400" y2="380" stroke="#0F1E3D" strokeWidth="1" />
+                    <line x1="0" y1="70" x2="400" y2="70" stroke="#0F1E3D" strokeWidth="1" />
+                    <line x1="0" y1="140" x2="400" y2="140" stroke="#0F1E3D" strokeWidth="2" />
+                    <line x1="0" y1="220" x2="400" y2="220" stroke="#0F1E3D" strokeWidth="1" />
+                    <line x1="0" y1="300" x2="400" y2="300" stroke="#0F1E3D" strokeWidth="1.5" />
                     {/* Verticales */}
-                    <line x1="60" y1="0" x2="60" y2="420" stroke="#0F1E3D" strokeWidth="1" />
-                    <line x1="140" y1="0" x2="140" y2="420" stroke="#0F1E3D" strokeWidth="2" />
-                    <line x1="240" y1="0" x2="240" y2="420" stroke="#0F1E3D" strokeWidth="1" />
-                    <line x1="320" y1="0" x2="320" y2="420" stroke="#0F1E3D" strokeWidth="1.5" />
-                    {/* Manzanas rellenas */}
+                    <line x1="60" y1="0" x2="60" y2="380" stroke="#0F1E3D" strokeWidth="1" />
+                    <line x1="140" y1="0" x2="140" y2="380" stroke="#0F1E3D" strokeWidth="2" />
+                    <line x1="240" y1="0" x2="240" y2="380" stroke="#0F1E3D" strokeWidth="1" />
+                    <line x1="320" y1="0" x2="320" y2="380" stroke="#0F1E3D" strokeWidth="1.5" />
+                    {/* Manzanas */}
                     <rect
                       x="65"
-                      y="85"
+                      y="75"
                       width="70"
-                      height="70"
+                      height="60"
                       fill="#0F1E3D"
                       fillOpacity=".06"
                       rx="2"
                     />
                     <rect
                       x="145"
-                      y="85"
+                      y="75"
                       width="90"
-                      height="70"
+                      height="60"
                       fill="#0F1E3D"
                       fillOpacity=".04"
                       rx="2"
                     />
                     <rect
                       x="245"
-                      y="85"
+                      y="75"
                       width="70"
-                      height="70"
+                      height="60"
                       fill="#0F1E3D"
                       fillOpacity=".06"
                       rx="2"
                     />
                     <rect
                       x="65"
-                      y="165"
+                      y="145"
                       width="70"
                       height="70"
                       fill="#0F1E3D"
@@ -286,7 +292,7 @@ export function Contacto() {
                     />
                     <rect
                       x="145"
-                      y="165"
+                      y="145"
                       width="90"
                       height="70"
                       fill="#C9A961"
@@ -295,7 +301,7 @@ export function Contacto() {
                     />
                     <rect
                       x="245"
-                      y="165"
+                      y="145"
                       width="70"
                       height="70"
                       fill="#0F1E3D"
@@ -304,7 +310,7 @@ export function Contacto() {
                     />
                     <rect
                       x="65"
-                      y="245"
+                      y="225"
                       width="70"
                       height="70"
                       fill="#0F1E3D"
@@ -313,7 +319,7 @@ export function Contacto() {
                     />
                     <rect
                       x="145"
-                      y="245"
+                      y="225"
                       width="90"
                       height="70"
                       fill="#0F1E3D"
@@ -322,7 +328,7 @@ export function Contacto() {
                     />
                     <rect
                       x="245"
-                      y="245"
+                      y="225"
                       width="70"
                       height="70"
                       fill="#0F1E3D"
@@ -336,7 +342,7 @@ export function Contacto() {
                     className="mapa-pin"
                     style={{
                       position: "absolute",
-                      top: "46%",
+                      top: "44%",
                       left: "50%",
                       transform: "translate(-50%, -100%)",
                       zIndex: 2,
@@ -345,12 +351,11 @@ export function Contacto() {
                       alignItems: "center",
                     }}
                   >
-                    {/* Círculo pin */}
                     <div
                       className="pin-icon"
                       style={{
-                        width: "36px",
-                        height: "36px",
+                        width: "34px",
+                        height: "34px",
                         background: "var(--color-dorado, #C9A961)",
                         border: "3px solid var(--color-bg-primary, #FAF7F2)",
                         borderRadius: "50%",
@@ -361,8 +366,8 @@ export function Contacto() {
                       }}
                     >
                       <svg
-                        width="16"
-                        height="16"
+                        width="15"
+                        height="15"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="var(--color-marino, #0F1E3D)"
@@ -374,7 +379,6 @@ export function Contacto() {
                         <circle cx="12" cy="9" r="2.5" />
                       </svg>
                     </div>
-                    {/* Label */}
                     <div
                       style={{
                         background: "var(--color-marino, #0F1E3D)",
@@ -383,7 +387,7 @@ export function Contacto() {
                         fontSize: "10px",
                         letterSpacing: ".12em",
                         textTransform: "uppercase",
-                        padding: "5px 10px",
+                        padding: "4px 10px",
                         marginTop: "6px",
                         whiteSpace: "nowrap",
                       }}
@@ -396,10 +400,10 @@ export function Contacto() {
                   <div
                     style={{
                       position: "absolute",
-                      bottom: "16px",
-                      left: "16px",
+                      bottom: "14px",
+                      left: "14px",
                       background: "var(--color-bg-primary, #FAF7F2)",
-                      padding: "8px 14px",
+                      padding: "7px 12px",
                       fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
                       fontSize: "11px",
                       color: "var(--color-carbon-soft, #3A3A3A)",
@@ -419,19 +423,6 @@ export function Contacto() {
       </Container>
 
       <style>{`
-        /* Dato link */
-        .contacto-dato-link {
-          font-family: var(--font-lora, Lora, Georgia, serif);
-          color: var(--color-marino, #0F1E3D);
-          font-weight: 500;
-          text-decoration: none;
-          display: block;
-          transition: color .25s cubic-bezier(.22,1,.36,1);
-        }
-        .contacto-dato-link:hover {
-          color: var(--color-dorado-deep, #B89344);
-        }
-
         /* CTA botón */
         .contacto-cta-btn {
           display: inline-flex;
@@ -466,14 +457,15 @@ export function Contacto() {
         }
         @media (min-width: 1024px) {
           .contacto-grid {
-            grid-template-columns: 1fr 1.1fr;
+            grid-template-columns: 1.2fr 1fr;
             gap: 80px;
           }
         }
 
+        /* Mapa — aspect-ratio 1:1.2 (más compacto que el original) */
         .contacto-mapa {
           position: relative;
-          aspect-ratio: 1 / 1.05;
+          aspect-ratio: 1 / 1.2;
           background: #E8E5DD;
           border: 1px solid rgba(15,30,61,.1);
           overflow: hidden;

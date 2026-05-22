@@ -3,7 +3,9 @@ import { siteConfig } from "@/lib/site-config";
 import { Hero } from "@/components/sections/hero";
 import { TriajeWizard } from "@/components/triage/triage-wizard";
 import { Areas } from "@/components/sections/areas";
+import { Honorarios } from "@/components/sections/honorarios";
 import { Casos } from "@/components/sections/casos";
+import { CtaBand } from "@/components/sections/cta-band";
 import { About } from "@/components/sections/about";
 import { Contacto } from "@/components/sections/contacto";
 
@@ -38,15 +40,17 @@ export const metadata: Metadata = {
 };
 
 /**
- * Landing page — composición de secciones (T18).
+ * Landing page — composición de secciones.
  *
  * Orden:
  *   1. Hero (#inicio)
  *   2. TriajeWizard (#consulta) — alta conversión inmediata
  *   3. Áreas (#areas)
- *   4. Casos (#casos)
- *   5. About (#trayectoria)
- *   6. Contacto (#estudio)
+ *   4. Honorarios (#honorarios) — tarifas orientativas
+ *   5. Casos (#casos)
+ *   6. CtaBand — primera consulta sin cargo
+ *   7. About (#trayectoria)
+ *   8. Contacto (#estudio)
  */
 export default function HomePage() {
   // Schema.org — LocalBusiness + ItemList de áreas
@@ -124,10 +128,16 @@ export default function HomePage() {
         {/* 3. Áreas de práctica — section#areas (id puesto en el componente) */}
         <Areas />
 
-        {/* 4. Casos resueltos — section#casos */}
+        {/* 4. Honorarios orientativos — section#honorarios */}
+        <Honorarios />
+
+        {/* 5. Casos resueltos — section#casos */}
         <Casos />
 
-        {/* 5. About / Trayectoria — section#trayectoria */}
+        {/* 6. CTA band — primera consulta sin cargo */}
+        <CtaBand />
+
+        {/* 7. About / Trayectoria — section#trayectoria */}
         <About />
 
         {/* 6. Contacto + Mapa — section#estudio */}
