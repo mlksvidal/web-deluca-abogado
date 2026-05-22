@@ -219,20 +219,8 @@ export function Hero() {
             ))}
           </h1>
 
-          {/* Divisor central — línea dorada corta decorativa */}
-          <div
-            className="hero-divider mx-auto mb-10 md:mb-12"
-            aria-hidden="true"
-            style={{
-              width: "64px",
-              height: "1px",
-              background:
-                "linear-gradient(90deg, transparent, var(--color-dorado, #C9A961), transparent)",
-            }}
-          />
-
           {/* CTA único primario */}
-          <div className="hero-cta">
+          <div className="hero-cta mt-14 md:mt-20">
             <Link
               href="/reservar"
               className="btn-primary-hero inline-flex items-center gap-3"
@@ -346,10 +334,6 @@ export function Hero() {
           from { width: 0; }
           to   { width: 100%; }
         }
-        @keyframes heroDividerGrow {
-          from { width: 0; opacity: 0; }
-          to   { width: 64px; opacity: 1; }
-        }
         @keyframes heroScrollFade {
           0%, 100% { opacity: .4; transform: translateX(-50%) translateY(0); }
           50%      { opacity: .15; transform: translateX(-50%) translateY(4px); }
@@ -360,9 +344,6 @@ export function Hero() {
         }
         .hero-word {
           animation: heroWordRise 1.1s cubic-bezier(.22,1,.36,1) var(--delay, .45s) both;
-        }
-        .hero-divider {
-          animation: heroDividerGrow 1s cubic-bezier(.22,1,.36,1) 1.5s both;
         }
         .hero-cta {
           animation: heroEntry .9s cubic-bezier(.22,1,.36,1) 1.7s both;
@@ -384,14 +365,12 @@ export function Hero() {
         @media (prefers-reduced-motion: reduce) {
           .hero-kicker,
           .hero-word,
-          .hero-divider,
           .hero-cta,
           .hero-scroll-indicator {
             animation: none !important;
             opacity: 1 !important;
             transform: none !important;
           }
-          .hero-divider { width: 64px !important; }
           .hero-accent::after {
             animation: none !important;
             width: 100% !important;
