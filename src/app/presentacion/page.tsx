@@ -910,11 +910,7 @@ export default function Page() {
               Sitio desplegado
             </span>
             <span>
-              <strong>
-                {siteConfig.WHATSAPP_NUMBER
-                  ? `+54 9 ${siteConfig.WHATSAPP_NUMBER.slice(3)}`
-                  : "+54 9 2604 614896"}
-              </strong>
+              <strong>{siteConfig.whatsappDisplay}</strong>
             </span>
           </div>
         </nav>
@@ -1307,7 +1303,7 @@ export default function Page() {
                 Ver el sitio en vivo →
               </a>
               <a
-                href={`https://wa.me/${siteConfig.WHATSAPP_NUMBER ?? "5492604614896"}?text=${encodeURIComponent(
+                href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
                   "Hola, vi la presentación. Coordinemos para arrancar."
                 )}`}
                 className="cta-btn secondary"
