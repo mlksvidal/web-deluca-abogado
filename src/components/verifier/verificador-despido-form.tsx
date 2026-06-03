@@ -15,6 +15,7 @@ import type {
   DiagnosticoDespido,
 } from "@/lib/legal/verificador-despido";
 import { cn } from "@/lib/utils";
+import { lenisScrollTo } from "@/lib/lenis";
 import { AlertTriangle, CheckCircle2, ChevronRight, RotateCcw } from "lucide-react";
 
 // ─── Tipos del formulario de usuario ─────────────────────────────────────────
@@ -187,7 +188,7 @@ export function VerificadorDespidoForm() {
     setShowResult(true);
     // Scroll al resultado
     setTimeout(() => {
-      resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (resultRef.current) lenisScrollTo(resultRef.current);
     }, 100);
   };
 
@@ -195,7 +196,7 @@ export function VerificadorDespidoForm() {
     setAnswers(INITIAL_ANSWERS);
     setResultado(null);
     setShowResult(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    lenisScrollTo(0, { offset: 0 });
   };
 
   const setQ = <K extends keyof UserAnswers>(key: K, value: UserAnswers[K]) => {

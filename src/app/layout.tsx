@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Lora, Montserrat } from "next/font/google";
 import "./globals.css";
 import { LenisProvider } from "@/components/providers/lenis-provider";
+import { ScrollProgress } from "@/components/utils/scroll-progress";
 import { siteConfig } from "@/lib/site-config";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -181,6 +182,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="antialiased">
         <LenisProvider>
+          <ScrollProgress />
           <Header />
           <main id="main-content">{children}</main>
           <Footer />

@@ -9,12 +9,20 @@
 import { Section } from "@/components/layout/section";
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/utils/reveal";
+import { CountUp } from "@/components/utils/count-up";
 import { siteConfig } from "@/lib/site-config";
 
-const STATS = [
+type Stat = {
+  value?: string;
+  count?: number;
+  suffix?: string;
+  label: string;
+};
+
+const STATS: Stat[] = [
   { value: siteConfig.matricula, label: "Matrícula habilitada" },
   { value: "UNCuyo", label: "Universidad Nacional de Cuyo" },
-  { value: "15+", label: "años en San Rafael" },
+  { count: 15, suffix: "+", label: "años en San Rafael" },
 ];
 
 export function About() {
@@ -261,7 +269,11 @@ export function About() {
                       margin: 0,
                     }}
                   >
-                    {stat.value}
+                    {stat.count !== undefined ? (
+                      <CountUp end={stat.count} suffix={stat.suffix ?? ""} />
+                    ) : (
+                      stat.value
+                    )}
                   </dd>
                 </div>
               ))}

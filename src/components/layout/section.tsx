@@ -25,7 +25,8 @@ function Section({ as: Tag = "section", variant = "default", className, ...props
   const bgStyles = {
     default: "",
     alt: "bg-bg-warm",
-    dark: "bg-marino text-bg",
+    // surface-deep = gradiente marino (profundidad) · grain = grano film sutil
+    dark: "surface-deep grain text-bg relative overflow-hidden",
     secondary: "bg-bg-secondary",
   };
 

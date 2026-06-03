@@ -200,6 +200,8 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Offset para anchors: que el header sticky no tape el destino (fallback nativo) */
+  scroll-padding-top: 84px;
 }
 
 body {
@@ -345,6 +347,94 @@ body {
 .reveal-stagger.is-visible > * {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Reveal — variantes direccionales (rompen la monotonía del fade-up) */
+.reveal.reveal--left {
+  transform: translateX(-44px);
+}
+.reveal.reveal--right {
+  transform: translateX(44px);
+}
+.reveal.reveal--left.is-visible,
+.reveal.reveal--right.is-visible {
+  transform: none;
+}
+.reveal.reveal--clip {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path var(--duration-reveal) var(--ease-out);
+}
+.reveal.reveal--clip.is-visible {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ================================================
+   SCROLL PROGRESS BAR (dorada, top fixed)
+   ================================================ */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 100;
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(
+    90deg,
+    var(--color-dorado-deep),
+    var(--color-dorado),
+    var(--color-dorado-hover)
+  );
+  box-shadow: 0 0 12px rgba(201, 164, 90, 0.45);
+  will-change: transform;
+}
+
+/* ================================================
+   PROFUNDIDAD — superficies marino con gradiente + grain
+   Reemplaza el #0e1b33 plano que "abarata" las secciones oscuras.
+   ================================================ */
+.surface-deep {
+  position: relative;
+  background: radial-gradient(
+    135% 135% at 50% 0%,
+    var(--color-marino-hover) 0%,
+    var(--color-marino) 48%,
+    var(--color-marino-deep) 100%
+  );
+}
+
+/* Grano sutil — aplicar sobre un contenedor position: relative.
+   El contenido propio debe ir en position: relative; z-index: 1. */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Card premium reutilizable — profundidad + lift dorado en hover */
+.card-premium {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition:
+    transform var(--duration-normal) var(--ease-primary),
+    box-shadow var(--duration-normal) var(--ease-primary),
+    border-color var(--duration-normal) var(--ease-primary);
+}
+.card-premium:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-dorado);
+  box-shadow: var(--shadow-lg), var(--shadow-accent);
 }
 
 /* Container pattern */

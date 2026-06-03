@@ -22,6 +22,7 @@ import { SlotGridSkeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import { CalendarX, MessageCircle } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
+import { lenisScrollTo } from "@/lib/lenis";
 
 // ─── Tipos ─────────────────────────────────────────────────────────────────────
 
@@ -46,12 +47,7 @@ export function SlotGrid({
     onSelectSlot(slot.startUtc);
     // Scroll suave al form — esperar frame para que React actualice el estado primero
     requestAnimationFrame(() => {
-      const formEl = document.getElementById("booking-form");
-      if (formEl) {
-        const headerOffset = 96;
-        const top = formEl.getBoundingClientRect().top + window.scrollY - headerOffset;
-        window.scrollTo({ top, behavior: "smooth" });
-      }
+      lenisScrollTo("#booking-form", { offset: -96 });
     });
   };
 

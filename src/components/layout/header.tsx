@@ -7,6 +7,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/site-config";
+import { lenisScrollTo } from "@/lib/lenis";
 import { Button } from "@/components/ui/button";
 
 /**
@@ -85,10 +86,23 @@ function NavLink({
   scrolled: boolean;
   onClick?: () => void;
 }) {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Anchor en la home → smooth scroll vía Lenis (evita el hash jump nativo)
+    if (
+      href.startsWith("/#") &&
+      typeof window !== "undefined" &&
+      window.location.pathname === "/"
+    ) {
+      e.preventDefault();
+      lenisScrollTo(`#${href.slice(2)}`);
+    }
+    onClick?.();
+  };
+
   return (
     <Link
       href={href}
-      onClick={onClick}
+      onClick={handleClick}
       className={cn(
         "nav-underline",
         "relative py-1 px-0.5",
@@ -204,8 +218,7 @@ function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void })
     // Esperar la exit animation antes de hacer scroll
     setTimeout(() => {
       if (href.startsWith("/#")) {
-        const id = href.slice(2);
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+        lenisScrollTo(`#${href.slice(2)}`);
       }
     }, 300);
   };

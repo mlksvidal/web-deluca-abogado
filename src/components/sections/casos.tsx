@@ -13,6 +13,7 @@ import { Reveal } from "@/components/utils/reveal";
 import { casosResueltos } from "@/lib/casos-data";
 
 const STAGGER_DELAYS = [80, 160, 240];
+const REVEAL_VARIANTS = ["left", "up", "right"] as const;
 
 export function Casos() {
   return (
@@ -91,7 +92,7 @@ export function Casos() {
         {/* Grid 3 cards */}
         <div className="casos-grid" role="list">
           {casosResueltos.map((caso, i) => (
-            <Reveal key={caso.id} delay={STAGGER_DELAYS[i]}>
+            <Reveal key={caso.id} delay={STAGGER_DELAYS[i]} variant={REVEAL_VARIANTS[i] ?? "up"}>
               <article className="caso-card" role="listitem" aria-label={`Caso: ${caso.titulo}`}>
                 {/* Header: badge área + duración */}
                 <div

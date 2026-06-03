@@ -238,192 +238,30 @@ export function Contacto() {
                   title={`Mapa de ubicación — ${siteConfig.studioName}`}
                 />
               ) : (
-                /* Placeholder SVG estilizado con pin dorado animado */
-                <div className="mapa-placeholder" aria-hidden="true">
-                  {/* Grid de calles SVG */}
-                  <svg
-                    viewBox="0 0 400 380"
-                    fill="none"
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      width: "100%",
-                      height: "100%",
-                      opacity: 0.35,
-                    }}
-                    aria-hidden="true"
-                  >
-                    {/* Horizontales */}
-                    <line x1="0" y1="70" x2="400" y2="70" stroke="#0F1E3D" strokeWidth="1" />
-                    <line x1="0" y1="140" x2="400" y2="140" stroke="#0F1E3D" strokeWidth="2" />
-                    <line x1="0" y1="220" x2="400" y2="220" stroke="#0F1E3D" strokeWidth="1" />
-                    <line x1="0" y1="300" x2="400" y2="300" stroke="#0F1E3D" strokeWidth="1.5" />
-                    {/* Verticales */}
-                    <line x1="60" y1="0" x2="60" y2="380" stroke="#0F1E3D" strokeWidth="1" />
-                    <line x1="140" y1="0" x2="140" y2="380" stroke="#0F1E3D" strokeWidth="2" />
-                    <line x1="240" y1="0" x2="240" y2="380" stroke="#0F1E3D" strokeWidth="1" />
-                    <line x1="320" y1="0" x2="320" y2="380" stroke="#0F1E3D" strokeWidth="1.5" />
-                    {/* Manzanas */}
-                    <rect
-                      x="65"
-                      y="75"
-                      width="70"
-                      height="60"
-                      fill="#0F1E3D"
-                      fillOpacity=".06"
-                      rx="2"
-                    />
-                    <rect
-                      x="145"
-                      y="75"
-                      width="90"
-                      height="60"
-                      fill="#0F1E3D"
-                      fillOpacity=".04"
-                      rx="2"
-                    />
-                    <rect
-                      x="245"
-                      y="75"
-                      width="70"
-                      height="60"
-                      fill="#0F1E3D"
-                      fillOpacity=".06"
-                      rx="2"
-                    />
-                    <rect
-                      x="65"
-                      y="145"
-                      width="70"
-                      height="70"
-                      fill="#0F1E3D"
-                      fillOpacity=".04"
-                      rx="2"
-                    />
-                    <rect
-                      x="145"
-                      y="145"
-                      width="90"
-                      height="70"
-                      fill="#C9A961"
-                      fillOpacity=".12"
-                      rx="2"
-                    />
-                    <rect
-                      x="245"
-                      y="145"
-                      width="70"
-                      height="70"
-                      fill="#0F1E3D"
-                      fillOpacity=".06"
-                      rx="2"
-                    />
-                    <rect
-                      x="65"
-                      y="225"
-                      width="70"
-                      height="70"
-                      fill="#0F1E3D"
-                      fillOpacity=".06"
-                      rx="2"
-                    />
-                    <rect
-                      x="145"
-                      y="225"
-                      width="90"
-                      height="70"
-                      fill="#0F1E3D"
-                      fillOpacity=".04"
-                      rx="2"
-                    />
-                    <rect
-                      x="245"
-                      y="225"
-                      width="70"
-                      height="70"
-                      fill="#0F1E3D"
-                      fillOpacity=".06"
-                      rx="2"
-                    />
-                  </svg>
-
-                  {/* Pin central */}
-                  <div
-                    className="mapa-pin"
-                    style={{
-                      position: "absolute",
-                      top: "44%",
-                      left: "50%",
-                      transform: "translate(-50%, -100%)",
-                      zIndex: 2,
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                    }}
-                  >
-                    <div
-                      className="pin-icon"
-                      style={{
-                        width: "34px",
-                        height: "34px",
-                        background: "var(--color-dorado, #C9A961)",
-                        border: "3px solid var(--color-bg-primary, #FAF7F2)",
-                        borderRadius: "50%",
-                        display: "grid",
-                        placeItems: "center",
-                        boxShadow: "0 6px 18px rgba(0,0,0,.2)",
-                        position: "relative",
-                      }}
+                /* Panel de ubicación intencional (sin mapa falso) */
+                <div className="mapa-ubicacion surface-deep grain">
+                  <div className="mapa-ubicacion-inner">
+                    <svg
+                      className="mapa-ubicacion-pin"
+                      width="44"
+                      height="44"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="var(--color-dorado, #C9A961)"
+                      strokeWidth="1.3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
                     >
-                      <svg
-                        width="15"
-                        height="15"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="var(--color-marino, #0F1E3D)"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        aria-hidden="true"
-                      >
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                        <circle cx="12" cy="9" r="2.5" />
-                      </svg>
-                    </div>
-                    <div
-                      style={{
-                        background: "var(--color-marino, #0F1E3D)",
-                        color: "var(--color-bg-primary, #FAF7F2)",
-                        fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
-                        fontSize: "10px",
-                        letterSpacing: ".12em",
-                        textTransform: "uppercase",
-                        padding: "4px 10px",
-                        marginTop: "6px",
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {siteConfig.studioNameShort}
-                    </div>
-                  </div>
-
-                  {/* Overlay text */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      bottom: "14px",
-                      left: "14px",
-                      background: "var(--color-bg-primary, #FAF7F2)",
-                      padding: "7px 12px",
-                      fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
-                      fontSize: "11px",
-                      color: "var(--color-carbon-soft, #3A3A3A)",
-                      letterSpacing: ".1em",
-                      textTransform: "uppercase",
-                      border: "1px solid rgba(15,30,61,.1)",
-                      zIndex: 3,
-                    }}
-                  >
-                    San Rafael, Mendoza · Dirección por confirmar
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                    <span className="mapa-ubicacion-city">San Rafael</span>
+                    <span className="mapa-ubicacion-region">Mendoza · Argentina</span>
+                    <span className="mapa-ubicacion-divider" aria-hidden="true" />
+                    <p className="mapa-ubicacion-note">
+                      Coordinamos el punto exacto de encuentro al confirmar tu consulta.
+                    </p>
                   </div>
                 </div>
               )}
@@ -482,7 +320,7 @@ export function Contacto() {
           }
         }
 
-        /* Mapa — aspect-ratio 1:1.2 (más compacto que el original) */
+        /* Mapa / panel de ubicación — aspect-ratio 1:1.2 */
         .contacto-mapa {
           position: relative;
           aspect-ratio: 1 / 1.2;
@@ -494,48 +332,59 @@ export function Contacto() {
           display: block;
         }
 
-        .mapa-placeholder {
+        /* Panel de ubicación intencional (marino + grain) */
+        .mapa-ubicacion {
           position: absolute;
           inset: 0;
+          display: grid;
+          place-items: center;
+          padding: 32px;
         }
-
-        /* Pin bounce */
-        .pin-icon {
-          animation: pinBounce 2.2s cubic-bezier(.22,1,.36,1) infinite;
+        .mapa-ubicacion-inner {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
         }
-        @keyframes pinBounce {
-          0%, 100% { transform: translateY(0); }
-          50%       { transform: translateY(-8px); }
+        .mapa-ubicacion-pin {
+          margin-bottom: 18px;
         }
-
-        /* Ripple rings */
-        .pin-icon::before,
-        .pin-icon::after {
-          content: "";
-          position: absolute;
-          inset: -3px;
-          border: 2px solid var(--color-dorado, #C9A961);
-          border-radius: 50%;
-          animation: pinRipple 2.4s cubic-bezier(.22,1,.36,1) infinite;
-          pointer-events: none;
-          opacity: 0;
+        .mapa-ubicacion-city {
+          font-family: var(--font-playfair, 'Playfair Display', Georgia, serif);
+          font-size: clamp(1.8rem, 1.2rem + 2vw, 2.6rem);
+          font-weight: 500;
+          letter-spacing: -0.02em;
+          color: var(--color-bg-primary, #FAF7F2);
+          line-height: 1;
         }
-        .pin-icon::after { animation-delay: 1.2s; }
-        @keyframes pinRipple {
-          0%   { transform: scale(1); opacity: .7; }
-          100% { transform: scale(2.4); opacity: 0; }
+        .mapa-ubicacion-region {
+          font-family: var(--font-ui, Inter, system-ui, sans-serif);
+          font-size: 11px;
+          letter-spacing: .24em;
+          text-transform: uppercase;
+          color: var(--color-dorado, #C9A961);
+          margin-top: 12px;
+        }
+        .mapa-ubicacion-divider {
+          width: 40px;
+          height: 1px;
+          background: rgba(201,169,97,.5);
+          margin: 22px 0;
+        }
+        .mapa-ubicacion-note {
+          font-family: var(--font-lora, Lora, Georgia, serif);
+          font-style: italic;
+          font-size: .92rem;
+          line-height: 1.55;
+          color: rgba(250,247,242,.7);
+          max-width: 30ch;
+          margin: 0;
         }
 
         @media (max-width: 640px) {
           .contacto-mapa { aspect-ratio: 4 / 3; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .pin-icon,
-          .pin-icon::before,
-          .pin-icon::after {
-            animation: none !important;
-          }
         }
       `}</style>
     </Section>

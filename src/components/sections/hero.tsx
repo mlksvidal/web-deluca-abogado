@@ -1,16 +1,18 @@
 "use client";
 /**
- * Hero — Editorial book cover style.
+ * Hero — Editorial book cover style, ahora coreografiado con GSAP.
  *
- * Single column centered, min-height 100vh con contenido centered vertical.
- * Sin foto, sin breadcrumb, sin "próximo turno", sin segunda CTA.
- * Solo: kicker fino + titular grande + divisor dorado + bajada italic + 1 CTA primaria.
+ * - Entrada: timeline GSAP (kicker → palabras con máscara → subrayado → CTA).
+ * - Scroll: parallax del sello PD del fondo (scrub) + leve drift del contenido.
+ * - prefers-reduced-motion: sin GSAP, todo visible en su estado final.
  *
- * Idea: portada de libro de derecho premium.
+ * Idea: portada de libro de derecho premium que "respira" al scrollear.
  */
 
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
+import { gsap } from "@/lib/gsap";
 
 const H1_WORDS = [
   { text: "Asesoría", accent: false, br: false },
@@ -23,8 +25,62 @@ const H1_WORDS = [
 ];
 
 export function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const sealRef = useRef<SVGSVGElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return; // estado natural = visible
+
+    const ctx = gsap.context(() => {
+      // ── Entrada coreografiada ──────────────────────────────
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      tl.from(".hero-kicker", { y: 22, opacity: 0, duration: 0.9 }, 0.15)
+        .from(".hero-word", { yPercent: 110, opacity: 0, duration: 0.95, stagger: 0.07 }, "-=0.45")
+        .from(
+          ".hero-accent-line",
+          { scaleX: 0, transformOrigin: "left center", duration: 0.7 },
+          "-=0.35"
+        )
+        .from(".hero-cta", { y: 22, opacity: 0, duration: 0.9 }, "-=0.4");
+
+      // ── Parallax del sello PD al scrollear ─────────────────
+      if (sealRef.current) {
+        gsap.to(sealRef.current, {
+          yPercent: 26,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
+
+      // ── Leve drift + fade del contenido al salir del hero ──
+      gsap.to(".hero-editorial", {
+        yPercent: -8,
+        opacity: 0.55,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       className="hero-section relative overflow-hidden flex items-center justify-center"
       aria-labelledby="hero-heading"
       style={{
@@ -39,11 +95,11 @@ export function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 50%, rgba(201,169,97,.04) 0%, transparent 70%)",
+              "radial-gradient(ellipse at 50% 40%, rgba(201,169,97,.06) 0%, transparent 68%)",
           }}
         />
 
-        {/* Líneas verticales decorativas estilo blueprint — laterales sutiles */}
+        {/* Líneas verticales decorativas estilo blueprint */}
         <svg
           className="absolute left-0 top-0 h-full w-[80px] opacity-[0.06]"
           viewBox="0 0 80 800"
@@ -109,16 +165,17 @@ export function Hero() {
           />
         </svg>
 
-        {/* Sello decorativo PD — semi-transparente al fondo */}
+        {/* Sello decorativo PD — parallax al scrollear */}
         <svg
+          ref={sealRef}
           className="absolute"
           style={{
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: "min(700px, 70vw)",
-            height: "min(700px, 70vw)",
-            opacity: 0.025,
+            width: "min(720px, 72vw)",
+            height: "min(720px, 72vw)",
+            opacity: 0.05,
             zIndex: 0,
           }}
           viewBox="0 0 400 400"
@@ -130,6 +187,19 @@ export function Hero() {
           <circle cx="200" cy="200" r="195" />
           <circle cx="200" cy="200" r="180" />
           <circle cx="200" cy="200" r="120" strokeDasharray="3 5" />
+          <text
+            x="200"
+            y="232"
+            textAnchor="middle"
+            fontFamily="var(--font-playfair, 'Playfair Display', serif)"
+            fontSize="110"
+            fontStyle="italic"
+            fill="var(--color-marino, #0F1E3D)"
+            stroke="none"
+            opacity="0.7"
+          >
+            PD
+          </text>
         </svg>
       </div>
 
@@ -176,7 +246,7 @@ export function Hero() {
             </span>
           </div>
 
-          {/* H1 — book cover style, multiple lines forced */}
+          {/* H1 — book cover style, palabras con máscara para reveal GSAP */}
           <h1
             id="hero-heading"
             className="hero-h1 mb-12 md:mb-14"
@@ -191,28 +261,24 @@ export function Hero() {
           >
             {H1_WORDS.map((word, i) => (
               <span key={i}>
-                <span
-                  className="hero-word inline-block"
-                  style={
-                    {
-                      "--delay": `${0.45 + i * 0.09}s`,
-                    } as React.CSSProperties
-                  }
-                >
-                  {word.accent ? (
-                    <em
-                      className="hero-accent relative"
-                      style={{
-                        fontStyle: "italic",
-                        fontWeight: 400,
-                        color: "var(--color-dorado-deep, #B89344)",
-                      }}
-                    >
-                      {word.text}
-                    </em>
-                  ) : (
-                    word.text
-                  )}
+                <span className="hero-word-mask">
+                  <span className="hero-word">
+                    {word.accent ? (
+                      <em
+                        className="hero-accent relative"
+                        style={{
+                          fontStyle: "italic",
+                          fontWeight: 400,
+                          color: "var(--color-dorado-deep, #B89344)",
+                        }}
+                      >
+                        {word.text}
+                        <span className="hero-accent-line" aria-hidden="true" />
+                      </em>
+                    ) : (
+                      word.text
+                    )}
+                  </span>
                 </span>
                 {word.br ? <br /> : <span> </span>}
               </span>
@@ -290,91 +356,25 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Indicador scroll sutil al pie del hero */}
-      <div
-        className="hero-scroll-indicator absolute"
-        aria-hidden="true"
-        style={{
-          bottom: "32px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
-          fontSize: "10px",
-          letterSpacing: ".22em",
-          textTransform: "uppercase",
-          color: "var(--color-carbon-soft, #3A3A3A)",
-          opacity: 0.4,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "10px",
-        }}
-      >
-        <span>Desliza</span>
-        <span
-          style={{
-            width: "1px",
-            height: "36px",
-            background: "linear-gradient(180deg, var(--color-marino, #0F1E3D), transparent)",
-          }}
-        />
-      </div>
-
-      {/* CSS animations */}
+      {/* Estilos estructurales del hero (máscaras + subrayado del acento) */}
       <style>{`
-        @keyframes heroWordRise {
-          from { opacity: 0; transform: translateY(60%); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes heroEntry {
-          from { opacity: 0; transform: translateY(14px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes heroAccentLine {
-          from { width: 0; }
-          to   { width: 100%; }
-        }
-        @keyframes heroScrollFade {
-          0%, 100% { opacity: .4; transform: translateX(-50%) translateY(0); }
-          50%      { opacity: .15; transform: translateX(-50%) translateY(4px); }
-        }
-
-        .hero-kicker {
-          animation: heroEntry .9s cubic-bezier(.22,1,.36,1) .2s both;
+        .hero-word-mask {
+          display: inline-block;
+          overflow: hidden;
+          vertical-align: bottom;
+          padding-bottom: 0.06em;
         }
         .hero-word {
-          animation: heroWordRise 1.1s cubic-bezier(.22,1,.36,1) var(--delay, .45s) both;
+          display: inline-block;
         }
-        .hero-cta {
-          animation: heroEntry .9s cubic-bezier(.22,1,.36,1) 1.7s both;
-        }
-        .hero-scroll-indicator {
-          animation: heroScrollFade 2.4s cubic-bezier(.22,1,.36,1) 2.5s infinite;
-        }
-        .hero-accent::after {
-          content: "";
+        .hero-accent-line {
           position: absolute;
-          bottom: .08em;
           left: 0;
-          width: 0;
+          bottom: 0.02em;
+          width: 100%;
           height: 2px;
           background: var(--color-dorado, #C9A961);
-          animation: heroAccentLine .8s cubic-bezier(.22,1,.36,1) 1.4s forwards;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .hero-kicker,
-          .hero-word,
-          .hero-cta,
-          .hero-scroll-indicator {
-            animation: none !important;
-            opacity: 1 !important;
-            transform: none !important;
-          }
-          .hero-accent::after {
-            animation: none !important;
-            width: 100% !important;
-          }
+          display: block;
         }
       `}</style>
     </section>
