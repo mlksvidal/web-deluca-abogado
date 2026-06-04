@@ -181,27 +181,11 @@ export function Valores() {
           {VALORES.map((valor, index) => (
             <Reveal key={valor.titulo} delay={index * 80}>
               <div
-                className="flex flex-col items-center text-center w-full"
+                className="valor-pilar flex flex-col items-center text-center w-full"
                 style={{ gap: "20px", padding: "0 8px" }}
               >
-                {/* Icono frame dorado — TODOS exactamente 64x64 con flex-none */}
-                <div
-                  aria-hidden="true"
-                  style={{
-                    width: "64px",
-                    height: "64px",
-                    minWidth: "64px",
-                    minHeight: "64px",
-                    flexShrink: 0,
-                    flexGrow: 0,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    border: "1px solid var(--color-dorado)",
-                    borderRadius: "4px",
-                    color: "var(--color-dorado)",
-                  }}
-                >
+                {/* Icono frame dorado — TODOS exactamente 64x64; hover invierte */}
+                <div className="valor-icon" aria-hidden="true">
                   {valor.icon}
                 </div>
 
@@ -238,6 +222,46 @@ export function Valores() {
           ))}
         </div>
       </Container>
+
+      <style>{`
+        .valor-pilar {
+          transition: transform .45s cubic-bezier(.22,1,.36,1);
+        }
+        .valor-pilar:hover {
+          transform: translateY(-6px);
+        }
+        .valor-icon {
+          width: 64px;
+          height: 64px;
+          min-width: 64px;
+          min-height: 64px;
+          flex-shrink: 0;
+          flex-grow: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid var(--color-dorado);
+          border-radius: 4px;
+          color: var(--color-dorado);
+          transition:
+            background .4s cubic-bezier(.22,1,.36,1),
+            color .4s cubic-bezier(.22,1,.36,1),
+            border-color .4s cubic-bezier(.22,1,.36,1),
+            transform .55s cubic-bezier(.34,1.56,.64,1);
+        }
+        .valor-pilar:hover .valor-icon {
+          background: var(--color-marino);
+          border-color: var(--color-marino);
+          color: var(--color-dorado);
+          transform: rotate(-4deg) scale(1.06);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .valor-pilar,
+          .valor-icon {
+            transition: none !important;
+          }
+        }
+      `}</style>
     </Section>
   );
 }

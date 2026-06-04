@@ -170,7 +170,11 @@ export function Areas() {
           {practiceAreas.map((area, i) => {
             const Icon = ICON_MAP[area.icon];
             return (
-              <Reveal key={area.id} delay={STAGGER_DELAYS[i]}>
+              <Reveal
+                key={area.id}
+                delay={STAGGER_DELAYS[i]}
+                variant={i % 2 === 0 ? "left" : "right"}
+              >
                 <article className="area-card" role="listitem" aria-label={`Área: ${area.label}`}>
                   {/* Icon frame 56×56 */}
                   <div
