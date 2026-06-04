@@ -241,7 +241,10 @@ export function Hero() {
       </div>
 
       <div className="container relative z-[1]">
-        <div className="hero-editorial mx-auto text-center" style={{ maxWidth: "920px" }}>
+        <div
+          className="hero-editorial text-center"
+          style={{ maxWidth: "920px", marginLeft: "auto", marginRight: "auto" }}
+        >
           {/* Kicker — institutional tag superior */}
           <div className="hero-kicker mb-14 md:mb-20">
             <span

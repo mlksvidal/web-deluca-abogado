@@ -46,11 +46,20 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
     // Tras el primer layout, recalcular posiciones de triggers.
     ScrollTrigger.refresh();
 
+    // Las fuentes con display:swap cambian la altura del layout DESPUÉS del
+    // primer render → recalcular triggers cuando terminan de cargar evita que
+    // el parallax/scrub calcule start/end con medidas viejas.
+    let fontsRefresh: Promise<unknown> | undefined;
+    if (typeof document !== "undefined" && "fonts" in document) {
+      fontsRefresh = document.fonts.ready.then(() => ScrollTrigger.refresh());
+    }
+
     return () => {
       lenis.off("scroll", ScrollTrigger.update);
       gsap.ticker.remove(update);
       lenis.destroy();
       setLenisInstance(null);
+      void fontsRefresh;
     };
   }, []);
 

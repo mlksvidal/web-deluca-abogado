@@ -54,8 +54,11 @@ export function Tilt({
     };
   }, [max]);
 
+  // Sin transformStyle:preserve-3d estático: el rotateX/Y va sobre este mismo
+  // div (con transformPerspective en la tween), no sobre hijos 3D. Dejarlo fijo
+  // promueve una capa permanente y desenfoca el texto por subpíxel en reposo.
   return (
-    <div ref={ref} className={className} style={{ transformStyle: "preserve-3d" }}>
+    <div ref={ref} className={className}>
       {children}
     </div>
   );
