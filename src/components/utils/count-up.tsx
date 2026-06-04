@@ -12,7 +12,7 @@
  */
 
 import { useEffect, useRef } from "react";
-import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { gsap } from "@/lib/gsap";
 
 type CountUpProps = {
   end: number;
@@ -20,7 +20,7 @@ type CountUpProps = {
   prefix?: string;
   suffix?: string;
   className?: string;
-  /** Formateador opcional (ej. separador de miles). Recibe el entero actual. */
+  /** Formateador opcional (ej. separador de miles / moneda). Recibe el valor actual. */
   format?: (value: number) => string;
 };
 
@@ -43,19 +43,25 @@ export function CountUp({
       el.textContent = `${prefix}${body}${suffix}`;
     };
 
+    // Estado inicial formateado (evita el "0" crudo antes de animar)
+    render(0);
+
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) {
       render(end);
       return;
     }
 
+    // IntersectionObserver dispara aunque el elemento YA esté en viewport al
+    // montar (caso de los resultados de calculadora que aparecen in-view).
     const counter = { val: 0 };
-    const st = ScrollTrigger.create({
-      trigger: el,
-      start: "top 88%",
-      once: true,
-      onEnter: () => {
-        gsap.to(counter, {
+    let tween: gsap.core.Tween | null = null;
+
+    const obs = new IntersectionObserver(
+      ([entry], observer) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        tween = gsap.to(counter, {
           val: end,
           duration,
           ease: "power2.out",
@@ -63,9 +69,15 @@ export function CountUp({
           onUpdate: () => render(Math.round(counter.val)),
         });
       },
-    });
+      { threshold: 0.4 }
+    );
 
-    return () => st.kill();
+    obs.observe(el);
+
+    return () => {
+      obs.disconnect();
+      tween?.kill();
+    };
   }, [end, duration, prefix, suffix, format]);
 
   return (

@@ -6,6 +6,8 @@ import { AlertTriangle, Calculator } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { formatARS } from "@/lib/format-currency";
+import { lenisScrollTo } from "@/lib/lenis";
+import { CountUp } from "@/components/utils/count-up";
 import {
   calcularDespido,
   type TipoDespido,
@@ -147,10 +149,10 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoDespido }) {
           Estimación total
         </p>
         <p
-          className="font-serif leading-none text-bg"
+          className="font-serif leading-none text-bg tabular-nums"
           style={{ fontSize: "clamp(2rem,3vw+1rem,3rem)" }}
         >
-          {formatARS(desglose.total)}
+          <CountUp end={desglose.total} duration={1.4} format={formatARS} />
         </p>
         {desglose.topeAplicado && (
           <p className="mt-2 font-ui text-xs text-dorado flex items-center gap-1.5">
@@ -238,7 +240,6 @@ export function FormIndemnizacionDespido() {
 
   const [errors, setErrors] = React.useState<FieldError>({});
   const [resultado, setResultado] = React.useState<ResultadoDespido | null>(null);
-  const [calculando, setCalculando] = React.useState(false);
 
   const validate = (): FieldError => {
     const errs: FieldError = {};
@@ -263,8 +264,6 @@ export function FormIndemnizacionDespido() {
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
 
-    setCalculando(true);
-
     const anios = Math.floor(parseFloat(form.aniosTexto));
     const mesesDecimal = parseFloat(form.aniosTexto) - anios;
     const mesesAdicionales = form.mesesTexto
@@ -272,28 +271,26 @@ export function FormIndemnizacionDespido() {
       : Math.round(mesesDecimal * 12);
     const sueldo = parseFloat(form.sueldoTexto.replace(/[.$\s]/g, "").replace(",", "."));
 
-    // Simular loading para dar feedback visual (el cálculo es sincrónico)
-    setTimeout(() => {
-      try {
-        const res = calcularDespido({
-          sueldoBruto: sueldo,
-          antiguedadAnios: anios,
-          antiguedadMeses: Math.min(11, Math.max(0, mesesAdicionales)),
-          tipoDespido: form.tipoDespido as TipoDespido,
-          preavisoOtorgado: !form.preavisoOmitido,
-          aplicarMultaArt80: form.multaArt80,
-        });
-        setResultado(res);
-        setCalculando(false);
+    // El cálculo es sincrónico e instantáneo; el counter animado del resultado
+    // da el feedback visual (antes había un setTimeout(400) artificial).
+    try {
+      const res = calcularDespido({
+        sueldoBruto: sueldo,
+        antiguedadAnios: anios,
+        antiguedadMeses: Math.min(11, Math.max(0, mesesAdicionales)),
+        tipoDespido: form.tipoDespido as TipoDespido,
+        preavisoOtorgado: !form.preavisoOmitido,
+        aplicarMultaArt80: form.multaArt80,
+      });
+      setResultado(res);
 
-        // Scroll al resultado
-        setTimeout(() => {
-          resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 100);
-      } catch {
-        setCalculando(false);
-      }
-    }, 400);
+      // Scroll al resultado (Lenis, tras pintar el panel)
+      requestAnimationFrame(() => {
+        if (resultRef.current) lenisScrollTo(resultRef.current, { offset: -100 });
+      });
+    } catch {
+      // El cálculo validó arriba; cualquier error inesperado se ignora silenciosamente.
+    }
   };
 
   return (
@@ -539,14 +536,7 @@ export function FormIndemnizacionDespido() {
         </fieldset>
 
         {/* Submit */}
-        <Button
-          type="submit"
-          variant="primary"
-          size="lg"
-          className="w-full"
-          isLoading={calculando}
-          loadingText="Calculando…"
-        >
+        <Button type="submit" variant="primary" size="lg" className="w-full">
           <Calculator size={18} aria-hidden="true" />
           Calcular estimación
         </Button>

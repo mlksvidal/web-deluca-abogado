@@ -6,6 +6,8 @@ import { Calculator, Plus, Trash2 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { formatARS, formatPct } from "@/lib/format-currency";
+import { lenisScrollTo } from "@/lib/lenis";
+import { CountUp } from "@/components/utils/count-up";
 import {
   calcularCuotaAlimentaria,
   type ResultadoCuotaAlimentaria,
@@ -52,10 +54,10 @@ function ResultadoPanel({ resultado }: { resultado: ResultadoCuotaAlimentaria })
           Cuota mensual estimada
         </p>
         <p
-          className="font-serif leading-none text-bg"
+          className="font-serif leading-none text-bg tabular-nums"
           style={{ fontSize: "clamp(2rem,3vw+1rem,3rem)" }}
         >
-          {formatARS(resultado.montoMensual)}
+          <CountUp end={resultado.montoMensual} duration={1.4} format={formatARS} />
         </p>
         <p className="mt-1.5 font-ui text-sm text-dorado">
           {formatPct(resultado.porcentajeEstimado)} del sueldo bruto
@@ -130,7 +132,6 @@ export function FormCuotaAlimentaria() {
   const [otrasObligaciones, setOtrasObligaciones] = React.useState(false);
   const [errors, setErrors] = React.useState<FieldError>({});
   const [resultado, setResultado] = React.useState<ResultadoCuotaAlimentaria | null>(null);
-  const [calculando, setCalculando] = React.useState(false);
 
   // Sincronizar array edades con nHijos
   const handleNHijosChange = (value: string) => {
@@ -188,27 +189,23 @@ export function FormCuotaAlimentaria() {
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
 
-    setCalculando(true);
     const sueldo = parseFloat(sueldoTexto.replace(/[.$\s]/g, "").replace(",", "."));
     const edadesNum = edades.map((e) => parseInt(e, 10));
 
-    setTimeout(() => {
-      try {
-        const res = calcularCuotaAlimentaria({
-          sueldoBrutoObligado: sueldo,
-          nHijos,
-          edades: edadesNum,
-          tieneOtrasObligaciones: otrasObligaciones,
-        });
-        setResultado(res);
-        setCalculando(false);
-        setTimeout(() => {
-          resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 100);
-      } catch {
-        setCalculando(false);
-      }
-    }, 400);
+    try {
+      const res = calcularCuotaAlimentaria({
+        sueldoBrutoObligado: sueldo,
+        nHijos,
+        edades: edadesNum,
+        tieneOtrasObligaciones: otrasObligaciones,
+      });
+      setResultado(res);
+      requestAnimationFrame(() => {
+        if (resultRef.current) lenisScrollTo(resultRef.current, { offset: -100 });
+      });
+    } catch {
+      // El cálculo validó arriba; cualquier error inesperado se ignora.
+    }
   };
 
   return (
@@ -410,14 +407,7 @@ export function FormCuotaAlimentaria() {
         </label>
 
         {/* Submit */}
-        <Button
-          type="submit"
-          variant="primary"
-          size="lg"
-          className="w-full"
-          isLoading={calculando}
-          loadingText="Calculando…"
-        >
+        <Button type="submit" variant="primary" size="lg" className="w-full">
           <Calculator size={18} aria-hidden="true" />
           Calcular cuota estimada
         </Button>

@@ -2,10 +2,14 @@
 
 /**
  * TimelineDivorcio — visualización scroll-driven del proceso de divorcio.
- * IntersectionObserver para animaciones de entrada (motion_intensity 3 → CSS puro).
- * Lenis ya está en el layout root, no re-inicializar.
- * Mobile: stack vertical con líneas conectoras.
- * Desktop: línea vertical izquierda que avanza según hitos visibles.
+ *
+ * Cada hito entra con IntersectionObserver (sincronizado con el scroll). Al
+ * revelarse: la línea conectora se "dibuja" (scaleY 0→1), el dot hace pop
+ * (back-ease) y cambia a marino + ícono dorado, y un número fantasma editorial
+ * aparece detrás del contenido.
+ *
+ * prefers-reduced-motion: todo visible/estático desde el inicio.
+ * Mobile: stack vertical. Lenis ya está en el layout root.
  */
 
 import * as React from "react";
@@ -81,27 +85,33 @@ function HitoItem({ hito, index }: { hito: HitoDivorcio; index: number }) {
     >
       {/* ─── Línea vertical + dot ────────────────────────────────── */}
       <div className="flex flex-col items-center shrink-0">
-        {/* Dot */}
+        {/* Dot — pop + cambio de color al revelarse */}
         <div
-          className="relative z-10 flex items-center justify-center w-11 h-11 rounded-full border-2 transition-colors duration-300"
+          className="relative z-10 flex items-center justify-center w-11 h-11 rounded-full border-2"
           style={{
             background: visible ? "var(--color-marino)" : "var(--color-bg-secondary)",
             borderColor: "var(--color-dorado)",
             color: visible ? "var(--color-dorado)" : "var(--color-text-tertiary)",
+            transform: visible ? "scale(1)" : "scale(0.7)",
+            boxShadow: visible ? "0 0 0 4px rgba(201,164,90,0.14)" : "0 0 0 0 transparent",
+            transition:
+              "background .4s ease, color .4s ease, box-shadow .5s ease, transform .55s cubic-bezier(.34,1.56,.64,1)",
           }}
           aria-hidden="true"
         >
           <Icon size={18} />
         </div>
 
-        {/* Línea vertical (excepto en el último) */}
+        {/* Línea conectora — se dibuja (scaleY) al revelarse */}
         {!isLast && (
           <div
             className="flex-1 w-0.5 mt-2 min-h-[40px]"
             style={{
               background:
                 "linear-gradient(to bottom, var(--color-dorado), var(--color-border-default))",
-              opacity: 0.4,
+              transformOrigin: "top center",
+              transform: visible ? "scaleY(1)" : "scaleY(0)",
+              transition: `transform .65s cubic-bezier(.22,1,.36,1) ${index * 80 + 180}ms`,
             }}
             aria-hidden="true"
           />
@@ -109,9 +119,32 @@ function HitoItem({ hito, index }: { hito: HitoDivorcio; index: number }) {
       </div>
 
       {/* ─── Contenido del hito ───────────────────────────────────── */}
-      <div className={cn("flex-1 pb-10", isLast && "pb-0")}>
+      <div className={cn("relative flex-1 pb-10", isLast && "pb-0")}>
+        {/* Número fantasma editorial */}
+        <span
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            top: "-18px",
+            right: "0",
+            fontFamily: "var(--font-playfair, 'Playfair Display', Georgia, serif)",
+            fontSize: "clamp(3.5rem, 8vw, 5.5rem)",
+            fontWeight: 500,
+            fontStyle: "italic",
+            lineHeight: 1,
+            color: "var(--color-dorado)",
+            opacity: visible ? 0.1 : 0,
+            transition: "opacity .8s ease .2s",
+            pointerEvents: "none",
+            zIndex: 0,
+            letterSpacing: "-0.03em",
+          }}
+        >
+          {String(hito.numero).padStart(2, "0")}
+        </span>
+
         {/* Número + título */}
-        <div className="flex items-start gap-3 mb-2">
+        <div className="relative z-[1] flex items-start gap-3 mb-2">
           <span
             className="shrink-0 mt-1 font-ui text-xs font-700 tracking-wide"
             style={{ color: "var(--color-dorado)" }}
@@ -123,12 +156,12 @@ function HitoItem({ hito, index }: { hito: HitoDivorcio; index: number }) {
         </div>
 
         {/* Descripción */}
-        <p className="font-body text-sm text-text-secondary leading-relaxed mb-3 ml-9">
+        <p className="relative z-[1] font-body text-sm text-text-secondary leading-relaxed mb-3 ml-9">
           {hito.descripcion}
         </p>
 
         {/* Footer: duración + condicional */}
-        <div className="ml-9 flex flex-wrap items-center gap-3">
+        <div className="relative z-[1] ml-9 flex flex-wrap items-center gap-3">
           <span
             className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-ui text-xs font-500"
             style={{

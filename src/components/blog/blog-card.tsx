@@ -1,6 +1,16 @@
 import * as React from "react";
 import Link from "next/link";
-import { Calendar, User, ArrowRight } from "lucide-react";
+import {
+  Calendar,
+  User,
+  ArrowRight,
+  Scale,
+  Briefcase,
+  Landmark,
+  FileText,
+  BookOpen,
+  type LucideIcon,
+} from "lucide-react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 
@@ -8,7 +18,7 @@ import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import type { BlogPostRow } from "@/app/actions/blog";
 
-// ─── Mapa de etiquetas de área ────────────────────────────────────────────────
+// ─── Metadata por área ────────────────────────────────────────────────────────
 
 const AREA_LABELS: Record<string, string> = {
   civil_familia: "Civil y Familia",
@@ -18,14 +28,14 @@ const AREA_LABELS: Record<string, string> = {
   general: "General",
 };
 
-// ─── Placeholder imagen por área ─────────────────────────────────────────────
-
-const AREA_COLORS: Record<string, { bg: string; text: string; icon: string }> = {
-  civil_familia: { bg: "#E8EDF5", text: "#0F1E3D", icon: "⚖️" },
-  laboral: { bg: "#ECFDF5", text: "#065F46", icon: "💼" },
-  penal: { bg: "#FEF2F2", text: "#7F1D1D", icon: "🏛️" },
-  comercial: { bg: "#FFFBEB", text: "#78350F", icon: "📋" },
-  general: { bg: "#F5F3FF", text: "#4C1D95", icon: "📚" },
+// Cover editorial: fondo marino + grain, ícono + acento por rama (on-brand,
+// reemplaza los emoji sobre pastel plano que se veían baratos).
+const AREA_META: Record<string, { icon: LucideIcon; accent: string; initial: string }> = {
+  civil_familia: { icon: Scale, accent: "#C9A45A", initial: "C" },
+  laboral: { icon: Briefcase, accent: "#2EA043", initial: "L" },
+  penal: { icon: Landmark, accent: "#C0563B", initial: "P" },
+  comercial: { icon: FileText, accent: "#2952FF", initial: "M" },
+  general: { icon: BookOpen, accent: "#8A6FB0", initial: "G" },
 };
 
 // ─── Componente ───────────────────────────────────────────────────────────────
@@ -38,7 +48,8 @@ type BlogCardProps = {
 export function BlogCard({ post }: BlogCardProps) {
   const area = post.areaLegal ?? "general";
   const areaLabel = AREA_LABELS[area] ?? area;
-  const areaColors = AREA_COLORS[area] ?? AREA_COLORS.general;
+  const meta = AREA_META[area] ?? AREA_META.general;
+  const Icon = meta.icon;
 
   const publishedDate = post.publishedAt
     ? format(new Date(post.publishedAt), "d 'de' MMMM, yyyy", { locale: es })
@@ -57,13 +68,70 @@ export function BlogCard({ post }: BlogCardProps) {
         "hover:shadow-[var(--shadow-lg)] hover:-translate-y-1"
       )}
     >
-      {/* Imagen placeholder con color por área */}
+      {/* Cover editorial generativo */}
       <div
-        className="h-40 flex items-center justify-center text-4xl shrink-0"
-        style={{ background: areaColors.bg }}
+        className="relative h-44 shrink-0 overflow-hidden grain"
+        style={{
+          background: "radial-gradient(130% 130% at 25% 0%, #1c2e52 0%, #0e1b33 55%, #08111f 100%)",
+        }}
         aria-hidden="true"
       >
-        {areaColors.icon}
+        {/* Acento superior por rama */}
+        <span
+          className="absolute top-0 left-0 right-0 h-[3px]"
+          style={{ background: meta.accent }}
+        />
+
+        {/* Arcos concéntricos decorativos (motivo sello PD) */}
+        <svg
+          className="absolute"
+          style={{ top: "50%", right: "-40px", transform: "translateY(-50%)", opacity: 0.12 }}
+          width="200"
+          height="200"
+          viewBox="0 0 200 200"
+          fill="none"
+          stroke="#C9A45A"
+          strokeWidth="0.8"
+        >
+          <circle cx="100" cy="100" r="95" />
+          <circle cx="100" cy="100" r="74" strokeDasharray="3 5" />
+          <circle cx="100" cy="100" r="52" />
+        </svg>
+
+        {/* Inicial fantasma */}
+        <span
+          className="absolute select-none"
+          style={{
+            top: "-12px",
+            left: "14px",
+            fontFamily: "var(--font-playfair, 'Playfair Display', Georgia, serif)",
+            fontStyle: "italic",
+            fontSize: "8.5rem",
+            fontWeight: 500,
+            lineHeight: 1,
+            color: meta.accent,
+            opacity: 0.16,
+            letterSpacing: "-0.04em",
+          }}
+        >
+          {meta.initial}
+        </span>
+
+        {/* Ícono + etiqueta de área */}
+        <div className="absolute bottom-4 left-5 flex items-center gap-2.5">
+          <span
+            className="flex items-center justify-center w-9 h-9 rounded-full border"
+            style={{ borderColor: "rgba(201,164,90,0.5)", color: meta.accent }}
+          >
+            <Icon size={17} />
+          </span>
+          <span
+            className="font-ui text-[11px] font-medium uppercase tracking-[0.18em]"
+            style={{ color: "rgba(250,247,242,0.78)" }}
+          >
+            {areaLabel}
+          </span>
+        </div>
       </div>
 
       {/* Content */}

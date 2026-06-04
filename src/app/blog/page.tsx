@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import { Newspaper } from "lucide-react";
 
 import { siteConfig } from "@/lib/site-config";
 import { listPosts } from "@/app/actions/blog";
@@ -160,11 +161,11 @@ export default async function BlogPage({ searchParams }: { searchParams: SearchP
               aria-live="polite"
             >
               <div
-                className="w-16 h-16 rounded-full flex items-center justify-center mb-6 text-3xl"
-                style={{ background: "rgba(15,30,61,0.06)" }}
+                className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
+                style={{ background: "rgba(15,30,61,0.06)", color: "var(--color-dorado-deep)" }}
                 aria-hidden="true"
               >
-                📄
+                <Newspaper size={26} strokeWidth={1.5} />
               </div>
               <h2
                 className="font-serif font-semibold mb-3"

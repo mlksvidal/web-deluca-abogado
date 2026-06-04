@@ -16,6 +16,7 @@ import type {
 } from "@/lib/legal/verificador-despido";
 import { cn } from "@/lib/utils";
 import { lenisScrollTo } from "@/lib/lenis";
+import { gsap } from "@/lib/gsap";
 import { AlertTriangle, CheckCircle2, ChevronRight, RotateCcw } from "lucide-react";
 
 // ─── Tipos del formulario de usuario ─────────────────────────────────────────
@@ -171,6 +172,30 @@ export function VerificadorDespidoForm() {
   const [resultado, setResultado] = React.useState<ResultadoVerificadorDespido | null>(null);
   const [showResult, setShowResult] = React.useState(false);
   const resultRef = React.useRef<HTMLDivElement>(null);
+  const verdictRef = React.useRef<HTMLDivElement>(null);
+
+  // Reveal dramático del veredicto cuando aparece
+  React.useEffect(() => {
+    if (!showResult || !resultado) return;
+    const root = verdictRef.current;
+    if (!root) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      tl.from(".verdict-icon", {
+        scale: 0,
+        rotate: -25,
+        duration: 0.7,
+        ease: "back.out(2.2)",
+      })
+        .from(".verdict-label > *", { y: 16, opacity: 0, duration: 0.5, stagger: 0.08 }, "-=0.35")
+        .from(".verdict-reason", { x: -14, opacity: 0, duration: 0.45, stagger: 0.09 }, "-=0.2")
+        .from(".verdict-extra", { y: 14, opacity: 0, duration: 0.5, stagger: 0.1 }, "-=0.15");
+    }, root);
+
+    return () => ctx.revert();
+  }, [showResult, resultado]);
 
   const allAnswered =
     answers.q1TipoDespido !== "" &&
@@ -402,6 +427,7 @@ export function VerificadorDespidoForm() {
       >
         {resultado && diagConfig && (
           <div
+            ref={verdictRef}
             className="rounded-[10px] border overflow-hidden"
             style={{ borderColor: diagConfig.border }}
           >
@@ -410,8 +436,10 @@ export function VerificadorDespidoForm() {
               className="px-6 py-5 flex items-center gap-4"
               style={{ background: diagConfig.bg, borderBottom: `1px solid ${diagConfig.border}` }}
             >
-              <div style={{ color: diagConfig.color }}>{diagConfig.icon}</div>
-              <div>
+              <div className="verdict-icon" style={{ color: diagConfig.color }}>
+                {diagConfig.icon}
+              </div>
+              <div className="verdict-label">
                 <p
                   className="font-ui text-xs font-600 tracking-[0.10em] uppercase"
                   style={{ color: diagConfig.color }}
@@ -432,7 +460,7 @@ export function VerificadorDespidoForm() {
               <h3 className="font-ui text-sm font-600 text-carbon mb-3">¿Por qué?</h3>
               <ul className="space-y-2.5" role="list">
                 {resultado.razones.map((razon, i) => (
-                  <li key={i} className="flex items-start gap-2.5">
+                  <li key={i} className="verdict-reason flex items-start gap-2.5">
                     <ChevronRight
                       size={14}
                       className="shrink-0 mt-0.5"
@@ -448,7 +476,7 @@ export function VerificadorDespidoForm() {
 
               {/* Recomendación */}
               <div
-                className="mt-5 p-4 rounded-[6px] border"
+                className="verdict-extra mt-5 p-4 rounded-[6px] border"
                 style={{
                   background: "var(--color-bg-warm)",
                   borderColor: "var(--color-border-default)",
@@ -464,7 +492,7 @@ export function VerificadorDespidoForm() {
 
               {/* Disclaimer prominente */}
               <div
-                className="mt-4 p-4 rounded-[6px] border"
+                className="verdict-extra mt-4 p-4 rounded-[6px] border"
                 style={{
                   background: "rgba(180,83,9,0.04)",
                   borderColor: "rgba(180,83,9,0.20)",
@@ -481,7 +509,7 @@ export function VerificadorDespidoForm() {
               </div>
 
               {/* CTAs */}
-              <div className="mt-6 flex flex-col sm:flex-row gap-3">
+              <div className="verdict-extra mt-6 flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/reservar"
                   className={cn(
