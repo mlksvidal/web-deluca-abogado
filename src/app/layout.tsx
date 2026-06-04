@@ -3,6 +3,7 @@ import { Playfair_Display, Lora, Montserrat } from "next/font/google";
 import "./globals.css";
 import { LenisProvider } from "@/components/providers/lenis-provider";
 import { ScrollProgress } from "@/components/utils/scroll-progress";
+import { CursorGlow } from "@/components/utils/cursor-glow";
 import { siteConfig } from "@/lib/site-config";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -183,6 +184,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="antialiased">
         <LenisProvider>
           <ScrollProgress />
+          <CursorGlow />
           <Header />
           <main id="main-content">{children}</main>
           <Footer />

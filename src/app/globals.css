@@ -371,6 +371,39 @@ body {
 }
 
 /* ================================================
+   CURSOR GLOW — anillo dorado trailing (desktop)
+   ================================================ */
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--color-dorado);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0;
+  will-change: transform;
+  transition:
+    width 0.3s var(--ease-primary),
+    height 0.3s var(--ease-primary),
+    background-color 0.3s var(--ease-primary),
+    border-color 0.3s var(--ease-primary);
+}
+.cursor-ring--active {
+  width: 58px;
+  height: 58px;
+  background: rgba(201, 164, 90, 0.08);
+  border-color: var(--color-dorado-deep);
+}
+@media (pointer: coarse) {
+  .cursor-ring {
+    display: none;
+  }
+}
+
+/* ================================================
    SCROLL PROGRESS BAR (dorada, top fixed)
    ================================================ */
 .scroll-progress {

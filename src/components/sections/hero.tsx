@@ -13,6 +13,7 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 import { gsap } from "@/lib/gsap";
+import { Magnetic } from "@/components/utils/magnetic";
 
 const H1_WORDS = [
   { text: "Asesoría", accent: false, br: false },
@@ -22,6 +23,17 @@ const H1_WORDS = [
   { text: "claridad", accent: false, br: true },
   { text: "y", accent: false, br: false },
   { text: "compromiso.", accent: false, br: false },
+];
+
+// Motas doradas flotantes (posiciones fijas para evitar hydration mismatch)
+const HERO_PARTICLES = [
+  { left: "12%", top: "22%", size: 5, dur: "9s", delay: "0s", opacity: 0.5 },
+  { left: "24%", top: "68%", size: 3, dur: "11s", delay: "1.5s", opacity: 0.4 },
+  { left: "38%", top: "34%", size: 4, dur: "8s", delay: "0.8s", opacity: 0.35 },
+  { left: "58%", top: "72%", size: 3, dur: "12s", delay: "2.2s", opacity: 0.45 },
+  { left: "72%", top: "28%", size: 5, dur: "10s", delay: "0.4s", opacity: 0.5 },
+  { left: "84%", top: "58%", size: 3, dur: "9.5s", delay: "1.1s", opacity: 0.4 },
+  { left: "48%", top: "16%", size: 4, dur: "13s", delay: "2.8s", opacity: 0.3 },
 ];
 
 export function Hero() {
@@ -98,6 +110,25 @@ export function Hero() {
               "radial-gradient(ellipse at 50% 40%, rgba(201,169,97,.06) 0%, transparent 68%)",
           }}
         />
+
+        {/* Motas doradas flotantes — vida ambiental */}
+        <div className="hero-particles">
+          {HERO_PARTICLES.map((p, i) => (
+            <span
+              key={i}
+              className="hero-particle"
+              style={{
+                left: p.left,
+                top: p.top,
+                width: `${p.size}px`,
+                height: `${p.size}px`,
+                animationDuration: p.dur,
+                animationDelay: p.delay,
+                ["--p-opacity" as string]: p.opacity,
+              }}
+            />
+          ))}
+        </div>
 
         {/* Líneas verticales decorativas estilo blueprint */}
         <svg
@@ -285,42 +316,42 @@ export function Hero() {
             ))}
           </h1>
 
-          {/* CTA único primario */}
+          {/* CTA único primario — magnético */}
           <div className="hero-cta mt-14 md:mt-20">
-            <Link
-              href="/reservar"
-              className="btn-primary-hero inline-flex items-center gap-3"
-              style={{
-                padding: "18px 38px",
-                fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
-                fontSize: "12.5px",
-                fontWeight: 500,
-                letterSpacing: ".14em",
-                textTransform: "uppercase",
-                background: "var(--color-marino, #0F1E3D)",
-                color: "var(--color-bg-primary, #FAF7F2)",
-                borderRadius: "2px",
-                textDecoration: "none",
-                boxShadow: "0 4px 14px -4px rgba(15,30,61,.28)",
-                transition:
-                  "transform .35s cubic-bezier(.22,1,.36,1), background .3s cubic-bezier(.22,1,.36,1), box-shadow .4s cubic-bezier(.22,1,.36,1)",
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget;
-                el.style.background = "var(--color-marino-hover, #1E3A6E)";
-                el.style.transform = "translateY(-2px)";
-                el.style.boxShadow = "0 14px 28px -8px rgba(15,30,61,.5)";
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget;
-                el.style.background = "var(--color-marino, #0F1E3D)";
-                el.style.transform = "translateY(0)";
-                el.style.boxShadow = "0 4px 14px -4px rgba(15,30,61,.28)";
-              }}
-            >
-              Reservar consulta
-              <span aria-hidden="true">→</span>
-            </Link>
+            <Magnetic strength={0.4}>
+              <Link
+                href="/reservar"
+                className="btn-primary-hero inline-flex items-center gap-3"
+                style={{
+                  padding: "18px 38px",
+                  fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
+                  fontSize: "12.5px",
+                  fontWeight: 500,
+                  letterSpacing: ".14em",
+                  textTransform: "uppercase",
+                  background: "var(--color-marino, #0F1E3D)",
+                  color: "var(--color-bg-primary, #FAF7F2)",
+                  borderRadius: "2px",
+                  textDecoration: "none",
+                  boxShadow: "0 4px 14px -4px rgba(15,30,61,.28)",
+                  transition:
+                    "background .3s cubic-bezier(.22,1,.36,1), box-shadow .4s cubic-bezier(.22,1,.36,1)",
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget;
+                  el.style.background = "var(--color-marino-hover, #1E3A6E)";
+                  el.style.boxShadow = "0 14px 28px -8px rgba(15,30,61,.5)";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget;
+                  el.style.background = "var(--color-marino, #0F1E3D)";
+                  el.style.boxShadow = "0 4px 14px -4px rgba(15,30,61,.28)";
+                }}
+              >
+                Reservar consulta
+                <span aria-hidden="true">→</span>
+              </Link>
+            </Magnetic>
 
             {/* Secondary link sutil */}
             <div className="mt-6">
@@ -356,7 +387,7 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Estilos estructurales del hero (máscaras + subrayado del acento) */}
+      {/* Estilos estructurales del hero (máscaras + subrayado + partículas) */}
       <style>{`
         .hero-word-mask {
           display: inline-block;
@@ -375,6 +406,29 @@ export function Hero() {
           height: 2px;
           background: var(--color-dorado, #C9A961);
           display: block;
+        }
+        .hero-particles {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          z-index: 0;
+        }
+        .hero-particle {
+          position: absolute;
+          border-radius: 50%;
+          background: var(--color-dorado, #C9A961);
+          opacity: var(--p-opacity, 0.4);
+          animation-name: heroFloat;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+          will-change: transform, opacity;
+        }
+        @keyframes heroFloat {
+          0%, 100% { transform: translateY(0) scale(1); opacity: calc(var(--p-opacity, 0.4) * 0.5); }
+          50%      { transform: translateY(-26px) scale(1.25); opacity: var(--p-opacity, 0.4); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hero-particle { animation: none; }
         }
       `}</style>
     </section>

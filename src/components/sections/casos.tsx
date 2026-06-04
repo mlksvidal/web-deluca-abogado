@@ -10,6 +10,7 @@
 import { Section } from "@/components/layout/section";
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/utils/reveal";
+import { Tilt } from "@/components/utils/tilt";
 import { casosResueltos } from "@/lib/casos-data";
 
 const STAGGER_DELAYS = [80, 160, 240];
@@ -93,124 +94,126 @@ export function Casos() {
         <div className="casos-grid" role="list">
           {casosResueltos.map((caso, i) => (
             <Reveal key={caso.id} delay={STAGGER_DELAYS[i]} variant={REVEAL_VARIANTS[i] ?? "up"}>
-              <article className="caso-card" role="listitem" aria-label={`Caso: ${caso.titulo}`}>
-                {/* Header: badge área + duración */}
-                <div
-                  className="caso-card-header"
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    paddingBottom: "16px",
-                    borderBottom: "1px solid rgba(250,247,242,.08)",
-                    marginBottom: "20px",
-                  }}
-                >
-                  <span
+              <Tilt max={6}>
+                <article className="caso-card" role="listitem" aria-label={`Caso: ${caso.titulo}`}>
+                  {/* Header: badge área + duración */}
+                  <div
+                    className="caso-card-header"
                     style={{
-                      fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
-                      fontSize: ".7rem",
-                      textTransform: "uppercase",
-                      letterSpacing: ".2em",
-                      color: "var(--color-dorado, #C9A961)",
-                      padding: "5px 10px",
-                      border: "1px solid rgba(201,169,97,.4)",
-                      borderRadius: "2px",
-                    }}
-                  >
-                    {caso.area}
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
-                      fontSize: ".78rem",
-                      color: "rgba(250,247,242,.55)",
                       display: "flex",
+                      justifyContent: "space-between",
                       alignItems: "center",
-                      gap: "6px",
+                      paddingBottom: "16px",
+                      borderBottom: "1px solid rgba(250,247,242,.08)",
+                      marginBottom: "20px",
                     }}
-                    aria-label={`Duración: ${caso.duracionMeses} meses`}
                   >
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      aria-hidden="true"
+                    <span
+                      style={{
+                        fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
+                        fontSize: ".7rem",
+                        textTransform: "uppercase",
+                        letterSpacing: ".2em",
+                        color: "var(--color-dorado, #C9A961)",
+                        padding: "5px 10px",
+                        border: "1px solid rgba(201,169,97,.4)",
+                        borderRadius: "2px",
+                      }}
                     >
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M12 6v6l4 2" strokeLinecap="round" />
-                    </svg>
-                    {caso.duracionMeses} meses
-                  </span>
-                </div>
+                      {caso.area}
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
+                        fontSize: ".78rem",
+                        color: "rgba(250,247,242,.55)",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "6px",
+                      }}
+                      aria-label={`Duración: ${caso.duracionMeses} meses`}
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        aria-hidden="true"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 6v6l4 2" strokeLinecap="round" />
+                      </svg>
+                      {caso.duracionMeses} meses
+                    </span>
+                  </div>
 
-                {/* Título */}
-                <h3
-                  style={{
-                    fontFamily: "var(--font-playfair, 'Playfair Display', Georgia, serif)",
-                    fontSize: "1.2rem",
-                    fontWeight: 500,
-                    lineHeight: 1.35,
-                    letterSpacing: "-0.01em",
-                    color: "var(--color-bg-primary, #FAF7F2)",
-                    marginBottom: "16px",
-                  }}
-                >
-                  {caso.titulo}
-                </h3>
-
-                {/* Descripción */}
-                <p
-                  style={{
-                    fontFamily: "var(--font-lora, Lora, Georgia, serif)",
-                    fontSize: ".92rem",
-                    lineHeight: 1.6,
-                    color: "rgba(250,247,242,.7)",
-                    flex: 1,
-                    margin: 0,
-                  }}
-                >
-                  {caso.descripcion}
-                </p>
-
-                {/* Resultado */}
-                <div
-                  style={{
-                    paddingTop: "18px",
-                    borderTop: "1px solid rgba(250,247,242,.08)",
-                    marginTop: "20px",
-                  }}
-                >
-                  <span
+                  {/* Título */}
+                  <h3
                     style={{
-                      fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
-                      fontSize: ".7rem",
-                      textTransform: "uppercase",
-                      letterSpacing: ".18em",
-                      color: "var(--color-dorado, #C9A961)",
-                      display: "block",
-                      marginBottom: "8px",
+                      fontFamily: "var(--font-playfair, 'Playfair Display', Georgia, serif)",
+                      fontSize: "1.2rem",
+                      fontWeight: 500,
+                      lineHeight: 1.35,
+                      letterSpacing: "-0.01em",
+                      color: "var(--color-bg-primary, #FAF7F2)",
+                      marginBottom: "16px",
                     }}
                   >
-                    Resultado
-                  </span>
+                    {caso.titulo}
+                  </h3>
+
+                  {/* Descripción */}
                   <p
                     style={{
                       fontFamily: "var(--font-lora, Lora, Georgia, serif)",
-                      fontStyle: "italic",
                       fontSize: ".92rem",
-                      lineHeight: 1.55,
-                      color: "rgba(250,247,242,.92)",
+                      lineHeight: 1.6,
+                      color: "rgba(250,247,242,.7)",
+                      flex: 1,
                       margin: 0,
                     }}
                   >
-                    {caso.resultado}
+                    {caso.descripcion}
                   </p>
-                </div>
-              </article>
+
+                  {/* Resultado */}
+                  <div
+                    style={{
+                      paddingTop: "18px",
+                      borderTop: "1px solid rgba(250,247,242,.08)",
+                      marginTop: "20px",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
+                        fontSize: ".7rem",
+                        textTransform: "uppercase",
+                        letterSpacing: ".18em",
+                        color: "var(--color-dorado, #C9A961)",
+                        display: "block",
+                        marginBottom: "8px",
+                      }}
+                    >
+                      Resultado
+                    </span>
+                    <p
+                      style={{
+                        fontFamily: "var(--font-lora, Lora, Georgia, serif)",
+                        fontStyle: "italic",
+                        fontSize: ".92rem",
+                        lineHeight: 1.55,
+                        color: "rgba(250,247,242,.92)",
+                        margin: 0,
+                      }}
+                    >
+                      {caso.resultado}
+                    </p>
+                  </div>
+                </article>
+              </Tilt>
             </Reveal>
           ))}
         </div>

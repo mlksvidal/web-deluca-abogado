@@ -12,6 +12,7 @@ import Link from "next/link";
 import { Section } from "@/components/layout/section";
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/utils/reveal";
+import { Tilt } from "@/components/utils/tilt";
 import { practiceAreas, type PracticeArea } from "@/lib/practice-areas-data";
 
 // Íconos SVG inline — sin dependencia de archivos externos en placeholder
@@ -175,125 +176,127 @@ export function Areas() {
                 delay={STAGGER_DELAYS[i]}
                 variant={i % 2 === 0 ? "left" : "right"}
               >
-                <article className="area-card" role="listitem" aria-label={`Área: ${area.label}`}>
-                  {/* Icon frame 56×56 */}
-                  <div
-                    className="area-icon"
-                    aria-hidden="true"
-                    style={{
-                      width: "56px",
-                      height: "56px",
-                      border: "1px solid var(--color-dorado, #C9A961)",
-                      display: "grid",
-                      placeItems: "center",
-                      marginBottom: "28px",
-                      color: "var(--color-dorado-deep, #B89344)",
-                      flexShrink: 0,
-                      transition:
-                        "border-color .4s cubic-bezier(.22,1,.36,1), background .4s cubic-bezier(.22,1,.36,1), color .4s cubic-bezier(.22,1,.36,1)",
-                    }}
-                  >
-                    <Icon />
-                  </div>
-
-                  {/* Título */}
-                  <h3
-                    style={{
-                      fontFamily: "var(--font-playfair, 'Playfair Display', Georgia, serif)",
-                      fontSize: "1.5rem",
-                      fontWeight: 500,
-                      lineHeight: 1.3,
-                      letterSpacing: "-0.01em",
-                      color: "var(--color-marino, #0F1E3D)",
-                      marginBottom: "12px",
-                    }}
-                  >
-                    {area.label}
-                  </h3>
-
-                  {/* Descripción */}
-                  <p
-                    style={{
-                      fontFamily: "var(--font-lora, Lora, Georgia, serif)",
-                      fontSize: ".95rem",
-                      lineHeight: 1.6,
-                      color: "var(--color-carbon-soft, #3A3A3A)",
-                      marginBottom: "20px",
-                    }}
-                  >
-                    {area.description}
-                  </p>
-
-                  {/* Sub-temas */}
-                  <ul
-                    role="list"
-                    aria-label={`Sub-temas de ${area.label}`}
-                    style={{
-                      listStyle: "none",
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "6px",
-                      marginBottom: "28px",
-                      flex: 1,
-                    }}
-                  >
-                    {area.subtemas.map((sub) => (
-                      <li
-                        key={sub}
-                        style={{
-                          fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
-                          fontSize: ".83rem",
-                          color: "var(--color-carbon-soft, #3A3A3A)",
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "8px",
-                        }}
-                      >
-                        <span
-                          aria-hidden="true"
-                          style={{
-                            width: "4px",
-                            height: "4px",
-                            borderRadius: "50%",
-                            background: "var(--color-dorado, #C9A961)",
-                            flexShrink: 0,
-                          }}
-                        />
-                        {sub}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Link */}
-                  <Link
-                    href="#estudio"
-                    className="area-link"
-                    aria-label={`Consultar sobre ${area.label}`}
-                    style={{
-                      fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
-                      fontSize: "13px",
-                      fontWeight: 500,
-                      letterSpacing: ".1em",
-                      textTransform: "uppercase",
-                      color: "var(--color-marino, #0F1E3D)",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "8px",
-                      textDecoration: "none",
-                    }}
-                  >
-                    Consultar
-                    <span
-                      className="area-link-arrow"
+                <Tilt max={6}>
+                  <article className="area-card" role="listitem" aria-label={`Área: ${area.label}`}>
+                    {/* Icon frame 56×56 */}
+                    <div
+                      className="area-icon"
                       aria-hidden="true"
                       style={{
-                        transition: "transform .25s cubic-bezier(.22,1,.36,1)",
+                        width: "56px",
+                        height: "56px",
+                        border: "1px solid var(--color-dorado, #C9A961)",
+                        display: "grid",
+                        placeItems: "center",
+                        marginBottom: "28px",
+                        color: "var(--color-dorado-deep, #B89344)",
+                        flexShrink: 0,
+                        transition:
+                          "border-color .4s cubic-bezier(.22,1,.36,1), background .4s cubic-bezier(.22,1,.36,1), color .4s cubic-bezier(.22,1,.36,1)",
                       }}
                     >
-                      →
-                    </span>
-                  </Link>
-                </article>
+                      <Icon />
+                    </div>
+
+                    {/* Título */}
+                    <h3
+                      style={{
+                        fontFamily: "var(--font-playfair, 'Playfair Display', Georgia, serif)",
+                        fontSize: "1.5rem",
+                        fontWeight: 500,
+                        lineHeight: 1.3,
+                        letterSpacing: "-0.01em",
+                        color: "var(--color-marino, #0F1E3D)",
+                        marginBottom: "12px",
+                      }}
+                    >
+                      {area.label}
+                    </h3>
+
+                    {/* Descripción */}
+                    <p
+                      style={{
+                        fontFamily: "var(--font-lora, Lora, Georgia, serif)",
+                        fontSize: ".95rem",
+                        lineHeight: 1.6,
+                        color: "var(--color-carbon-soft, #3A3A3A)",
+                        marginBottom: "20px",
+                      }}
+                    >
+                      {area.description}
+                    </p>
+
+                    {/* Sub-temas */}
+                    <ul
+                      role="list"
+                      aria-label={`Sub-temas de ${area.label}`}
+                      style={{
+                        listStyle: "none",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "6px",
+                        marginBottom: "28px",
+                        flex: 1,
+                      }}
+                    >
+                      {area.subtemas.map((sub) => (
+                        <li
+                          key={sub}
+                          style={{
+                            fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
+                            fontSize: ".83rem",
+                            color: "var(--color-carbon-soft, #3A3A3A)",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "8px",
+                          }}
+                        >
+                          <span
+                            aria-hidden="true"
+                            style={{
+                              width: "4px",
+                              height: "4px",
+                              borderRadius: "50%",
+                              background: "var(--color-dorado, #C9A961)",
+                              flexShrink: 0,
+                            }}
+                          />
+                          {sub}
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Link */}
+                    <Link
+                      href="#estudio"
+                      className="area-link"
+                      aria-label={`Consultar sobre ${area.label}`}
+                      style={{
+                        fontFamily: "var(--font-ui, Inter, system-ui, sans-serif)",
+                        fontSize: "13px",
+                        fontWeight: 500,
+                        letterSpacing: ".1em",
+                        textTransform: "uppercase",
+                        color: "var(--color-marino, #0F1E3D)",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        textDecoration: "none",
+                      }}
+                    >
+                      Consultar
+                      <span
+                        className="area-link-arrow"
+                        aria-hidden="true"
+                        style={{
+                          transition: "transform .25s cubic-bezier(.22,1,.36,1)",
+                        }}
+                      >
+                        →
+                      </span>
+                    </Link>
+                  </article>
+                </Tilt>
               </Reveal>
             );
           })}
