@@ -299,13 +299,14 @@ export function Casos() {
           position: absolute;
           top: 0; left: 0;
           width: 0; height: 2px;
-          background: var(--color-dorado, #C9A961);
+          background: linear-gradient(90deg, var(--color-dorado, #C9A961), var(--color-azul-electrico, #2952ff));
           transition: width .5s cubic-bezier(.22,1,.36,1);
         }
         .caso-card:hover {
-          background: rgba(250,247,242,.06);
-          border-color: rgba(201,169,97,.5);
+          background: rgba(41,82,255,.06);
+          border-color: rgba(67,102,255,.5);
           transform: translateY(-4px);
+          box-shadow: 0 20px 50px -22px rgba(41,82,255,.55);
         }
         .caso-card:hover::after { width: 100%; }
 

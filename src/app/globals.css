@@ -432,12 +432,52 @@ body {
    ================================================ */
 .surface-deep {
   position: relative;
+  isolation: isolate;
   background: radial-gradient(
     135% 135% at 50% 0%,
     var(--color-marino-hover) 0%,
     var(--color-marino) 48%,
     var(--color-marino-deep) 100%
   );
+}
+
+/* Aurora animada — manchas de azul eléctrico + marino que derivan lento.
+   Da vida y profundidad al marino plano. Detrás del contenido (z-index 0). */
+.surface-deep::after {
+  content: "";
+  position: absolute;
+  inset: -25%;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(45% 55% at 24% 28%, rgba(41, 82, 255, 0.24), transparent 70%),
+    radial-gradient(40% 50% at 80% 74%, rgba(67, 102, 255, 0.16), transparent 70%),
+    radial-gradient(50% 55% at 60% 16%, rgba(30, 58, 110, 0.55), transparent 70%);
+  filter: blur(10px);
+  opacity: 0.75;
+  animation: auroraDrift 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+/* El contenido de las secciones marino se mantiene por encima de aurora + grain */
+.surface-deep > * {
+  position: relative;
+  z-index: 1;
+}
+@keyframes auroraDrift {
+  0% {
+    transform: translate3d(-4%, -3%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(5%, 2%, 0) scale(1.12);
+  }
+  100% {
+    transform: translate3d(-2%, 5%, 0) scale(1.06);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .surface-deep::after {
+    animation: none;
+  }
 }
 
 /* Grano sutil — aplicar sobre un contenedor position: relative.

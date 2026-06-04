@@ -25,15 +25,19 @@ const H1_WORDS = [
   { text: "compromiso.", accent: false, br: false },
 ];
 
-// Motas doradas flotantes (posiciones fijas para evitar hydration mismatch)
+// Motas flotantes (posiciones fijas para evitar hydration mismatch).
+// Mezcla dorado + azul eléctrico para que el fondo no se sienta plano.
+const GOLD = "var(--color-dorado, #C9A961)";
+const BLUE = "var(--color-azul-electrico, #2952ff)";
 const HERO_PARTICLES = [
-  { left: "12%", top: "22%", size: 5, dur: "9s", delay: "0s", opacity: 0.5 },
-  { left: "24%", top: "68%", size: 3, dur: "11s", delay: "1.5s", opacity: 0.4 },
-  { left: "38%", top: "34%", size: 4, dur: "8s", delay: "0.8s", opacity: 0.35 },
-  { left: "58%", top: "72%", size: 3, dur: "12s", delay: "2.2s", opacity: 0.45 },
-  { left: "72%", top: "28%", size: 5, dur: "10s", delay: "0.4s", opacity: 0.5 },
-  { left: "84%", top: "58%", size: 3, dur: "9.5s", delay: "1.1s", opacity: 0.4 },
-  { left: "48%", top: "16%", size: 4, dur: "13s", delay: "2.8s", opacity: 0.3 },
+  { left: "12%", top: "22%", size: 5, dur: "9s", delay: "0s", opacity: 0.5, color: GOLD },
+  { left: "24%", top: "68%", size: 3, dur: "11s", delay: "1.5s", opacity: 0.45, color: BLUE },
+  { left: "38%", top: "34%", size: 4, dur: "8s", delay: "0.8s", opacity: 0.35, color: GOLD },
+  { left: "58%", top: "72%", size: 4, dur: "12s", delay: "2.2s", opacity: 0.5, color: BLUE },
+  { left: "72%", top: "28%", size: 5, dur: "10s", delay: "0.4s", opacity: 0.5, color: GOLD },
+  { left: "84%", top: "58%", size: 3, dur: "9.5s", delay: "1.1s", opacity: 0.45, color: BLUE },
+  { left: "48%", top: "16%", size: 4, dur: "13s", delay: "2.8s", opacity: 0.3, color: GOLD },
+  { left: "64%", top: "44%", size: 3, dur: "10.5s", delay: "3.2s", opacity: 0.4, color: BLUE },
 ];
 
 export function Hero() {
@@ -122,6 +126,8 @@ export function Hero() {
                 top: p.top,
                 width: `${p.size}px`,
                 height: `${p.size}px`,
+                background: p.color,
+                boxShadow: `0 0 ${p.size * 2}px ${p.color}`,
                 animationDuration: p.dur,
                 animationDelay: p.delay,
                 ["--p-opacity" as string]: p.opacity,
@@ -348,8 +354,10 @@ export function Hero() {
                   el.style.boxShadow = "0 4px 14px -4px rgba(15,30,61,.28)";
                 }}
               >
-                Reservar consulta
-                <span aria-hidden="true">→</span>
+                <span className="btn-label">
+                  Reservar consulta
+                  <span aria-hidden="true">→</span>
+                </span>
               </Link>
             </Magnetic>
 
@@ -416,7 +424,6 @@ export function Hero() {
         .hero-particle {
           position: absolute;
           border-radius: 50%;
-          background: var(--color-dorado, #C9A961);
           opacity: var(--p-opacity, 0.4);
           animation-name: heroFloat;
           animation-timing-function: ease-in-out;
@@ -427,8 +434,39 @@ export function Hero() {
           0%, 100% { transform: translateY(0) scale(1); opacity: calc(var(--p-opacity, 0.4) * 0.5); }
           50%      { transform: translateY(-26px) scale(1.25); opacity: var(--p-opacity, 0.4); }
         }
+
+        /* CTA — destello azul eléctrico que barre periódicamente */
+        .btn-primary-hero {
+          position: relative;
+          overflow: hidden;
+        }
+        .btn-primary-hero::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -65%;
+          width: 45%;
+          height: 100%;
+          background: linear-gradient(100deg, transparent, rgba(67, 102, 255, 0.5), transparent);
+          transform: skewX(-18deg);
+          animation: ctaSheen 5.5s ease-in-out infinite;
+          pointer-events: none;
+        }
+        @keyframes ctaSheen {
+          0%   { left: -65%; }
+          35%  { left: 150%; }
+          100% { left: 150%; }
+        }
+        .btn-label {
+          position: relative;
+          z-index: 1;
+          display: inline-flex;
+          align-items: center;
+          gap: 12px;
+        }
         @media (prefers-reduced-motion: reduce) {
           .hero-particle { animation: none; }
+          .btn-primary-hero::before { animation: none; opacity: 0; }
         }
       `}</style>
     </section>
